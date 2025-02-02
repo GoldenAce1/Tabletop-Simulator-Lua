@@ -1,0 +1,957 @@
+local PharaohVariables = getObjectFromGUID('43e2a0')
+local YellowVariables = getObjectFromGUID('2be879')
+local LurkerVariables = getObjectFromGUID('edd1ef')
+local KingsportVariables = getObjectFromGUID('00ac75')
+local InnsmouthVariables = getObjectFromGUID('5c39a4')
+local GoatVariables = getObjectFromGUID('293f5a')
+local DunwichVariables = getObjectFromGUID('5932f9')
+
+-- Dunwich Specific Items
+local Dunwich_Board_Id = DunwichVariables.call('getDunwichBoardId')
+local Dunwich_Condition_Deck_id = DunwichVariables.call('getDunwichConditionDeckId')
+local Dunwich_Sheldon_Gang_Deck_id = DunwichVariables.call('getDunwichSheldonGangDeckId')
+local Dunwich_Rail_Pass_Deck_id = DunwichVariables.call('getDunwichRailPassDeckId')
+local Dunwich_Blasted_Heath_Deck_id = DunwichVariables.call('getDunwichBlastedHeathDeckId')
+local Dunwich_Backwoods_Deck_id = DunwichVariables.call('getDunwichBackwoodsDeckId')
+local Dunwich_Village_Commons_Deck_id = DunwichVariables.call('getDunwichVillageCommonsDeckId')
+local Dunwich_Horror_Deck_id = DunwichVariables.call('getDunwichHorrorDeckId')
+local Dunwich_Horror_Token_id = DunwichVariables.call('getDunwichHorrorTokenId')
+local Dunwich_Horror_Monster_id = DunwichVariables.call('getDunwichHorrorMonsterId')
+-- local Dunwich_Clue_Deck_id = DunwichVariables.call('getDunwichClueDeckId')
+local Dunwich_Monster_bag_id = DunwichVariables.call('getDunwichMonsterBagId')
+local Dunwich_Gate_Marker_Bag_id = DunwichVariables.call('getDunwichGateMarkerBagId')
+
+
+-- Innsmouth Specific Items
+local Innsmouth_Board_Id = InnsmouthVariables.call('getInnsmouthBoardId')
+local Innsmouth_Look_Deck_id = InnsmouthVariables.call('getInnsmouthLookDeckId')
+local Innsmouth_Factory_Deck_id = InnsmouthVariables.call('getInnsmouthFactoryDeckId')
+local Innsmouth_Shore_Deck_id = InnsmouthVariables.call('getInnsmouthShoreDeckId')
+local Innsmouth_Church_Deck_id = InnsmouthVariables.call('getInnsmouthChurchDeckId')
+local Innsmouth_Deep_one_Uprising_Token_id = InnsmouthVariables.call('getInnsmouthDeepTokenId')
+local Innsmouth_Clue_Tokens_id = InnsmouthVariables.call('getInnsmouthClueTokensId')
+-- local Innsmouth_Clue_Deck_id = InnsmouthVariables.call('getInnsmouthClueDeckId')
+local Innsmouth_Monster_bag_id = InnsmouthVariables.call('getInnsmouthMonsterBagId')
+
+-- Kingsport Specific Items
+--decks
+
+local Kingsport_Board_Id = KingsportVariables.call('getKingsportBoardId')
+local Kingsport_Captain_Deck_id = KingsportVariables.call('getKingsportCaptainDeckId')
+local Kingsport_Changed_Deck_id = KingsportVariables.call('getKingsportChangedDeckId')
+local Kingsport_Head_Deck_id = KingsportVariables.call('getKingsportHeadDeckId')
+local Kingsport_Harborside_Deck_id = KingsportVariables.call('getKingsportHarborsideDeckId')
+local Kingsport_Central_Hill_Deck_id = KingsportVariables.call('getKingsportCentralHillDeckId')
+local Kingsport_South_Shore_Deck_id = KingsportVariables.call('getKingsportSouthShoreDeckId')
+-- local Kingsport_Clue_Deck_id = KingsportVariables.call('getKingsportClueDeckId')
+local Kingsport_Monster_bag_id = KingsportVariables.call("getKingsportMonsterBagId")
+local Kingsport_Gate_Marker_Bag_id = KingsportVariables.call("getKingsportGateMarkerBagId")
+--Bags
+local Kingsport_Rift_Marker_Bag_id = KingsportVariables.call('getKingsportRiftMarkerBagId')
+local Kingsport_Rift_Progress_Marker_Bag_id = KingsportVariables.call('getKingsportRiftProgressBagId')
+local dummy1 = KingsportVariables.call('getKingsportRift1')
+local dummy2 = KingsportVariables.call('getKingsportRift2')
+local dummy3 = KingsportVariables.call('getKingsportRift3')
+
+-- The King in Yellow
+local Yellow_Acts_Deck_id = YellowVariables.call("getYellowActsDeckId")
+local Yellow_Original_Acts_Deck_id = YellowVariables.call("getYellowOriginalActsDeckId")
+local Yellow_Magical_Effect_Deck_id= YellowVariables.call("getYellowMagicalEffectsDeckId")
+
+-- The Black Goat of the woods
+local Goat_Encounters_Deck_id = GoatVariables.call("getGoatEncountersDeckId")
+local Goat_Membership_Deck_id = GoatVariables.call("getGoatMembershipDeckId")
+local Goat_Red_Corruption_Deck_id = GoatVariables.call("getGoatRedCorruptionDeckId")
+local Goat_Green_Corruption_Deck_Id = GoatVariables.call("getGoatGreenCorruptionDeckId")
+local Goat_Monster_Bag_Id = GoatVariables.call("getGoatMonsterBagId")
+
+-- The Curse of the Dark Pharaoh
+local Pharaoh_Benefits_Deck_id  = PharaohVariables.call("getPharaohBenefitsDeckId")
+local Pharaoh_Detriments_Deck_id   = PharaohVariables.call("getPharaohDetrimentsDeckId")
+local Pharaoh_Exhibit_Item_Deck_id   = PharaohVariables.call("getPharaohExhibitItemDeckId")
+local Pharaoh_Exhibit_Encounter_Deck_Id   = PharaohVariables.call("getPharaohExhibitEncounterDeckId")
+local Pharaoh_Patrol_Marker_Id   = PharaohVariables.call("getPharaohPatrolMarkerId")
+local Pharaoh_Ancient_Whispers_Token_Id   = PharaohVariables.call("getPharaohAncientWhispersTokenId")
+
+-- The Lurker at the Threshold
+local Lurker_Gate_Marker_Bag_id = LurkerVariables.call("getLurkerGateMarkerBagId")
+local Lurker_Dunw_Gate_Marker_Bag_id = LurkerVariables.call("getLurkerDunwGateMarkerBagId")
+local Lurker_King_Gate_Marker_Bag_id = LurkerVariables.call("getLurkerKingGateMarkerBagId")
+
+-- Board Variables
+local Board_Northside_deck_id = '5b4e01'
+local Board_Downtown_deck_id = 'ff194f'
+local Board_Easttown_deck_id = 'a2f1a3'
+local Board_Merchant_deck_id = '7cef3a'
+local Board_Rivertown_deck_id = '296cbf'
+local Board_Miskatonic_deck_id = '6498d4'
+local Board_French_deck_id = '8e5ce3'
+local Board_Uptown_deck_id = '90385e'
+local Board_Southside_deck_id = '8a77a4'
+
+local Board_Common_deck_id = '1b56d4'
+local Board_Unique_deck_id = '3ff256'
+local Board_Spells_deck_id = '0a0fff'
+local Board_Skills_deck_id = '9e3c21'
+local Board_Allies_deck_id = '5a68e6'
+-- local Board_Clue_Deck_id = '1821cd'
+-- local Board_Relationship_deck_id = '631c18'
+local Board_Relationship_deck_id = '054a22'
+local Board_Injury_deck_id = '7f41df'
+local Board_Madness_deck_id = '57ea24'
+local Board_Bank_Loan_deck_id = 'd01ce3'
+local Board_Red_Epic_Battle_deck_id = '19d83a'
+local Board_Green_Epic_Battle_deck_id = 'e78b6c'
+local Board_Retainer_Deck_Id = '99985f'
+local Board_Blessing_Curse_Deck_Id = '9dab84'
+local Silver_Twilight_Lodge_Deck_Id = 'c211ef'
+
+local Board_Gate_Bag_id = '8c026b'
+local Board_Monster_Bag_id ='f9fe2d'
+local Board_Mask_Monster_Bag_Id = '390884'
+
+local Board_Mythos_deck_id = 'c93c23'
+
+local Board_Gate_deck_id = '85633d'
+local Board_Gate_deck_Position = {3.63, 0.89, 12.90}
+local Board_Gate_Deck_Scripting_Zone_Id = '576baf'
+
+local Board_Gate_Discard_Scripting_zone_Id = '9f59c5'
+local Board_Gate_Discard_Position = {3.57, 0.65, 16.43}
+
+local Board_Unused_Gates_Position = {-98.9, 3.49, 59.83}
+local Board_Gate_Bag_Position = {8.29, 1.04, 16.06}
+
+local Board_Monster_Bag_Position = {8.30, 1.02, 12.48}
+
+local Board_Common_Item_Discard = {32.23, 0.68, -12.95}
+local Board_Unique_Item_Discard = {32.18, 0.68, -6.85}
+local Board_Spell_Discard = {32.18, 0.68, -1.02}
+local Board_Skill_Discard = {32.18, 0.69, 5.00}
+local Board_Ally_Discard = {32.18, 0.69, 10.64}
+local Board_Injury_Discard = {32.18, 0.69, 16.32}
+local Board_Madness_Discard = {32.18, 0.69, 22.10}
+
+local Board_Bless_Curse_Discard = {20.36, 1.01, 15.50}
+local Board_Deputy_Discard = {20.44, 1.01, 18.29}
+local Board_Bank_Loan_Discard = {20.45, 1.01, 21.11}
+local Board_Changed_Discard = {24.89, 1.01, 12.91}
+local Board_Captain_Discard = {24.92, 1.01, 15.58}
+local Board_Sheldon_Discard = {24.94, 1.01, 18.30}
+local Board_Rail_Pass_Discard = {24.96, 0.60, 21.18}
+local Board_Magical_Effect_Discard = {20.60, 1.01, 26.70}
+local Board_Silver_Twilight_Lodge_Discard = {20.56, 1.01, 23.91}
+local Board_Retainer_Discard = {20.29, 1.01, 12.83}
+local Board_Relationship_Discard = {47.86, 1.01, 16.49}
+local Pharaoh_Detriments_Discard = {43.77, 1.01, 10.74}
+local Pharaoh_Benefits_Discard = {43.80, 1.01, 7.83}
+local Goat_Corruption_Discard = {47.97, 0.59, 22.33}
+local Pharaoh_Exhibit_Items_Discard = {47.32, 0.67, 10.93}
+local Goat_Membership_Discard = {38.26, 1.21, 19.40}
+local Board_Mythos_Scale = {1.25, 1.00, 1.25}
+local Board_Gate_Scale = {1.25, 1.00, 1.25}
+local Board_Common_Scale = {1.25, 1.00, 1.25}
+local Board_Unique_Scale = {1.25, 1.00, 1.25}
+local Board_Spells_Scale = {1.25, 1.00, 1.25}
+local Board_Skills_Scale = {1.25, 1.00, 1.25}
+local Board_Allies_Scale = {1.25, 1.00, 1.25}
+local Board_Northside_Scale = {1.25, 1.00, 1.25}
+local Board_Downtown_Scale = {1.25, 1.00, 1.25}
+local Board_Easttown_Scale = {1.25, 1.00, 1.25}
+local Board_Merchant_Scale = {1.25, 1.00, 1.25}
+local Board_Rivertown_Scale = {1.25, 1.00, 1.25}
+local Board_Miskatonic_Scale = {1.25, 1.00, 1.25}
+local Board_French_Scale = {1.25, 1.00, 1.25}
+local Board_Uptown_Scale = {1.25, 1.00, 1.25}
+local Board_Southside_Scale = {1.25, 1.00, 1.25}
+
+
+local Board_First_Player_Marker = '0714fc'
+local Board_Phase_Controller = '5db38d'
+
+-- Board Variables
+local Board_Decks_Shuffle = {'5b4e01','ff194f','a2f1a3','7cef3a','296cbf',
+                             '6498d4','8e5ce3','90385e','8a77a4','1b56d4',
+                             '3ff256','0a0fff','9e3c21','5a68e6','054a22',
+                             '7f41df','57ea24','d01ce3','19d83a','e78b6c',
+                             'c93c23','85633d'}
+
+local BoardPositionsDecks = {
+  -- x, y, z for each die.
+  -- y is the height over the table and setting it to
+  -- a number higher than zero will make it fall down
+  -- to the board
+  [Board_Northside_deck_id] = {37.88, 2.5, -23.01},
+  [Board_Downtown_deck_id] = {37.98, 2.5, -19.36},
+  [Board_Easttown_deck_id] = {38.05, 2.5, -16.06},
+  [Board_Merchant_deck_id] = {37.98, 2.5, -13.02},
+  [Board_Rivertown_deck_id] = {37.89, 2.5, -9.87},
+  [Board_Miskatonic_deck_id] = {37.97, 2.5, -6.91},
+  [Board_French_deck_id] = {37.95, 2.5, -3.84},
+  [Board_Uptown_deck_id] = {37.99, 2.5, -0.93},
+  [Board_Southside_deck_id] = {38.00, 2.5, 2.13},
+  [Board_Common_deck_id] = {32.45, 2.5, -16.06},
+  [Board_Unique_deck_id] = {32.49, 2.5, -9.81},
+  [Board_Spells_deck_id] = {32.49, 2.5, -3.95},
+  [Board_Skills_deck_id] = {32.48, 2.5, 1.89},
+  [Board_Allies_deck_id] = {32.33, 2.5, 8.12},
+
+  -- [Board_Mythos_deck_id] = {12.93, 2.5, 15.89},
+  [Board_Mythos_deck_id] = {15.72, 1.04, 16.34},
+  -- [Board_Gate_deck_id] = {3.13, 2.5, 15.92},
+  [Board_Gate_deck_id] = {3.63, 0.87, 12.90},
+  [Yellow_Acts_Deck_id] = {3.60, 0.9, 22.02},
+  [Yellow_Original_Acts_Deck_id] = {3.60, 0.9, 22.02},
+  [Yellow_Magical_Effect_Deck_id] = {20.60, 1, 26.70},
+
+
+  [Goat_Encounters_Deck_id] = {37.99, 0.97, 24.26},
+  [Goat_Membership_Deck_id] = {38.26, 1.21, 19.40},
+  [Goat_Red_Corruption_Deck_id] = {47.90, 0.80, 19.33},
+  [Goat_Green_Corruption_Deck_Id] = {47.91, 0.97, 22.20},
+  [Goat_Monster_Bag_Id] = {20.14, 1.01, 24.27},
+
+  [Pharaoh_Benefits_Deck_id] = {43.80, 0.59, 7.83},
+  [Pharaoh_Detriments_Deck_id] = {43.77, 0.59, 10.74},
+  [Pharaoh_Exhibit_Item_Deck_id] = {37.96, 1.11, 11.07},
+  [Pharaoh_Exhibit_Encounter_Deck_Id] = {37.95, 0.97, 7.96},
+  [Pharaoh_Patrol_Marker_Id] = {37.93, 0.97, 4.96},
+  [Pharaoh_Ancient_Whispers_Token_Id] = {8.44, 1.5, -8.93},
+  [Lurker_Gate_Marker_Bag_id] = {20.41, 1.01, 34.83},
+  [Lurker_Dunw_Gate_Marker_Bag_id] = {12.09, 1.01, 35.32},
+  [Lurker_King_Gate_Marker_Bag_id] = {8.21, 1.01, 34.59}
+}
+
+local BoardPositions3Boards = {
+  -- x, y, z for each die.
+  -- y is the height over the table and setting it to
+  -- a number higher than zero will make it fall down
+  -- to the board
+  [Innsmouth_Board_Id] = {-20.18, 1.16, -3.58},
+  [Innsmouth_Factory_Deck_id] = {47.11, 1.01, -1.09},
+  [Innsmouth_Shore_Deck_id] = {47.18, 1.01, 4.85},
+  [Innsmouth_Church_Deck_id] = {47.14, 1.01, 2.08},
+  [Innsmouth_Look_Deck_id] = {37.98, 1.01, 13.95},
+  [Innsmouth_Deep_one_Uprising_Token_id] = {-22.14, 1.01, 11.5},
+  [Innsmouth_Clue_Tokens_id] = {-20.01, 1.01, 11.71},
+  -- [Innsmouth_Clue_Deck_id] = {12.22, 5, 21.1},
+  [Innsmouth_Monster_bag_id] = {9.53, 1.01, 30.03},
+  [Dunwich_Village_Commons_Deck_id] = {46.99, 1.01, -19.24},
+  [Dunwich_Backwoods_Deck_id] = {47.09, 1.01, -22.89},
+  [Dunwich_Blasted_Heath_Deck_id] = {46.96, 1.01, -15.98},
+  [Dunwich_Rail_Pass_Deck_id] = {24.96, 0.60, 21.18},
+  [Dunwich_Sheldon_Gang_Deck_id] = {24.94, 1.01, 18.30},
+  [Dunwich_Condition_Deck_id] = {24.96, 1.01, 24.34},
+  [Dunwich_Horror_Deck_id] = {43.34, 0.78, 14.37},
+  [Dunwich_Horror_Token_id] = {-29.21, 1.00, -19.99},
+  [Dunwich_Horror_Monster_id] = {-32.38, 1.03, -19.99},
+  [Dunwich_Board_Id] =   {-34.12, 1.07, -3.56},
+  -- [Dunwich_Clue_Deck_id] = {12.22, 7.5, 21.1},
+  [Dunwich_Monster_bag_id] = {18.02, 1.01, 26.8},
+  [Dunwich_Gate_Marker_Bag_id] = {17.56, 1.01, 33.48},
+  [Kingsport_Board_Id] = {-48.03, 1.17, -3.42},
+  [dummy1] = {-48.17, 0.84, 3.37},
+  [dummy2] = {-45.43, 0.84, 3.37},
+  [dummy3] = {-42.70, 0.84, 3.37},
+  [Kingsport_Captain_Deck_id] = {24.92, 1.01, 15.58},
+  [Kingsport_Changed_Deck_id] = {24.89, 1.01, 12.91},
+  [Kingsport_Head_Deck_id] = {47.06, 1.01, -3.87},
+  [Kingsport_Harborside_Deck_id] = {47.03, 1.01, -6.85},
+  [Kingsport_Central_Hill_Deck_id] = {46.97, 1.01, -13.03},
+  [Kingsport_South_Shore_Deck_id] = {46.96, 1.01, -9.85},
+  [Kingsport_Rift_Marker_Bag_id] = {-47.75, 1.02, 12.64},
+  -- [Kingsport_Clue_Deck_id] = {12.22, 7.5, 21.1},
+  [Kingsport_Monster_bag_id] = {11.84, 1.01, 26.36},
+  [Kingsport_Gate_Marker_Bag_id] = {14.8, 1.01, 32.58},
+  [Kingsport_Rift_Progress_Marker_Bag_id] = {-43.78, 1.01, 14.63}
+}
+
+local BoardPositionsInnsmouthSolo = {
+  -- x, y, z for each die.
+  -- y is the height over the table and setting it to
+  -- a number higher than zero will make it fall down
+  -- to the board
+  [Innsmouth_Board_Id] = {-20.18, 1.16, -3.58},
+  [Innsmouth_Factory_Deck_id] = {47.11, 1.01, -1.09},
+  [Innsmouth_Shore_Deck_id] = {47.18, 1.01, 4.85},
+  [Innsmouth_Church_Deck_id] = {47.14, 1.01, 2.08},
+  [Innsmouth_Look_Deck_id] = {37.98, 1.01, 13.95},
+  [Innsmouth_Deep_one_Uprising_Token_id] = {-22.14, 1.01, 11.5},
+  [Innsmouth_Clue_Tokens_id] = {-20.01, 1.01, 11.71},
+  [Innsmouth_Monster_bag_id] = {9.53, 1.01, 30.03}
+  -- [Innsmouth_Monster_bag_id] = {9.53, 1.01, 30.03},
+  -- [Innsmouth_Clue_Deck_id] = {12.22, 5, 21.1}
+}
+local BoardPositionsDunwichSolo = {
+  -- x, y, z for each die.
+  -- y is the height over the table and setting it to
+  -- a number higher than zero will make it fall down
+  -- to the board
+  [Dunwich_Board_Id] = {-19.95, 1.01, -3.38},
+  [Dunwich_Village_Commons_Deck_id] = {46.99, 1.01, -19.24},
+  [Dunwich_Backwoods_Deck_id] = {47.09, 1.01, -22.89},
+  [Dunwich_Blasted_Heath_Deck_id] = {46.96, 1.01, -15.98},
+  [Dunwich_Rail_Pass_Deck_id] = {24.96, 0.60, 21.18},
+  [Dunwich_Sheldon_Gang_Deck_id] = {24.94, 1.01, 18.30},
+  [Dunwich_Condition_Deck_id] = {24.96, 1.01, 24.34},
+  [Dunwich_Horror_Deck_id] = {43.34, 0.78, 14.37},
+  [Dunwich_Horror_Token_id] = {-18.57, 1.00, -19.99},
+  [Dunwich_Horror_Monster_id] = {-21.73, 1.03, -19.99},
+  [Dunwich_Monster_bag_id] = {18.02, 1.01, 26.8},
+  [Dunwich_Gate_Marker_Bag_id] = {17.56, 1.01, 33.48}
+  -- [Dunwich_Gate_Marker_Bag_id] = {17.56, 1.01, 33.48},
+  -- [Dunwich_Clue_Deck_id] = {12.22, 7.5, 21.1}
+}
+local BoardPositionsKingsportSolo = {
+  -- x, y, z for each die.
+  -- y is the height over the table and setting it to
+  -- a number higher than zero will make it fall down
+  -- to the board
+  [Kingsport_Board_Id] = {-20.17, 1.16, -3.57},
+  [Kingsport_Head_Deck_id] = {47.06, 1.01, -3.87},
+  [Kingsport_Harborside_Deck_id] = {47.03, 1.01, -6.85},
+  [Kingsport_Central_Hill_Deck_id] = {46.97, 1.01, -13.03},
+  [Kingsport_South_Shore_Deck_id] = {46.96, 1.01, -9.85},
+  [Kingsport_Captain_Deck_id] = {24.92, 1.01, 15.58},
+  [Kingsport_Changed_Deck_id] = {24.89, 1.01, 12.91},
+  [Kingsport_Rift_Marker_Bag_id] = {-23.64, 1.01, 13.28},
+  -- [Kingsport_Clue_Deck_id] = {12.22, 7.5, 21.1},
+  [Kingsport_Monster_bag_id] = {11.84, 1.01, 26.36},
+  [Kingsport_Gate_Marker_Bag_id] = {14.8, 1.01, 32.58},
+  [Kingsport_Rift_Progress_Marker_Bag_id] = {-20.29, 1.01, 14.55},
+  [dummy1] = {-20.31, 0.80, 3.22},
+  [dummy2] = {-17.56, 0.80, 3.22},
+  [dummy3] = {-14.83, 0.80, 3.22}
+}
+local BoardPositionsKingsportDunwich = {
+  -- x, y, z for each die.
+  -- y is the height over the table and setting it to
+  -- a number higher than zero will make it fall down
+  -- to the board
+  [Kingsport_Board_Id] = {-20.17, 1.16, -3.57},
+  [Kingsport_Head_Deck_id] = {47.06, 1.01, -3.87},
+  [Kingsport_Harborside_Deck_id] = {47.03, 1.01, -6.85},
+  [Kingsport_Central_Hill_Deck_id] = {46.97, 1.01, -13.03},
+  [Kingsport_South_Shore_Deck_id] = {46.96, 1.01, -9.85},
+  [Kingsport_Captain_Deck_id] = {24.92, 1.01, 15.58},
+  [Kingsport_Changed_Deck_id] = {24.89, 1.01, 12.91},
+  [Kingsport_Rift_Marker_Bag_id] = {-23.64, 1.01, 13.28},
+  [Kingsport_Rift_Progress_Marker_Bag_id] = {-20.29, 1.01, 14.55},
+  -- [Kingsport_Clue_Deck_id] = {12.22, 7.5, 21.1},
+  [Kingsport_Monster_bag_id] = {11.84, 1.01, 26.36},
+  [Kingsport_Gate_Marker_Bag_id] = {14.8, 1.01, 32.58},
+  [dummy1] = {-20.31, 0.80, 3.22},
+  [dummy2] = {-17.56, 0.80, 3.22},
+  [dummy3] = {-14.83, 0.80, 3.22},
+  [Dunwich_Village_Commons_Deck_id] = {46.99, 1.01, -19.24},
+  [Dunwich_Backwoods_Deck_id] = {47.09, 1.01, -22.89},
+  [Dunwich_Blasted_Heath_Deck_id] = {46.96, 1.01, -15.98},
+  [Dunwich_Rail_Pass_Deck_id] = {24.96, 0.60, 21.18},
+  [Dunwich_Sheldon_Gang_Deck_id] = {24.94, 1.01, 18.30},
+  [Dunwich_Condition_Deck_id] = {24.96, 1.01, 24.34},
+  [Dunwich_Horror_Deck_id] = {43.34, 0.78, 14.37},
+  [Dunwich_Horror_Token_id] = {-29.21, 1.00, -19.99},
+  [Dunwich_Horror_Monster_id] = {-32.38, 1.03, -19.99},
+  -- [Dunwich_Clue_Deck_id] = {12.22, 7.5, 21.1},
+  [Dunwich_Monster_bag_id] = {18.02, 1.01, 26.8},
+  [Dunwich_Gate_Marker_Bag_id] = {17.56, 1.01, 33.48},
+  [Dunwich_Board_Id] = {-34.12, 1.07, -3.56}
+}
+local BoardPositionsInnsmouthKingsport = {
+  -- x, y, z for each die.
+  -- y is the height over the table and setting it to
+  -- a number higher than zero will make it fall down
+  -- to the board
+  [Innsmouth_Board_Id] = {-20.18, 1.16, -3.58},
+  [Innsmouth_Factory_Deck_id] = {47.11, 1.01, -1.09},
+  [Innsmouth_Shore_Deck_id] = {47.18, 1.01, 4.85},
+  [Innsmouth_Church_Deck_id] = {47.14, 1.01, 2.08},
+  [Innsmouth_Look_Deck_id] = {37.98, 1.01, 13.95},
+  [Innsmouth_Deep_one_Uprising_Token_id] = {-22.14, 1.01, 11.5},
+  [Innsmouth_Clue_Tokens_id] = {-20.01, 1.01, 11.71},
+  -- [Innsmouth_Clue_Deck_id] = {12.22, 5, 21.1},
+  [Innsmouth_Monster_bag_id] = {9.53, 1.01, 30.03},
+  [Kingsport_Board_Id] = {-34.12, 1.16, -3.55},
+  [Kingsport_Head_Deck_id] = {47.06, 1.01, -3.87},
+  [Kingsport_Harborside_Deck_id] = {47.03, 1.01, -6.85},
+  [Kingsport_Central_Hill_Deck_id] = {46.97, 1.01, -13.03},
+  [Kingsport_South_Shore_Deck_id] = {46.96, 1.01, -9.85},
+  [Kingsport_Captain_Deck_id] = {24.92, 1.01, 15.58},
+  [Kingsport_Changed_Deck_id] = {24.89, 1.01, 12.91},
+  [Kingsport_Rift_Marker_Bag_id] = {-35.74, 1.01, 12.41},
+  [Kingsport_Monster_bag_id] = {11.84, 1.01, 26.36},
+  [Kingsport_Gate_Marker_Bag_id] = {14.8, 1.01, 32.58},
+  -- [Kingsport_Clue_Deck_id] = {12.22, 7.5, 21.1},
+  [Kingsport_Rift_Progress_Marker_Bag_id] = {-33.19, 1.01, 15.28},
+  [dummy1] = {-34.26, 0.82, 3.24},
+  [dummy2] = {-31.51, 0.82, 3.24},
+  [dummy3] = {-28.78, 0.82, 3.24},
+}
+local BoardPositionsInnsmouthDunwich = {
+  -- x, y, z for each die.
+  -- y is the height over the table and setting it to
+  -- a number higher than zero will make it fall down
+  -- to the board
+  [Innsmouth_Board_Id] = {-20.18, 1.16, -3.58},
+  [Innsmouth_Factory_Deck_id] = {47.11, 1.01, -1.09},
+  [Innsmouth_Shore_Deck_id] = {47.18, 1.01, 4.85},
+  [Innsmouth_Church_Deck_id] = {47.14, 1.01, 2.08},
+  [Innsmouth_Look_Deck_id] = {37.98, 1.01, 13.95},
+  [Innsmouth_Deep_one_Uprising_Token_id] = {-22.14, 1.01, 11.5},
+  [Innsmouth_Clue_Tokens_id] = {-20.01, 1.01, 11.71},
+  -- [Innsmouth_Clue_Deck_id] = {12.22, 5, 21.1},
+  [Innsmouth_Monster_bag_id] = {9.53, 1.01, 30.03},
+  [Dunwich_Village_Commons_Deck_id] = {46.99, 1.01, -19.24},
+  [Dunwich_Backwoods_Deck_id] = {47.09, 1.01, -22.89},
+  [Dunwich_Blasted_Heath_Deck_id] = {46.96, 1.01, -15.98},
+  [Dunwich_Rail_Pass_Deck_id] = {24.96, 0.60, 21.18},
+  [Dunwich_Sheldon_Gang_Deck_id] = {24.94, 1.01, 18.30},
+  [Dunwich_Condition_Deck_id] = {24.96, 1.01, 24.34},
+  [Dunwich_Horror_Deck_id] = {43.34, 0.78, 14.37},
+  [Dunwich_Horror_Token_id] = {-29.21, 1.00, -19.99},
+  [Dunwich_Horror_Monster_id] = {-32.38, 1.03, -19.99},
+  -- [Dunwich_Clue_Deck_id] = {12.22, 7.5, 21.1},
+  [Dunwich_Monster_bag_id] = {18.02, 1.01, 26.8},
+  [Dunwich_Gate_Marker_Bag_id] = {17.56, 1.01, 33.48},
+  [Dunwich_Board_Id] = {-34.12, 1.07, -3.56}
+}
+
+local Arkham_Unstable = {
+  --Woods
+  {22.10, 1.30, -7.88},
+-- Historical Society
+  {22.10, 1.30, -3.33},
+-- Silver Twilight Lodge
+  {11.77, 1.33, -0.86},
+-- The Whitch House
+  {10.17, 1.31, 2.67},
+-- Science Building
+  {7.98, 1.39, -15.65},
+-- The Unnamable
+  {5.13, 1.25, -11.77},
+-- Unvisited Isle
+  {0.24, 1.25, -15.69},
+-- Black Cave
+  {5.08, 1.25, 2.66},
+-- Graveyard
+  {1.69, 1.25, 2.58},
+-- Hibb's Roadhouse
+  {-7.19, 1.25, -1.35},
+-- Independence Square
+  {-11.53, 1.25, -1.47}
+}
+
+local Innsmouth_Unstable_Solo = {
+  --Devil Reef
+  {-25.60, 1.34, 3.51},
+-- Y'ha_Nthlei
+  {-20.05, 1.34, 3.57},
+-- Esoteric Order of Dagon
+  {-25.34, 1.34, -6.29},
+-- Marsh Refinery
+  {-16.38, 1.34, -8.36}
+}
+
+local Dunwich_Unstable_Second = {
+-- Whateley Farm
+  {-39.38, 1.25, -15.06},
+--Wizards Hill
+  {-35.65, 1.25, -15.09},
+--Cold Spring Glen
+  {-32.10, 1.25, -15.14},
+-- Gardner's Place
+  {-39.38, 1.25, 2.44},
+-- Devil's Hopyard
+  {-35.91, 1.25, 2.44}
+}
+
+local Dunwich_Unstable_Solo = {
+-- Whateley Farm
+  {-25.30, 1.19, -14.94},
+--Wizards Hill
+  {-21.44, 1.19, -14.92},
+--Cold Spring Glen
+  {-17.98, 1.19, -14.94},
+-- Gardner's Place
+  {-25.31, 1.19, 2.75},
+-- Devil's Hopyard
+  {-21.95, 1.19, 2.83}
+}
+
+local Player_Starting_Position = {
+    ['Ma\'s Boarding House'] = {16.83, 1.25, 2.69},
+    ['Arkham Asylum'] = {-10.75, 1.25, -5.34},
+    ['South Church'] = {21.68, 1.25, 1.18},
+    ['Administration'] = {13.13, 1.25, -13.48},
+    ['River Docks'] = {4.13, 1.25, -15.68},
+    ['Ye Olde Magick Shoppe'] = {22.00, 1.25, -12.86},
+    ['Curiositie Shoppe'] = {-4.29, 1.25, -15.67},
+    ['Train Station'] = {-11.49, 1.25, -13.27},
+    ['St. Mary\'s Hospital'] = {17.77, 1.25, -15.69},
+    ['Police Station'] = {-2.73, 1.25, 2.00},
+    ['Bank of Arkham'] = {-10.93, 1.25, -9.33},
+    ['Velma\'s Diner'] = {-7.27, 1.25, 2.63},
+    ['Newspaper'] = {-8.29, 1.25, -15.56},
+    ['Library'] = {11.48, 1.25, -9.85},
+    ['General Store'] = {5.44, 1.25, -1.84},
+    ['Administration'] = {13.13, 1.25, -13.48},
+    ['Science Building'] = {8.79, 1.30, -15.66},
+    ['The Dreamlands'] = {1.66, 1.34, 7.94}
+}
+
+local switch_locations = {
+	["Ye Olde Magick Shoppe"] = function (x) local location = getBoardUptowndeckId() return location end,
+	["Woods"] = function (x) local location = getBoardUptowndeckId() return location end,
+	["Historical Society"] = function (x) local location = getBoardSouthsidedeckId() return location end,
+	["South Church"] = function (x) local location = getBoardSouthsidedeckId() return location end,
+	["Ma's Boarding House"] = function (x) local location = getBoardSouthsidedeckId() return location end,
+	["St. Mary's Hospital"] = function (x) local location = getBoardUptowndeckId() return location end,
+	["Administration"] = function (x) local location = getBoardMiskatonicdeckId() return location end,
+	["Library"] = function (x) local location = getBoardMiskatonicdeckId() return location end,
+	["Science Building"] = function (x) local location = getBoardMiskatonicdeckId() return location end,
+	["Silver Twilight Lodge"] = function (x) local location = getBoardFrenchdeckId() return location end,
+	["The Witch House"] = function (x) local location = getBoardFrenchdeckId() return location end,
+	["River Docks"] = function (x) local location = getBoardMerchantdeckId() return location end,
+	["The Unnamable"] = function (x) local location = getBoardMerchantdeckId() return location end,
+	["General Store"] = function (x) local location = getBoardRivertowndeckId() return location end,
+	["Black Cave"] = function (x) local location = getBoardRivertowndeckId() return location end,
+	["Graveyard"] = function (x) local location = getBoardRivertowndeckId() return location end,
+	["Unvisited Isle"] = function (x) local location = getBoardMerchantdeckId() return location end,
+	["Curiositie Shoppe"] = function (x) local location = getBoardNorthsidedeckId() return location end,
+	["Police Station"] = function (x) local location = getBoardEasttowndeckId() return location end,
+	["Velma's Diner"] = function (x) local location = getBoardEasttowndeckId() return location end,
+	["Hibb's Roadhouse"] = function (x) local location = getBoardEasttowndeckId() return location end,
+	["Newspaper"] = function (x) local location = getBoardNorthsidedeckId() return location end,
+	["Train Station"] = function (x) local location = getBoardNorthsidedeckId() return location end,
+	["Bank of Arkham"] = function (x) local location = getBoardDowntowndeckId() return location end,
+	["Arkham Asylum"] = function (x) local location = getBoardDowntowndeckId() return location end,
+	["Independence Square"] = function (x) local location = getBoardDowntowndeckId() return location end,
+    ["Falcon Point"] = function (x) return Innsmouth_Shore_Deck_id end,
+	["Marsh Refinery"] = function (x) return Innsmouth_Factory_Deck_id end,
+	["Gilman House Hotel"] = function (x) return Innsmouth_Factory_Deck_id end,
+	["First National Grocery"] = function (x) return Innsmouth_Factory_Deck_id end,
+    ["Y'ha-Nthlei"] = function (x) return Innsmouth_Shore_Deck_id end,
+	["Devil Reef"] = function (x) return Innsmouth_Shore_Deck_id end,
+	["Esoteric Order of Dagon"] = function (x) return Innsmouth_Church_Deck_id end,
+	["Sawbone Alley"] = function (x) return Innsmouth_Church_Deck_id end,
+	["Innsmouth Jail"] = function (x) return Innsmouth_Church_Deck_id end,
+	["Darke's Carnival"] = function (x) return Dunwich_Village_Commons_Deck_id end,
+	["Bishop's Brook Bridge"] = function (x) return Dunwich_Village_Commons_Deck_id end,
+	["Dunwich Village"] = function (x) return Dunwich_Village_Commons_Deck_id end,
+	["Harney Jones' Shack"] = function (x) return Dunwich_Blasted_Heath_Deck_id end,
+	["Cold Spring Glen"] = function (x) return Dunwich_Backwoods_Deck_id end,
+	["Devil's Hopyard"] = function (x) return Dunwich_Blasted_Heath_Deck_id end,
+	["Wizard's Hill"] = function (x) return Dunwich_Backwoods_Deck_id end,
+	["Whateley Farm"] = function (x) return Dunwich_Backwoods_Deck_id end,
+	["Gardners' Place"] = function (x) return Dunwich_Blasted_Heath_Deck_id end,
+    ["Neil's Curiosity Shop"] = function (x) return Kingsport_South_Shore_Deck_id end,
+	["The Hall School"] = function (x) return Kingsport_South_Shore_Deck_id end,
+	["Artists' Colony"] = function (x) return Kingsport_South_Shore_Deck_id end,
+	["7th House on the left"] = function (x) return Kingsport_Central_Hill_Deck_id end,
+	["Congregational Hospital"] = function (x) return Kingsport_Central_Hill_Deck_id end,
+	["The Causeway"] = function (x) return Kingsport_Head_Deck_id end,
+	["St. Erasmus's Home"] = function (x) return Kingsport_Central_Hill_Deck_id end,
+    ["607 Water St"] = function (x) return Kingsport_Harborside_Deck_id end,
+	["The Rope and Anchor"] = function (x) return Kingsport_Harborside_Deck_id end,
+	["North Point Lighthouse"] = function (x) return Kingsport_Harborside_Deck_id end,
+	["Wireless Station"] = function (x) return Kingsport_Head_Deck_id end,
+	["Strange High House in The Mist"] = function (x) return Kingsport_Head_Deck_id end,
+	["default"] = function (x) return '' end
+}
+
+------------------------ get board decks ---------------------------------------
+-- Board Variables
+
+--returns the id to whoever calls it
+function getBoardNorthsidedeckId()
+    return Board_Northside_deck_id
+end
+
+function getBoardDowntowndeckId()
+    return Board_Downtown_deck_id
+end
+
+function getBoardEasttowndeckId()
+    return Board_Easttown_deck_id
+end
+
+function getBoardMerchantdeckId()
+    return Board_Merchant_deck_id
+end
+
+function getBoardRivertowndeckId()
+    return Board_Rivertown_deck_id
+end
+
+function getBoardMiskatonicdeckId()
+    return Board_Miskatonic_deck_id
+end
+
+function getBoardFrenchdeckId()
+    return Board_French_deck_id
+end
+
+function getBoardUptowndeckId()
+    return Board_Uptown_deck_id
+end
+
+function getBoardSouthsidedeckId()
+    return Board_Southside_deck_id
+end
+
+function getBoardCommondeckId()
+    return Board_Common_deck_id
+end
+
+function getBoardUniquedeckId()
+    return Board_Unique_deck_id
+end
+
+function getBoardSpellsdeckId()
+    return Board_Spells_deck_id
+end
+
+function getBoardSkillsdeckId()
+    return Board_Skills_deck_id
+end
+
+function getBoardAlliesdeckId()
+    return Board_Allies_deck_id
+end
+
+-- function getBoardCluedeckId()
+--     return Board_Clue_Deck_id
+-- end
+
+function getBoardGateBagId()
+    return Board_Gate_Bag_id
+end
+
+function getBoardMonsterBagId()
+    return Board_Monster_Bag_id
+end
+
+function getBoardMaskMonsterBagId()
+    return Board_Mask_Monster_Bag_Id
+end
+
+function getBoardMythosdeckId()
+    return Board_Mythos_deck_id
+end
+
+function getBoardGatedeckId()
+    return Board_Gate_deck_id
+end
+
+function getBoardGatedeckPosition()
+    return Board_Gate_deck_Position
+end
+
+
+function getBoardGateDiscardScriptingId()
+    return Board_Gate_Discard_Scripting_zone_Id
+end
+
+function getBoardGateDeckScriptingZoneId()
+    return Board_Gate_Deck_Scripting_Zone_Id
+end
+
+function getBoardGateDiscardPosition()
+    return Board_Gate_Discard_Position
+end
+
+function getBoardUnusedGatesPosition()
+    return Board_Unused_Gates_Position
+end
+
+function getBoardGateBagPosition()
+    return Board_Gate_Bag_Position
+end
+
+function getBoardMonsterBagPosition()
+    return Board_Monster_Bag_Position
+end
+
+-- function getBoardBankLoanDiscardPosition()
+--     return Board_Bank_Loan_Discard
+-- end
+
+function getBoardGreenEpicBattledeckid()
+    return Board_Green_Epic_Battle_deck_id
+end
+
+function getBoardRedEpicBattledeckid()
+    return Board_Red_Epic_Battle_deck_id
+end
+
+function getBoardMythosScaledeckid()
+    return  Board_Mythos_Scale
+end
+
+function getBoardGateScaledeckid()
+    return Board_Gate_Scale
+end
+
+function getBoardCommonScaledeckid()
+    return Board_Common_Scale
+end
+
+function getBoardUniqueScaledeckid()
+    return Board_Unique_Scale
+end
+
+function getBoardSpellsScaledeckid()
+    return Board_Spells_Scale
+end
+
+function getBoardSkillsScaledeckid()
+    return Board_Skills_Scale
+end
+
+function getBoardAlliesScaledeckid()
+    return Board_Allies_Scale
+end
+
+function getBoardNorthsideScaledeckid()
+    return Board_Northside_Scale
+end
+
+function getBoardDowntownScaledeckid()
+    return Board_Downtown_Scale
+end
+
+function getBoardEasttownScaledeckid()
+    return Board_Easttown_Scale
+end
+
+function getBoardMerchantScaledeckid()
+    return Board_Merchant_Scale
+end
+
+function getBoardRivertownScaledeckid()
+    return Board_Rivertown_Scale
+end
+
+function getBoardMiskatonicScaledeckid()
+    return Board_Miskatonic_Scale
+end
+
+function getBoardFrenchScaledeckid()
+    return Board_French_Scale
+end
+
+function getBoardUptownScaledeckid()
+    return Board_Uptown_Scale
+end
+
+function getBoardSouthsideScaledeckid()
+    return Board_Southside_Scale
+end
+
+-------------------------- Expansion-Specific ----------------------------------
+function getYellowActsDeckId()
+    return Yellow_Acts_Deck_id
+end
+
+function getYellowOriginalActsDeckId()
+    return Yellow_Original_Acts_Deck_id
+end
+
+function getYellowMagicalEffectDeckId()
+    return Yellow_Magical_Effect_Deck_id
+end
+
+
+-------------------------- Expansion-Specific ----------------------------------
+------------------------ get board decks ---------------------------------------
+
+--Returns a vector with the placing positions for the object id given
+function getBoardPositionsDecksById(id)
+    return BoardPositionsDecks[id[1]]
+end
+--Returns a vector with the placing positions for the object id given
+function getBoardPositionsInnsmouthSoloById(id)
+    return BoardPositionsInnsmouthSolo[id[1]]
+end
+--Returns a vector with the placing positions for the object id given
+function getBoardPositionsDunwichSoloById(id)
+    return BoardPositionsDunwichSolo[id[1]]
+end
+--Returns a vector with the placing positions for the object id given
+function getBoardPositionsKingsportSoloById(id)
+    return BoardPositionsKingsportSolo[id[1]]
+end
+--Returns a vector with the placing positions for the object id given
+function getBoardPositionsKingsportDunwichById(id)
+    return BoardPositionsKingsportDunwich[id[1]]
+end
+--Returns a vector with the placing positions for the object id given
+function getBoardPositionsInnsmouthKingsportById(id)
+    return BoardPositionsInnsmouthKingsport[id[1]]
+end
+--Returns a vector with the placing positions for the object id given
+function getBoardPositionsInnsmouthDunwichById(id)
+    return BoardPositionsInnsmouthDunwich[id[1]]
+end
+--Returns a vector with the placing positions for the object id given
+function getBoardPositions3BoardsById(id)
+    return BoardPositions3Boards[id[1]]
+end
+
+function getBoardDecksShuffle()
+    return Board_Decks_Shuffle
+end
+
+function getArkhamUnstable()
+    return Arkham_Unstable
+end
+
+function getDunwichUnstableSolo()
+    return Dunwich_Unstable_Solo
+end
+
+function getDunwichUnstableSecond()
+    return Dunwich_Unstable_Second
+end
+
+function getInnsmouthUnstable()
+    return Innsmouth_Unstable_Solo
+end
+
+
+------------------------------ Player Setup ------------------------------------
+
+function getBankLoanId()
+    return Board_Bank_Loan_deck_id
+end
+
+function getBoardRetainerDeckId()
+    return Board_Retainer_Deck_Id
+end
+
+function getBoardBlessingCurseDeckId()
+    return Board_Blessing_Curse_Deck_Id
+end
+
+function getSilverTwilightLodgeDeckId()
+    return Silver_Twilight_Lodge_Deck_Id
+end
+
+function getPlayerStartingPosition(startLocation)
+    return Player_Starting_Position[startLocation]
+end
+
+function getFirstPlayerMarker()
+    return Board_First_Player_Marker
+end
+
+function getPhaseController()
+    return Board_Phase_Controller
+end
+--------------------- Elements to put in discard pile -------------------------
+function getBoardCommonItemDiscard()
+	 return Board_Common_Item_Discard
+end
+
+function getBoardUniqueItemDiscard()
+	 return Board_Unique_Item_Discard
+end
+
+function getBoardSpellDiscard()
+	 return Board_Spell_Discard
+end
+
+function getBoardSkillDiscard()
+	 return Board_Skill_Discard
+end
+
+function getBoardAllyDiscard()
+	 return Board_Ally_Discard
+end
+
+function getBoardInjuryDiscard()
+	 return Board_Injury_Discard
+end
+
+function getBoardMadnessDiscard()
+	 return Board_Madness_Discard
+end
+
+function getBoardBlessCurseDiscard()
+	 return Board_Bless_Curse_Discard
+end
+
+function getBoardDeputyDiscard()
+	 return Board_Deputy_Discard
+end
+
+function getBoardBankLoanDiscard()
+	 return Board_Bank_Loan_Discard
+end
+
+function getBoardChangedDiscard()
+	 return Board_Changed_Discard
+end
+
+function getBoardCaptainDiscard()
+	 return Board_Captain_Discard
+end
+
+function getBoardSheldonDiscard()
+	 return Board_Sheldon_Discard
+end
+
+function getBoardSheldonDiscard()
+	 return Board_Sheldon_Discard
+end
+
+function getBoardMagicalEffectDiscard()
+	 return Board_Magical_Effect_Discard
+end
+
+function getBoardRailPassDiscard()
+	 return Board_Rail_Pass_Discard
+end
+
+function getBoardSilverTwilightLodgeDiscard()
+	 return Board_Silver_Twilight_Lodge_Discard
+end
+
+function getBoardRetainerDiscard()
+	 return Board_Retainer_Discard
+end
+
+function getBoardRelationshipDiscard()
+	 return Board_Relationship_Discard
+end
+
+function getBoardDetrimentsDiscard()
+	 return Pharaoh_Detriments_Discard
+end
+
+function getBoardBenefitsDiscard()
+	 return Pharaoh_Benefits_Discard
+end
+
+function getBoardCorruptionDiscard()
+	 return Goat_Corruption_Discard
+end
+
+function getBoardExhibitItemsDiscard()
+	 return Pharaoh_Exhibit_Items_Discard
+end
+
+
+function getGoatMembershipDiscard()
+	 return Goat_Membership_Discard
+end
+
+function Switch_All_Locations(input)
+
+	if switch_locations[input[1]] ~= nil then
+		local deckId = switch_locations[input[1]]()
+		return deckId
+	else
+		switch_locations.default()
+	end
+end

@@ -1,0 +1,1673 @@
+--Removes Content from Bags
+
+local SetupBoard = getObjectFromGUID('26ca6f')
+local SetupVariablesNew = getObjectFromGUID('2a8dee')
+
+--The Pannel Itself
+local ControlPanelVariables = getObjectFromGUID('bf1ea5')
+
+--Placement
+-- local LurkerPlacementTable = getObjectFromGUID('50aa7b')
+local LurkerPlacementTable = getObjectFromGUID('088dbc')
+-- local PharaohPlacement = getObjectFromGUID('3b428a')
+local PharaohPlacementTable = getObjectFromGUID('2ae858')
+-- local GoatPlacement = getObjectFromGUID('dfcecd')
+local GoatPlacementTable = getObjectFromGUID('f9567f')
+-- local YellowPlacement = getObjectFromGUID('9cd357')
+local YellowPlacementTable = getObjectFromGUID('6dd14f')
+-- local InnsmouthPlacement = getObjectFromGUID('27b7ac')
+-- local KingsportPlacement = getObjectFromGUID('674ce4')
+-- local DunwichPlacement = getObjectFromGUID('d05de5')
+local InnsmouthPlacementTable = getObjectFromGUID('55c8a4')
+local KingsportPlacementTable = getObjectFromGUID('5ac3e6')
+local DunwichPlacementTable = getObjectFromGUID('27d633')
+local MiskatonicPlacement = getObjectFromGUID('03f65f')
+
+--Remove
+local LurkerRemove = getObjectFromGUID('7f85df')
+local PharaohRemove = getObjectFromGUID('374a46')
+local GoatRemove = getObjectFromGUID('c3f002')
+local YellowRemove = getObjectFromGUID('61fcda')
+local InnsmouthRemove = getObjectFromGUID('43d752')
+local KingsportRemove = getObjectFromGUID('358fed')
+local DunwichRemove = getObjectFromGUID('25872f')
+local MiskatonicRemove = getObjectFromGUID('22ae96')
+
+-- Variables
+local YellowVariables = getObjectFromGUID('2be879')
+local PharaohVariables = getObjectFromGUID('43e2a0')
+local MiskatonicVariables = getObjectFromGUID('b76591')
+local LurkerVariables = getObjectFromGUID('edd1ef')
+local KingsportVariables = getObjectFromGUID('00ac75')
+local InnsmouthVariables = getObjectFromGUID('5c39a4')
+local GoatVariables = getObjectFromGUID('293f5a')
+local DunwichVariables = getObjectFromGUID('5932f9')
+
+local delay = 5
+local delay2 = 10
+local mediumDelay = 15
+local BiggerDelay = 20
+local cardAddDelay = 3
+local timeToMix = 4
+
+-- Variables
+YellowReady = false
+PharaohReady = false
+Miskatonic1Ready = false
+Miskatonic2Ready = false
+LurkerReady = false
+KingsportReady = false
+InnsmouthReady = false
+GoatReady = false
+DunwichReady = false
+
+function performSetup()
+
+    LurkerSet = ControlPanelVariables.call('isLurkerSet')
+    PharaohSet = ControlPanelVariables.call('isPharaohSet')
+    GoatSet = ControlPanelVariables.call('isGoatSet')
+    YellowSet = ControlPanelVariables.call('isYellowSet')
+    InnsmouthSet = ControlPanelVariables.call('isInnsmouthSet')
+    KingsportSet = ControlPanelVariables.call('isKingsportSet')
+    DunwichSet = ControlPanelVariables.call('isDunwichSet')
+    MiskatonicSet = ControlPanelVariables.call('isMiskatonicSet')
+    LurkerGateSet = ControlPanelVariables.call('isLurkerGateSet')
+    DunwichMonsterOnly = ControlPanelVariables.call('isDunwichMonsterOnly')
+    InnsmouthMonsterOnly = ControlPanelVariables.call('isInnsmouthMonsterOnly')
+    KingsportMonsterOnly = ControlPanelVariables.call('isKingsportMonsterOnly')
+    GoatMonsterOnly = ControlPanelVariables.call('isGoatMonsterOnly')
+    YellowOriginalActs = ControlPanelVariables.call('isYellowOriginalActs')
+    LurkerSmallCardsOnly = ControlPanelVariables.call('isLurkerSmallCardsOnly')
+    PharaohSmallCardsOnly = ControlPanelVariables.call('isPharaohSmallCardsOnly')
+    GoatSmallCardsOnly = ControlPanelVariables.call('isGoatSmallCardsOnly')
+    YellowSmallCardsOnly = ControlPanelVariables.call('isYellowSmallCardsOnly')
+    InnsmouthSmallCardsOnly = ControlPanelVariables.call('isInnsmouthSmallCardsOnly')
+    KingsportSmallCardsOnly = ControlPanelVariables.call('isKingsportSmallCardsOnly')
+    DunwichSmallCardsOnly = ControlPanelVariables.call('isDunwichSmallCardsOnly')
+
+    count = 0
+    -- Since there are so many decks in Miskatonic, and the wait function does
+    -- Not Stop Lua, then it's made at the same time it puts the other decks
+    if MiskatonicSet == true then
+        --Perform some magic.....
+        toAddDeck1()
+        -- count = count + mediumDelay
+    end
+
+    --    Add all the base setups you want.
+    -- Since we might be putting cards on top of these, these go first
+    if DunwichSet == true then
+        function coinsideDunwich()
+
+            DunwichPlacementTable.call('SetDunwichComponentsOnTable',LurkerGateSet)
+            DunwichPlacementTable.call('SetDunwichMonstersOnTable')
+            -- DunwichPlacement.call('SetDunwichComponentsOnTable',LurkerGateSet)
+            -- DunwichPlacement.call('SetDunwichMonstersOnTable')
+
+            local DunwichScriptZoneId = DunwichVariables.call('getDunwichScriptingZone')
+            local DunwichScriptZone = getObjectFromGUID(DunwichScriptZoneId)
+            local DunwichScriptZoneObjects = DunwichScriptZone.getObjects()
+            yieldWhileObjectsAreMoving(DunwichScriptZoneObjects)
+
+            DunwichReady = true
+            setDunwichReady(DunwichReady)
+
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+
+        startLuaCoroutine(self, "coinsideDunwich") --must use this way to make coroutine in order to wait frames
+    end
+
+    if DunwichSet == false and DunwichMonsterOnly == true then
+        function coinsideDunwichMonsters()
+            DunwichPlacementTable.call('SetDunwichMonstersOnTable')
+            -- DunwichPlacement.call('SetDunwichMonstersOnTable')
+            DunwichReady = true
+            setDunwichReady(DunwichReady)
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+
+        startLuaCoroutine(self, "coinsideDunwichMonsters") --must use this way to make coroutine in order to wait frames
+    end
+
+    if DunwichSet == false and DunwichSmallCardsOnly == true then
+        function coinsideDunwichSmallCards()
+            DunwichPlacementTable.call('placeSkills')
+            DunwichPlacementTable.call('placeAllies')
+            DunwichPlacementTable.call('placeCommon')
+            DunwichPlacementTable.call('placeUnique')
+            DunwichPlacementTable.call('placeSpells')
+            -- DunwichPlacement.call('placeSkills')
+            -- DunwichPlacement.call('placeAllies')
+            -- DunwichPlacement.call('placeCommon')
+            -- DunwichPlacement.call('placeUnique')
+            -- DunwichPlacement.call('placeSpells')
+            DunwichReady = true
+            waitFrames(30)
+            setDunwichReady(DunwichReady)
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+
+        startLuaCoroutine(self, "coinsideDunwichSmallCards") --must use this way to make coroutine in order to wait frames
+    end
+
+    if KingsportSet == true then
+        function coinsideKingsport()
+            -- waitFrames(count)
+            if DunwichSet == true  and DunwichReady == false then
+                yieldWhileFalse(DunwichReady, "DunwichReady")
+            end
+
+            KingsportPlacementTable.call('SetKingsportComponentsOnTable',LurkerGateSet)
+            KingsportPlacementTable.call('SetKingsportMonstersOnTable')
+            -- KingsportPlacement.call('SetKingsportComponentsOnTable',LurkerGateSet)
+            -- KingsportPlacement.call('SetKingsportMonstersOnTable')
+
+            local KingsportScriptZoneId = KingsportVariables.call('getKingsportScriptingZone')
+            local KingsportScriptZone = getObjectFromGUID(KingsportScriptZoneId)
+            local KingsportScriptZoneObjects = KingsportScriptZone.getObjects()
+            yieldWhileObjectsAreMoving(KingsportScriptZoneObjects)
+
+            waitFrames(20)
+            KingsportReady = true
+            setKingsportReady(KingsportReady)
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        -- count = count + delay
+        startLuaCoroutine(self, "coinsideKingsport") --must use this way to make coroutine in order to wait frames
+
+    end
+
+    if KingsportSet == false and KingsportMonsterOnly == true then
+        function coinsideKingsportMonsters()
+            waitFrames(count)
+            KingsportPlacementTable.call('SetKingsportMonstersOnTable')
+            -- KingsportPlacement.call('SetKingsportMonstersOnTable')
+            KingsportReady = true
+            setKingsportReady(KingsportReady)
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        startLuaCoroutine(self, "coinsideKingsportMonsters") --must use this way to make coroutine in order to wait frames
+    end
+
+    if KingsportSet == false and KingsportSmallCardsOnly == true then
+    function coinsideKingsportSmallCards()
+        KingsportPlacementTable.call('placeSkills')
+        KingsportPlacementTable.call('placeAllies')
+        KingsportPlacementTable.call('placeCommon')
+        KingsportPlacementTable.call('placeUnique')
+        KingsportPlacementTable.call('placeSpells')
+        -- KingsportPlacement.call('placeSkills')
+        -- KingsportPlacement.call('placeAllies')
+        -- KingsportPlacement.call('placeCommon')
+        -- KingsportPlacement.call('placeUnique')
+        -- KingsportPlacement.call('placeSpells')
+        KingsportReady = true
+        setKingsportReady(KingsportReady)
+        return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+    end
+
+    startLuaCoroutine(self, "coinsideKingsportSmallCards") --must use this way to make coroutine in order to wait frames
+    end
+
+    if InnsmouthSet == true then
+        function coinsideInnsmouth()
+
+            if KingsportSet == true  and KingsportReady == false then
+                yieldWhileFalse(KingsportReady, "KingsportReady")
+            end
+
+            InnsmouthPlacementTable.call('SetInnsmouthComponentsOnTable')
+            InnsmouthPlacementTable.call('SetInnsmouthMonstersOnTable')
+            -- InnsmouthPlacement.call('SetInnsmouthComponentsOnTable')
+            -- InnsmouthPlacement.call('SetInnsmouthMonstersOnTable')
+
+            local InnsmouthScriptZoneId = InnsmouthVariables.call('getInnsmouthScriptingZone')
+            local InnsmouthScriptZone = getObjectFromGUID(InnsmouthScriptZoneId)
+            local InnsmouthScriptZoneObjects = InnsmouthScriptZone.getObjects()
+            yieldWhileObjectsAreMoving(InnsmouthScriptZoneObjects)
+            waitFrames(30)
+            InnsmouthReady = true
+            setInnsmouthReady(InnsmouthReady)
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        startLuaCoroutine(self, "coinsideInnsmouth") --must use this way to make coroutine in order to wait frames
+        -- count = count + delay2
+    end
+
+    if InnsmouthSet == false and InnsmouthMonsterOnly == true then
+        function coinsideInnsmouthMonsters()
+            -- InnsmouthPlacement.call('SetInnsmouthMonstersOnTable')
+            InnsmouthPlacementTable.call('SetInnsmouthMonstersOnTable')
+            InnsmouthReady = true
+            setInnsmouthReady(InnsmouthReady)
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        startLuaCoroutine(self, "coinsideInnsmouthMonsters") --must use this way to make coroutine in order to wait frames
+    end
+
+    if InnsmouthSet == false and InnsmouthSmallCardsOnly == true then
+    function coinsideInnsmouthSmallCards()
+        InnsmouthPlacementTable.call('placeSkills')
+        -- InnsmouthPlacement.call('placeSkills')
+        InnsmouthReady = true
+        setInnsmouthReady(InnsmouthReady)
+
+        return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+    end
+
+    startLuaCoroutine(self, "coinsideInnsmouthSmallCards") --must use this way to make coroutine in order to wait frames
+    end
+
+    if LurkerSet == true then
+        function coinsideLurker()
+
+            if InnsmouthSet == true  and InnsmouthReady == false then
+                yieldWhileFalse(InnsmouthReady, "InnsmouthReady")
+            end
+
+            LurkerPlacementTable.call('SetLurkerComponentsOnTable')
+
+            local LurkerScriptZoneId = LurkerVariables.call('getLurkerScriptingZone')
+            local LurkerScriptZone = getObjectFromGUID(LurkerScriptZoneId)
+            local LurkerScriptZoneObjects = LurkerScriptZone.getObjects()
+            yieldWhileObjectsAreMoving(LurkerScriptZoneObjects)
+
+            LurkerReady = true
+            waitFrames(30)
+            setLurkerReady(LurkerReady)
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        -- count = count + delay
+        startLuaCoroutine(self, "coinsideLurker") --must use this way to make coroutine in order to wait frames
+    end
+
+    -- The Lurker Gates replace all gates for all expansions. These will only be set
+    -- if requested.
+    if LurkerGateSet == true then
+        function coinsideLurkerGate()
+            LurkerPlacementTable.call('SetLurkerGatesOnTable',{KingsportSet,DunwichSet})
+            setLurkerReady(LurkerReady)
+            LurkerReady = true
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        startLuaCoroutine(self, "coinsideLurkerGate") --must use this way to make coroutine in order to wait frames
+    end
+
+    if LurkerSet == false and LurkerSmallCardsOnly == true then
+    function coinsideLurkerSmallCards()
+        LurkerPlacementTable.call('placeSkills')
+        LurkerPlacementTable.call('placeCommon')
+        LurkerPlacementTable.call('placeUnique')
+        LurkerPlacementTable.call('placeSpells')
+        setLurkerReady(LurkerReady)
+        LurkerReady = true
+        return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+    end
+
+    startLuaCoroutine(self, "coinsideLurkerSmallCards") --must use this way to make coroutine in order to wait frames
+    end
+
+    if PharaohSet == true then
+        function coinsidePharaoh()
+
+            if LurkerSet == true  and LurkerReady == false then
+                yieldWhileFalse(LurkerReady, "LurkerReady")
+            end
+
+            PharaohPlacementTable.call('SetPharaohComponentsOnTable')
+            -- PharaohPlacement.call('SetPharaohComponentsOnTable')
+
+            local PharaohScriptZoneId = PharaohVariables.call('getPharaohScriptingZone')
+            local PharaohScriptZone = getObjectFromGUID(PharaohScriptZoneId)
+            local PharaohScriptZoneObjects = PharaohScriptZone.getObjects()
+            yieldWhileObjectsAreMoving(PharaohScriptZoneObjects)
+
+            waitFrames(30)
+            PharaohReady = true
+            setPharaohReady(PharaohReady)
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        startLuaCoroutine(self, "coinsidePharaoh") --must use this way to make coroutine in order to wait frames
+        -- count = count + delay2
+    end
+
+    if PharaohSet == false and PharaohSmallCardsOnly == true then
+    function coinsidePharaohSmallCards()
+        PharaohPlacementTable.call('placeSkills')
+        PharaohPlacementTable.call('placeAllies')
+        PharaohPlacementTable.call('placeCommon')
+        PharaohPlacementTable.call('placeUnique')
+        PharaohPlacementTable.call('placeSpells')
+        -- PharaohPlacement.call('placeSkills')
+        -- PharaohPlacement.call('placeAllies')
+        -- PharaohPlacement.call('placeCommon')
+        -- PharaohPlacement.call('placeUnique')
+        -- PharaohPlacement.call('placeSpells')
+        PharaohReady = true
+        setPharaohReady(PharaohReady)
+        return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+    end
+
+    startLuaCoroutine(self, "coinsidePharaohSmallCards") --must use this way to make coroutine in order to wait frames
+    end
+
+    if GoatSet == true then
+        function coinsideGoat()
+
+            if PharaohSet == true  and PharaohReady == false then
+                yieldWhileFalse(PharaohReady, "PharaohReady")
+            end
+
+            -- GoatPlacement.call('SetGoatComponentsOnTable')
+            GoatPlacementTable.call('SetGoatComponentsOnTable')
+            -- GoatPlacement.call('SetGoatMonstersOnTable')
+            GoatPlacementTable.call('SetGoatMonstersOnTable')
+
+            local GoatScriptZoneId = GoatVariables.call('getGoatScriptingZone')
+            local GoatScriptZone = getObjectFromGUID(GoatScriptZoneId)
+            local GoatScriptZoneObjects = GoatScriptZone.getObjects()
+            yieldWhileObjectsAreMoving(GoatScriptZoneObjects)
+
+            waitFrames(30)
+            GoatReady = true
+            setGoatReady(GoatReady)
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        startLuaCoroutine(self, "coinsideGoat") --must use this way to make coroutine in order to wait frames
+        -- count = count + delay2
+    end
+
+    if GoatSet == false and GoatMonsterOnly == true then
+        function coinsideGoatMonster()
+            -- GoatPlacement.call('SetGoatMonstersOnTable')
+            GoatPlacementTable.call('SetGoatMonstersOnTable')
+            GoatReady = true
+            setGoatReady(GoatReady)
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        startLuaCoroutine(self, "coinsideGoatMonster") --must use this way to make coroutine in order to wait frames
+    end
+
+    if GoatSet == false and GoatSmallCardsOnly == true then
+        function coinsideGoatSmallCards()
+            -- GoatPlacement.call('placeSkills')
+            -- GoatPlacement.call('placeCommon')
+            -- GoatPlacement.call('placeUnique')
+            -- GoatPlacement.call('placeSpells')
+            GoatPlacementTable.call('placeSkills')
+            GoatPlacementTable.call('placeCommon')
+            GoatPlacementTable.call('placeUnique')
+            GoatPlacementTable.call('placeSpells')
+            GoatReady = true
+            setGoatReady(GoatReady)
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+
+        startLuaCoroutine(self, "coinsideGoatSmallCards") --must use this way to make coroutine in order to wait frames
+    end
+
+    if YellowSet == true then
+        function coinsideYellow()
+
+            YellowVariables = getObjectFromGUID('2be879')
+            local YellowExtrasBagId = YellowVariables.call('getYellowExtrasBagId')
+            local YellowExtrasBag = getObjectFromGUID(YellowExtrasBagId)
+
+            local YellowPlacematId = YellowVariables.call('getYellowPlacematId')
+
+            local ActsMatRotation = YellowVariables.call('getYellowPlacematRotation')
+            local ActsMatPosition = YellowVariables.call('getYellowPlacematPosition')
+
+            local parameters = {}
+            parameters.guid = YellowPlacematId
+            parameters.rotation = {ActsMatRotation[1], ActsMatRotation[2], ActsMatRotation[3]}
+            -- look up the position based on the guid
+            parameters.position = {ActsMatPosition[1], ActsMatPosition[2], ActsMatPosition[3]}
+            parameters.smooth = true
+
+            local item = YellowExtrasBag.takeObject(parameters)
+            waitFrames(80)
+            item.locked = true
+
+            if GoatSet == true  and GoatReady == false then
+                yieldWhileFalse(GoatReady, "GoatReady")
+            end
+
+            -- YellowPlacement.call('SetYellowComponentsOnTable')
+            -- YellowPlacement.call('PlaceActAccordingly')
+            YellowPlacementTable.call('SetYellowComponentsOnTable')
+            YellowPlacementTable.call('PlaceActAccordingly')
+
+            local YellowScriptZoneId = GoatVariables.call('getGoatScriptingZone')
+            local YellowScriptZone = getObjectFromGUID(YellowScriptZoneId)
+            local YellowScriptZoneObjects = YellowScriptZone.getObjects()
+            yieldWhileObjectsAreMoving(YellowScriptZoneObjects)
+
+            waitFrames(40)
+            YellowReady = true
+            setYellowReady(YellowReady)
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        -- count = count + delay2
+        startLuaCoroutine(self, "coinsideYellow") --must use this way to make coroutine in order to wait frames
+    end
+
+    if YellowSet == false and YellowSmallCardsOnly == true then
+        function coinsideYellowSmallCards()
+            -- YellowPlacement.call('placeSkills')
+            -- YellowPlacement.call('placeCommon')
+            -- YellowPlacement.call('placeUnique')
+            -- YellowPlacement.call('placeSpells')
+            YellowPlacementTable.call('placeSkills')
+            YellowPlacementTable.call('placeCommon')
+            YellowPlacementTable.call('placeUnique')
+            YellowPlacementTable.call('placeSpells')
+            YellowReady = true
+            setYellowReady(YellowReady)
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+
+        startLuaCoroutine(self, "coinsideYellowSmallCards") --must use this way to make coroutine in order to wait frames
+    end
+
+    -- Since there are so many decks in Miskatonic, and the wait function does
+    -- Not Stop Lua, then it's made at the same time it puts the other decks
+    if MiskatonicSet == true then
+        function coinsideMiskatonic2()
+
+            if Miskatonic1Ready == false then
+                yieldWhileFalse(Miskatonic1Ready, "Miskatonic1Ready")
+            end
+
+            toAddDeck2()
+
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+
+        startLuaCoroutine(self, "coinsideMiskatonic2") --must use this way to make coroutine in order to wait frames
+    end
+
+    function coinsideSetup()
+
+        waitAllReady()
+        broadcastToAll("All the selected components have been removed from Bag", Table)
+        waitFrames(45)
+        --The Actual SETUP!
+        SetupBoard.call('mixItAllUp')
+
+        return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+    end
+
+    startLuaCoroutine(self, "coinsideSetup") --must use this way to make coroutine in order to wait frames
+end
+
+function toAddDeck1()
+    function coinsideMiskatonicComponents1()
+        MiskatonicPlacement.call('SetMiskatonicComponents1OnTable')
+
+        --There might be objects moving from the first Batch....
+        local MiskatonicScriptZoneId = MiskatonicVariables.call('getMiskatonicScriptingZone')
+        local MiskatonicScriptZone = getObjectFromGUID(MiskatonicScriptZoneId)
+        local MiskatonicScriptZoneObjects = MiskatonicScriptZone.getObjects()
+        -- Slow Down, dude. Chill for a while... otherwise the game will
+        -- not assume the components on the table
+        yieldWhileObjectsAreMoving(MiskatonicScriptZoneObjects)
+
+        if KingsportSet == true then
+            local KingsportScriptZoneId = KingsportVariables.call('getKingsportScriptingZone')
+            local KingsportScriptZone = getObjectFromGUID(KingsportScriptZoneId)
+            local KingsportScriptZoneObjects = KingsportScriptZone.getObjects()
+            yieldWhileObjectsAreMoving(KingsportScriptZoneObjects)
+        end
+
+        if DunwichSet == true then
+            local DunwichScriptZoneId = DunwichVariables.call('getDunwichScriptingZone')
+            local DunwichScriptZone = getObjectFromGUID(DunwichScriptZoneId)
+            local DunwichScriptZoneObjects = DunwichScriptZone.getObjects()
+            yieldWhileObjectsAreMoving(DunwichScriptZoneObjects)
+        end
+        waitFrames(40)
+        addMiskatonicDecks1OnTop()
+        waitFrames(40)
+        Miskatonic1Ready = true
+        setMiskatonic1Ready(Miskatonic1Ready)
+
+        return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+    end
+    startLuaCoroutine(self, "coinsideMiskatonicComponents1") --must use this way to make coroutine in order to wait frames
+
+end
+
+function toAddDeck2()
+
+    function coinsideMiskatonicComponents2()
+
+        if Miskatonic1Ready == false then
+            yieldWhileFalse(Miskatonic1Ready, "Miskatonic1Ready")
+        end
+
+        MiskatonicPlacement.call('SetMiskatonicComponents2OnTable')
+
+        if InnsmouthSet == true then
+            if InnsmouthReady == false then
+                yieldWhileFalse(InnsmouthReady, "InnsmouthReady")
+            end
+        end
+
+        waitFrames(40)
+        addMiskatonicDecks2OnTop()
+
+        waitFrames(70)
+        Miskatonic2Ready = true
+        setMiskatonic2Ready(Miskatonic2Ready)
+
+        return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+    end
+    startLuaCoroutine(self, "coinsideMiskatonicComponents2") --must use this way to make coroutine in order to wait frames
+
+end
+
+function addMiskatonicDecks1OnTop()
+
+    local MiskatonicScriptingZoneID = MiskatonicVariables.call("getMiskatonicScriptingZone")
+
+    local MiskatonicScriptingZone = getObjectFromGUID(MiskatonicScriptingZoneID)
+
+    local ObjectsInMiskatonicZone = MiskatonicScriptingZone.getObjects()
+
+    --Dunwich
+
+    if DunwichSet == true then
+
+        if LurkerSet == true then
+            setDunwichLurker(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+        end
+        if PharaohSet == true then
+            setDunwichPharaoh(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+        end
+        if GoatSet == true then
+            setDunwichGoat(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+        end
+        if YellowSet == true then
+            setDunwichYellow(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+        end
+        if InnsmouthSet == true then
+            setDunwichInnsmouth(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+        end
+        if KingsportSet == true then
+            setDunwichKingsport(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+        end
+    end
+    -- Kingsport
+    if KingsportSet == true then
+
+        if LurkerSet == true then
+            setKingsportLurker(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+        end
+        if PharaohSet == true then
+            setKingsportPharaoh(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+        end
+        if GoatSet == true then
+            setKingsportGoat(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+        end
+        -- All the others are in Part 2...
+    end
+
+end
+
+function addMiskatonicDecks2OnTop()
+
+    local MiskatonicScriptingZoneID = MiskatonicVariables.call("getMiskatonicScriptingZone")
+
+    local MiskatonicScriptingZone = getObjectFromGUID(MiskatonicScriptingZoneID)
+
+    local ObjectsInMiskatonicZone = MiskatonicScriptingZone.getObjects()
+
+    -- Kingsport
+    if KingsportSet == true then
+
+        if YellowSet == true then
+            setKingsportYellow(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+        end
+        if InnsmouthSet == true then
+            setKingsportInnsmouth(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+        end
+        if DunwichSet == true then
+            setKingsportDunwich(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+        end
+        -- All the others are in Part 1...
+    end
+
+    --Innsmouth
+
+    if InnsmouthSet == true then
+        if LurkerSet == true then
+            setInnsmouthLurker(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+        end
+        if GoatSet == true then
+            setInnsmouthGoat(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+        end
+        if YellowSet == true then
+            setInnsmouthYellow(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+        end
+        if KingsportSet == true then
+            setInnsmouthKingsport(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+        end
+        if DunwichSet == true then
+            setInnsmouthDunwich(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+        end
+        if PharaohSet == true then
+            setInnsmouthPharaoh(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+        end
+    end
+
+end
+
+function setDunwichLurker(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+
+    -- get deck id for the Miskatonic Deck
+    local DunwichLurkerGateDeckId = MiskatonicVariables.call("getDunwichLurkerGateDeckId")
+    local DunwichLurkerBlastedDeckId = MiskatonicVariables.call("getDunwichLurkerBlastedDeckId")
+    local DunwichLurkerVillageDeckId = MiskatonicVariables.call("getDunwichLurkerVillageDeckId")
+    local DunwichLurkerBackwoodsDeckId = MiskatonicVariables.call("getDunwichLurkerBackwoodsDeckId")
+    --get the deck
+    -- local DunwichLurkerGateDeck = MiskatonicScriptingZone.getObjectFromGUID(DunwichLurkerGateDeckId)
+
+    for _, obj in pairs(ObjectsInMiskatonicZone) do
+
+        if obj.getGUID() == DunwichLurkerGateDeckId then
+            --Be eager. Put it in the gate deck directly
+            local GateDeckId = SetupVariablesNew.call('getBoardGatedeckId')
+            local GateDeck = getObjectFromGUID(GateDeckId)
+            GateDeck.putObject(obj)
+
+        end
+        if obj.getGUID() == DunwichLurkerBlastedDeckId then
+            --Get the expansion's deck ID
+            local DunwichBlastedDeckId = DunwichVariables.call('getDunwichBlastedHeathDeckId')
+            local DunwichBlastedDeck = getObjectFromGUID(DunwichBlastedDeckId)
+            DunwichBlastedDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == DunwichLurkerVillageDeckId then
+            --Get the expansion's deck ID
+            local DunwichVillageDeckId = DunwichVariables.call('getDunwichVillageCommonsDeckId')
+            local DunwichVillageDeck = getObjectFromGUID(DunwichVillageDeckId)
+            DunwichVillageDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == DunwichLurkerBackwoodsDeckId then
+            --Get the expansion's deck ID
+            local DunwichBackwoodsDeckId = DunwichVariables.call('getDunwichBackwoodsDeckId')
+            local DunwichBackwoodsDeck = getObjectFromGUID(DunwichBackwoodsDeckId)
+            DunwichBackwoodsDeck.putObject(obj)
+
+        end
+    end
+end
+
+function setDunwichPharaoh(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+
+    -- get deck id for the Miskatonic Deck
+    local DunwichPharaohGateDeckId = MiskatonicVariables.call("getDunwichPharaohGateDeckId")
+    local DunwichPharaohBlastedDeckId = MiskatonicVariables.call("getDunwichPharaohBlastedDeckId")
+    local DunwichPharaohVillageDeckId = MiskatonicVariables.call("getDunwichPharaohVillageDeckId")
+    local DunwichPharaohBackwoodsDeckId = MiskatonicVariables.call("getDunwichPharaohBackwoodsDeckId")
+    --get the deck
+    -- local DunwichPharaohGateDeck = MiskatonicScriptingZone.getObjectFromGUID(DunwichPharaohGateDeckId)
+
+    for _, obj in pairs(ObjectsInMiskatonicZone) do
+
+        if obj.getGUID() == DunwichPharaohGateDeckId then
+            --Be eager. Put it in the gate deck directly
+            local GateDeckId = SetupVariablesNew.call('getBoardGatedeckId')
+            local GateDeck = getObjectFromGUID(GateDeckId)
+            GateDeck.putObject(obj)
+
+        end
+        if obj.getGUID() == DunwichPharaohBlastedDeckId then
+            --Get the expansion's deck ID
+            local DunwichBlastedDeckId = DunwichVariables.call('getDunwichBlastedHeathDeckId')
+            local DunwichBlastedDeck = getObjectFromGUID(DunwichBlastedDeckId)
+            DunwichBlastedDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == DunwichPharaohVillageDeckId then
+            --Get the expansion's deck ID
+            local DunwichVillageDeckId = DunwichVariables.call('getDunwichVillageCommonsDeckId')
+            local DunwichVillageDeck = getObjectFromGUID(DunwichVillageDeckId)
+            DunwichVillageDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == DunwichPharaohBackwoodsDeckId then
+            --Get the expansion's deck ID
+            local DunwichBackwoodsDeckId = DunwichVariables.call('getDunwichBackwoodsDeckId')
+            local DunwichBackwoodsDeck = getObjectFromGUID(DunwichBackwoodsDeckId)
+            DunwichBackwoodsDeck.putObject(obj)
+
+        end
+    end
+end
+function setDunwichGoat(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+
+    -- get deck id for the Miskatonic Deck
+    local DunwichGoatGateDeckId = MiskatonicVariables.call("getDunwichGoatGateDeckId")
+    local DunwichGoatBlastedDeckId = MiskatonicVariables.call("getDunwichGoatBlastedDeckId")
+    local DunwichGoatVillageDeckId = MiskatonicVariables.call("getDunwichGoatVillageDeckId")
+    local DunwichGoatBackwoodsDeckId = MiskatonicVariables.call("getDunwichGoatBackwoodsDeckId")
+    --get the deck
+    -- local DunwichGoatGateDeck = MiskatonicScriptingZone.getObjectFromGUID(DunwichGoatGateDeckId)
+
+    for _, obj in pairs(ObjectsInMiskatonicZone) do
+
+        if obj.getGUID() == DunwichGoatGateDeckId then
+            --Be eager. Put it in the gate deck directly
+            local GateDeckId = SetupVariablesNew.call('getBoardGatedeckId')
+            local GateDeck = getObjectFromGUID(GateDeckId)
+            GateDeck.putObject(obj)
+
+        end
+        if obj.getGUID() == DunwichGoatBlastedDeckId then
+            --Get the expansion's deck ID
+            local DunwichBlastedDeckId = DunwichVariables.call('getDunwichBlastedHeathDeckId')
+            local DunwichBlastedDeck = getObjectFromGUID(DunwichBlastedDeckId)
+            DunwichBlastedDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == DunwichGoatVillageDeckId then
+            --Get the expansion's deck ID
+            local DunwichVillageDeckId = DunwichVariables.call('getDunwichVillageCommonsDeckId')
+            local DunwichVillageDeck = getObjectFromGUID(DunwichVillageDeckId)
+            DunwichVillageDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == DunwichGoatBackwoodsDeckId then
+            --Get the expansion's deck ID
+            local DunwichBackwoodsDeckId = DunwichVariables.call('getDunwichBackwoodsDeckId')
+            local DunwichBackwoodsDeck = getObjectFromGUID(DunwichBackwoodsDeckId)
+            DunwichBackwoodsDeck.putObject(obj)
+
+        end
+    end
+end
+function setDunwichYellow(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+
+    -- get deck id for the Miskatonic Deck
+    local DunwichYellowGateDeckId = MiskatonicVariables.call("getDunwichYellowGateDeckId")
+    local DunwichYellowBlastedDeckId = MiskatonicVariables.call("getDunwichYellowBlastedDeckId")
+    local DunwichYellowVillageDeckId = MiskatonicVariables.call("getDunwichYellowVillageDeckId")
+    local DunwichYellowBackwoodsDeckId = MiskatonicVariables.call("getDunwichYellowBackwoodsDeckId")
+    --get the deck
+    -- local DunwichYellowGateDeck = MiskatonicScriptingZone.getObjectFromGUID(DunwichYellowGateDeckId)
+
+    for _, obj in pairs(ObjectsInMiskatonicZone) do
+
+        if obj.getGUID() == DunwichYellowGateDeckId then
+            --Be eager. Put it in the gate deck directly
+            local GateDeckId = SetupVariablesNew.call('getBoardGatedeckId')
+            local GateDeck = getObjectFromGUID(GateDeckId)
+            GateDeck.putObject(obj)
+
+        end
+        if obj.getGUID() == DunwichYellowBlastedDeckId then
+            --Get the expansion's deck ID
+            local DunwichBlastedDeckId = DunwichVariables.call('getDunwichBlastedHeathDeckId')
+            local DunwichBlastedDeck = getObjectFromGUID(DunwichBlastedDeckId)
+            DunwichBlastedDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == DunwichYellowVillageDeckId then
+            --Get the expansion's deck ID
+            local DunwichVillageDeckId = DunwichVariables.call('getDunwichVillageCommonsDeckId')
+            local DunwichVillageDeck = getObjectFromGUID(DunwichVillageDeckId)
+            DunwichVillageDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == DunwichYellowBackwoodsDeckId then
+            --Get the expansion's deck ID
+            local DunwichBackwoodsDeckId = DunwichVariables.call('getDunwichBackwoodsDeckId')
+            local DunwichBackwoodsDeck = getObjectFromGUID(DunwichBackwoodsDeckId)
+            DunwichBackwoodsDeck.putObject(obj)
+
+        end
+    end
+end
+
+function setDunwichInnsmouth(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+
+    -- get deck id for the Miskatonic Deck
+    -- local DunwichInnsmouthGateDeckId = MiskatonicVariables.call("getDunwichInnsmouthGateDeckId")
+    local DunwichInnsmouthBlastedDeckId = MiskatonicVariables.call("getDunwichInnsmouthBlastedDeckId")
+    local DunwichInnsmouthVillageDeckId = MiskatonicVariables.call("getDunwichInnsmouthVillageDeckId")
+    local DunwichInnsmouthBackwoodsDeckId = MiskatonicVariables.call("getDunwichInnsmouthBackwoodsDeckId")
+    --get the deck
+    -- local DunwichInnsmouthGateDeck = MiskatonicScriptingZone.getObjectFromGUID(DunwichInnsmouthGateDeckId)
+
+    for _, obj in pairs(ObjectsInMiskatonicZone) do
+        -- No gates from Innsmouth
+        -- if obj.getGUID() == DunwichInnsmouthGateDeckId then
+        --     --Get the expansion's deck ID
+        --     local DunwichGateDeckId = DunwichVariables.call('getDunwichGateDeckId')
+        --
+        -- end
+        if obj.getGUID() == DunwichInnsmouthBlastedDeckId then
+            --Get the expansion's deck ID
+            local DunwichBlastedDeckId = DunwichVariables.call('getDunwichBlastedHeathDeckId')
+            local DunwichBlastedDeck = getObjectFromGUID(DunwichBlastedDeckId)
+            DunwichBlastedDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == DunwichInnsmouthVillageDeckId then
+            --Get the expansion's deck ID
+            local DunwichVillageDeckId = DunwichVariables.call('getDunwichVillageCommonsDeckId')
+            local DunwichVillageDeck = getObjectFromGUID(DunwichVillageDeckId)
+            DunwichVillageDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == DunwichInnsmouthBackwoodsDeckId then
+            --Get the expansion's deck ID
+            local DunwichBackwoodsDeckId = DunwichVariables.call('getDunwichBackwoodsDeckId')
+            local DunwichBackwoodsDeck = getObjectFromGUID(DunwichBackwoodsDeckId)
+            DunwichBackwoodsDeck.putObject(obj)
+
+        end
+    end
+end
+function setDunwichKingsport(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+
+    -- get deck id for the Miskatonic Deck
+    -- local DunwichKingsportGateDeckId = MiskatonicVariables.call("getDunwichKingsportGateDeckId")
+    local DunwichKingsportBlastedDeckId = MiskatonicVariables.call("getDunwichKingsportBlastedDeckId")
+    local DunwichKingsportVillageDeckId = MiskatonicVariables.call("getDunwichKingsportVillageDeckId")
+    local DunwichKingsportBackwoodsDeckId = MiskatonicVariables.call("getDunwichKingsportBackwoodsDeckId")
+    --get the deck
+    -- local DunwichKingsportGateDeck = MiskatonicScriptingZone.getObjectFromGUID(DunwichKingsportGateDeckId)
+
+    for _, obj in pairs(ObjectsInMiskatonicZone) do
+
+        -- No gate
+        -- if obj.getGUID() == DunwichKingsportGateDeckId then
+        --     --Get the expansion's deck ID
+        --     local DunwichGateDeckId = DunwichVariables.call('getDunwichGateDeckId')
+        --
+        -- end
+        if obj.getGUID() == DunwichKingsportBlastedDeckId then
+            --Get the expansion's deck ID
+            local DunwichBlastedDeckId = DunwichVariables.call('getDunwichBlastedHeathDeckId')
+            local DunwichBlastedDeck = getObjectFromGUID(DunwichBlastedDeckId)
+            DunwichBlastedDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == DunwichKingsportVillageDeckId then
+            --Get the expansion's deck ID
+            local DunwichVillageDeckId = DunwichVariables.call('getDunwichVillageCommonsDeckId')
+            local DunwichVillageDeck = getObjectFromGUID(DunwichVillageDeckId)
+            DunwichVillageDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == DunwichKingsportBackwoodsDeckId then
+            --Get the expansion's deck ID
+            local DunwichBackwoodsDeckId = DunwichVariables.call('getDunwichBackwoodsDeckId')
+            local DunwichBackwoodsDeck = getObjectFromGUID(DunwichBackwoodsDeckId)
+            DunwichBackwoodsDeck.putObject(obj)
+
+        end
+    end
+end
+--Kingsport
+function setKingsportLurker(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+
+    -- get deck id for the Miskatonic Deck
+    local KingsportLurkerGateDeckId = MiskatonicVariables.call("getKingsportLurkerGateDeckId")
+    local KingsportLurkerHeadDeckId = MiskatonicVariables.call("getKingsportLurkerKingsportHeadDeckId")
+    local KingsportLurkerHarborsideDeckId = MiskatonicVariables.call("getKingsportLurkerHarborsideDeckId")
+    local KingsportLurkerCentralHillDeckId = MiskatonicVariables.call("getKingsportLurkerCentralDeckId")
+    local KingsportLurkerSouthShoreDeckId = MiskatonicVariables.call("getKingsportLurkerSouthShoreDeckId")
+
+    for _, obj in pairs(ObjectsInMiskatonicZone) do
+
+        if obj.getGUID() == KingsportLurkerGateDeckId then
+            --Get the expansion's deck ID
+            -- local KingsportGateDeckId = KingsportVariables.call('getKingsportGateDeckId')
+            -- local KingsportGateDeck = getObjectFromGUID(KingsportGateDeckId)
+            -- KingsportGateDeck.putObject(obj)
+            local GateDeckId = SetupVariablesNew.call('getBoardGatedeckId')
+            local GateDeck = getObjectFromGUID(GateDeckId)
+            GateDeck.putObject(obj)
+
+        end
+        if obj.getGUID() == KingsportLurkerHeadDeckId then
+            --Get the expansion's deck ID
+            local KingsportHeadDeckId = KingsportVariables.call('getKingsportHeadDeckId')
+            local KingsportHeadDeck = getObjectFromGUID(KingsportHeadDeckId)
+            KingsportHeadDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == KingsportLurkerHarborsideDeckId then
+            --Get the expansion's deck ID
+            local KingsportHarborsideDeckId = KingsportVariables.call('getKingsportHarborsideDeckId')
+            local KingsportHarborsideDeck = getObjectFromGUID(KingsportHarborsideDeckId)
+            KingsportHarborsideDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == KingsportLurkerCentralHillDeckId then
+            --Get the expansion's deck ID
+            local KingsportCentralHillDeckId = KingsportVariables.call('getKingsportCentralHillDeckId')
+            local KingsportCentralHillDeck = getObjectFromGUID(KingsportCentralHillDeckId)
+            KingsportCentralHillDeck.putObject(obj)
+
+        end
+        if obj.getGUID() == KingsportLurkerSouthShoreDeckId then
+            --Get the expansion's deck ID
+            local KingsportSouthShoreDeckId = KingsportVariables.call('getKingsportSouthShoreDeckId')
+            local KingsportSouthShoreDeck = getObjectFromGUID(KingsportSouthShoreDeckId)
+            KingsportSouthShoreDeck.putObject(obj)
+
+        end
+    end
+end
+
+function setKingsportPharaoh(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+
+    -- get deck id for the Miskatonic Deck
+    local KingsportPharaohGateDeckId = MiskatonicVariables.call("getKingsportPharaohGateDeckId")
+    local KingsportPharaohHeadDeckId = MiskatonicVariables.call("getKingsportPharaohKingsportHeadDeckId")
+    local KingsportPharaohHarborsideDeckId = MiskatonicVariables.call("getKingsportPharaohHarborsideDeckId")
+    local KingsportPharaohCentralHillDeckId = MiskatonicVariables.call("getKingsportPharaohCentralDeckId")
+    local KingsportPharaohSouthShoreDeckId = MiskatonicVariables.call("getKingsportPharaohSouthShoreDeckId")
+
+    for _, obj in pairs(ObjectsInMiskatonicZone) do
+
+        if obj.getGUID() == KingsportPharaohGateDeckId then
+            --Be eager. Put it in the gate deck directly
+            local GateDeckId = SetupVariablesNew.call('getBoardGatedeckId')
+            local GateDeck = getObjectFromGUID(GateDeckId)
+            GateDeck.putObject(obj)
+
+        end
+        if obj.getGUID() == KingsportPharaohHeadDeckId then
+            --Get the expansion's deck ID
+            local KingsportHeadDeckId = KingsportVariables.call('getKingsportHeadDeckId')
+            local KingsportHeadDeck = getObjectFromGUID(KingsportHeadDeckId)
+            KingsportHeadDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == KingsportPharaohHarborsideDeckId then
+            --Get the expansion's deck ID
+            local KingsportHarborsideDeckId = KingsportVariables.call('getKingsportHarborsideDeckId')
+            local KingsportHarborsideDeck = getObjectFromGUID(KingsportHarborsideDeckId)
+            KingsportHarborsideDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == KingsportPharaohCentralHillDeckId then
+            --Get the expansion's deck ID
+            local KingsportCentralHillDeckId = KingsportVariables.call('getKingsportCentralHillDeckId')
+            local KingsportCentralHillDeck = getObjectFromGUID(KingsportCentralHillDeckId)
+            KingsportCentralHillDeck.putObject(obj)
+
+        end
+        if obj.getGUID() == KingsportPharaohSouthShoreDeckId then
+            --Get the expansion's deck ID
+            local KingsportSouthShoreDeckId = KingsportVariables.call('getKingsportSouthShoreDeckId')
+            local KingsportSouthShoreDeck = getObjectFromGUID(KingsportSouthShoreDeckId)
+            KingsportSouthShoreDeck.putObject(obj)
+
+        end
+    end
+end
+
+function setKingsportGoat(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+
+    -- get deck id for the Miskatonic Deck
+    local KingsportGoatGateDeckId = MiskatonicVariables.call("getKingsportGoatGateDeckId")
+    local KingsportGoatHeadDeckId = MiskatonicVariables.call("getKingsportGoatKingsportHeadDeckId")
+    local KingsportGoatHarborsideDeckId = MiskatonicVariables.call("getKingsportGoatHarborsideDeckId")
+    local KingsportGoatCentralHillDeckId = MiskatonicVariables.call("getKingsportGoatCentralDeckId")
+    local KingsportGoatSouthShoreDeckId = MiskatonicVariables.call("getKingsportGoatSouthShoreDeckId")
+
+    for _, obj in pairs(ObjectsInMiskatonicZone) do
+
+        if obj.getGUID() == KingsportGoatGateDeckId then
+            --Be eager. Put it in the gate deck directly
+            local GateDeckId = SetupVariablesNew.call('getBoardGatedeckId')
+            local GateDeck = getObjectFromGUID(GateDeckId)
+            GateDeck.putObject(obj)
+
+        end
+        if obj.getGUID() == KingsportGoatHeadDeckId then
+            --Get the expansion's deck ID
+            local KingsportHeadDeckId = KingsportVariables.call('getKingsportHeadDeckId')
+            local KingsportHeadDeck = getObjectFromGUID(KingsportHeadDeckId)
+            KingsportHeadDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == KingsportGoatHarborsideDeckId then
+            --Get the expansion's deck ID
+            local KingsportHarborsideDeckId = KingsportVariables.call('getKingsportHarborsideDeckId')
+            local KingsportHarborsideDeck = getObjectFromGUID(KingsportHarborsideDeckId)
+            KingsportHarborsideDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == KingsportGoatCentralHillDeckId then
+            --Get the expansion's deck ID
+            local KingsportCentralHillDeckId = KingsportVariables.call('getKingsportCentralHillDeckId')
+            local KingsportCentralHillDeck = getObjectFromGUID(KingsportCentralHillDeckId)
+            KingsportCentralHillDeck.putObject(obj)
+
+        end
+        if obj.getGUID() == KingsportGoatSouthShoreDeckId then
+            --Get the expansion's deck ID
+            local KingsportSouthShoreDeckId = KingsportVariables.call('getKingsportSouthShoreDeckId')
+            local KingsportSouthShoreDeck = getObjectFromGUID(KingsportSouthShoreDeckId)
+            KingsportSouthShoreDeck.putObject(obj)
+
+        end
+    end
+end
+
+function setKingsportYellow(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+
+    -- get deck id for the Miskatonic Deck
+    local KingsportYellowGateDeckId = MiskatonicVariables.call("getKingsportYellowGateDeckId")
+    local KingsportYellowHeadDeckId = MiskatonicVariables.call("getKingsportYellowKingsportHeadDeckId")
+    local KingsportYellowHarborsideDeckId = MiskatonicVariables.call("getKingsportYellowHarborsideDeckId")
+    local KingsportYellowCentralHillDeckId = MiskatonicVariables.call("getKingsportYellowCentralDeckId")
+    local KingsportYellowSouthShoreDeckId = MiskatonicVariables.call("getKingsportYellowSouthShoreDeckId")
+
+    for _, obj in pairs(ObjectsInMiskatonicZone) do
+
+        if obj.getGUID() == KingsportYellowGateDeckId then
+            --Be eager. Put it in the gate deck directly
+            local GateDeckId = SetupVariablesNew.call('getBoardGatedeckId')
+            local GateDeck = getObjectFromGUID(GateDeckId)
+            GateDeck.putObject(obj)
+
+        end
+        if obj.getGUID() == KingsportYellowHeadDeckId then
+            --Get the expansion's deck ID
+            local KingsportHeadDeckId = KingsportVariables.call('getKingsportHeadDeckId')
+            local KingsportHeadDeck = getObjectFromGUID(KingsportHeadDeckId)
+            KingsportHeadDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == KingsportYellowHarborsideDeckId then
+            --Get the expansion's deck ID
+            local KingsportHarborsideDeckId = KingsportVariables.call('getKingsportHarborsideDeckId')
+            local KingsportHarborsideDeck = getObjectFromGUID(KingsportHarborsideDeckId)
+            KingsportHarborsideDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == KingsportYellowCentralHillDeckId then
+            --Get the expansion's deck ID
+            local KingsportCentralHillDeckId = KingsportVariables.call('getKingsportCentralHillDeckId')
+            local KingsportCentralHillDeck = getObjectFromGUID(KingsportCentralHillDeckId)
+            KingsportCentralHillDeck.putObject(obj)
+
+        end
+        if obj.getGUID() == KingsportYellowSouthShoreDeckId then
+            --Get the expansion's deck ID
+            local KingsportSouthShoreDeckId = KingsportVariables.call('getKingsportSouthShoreDeckId')
+            local KingsportSouthShoreDeck = getObjectFromGUID(KingsportSouthShoreDeckId)
+            KingsportSouthShoreDeck.putObject(obj)
+
+        end
+    end
+end
+
+function setKingsportInnsmouth(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+
+    -- get deck id for the Miskatonic Deck
+    -- local KingsportInnsmouthGateDeckId = MiskatonicVariables.call("getKingsportInnsmouthGateDeckId")
+    local KingsportInnsmouthHeadDeckId = MiskatonicVariables.call("getKingsportInnsmouthKingsportHeadDeckId")
+    local KingsportInnsmouthHarborsideDeckId = MiskatonicVariables.call("getKingsportInnsmouthHarborsideDeckId")
+    local KingsportInnsmouthCentralHillDeckId = MiskatonicVariables.call("getKingsportInnsmouthCentralDeckId")
+    local KingsportInnsmouthSouthShoreDeckId = MiskatonicVariables.call("getKingsportInnsmouthSouthShoreDeckId")
+
+    for _, obj in pairs(ObjectsInMiskatonicZone) do
+        -- No gate for Innsmouth. Fish-people are ugly enough. No need more monsters
+        -- if obj.getGUID() == KingsportInnsmouthGateDeckId then
+        --     --Get the expansion's deck ID
+        --     local KingsportGateDeckId = KingsportVariables.call('getKingsportGateDeckId')
+        --
+        -- end
+        if obj.getGUID() == KingsportInnsmouthHeadDeckId then
+            --Get the expansion's deck ID
+            local KingsportHeadDeckId = KingsportVariables.call('getKingsportHeadDeckId')
+            local KingsportHeadDeck = getObjectFromGUID(KingsportHeadDeckId)
+            KingsportHeadDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == KingsportInnsmouthHarborsideDeckId then
+            --Get the expansion's deck ID
+            local KingsportHarborsideDeckId = KingsportVariables.call('getKingsportHarborsideDeckId')
+            local KingsportHarborsideDeck = getObjectFromGUID(KingsportHarborsideDeckId)
+            KingsportHarborsideDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == KingsportInnsmouthCentralHillDeckId then
+            --Get the expansion's deck ID
+            local KingsportCentralHillDeckId = KingsportVariables.call('getKingsportCentralHillDeckId')
+            local KingsportCentralHillDeck = getObjectFromGUID(KingsportCentralHillDeckId)
+            KingsportCentralHillDeck.putObject(obj)
+
+        end
+        if obj.getGUID() == KingsportInnsmouthSouthShoreDeckId then
+            --Get the expansion's deck ID
+            local KingsportSouthShoreDeckId = KingsportVariables.call('getKingsportSouthShoreDeckId')
+            local KingsportSouthShoreDeck = getObjectFromGUID(KingsportSouthShoreDeckId)
+            KingsportSouthShoreDeck.putObject(obj)
+
+        end
+    end
+end
+
+function setKingsportDunwich(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+
+    -- get deck id for the Miskatonic Deck
+    local KingsportDunwichGateDeckId = MiskatonicVariables.call("getKingsportDunwichGateDeckId")
+    local KingsportDunwichHeadDeckId = MiskatonicVariables.call("getKingsportDunwichKingsportHeadDeckId")
+    local KingsportDunwichHarborsideDeckId = MiskatonicVariables.call("getKingsportDunwichHarborsideDeckId")
+    local KingsportDunwichCentralHillDeckId = MiskatonicVariables.call("getKingsportDunwichCentralDeckId")
+    local KingsportDunwichSouthShoreDeckId = MiskatonicVariables.call("getKingsportDunwichSouthShoreDeckId")
+
+    for _, obj in pairs(ObjectsInMiskatonicZone) do
+
+        if obj.getGUID() == KingsportDunwichGateDeckId then
+            --Be eager. Put it in the gate deck directly
+            local GateDeckId = SetupVariablesNew.call('getBoardGatedeckId')
+            local GateDeck = getObjectFromGUID(GateDeckId)
+            GateDeck.putObject(obj)
+
+        end
+        if obj.getGUID() == KingsportDunwichHeadDeckId then
+            --Get the expansion's deck ID
+            local KingsportHeadDeckId = KingsportVariables.call('getKingsportHeadDeckId')
+            local KingsportHeadDeck = getObjectFromGUID(KingsportHeadDeckId)
+            KingsportHeadDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == KingsportDunwichHarborsideDeckId then
+            --Get the expansion's deck ID
+            local KingsportHarborsideDeckId = KingsportVariables.call('getKingsportHarborsideDeckId')
+            local KingsportHarborsideDeck = getObjectFromGUID(KingsportHarborsideDeckId)
+            KingsportHarborsideDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == KingsportDunwichCentralHillDeckId then
+            --Get the expansion's deck ID
+            local KingsportCentralHillDeckId = KingsportVariables.call('getKingsportCentralHillDeckId')
+            local KingsportCentralHillDeck = getObjectFromGUID(KingsportCentralHillDeckId)
+            KingsportCentralHillDeck.putObject(obj)
+
+        end
+        if obj.getGUID() == KingsportDunwichSouthShoreDeckId then
+            --Get the expansion's deck ID
+            local KingsportSouthShoreDeckId = KingsportVariables.call('getKingsportSouthShoreDeckId')
+            local KingsportSouthShoreDeck = getObjectFromGUID(KingsportSouthShoreDeckId)
+            KingsportSouthShoreDeck.putObject(obj)
+
+        end
+    end
+end
+
+function setInnsmouthLurker(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+
+    -- get deck id for the Miskatonic Deck
+    local InnsmouthLurkerFactoryDeckId = MiskatonicVariables.call("getInnsmouthLurkerFactoryDeckId")
+    local InnsmouthLurkerChurchDeckId = MiskatonicVariables.call("getInnsmouthLurkerChurchDeckId")
+    local InnsmouthLurkerInnsmouthShoreDeckId = MiskatonicVariables.call("getInnsmouthLurkerInnsmouthShoreDeckId")
+
+    for _, obj in pairs(ObjectsInMiskatonicZone) do
+
+        if obj.getGUID() == InnsmouthLurkerFactoryDeckId then
+            --Get the expansion's deck ID
+            local InnsmouthFactoryDeckId = InnsmouthVariables.call('getInnsmouthFactoryDeckId')
+            local InnsmouthFactoryDeck = getObjectFromGUID(InnsmouthFactoryDeckId)
+            InnsmouthFactoryDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == InnsmouthLurkerChurchDeckId then
+            --Get the expansion's deck ID
+            local InnsmouthChurchDeckId = InnsmouthVariables.call('getInnsmouthChurchDeckId')
+            local InnsmouthChurchDeck = getObjectFromGUID(InnsmouthChurchDeckId)
+            InnsmouthChurchDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == InnsmouthLurkerInnsmouthShoreDeckId then
+            --Get the expansion's deck ID
+            local InnsmouthInnsmouthShoreDeckId = InnsmouthVariables.call('getInnsmouthShoreDeckId')
+            local InnsmouthInnsmouthShoreDeck = getObjectFromGUID(InnsmouthInnsmouthShoreDeckId)
+            InnsmouthInnsmouthShoreDeck.putObject(obj)
+
+        end
+    end
+end
+
+function setInnsmouthGoat(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+
+    -- get deck id for the Miskatonic Deck
+    local InnsmouthGoatFactoryDeckId = MiskatonicVariables.call("getInnsmouthGoatFactoryDeckId")
+    local InnsmouthGoatChurchDeckId = MiskatonicVariables.call("getInnsmouthGoatChurchDeckId")
+    local InnsmouthGoatInnsmouthShoreDeckId = MiskatonicVariables.call("getInnsmouthGoatInnsmouthShoreDeckId")
+
+    for _, obj in pairs(ObjectsInMiskatonicZone) do
+
+        if obj.getGUID() == InnsmouthGoatFactoryDeckId then
+            --Get the expansion's deck ID
+            local InnsmouthFactoryDeckId = InnsmouthVariables.call('getInnsmouthFactoryDeckId')
+            local InnsmouthFactoryDeck = getObjectFromGUID(InnsmouthFactoryDeckId)
+            InnsmouthFactoryDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == InnsmouthGoatChurchDeckId then
+            --Get the expansion's deck ID
+            local InnsmouthChurchDeckId = InnsmouthVariables.call('getInnsmouthChurchDeckId')
+            local InnsmouthChurchDeck = getObjectFromGUID(InnsmouthChurchDeckId)
+            InnsmouthChurchDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == InnsmouthGoatInnsmouthShoreDeckId then
+            --Get the expansion's deck ID
+            local InnsmouthInnsmouthShoreDeckId = InnsmouthVariables.call('getInnsmouthShoreDeckId')
+            local InnsmouthInnsmouthShoreDeck = getObjectFromGUID(InnsmouthInnsmouthShoreDeckId)
+            InnsmouthInnsmouthShoreDeck.putObject(obj)
+
+        end
+    end
+end
+
+function setInnsmouthYellow(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+
+    -- get deck id for the Miskatonic Deck
+    local InnsmouthYellowFactoryDeckId = MiskatonicVariables.call("getInnsmouthYellowFactoryDeckId")
+    local InnsmouthYellowChurchDeckId = MiskatonicVariables.call("getInnsmouthYellowChurchDeckId")
+    local InnsmouthYellowInnsmouthShoreDeckId = MiskatonicVariables.call("getInnsmouthYellowInnsmouthShoreDeckId")
+
+    for _, obj in pairs(ObjectsInMiskatonicZone) do
+
+        if obj.getGUID() == InnsmouthYellowFactoryDeckId then
+            --Get the expansion's deck ID
+            local InnsmouthFactoryDeckId = InnsmouthVariables.call('getInnsmouthFactoryDeckId')
+            local InnsmouthFactoryDeck = getObjectFromGUID(InnsmouthFactoryDeckId)
+            InnsmouthFactoryDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == InnsmouthYellowChurchDeckId then
+            --Get the expansion's deck ID
+            local InnsmouthChurchDeckId = InnsmouthVariables.call('getInnsmouthChurchDeckId')
+            local InnsmouthChurchDeck = getObjectFromGUID(InnsmouthChurchDeckId)
+            InnsmouthChurchDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == InnsmouthYellowInnsmouthShoreDeckId then
+            --Get the expansion's deck ID
+            local InnsmouthInnsmouthShoreDeckId = InnsmouthVariables.call('getInnsmouthShoreDeckId')
+            local InnsmouthInnsmouthShoreDeck = getObjectFromGUID(InnsmouthInnsmouthShoreDeckId)
+            InnsmouthInnsmouthShoreDeck.putObject(obj)
+
+        end
+    end
+end
+
+function setInnsmouthKingsport(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+
+    -- get deck id for the Miskatonic Deck
+    local InnsmouthKingsportFactoryDeckId = MiskatonicVariables.call("getInnsmouthKingsportFactoryDeckId")
+    local InnsmouthKingsportChurchDeckId = MiskatonicVariables.call("getInnsmouthKingsportChurchDeckId")
+    local InnsmouthKingsportInnsmouthShoreDeckId = MiskatonicVariables.call("getInnsmouthKingsportInnsmouthShoreDeckId")
+
+    for _, obj in pairs(ObjectsInMiskatonicZone) do
+
+        if obj.getGUID() == InnsmouthKingsportFactoryDeckId then
+            --Get the expansion's deck ID
+            local InnsmouthFactoryDeckId = InnsmouthVariables.call('getInnsmouthFactoryDeckId')
+            local InnsmouthFactoryDeck = getObjectFromGUID(InnsmouthFactoryDeckId)
+            InnsmouthFactoryDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == InnsmouthKingsportChurchDeckId then
+            --Get the expansion's deck ID
+            local InnsmouthChurchDeckId = InnsmouthVariables.call('getInnsmouthChurchDeckId')
+            local InnsmouthChurchDeck = getObjectFromGUID(InnsmouthChurchDeckId)
+            InnsmouthChurchDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == InnsmouthKingsportInnsmouthShoreDeckId then
+            --Get the expansion's deck ID
+            local InnsmouthInnsmouthShoreDeckId = InnsmouthVariables.call('getInnsmouthShoreDeckId')
+            local InnsmouthInnsmouthShoreDeck = getObjectFromGUID(InnsmouthInnsmouthShoreDeckId)
+            InnsmouthInnsmouthShoreDeck.putObject(obj)
+
+        end
+    end
+end
+
+function setInnsmouthDunwich(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+
+    -- get deck id for the Miskatonic Deck
+    local InnsmouthDunwichFactoryDeckId = MiskatonicVariables.call("getInnsmouthDunwichFactoryDeckId")
+    local InnsmouthDunwichChurchDeckId = MiskatonicVariables.call("getInnsmouthDunwichChurchDeckId")
+    local InnsmouthDunwichInnsmouthShoreDeckId = MiskatonicVariables.call("getInnsmouthDunwichInnsmouthShoreDeckId")
+
+    for _, obj in pairs(ObjectsInMiskatonicZone) do
+
+        if obj.getGUID() == InnsmouthDunwichFactoryDeckId then
+            --Get the expansion's deck ID
+            local InnsmouthFactoryDeckId = InnsmouthVariables.call('getInnsmouthFactoryDeckId')
+            local InnsmouthFactoryDeck = getObjectFromGUID(InnsmouthFactoryDeckId)
+            InnsmouthFactoryDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == InnsmouthDunwichChurchDeckId then
+            --Get the expansion's deck ID
+            local InnsmouthChurchDeckId = InnsmouthVariables.call('getInnsmouthChurchDeckId')
+            local InnsmouthChurchDeck = getObjectFromGUID(InnsmouthChurchDeckId)
+            InnsmouthChurchDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == InnsmouthDunwichInnsmouthShoreDeckId then
+            --Get the expansion's deck ID
+            local InnsmouthInnsmouthShoreDeckId = InnsmouthVariables.call('getInnsmouthShoreDeckId')
+            local InnsmouthInnsmouthShoreDeck = getObjectFromGUID(InnsmouthInnsmouthShoreDeckId)
+            InnsmouthInnsmouthShoreDeck.putObject(obj)
+
+        end
+    end
+end
+
+function setInnsmouthPharaoh(MiskatonicScriptingZone,ObjectsInMiskatonicZone)
+
+    -- get deck id for the Miskatonic Deck
+    local InnsmouthPharaohFactoryDeckId = MiskatonicVariables.call("getInnsmouthPharaohFactoryDeckId")
+    local InnsmouthPharaohChurchDeckId = MiskatonicVariables.call("getInnsmouthPharaohChurchDeckId")
+    local InnsmouthPharaohInnsmouthShoreDeckId = MiskatonicVariables.call("getInnsmouthPharaohInnsmouthShoreDeckId")
+
+    for _, obj in pairs(ObjectsInMiskatonicZone) do
+
+        if obj.getGUID() == InnsmouthPharaohFactoryDeckId then
+            --Get the expansion's deck ID
+            local InnsmouthFactoryDeckId = InnsmouthVariables.call('getInnsmouthFactoryDeckId')
+            local InnsmouthFactoryDeck = getObjectFromGUID(InnsmouthFactoryDeckId)
+            InnsmouthFactoryDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == InnsmouthPharaohChurchDeckId then
+            --Get the expansion's deck ID
+            local InnsmouthChurchDeckId = InnsmouthVariables.call('getInnsmouthChurchDeckId')
+            local InnsmouthChurchDeck = getObjectFromGUID(InnsmouthChurchDeckId)
+            InnsmouthChurchDeck.putObject(obj)
+
+        end
+
+        if obj.getGUID() == InnsmouthPharaohInnsmouthShoreDeckId then
+            --Get the expansion's deck ID
+            local InnsmouthInnsmouthShoreDeckId = InnsmouthVariables.call('getInnsmouthShoreDeckId')
+            local InnsmouthInnsmouthShoreDeck = getObjectFromGUID(InnsmouthInnsmouthShoreDeckId)
+            InnsmouthInnsmouthShoreDeck.putObject(obj)
+
+        end
+    end
+end
+
+-- For Coroutines, waits X frames
+function waitFrames(frames)
+    while frames > 0 do
+        coroutine.yield(0)
+        frames = frames - 1
+    end
+end
+
+--Thank you Redditor SirLoin49 for this awesome function
+function yieldWhileObjectsAreMoving(moving_objects)
+    -- yield the coroutine until all objects stopped smooth moving
+    if(#moving_objects == 0) then
+        return
+    end
+
+    local objects_moving = true
+    while objects_moving do
+        for j = 1, 50 do
+            -- do a few yields, otherwise tts crashes
+            coroutine.yield(0)
+        end
+        for _, i in ipairs(moving_objects) do
+            if(not i.isSmoothMoving()) then
+                objects_moving = false
+                break
+            end
+        end
+    end
+end
+
+function yieldWhileFalse(flag, flagName)
+
+    local setupping = true
+    while setupping do
+        for j = 1, 20 do
+            -- do a few yields, otherwise tts crashes
+            coroutine.yield(0)
+        end
+        --I hate having to do this, but coroutines do not receive flag updates
+        if flagName == "YellowReady" then
+            flag = getYellowReady()
+        end
+
+        if flagName == "PharaohReady" then
+            flag = getPharaohReady()
+        end
+
+        if flagName == "Miskatonic1Ready" then
+            flag = getMiskatonic1Ready()
+        end
+
+        if flagName == "Miskatonic2Ready" then
+            flag = getMiskatonic2Ready()
+        end
+
+        if flagName == "LurkerReady" then
+            flag = getLurkerReady()
+        end
+
+        if flagName == "KingsportReady" then
+            flag = getKingsportReady()
+        end
+
+        if flagName == "InnsmouthReady" then
+            flag = getInnsmouthReady()
+        end
+
+        if flagName == "GoatReady" then
+            flag = getGoatReady()
+        end
+
+        if flagName == "DunwichReady" then
+            flag = getDunwichReady()
+        end
+
+        if flag == true then
+            setupping = false
+            break
+        end
+    end
+end
+
+
+function waitAllReady()
+
+    if MiskatonicSet == true then
+        if Miskatonic1Ready == false then
+            yieldWhileFalse(Miskatonic1Ready, "Miskatonic1Ready")
+        end
+    end
+
+    if DunwichSet == true or DunwichMonsterOnly == true or DunwichSmallCardsOnly == true then
+        if DunwichReady == false then
+            yieldWhileFalse(DunwichReady, "DunwichReady")
+        end
+    end
+
+    if InnsmouthSet == true or InnsmouthMonsterOnly == true or InnsmouthSmallCardsOnly == true then
+        if InnsmouthReady == false then
+            yieldWhileFalse(InnsmouthReady, "InnsmouthReady")
+        end
+    end
+
+    if KingsportSet == true or KingsportMonsterOnly == true or KingsportSmallCardsOnly == true then
+        if KingsportReady == false then
+            yieldWhileFalse(KingsportReady, "KingsportReady")
+        end
+    end
+
+    if LurkerSet == true or LurkerSmallCardsOnly == true or LurkerSmallCardsOnly then
+        if LurkerReady == false then
+            yieldWhileFalse(LurkerReady, "LurkerReady")
+        end
+    end
+
+    if PharaohSet == true or PharaohSmallCardsOnly == true or PharaohSmallCardsOnly then
+        if PharaohReady == false then
+            yieldWhileFalse(PharaohReady, "PharaohReady")
+        end
+    end
+
+    if GoatSet == true or GoatSmallCardsOnly == true or GoatSmallCardsOnly then
+        if GoatReady == false then
+            yieldWhileFalse(GoatReady, "GoatReady")
+        end
+    end
+
+    if YellowSet == true or YellowSmallCardsOnly == true or YellowSmallCardsOnly then
+        if YellowReady == false then
+            yieldWhileFalse(YellowReady, "YellowReady")
+        end
+    end
+
+    if MiskatonicSet == true then
+
+        if Miskatonic1Ready == false then
+            yieldWhileFalse(Miskatonic1Ready, "Miskatonic1Ready")
+        end
+
+        if Miskatonic2Ready == false then
+            yieldWhileFalse(Miskatonic2Ready, "Miskatonic2Ready")
+        end
+    end
+
+end
+
+
+function getYellowReady()
+    return YellowReady
+end
+
+function getPharaohReady()
+    return PharaohReady
+end
+
+function getYellowReady()
+    return YellowReady
+end
+
+function getMiskatonic1Ready()
+    return Miskatonic1Ready
+end
+
+function getMiskatonic2Ready()
+    return Miskatonic2Ready
+end
+
+function getLurkerReady()
+    return LurkerReady
+end
+
+function getKingsportReady()
+    return KingsportReady
+end
+
+function getInnsmouthReady()
+    return InnsmouthReady
+end
+
+function getGoatReady()
+    return GoatReady
+end
+
+function getDunwichReady()
+    return DunwichReady
+end
+
+function setYellowReady(flag)
+    YellowReady = flag
+end
+
+function setPharaohReady(flag)
+    PharaohReady = flag
+end
+
+function setYellowReady(flag)
+    YellowReady = flag
+end
+
+function setMiskatonic1Ready(flag)
+    Miskatonic1Ready = flag
+end
+
+function setMiskatonic2Ready(flag)
+    Miskatonic2Ready = flag
+end
+
+function setLurkerReady(flag)
+    LurkerReady = flag
+end
+
+function setKingsportReady(flag)
+    KingsportReady = flag
+end
+
+function setInnsmouthReady(flag)
+    InnsmouthReady = flag
+end
+
+function setGoatReady(flag)
+    GoatReady = flag
+end
+
+function setDunwichReady(flag)
+    DunwichReady = flag
+end

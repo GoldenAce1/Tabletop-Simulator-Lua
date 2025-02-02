@@ -1,0 +1,684 @@
+local PharaohVariables = getObjectFromGUID('43e2a0')
+
+
+function SetPharaohComponentsOnTable()
+    placeMythos()
+    placeGate()
+    placeNorthside()
+    placeDowntown()
+    placeEasttown()
+    placeMerchant()
+    placeRivertown()
+    placeMiskatonic()
+    placeFrench()
+    placeUptown()
+    placeSouthside()
+    placeSkills()
+    placeAllies()
+    --No common or Unique
+    --placeCommon()
+    --placeUnique()
+    placeSpells()
+
+    -- Expansion-specific
+    placeBenefits()
+    placeDetriments()
+    placeExhibitItem()
+    placeExhibitEncounter()
+    placePatrolMarker()
+    placeAncientWhispers()
+
+    -- placeGateMarkerBag()
+    -- placeDunwGateMarkerBag()
+    -- placeKingGateMarkerBag()
+    Wait.time(deckFlipper, 1)
+
+end
+
+function placeMythos()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohMythosDeckId = PharaohVariables.call('getPharaohMythosDeckId')
+
+    local params = {}
+    params.guid = PharaohMythosDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = PharaohVariables.call('getPharaohPositionById',{PharaohMythosDeckId})
+    local BoardMythosDeckId = SetupVariablesNew.call('getBoardMythosdeckId')
+    local BoardMythosDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardMythosDeckId})
+    params.position = {BoardMythosDeckPos[1], BoardMythosDeckPos[2]+2,BoardMythosDeckPos[3]}
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardMythosScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+-- To be sure it, puts on the object so it retains its GUID
+    local BoardMythosDeck = getObjectFromGUID(BoardMythosDeckId)
+    BoardMythosDeck.putObject(item)
+
+end
+
+function placeGate()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohGateDeckId = PharaohVariables.call('getPharaohGateDeckId')
+
+    local params = {}
+    params.guid = PharaohGateDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = PharaohVariables.call('getPharaohPositionById',{PharaohGateDeckId})
+    local BoardGateDeckId = SetupVariablesNew.call('getBoardGatedeckId')
+    local BoardGateDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardGateDeckId})
+    params.position = {BoardGateDeckPos[1], BoardGateDeckPos[2],BoardGateDeckPos[3]}
+
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardGateScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- I don't know why, if I leave it as it is, the boardGateDeck gets the
+    -- GUID of the Pharaoh's Deck. So, I put the deck on the other.
+    local BoardGateDeck = getObjectFromGUID(BoardGateDeckId)
+    BoardGateDeck.putObject(item)
+
+
+end
+
+function placeNorthside()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohNorthsideDeckId = PharaohVariables.call('getPharaohNorthsideDeckId')
+
+    local params = {}
+    params.guid = PharaohNorthsideDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = PharaohVariables.call('getPharaohPositionById',{PharaohNorthsideDeckId})
+    local BoardNorthsideDeckId = SetupVariablesNew.call('getBoardNorthsidedeckId')
+    local BoardNorthsideDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardNorthsideDeckId})
+    params.position = {BoardNorthsideDeckPos[1], BoardNorthsideDeckPos[2],BoardNorthsideDeckPos[3]}
+
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardNorthsideScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardNorthsideDeck = getObjectFromGUID(BoardNorthsideDeckId)
+    BoardNorthsideDeck.putObject(item)
+
+end
+
+function placeDowntown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohDowntownDeckId = PharaohVariables.call('getPharaohDowntownDeckId')
+
+    local params = {}
+    params.guid = PharaohDowntownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = PharaohVariables.call('getPharaohPositionById',{PharaohDowntownDeckId})
+    local BoardDowntownDeckId = SetupVariablesNew.call('getBoardDowntowndeckId')
+    local BoardDowntownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardDowntownDeckId})
+    params.position = {BoardDowntownDeckPos[1], BoardDowntownDeckPos[2],BoardDowntownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardDowntownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardDowntownDeck = getObjectFromGUID(BoardDowntownDeckId)
+    BoardDowntownDeck.putObject(item)
+
+end
+
+function placeEasttown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohEasttownDeckId = PharaohVariables.call('getPharaohEasttownDeckId')
+
+    local params = {}
+    params.guid = PharaohEasttownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = PharaohVariables.call('getPharaohPositionById',{PharaohEasttownDeckId})
+    local BoardEasttownDeckId = SetupVariablesNew.call('getBoardEasttowndeckId')
+    local BoardEasttownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardEasttownDeckId})
+    params.position = {BoardEasttownDeckPos[1], BoardEasttownDeckPos[2],BoardEasttownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardEasttownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardEasttownDeck = getObjectFromGUID(BoardEasttownDeckId)
+    BoardEasttownDeck.putObject(item)
+
+end
+
+function placeMerchant()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohMerchantDeckId = PharaohVariables.call('getPharaohMerchantDeckId')
+
+    local params = {}
+    params.guid = PharaohMerchantDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = PharaohVariables.call('getPharaohPositionById',{PharaohMerchantDeckId})
+    local BoardMerchantDeckId = SetupVariablesNew.call('getBoardMerchantdeckId')
+    local BoardMerchantDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardMerchantDeckId})
+    params.position = {BoardMerchantDeckPos[1], BoardMerchantDeckPos[2],BoardMerchantDeckPos[3]}
+
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardMerchantScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardMerchantDeck = getObjectFromGUID(BoardMerchantDeckId)
+    BoardMerchantDeck.putObject(item)
+
+end
+
+function placeRivertown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohRivertownDeckId = PharaohVariables.call('getPharaohRivertownDeckId')
+
+    local params = {}
+    params.guid = PharaohRivertownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = PharaohVariables.call('getPharaohPositionById',{PharaohRivertownDeckId})
+    local BoardRivertownDeckId = SetupVariablesNew.call('getBoardRivertowndeckId')
+    local BoardRivertownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardRivertownDeckId})
+    params.position = {BoardRivertownDeckPos[1], BoardRivertownDeckPos[2],BoardRivertownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardRivertownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardRivertownDeck = getObjectFromGUID(BoardRivertownDeckId)
+    BoardRivertownDeck.putObject(item)
+
+end
+
+function placeMiskatonic()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohMiskatonicDeckId = PharaohVariables.call('getPharaohMiskatonicDeckId')
+
+    local params = {}
+    params.guid = PharaohMiskatonicDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = PharaohVariables.call('getPharaohPositionById',{PharaohMiskatonicDeckId})
+    local BoardMiskatonicDeckId = SetupVariablesNew.call('getBoardMiskatonicdeckId')
+    local BoardMiskatonicDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardMiskatonicDeckId})
+    params.position = {BoardMiskatonicDeckPos[1], BoardMiskatonicDeckPos[2],BoardMiskatonicDeckPos[3]}
+
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardMiskatonicScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardMiskatonicDeck = getObjectFromGUID(BoardMiskatonicDeckId)
+    BoardMiskatonicDeck.putObject(item)
+
+end
+
+function placeFrench()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohFrenchDeckId = PharaohVariables.call('getPharaohFrenchDeckId')
+
+    local params = {}
+    params.guid = PharaohFrenchDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = PharaohVariables.call('getPharaohPositionById',{PharaohFrenchDeckId})
+    local BoardFrenchDeckId = SetupVariablesNew.call('getBoardFrenchdeckId')
+    local BoardFrenchDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardFrenchDeckId})
+    params.position = {BoardFrenchDeckPos[1], BoardFrenchDeckPos[2],BoardFrenchDeckPos[3]}
+
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardFrenchScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardFrenchDeck = getObjectFromGUID(BoardFrenchDeckId)
+    BoardFrenchDeck.putObject(item)
+
+end
+
+function placeUptown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohUptownDeckId = PharaohVariables.call('getPharaohUptownDeckId')
+
+    local params = {}
+    params.guid = PharaohUptownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = PharaohVariables.call('getPharaohPositionById',{PharaohUptownDeckId})
+    local BoardUptownDeckId = SetupVariablesNew.call('getBoardUptowndeckId')
+    local BoardUptownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardUptownDeckId})
+    params.position = {BoardUptownDeckPos[1], BoardUptownDeckPos[2],BoardUptownDeckPos[3]}
+
+
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardUptownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardUptownDeck = getObjectFromGUID(BoardUptownDeckId)
+    BoardUptownDeck.putObject(item)
+
+end
+
+function placeSouthside()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohSouthsideDeckId = PharaohVariables.call('getPharaohSouthsideDeckId')
+
+    local params = {}
+    params.guid = PharaohSouthsideDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = PharaohVariables.call('getPharaohPositionById',{PharaohSouthsideDeckId})
+    local BoardSouthsideDeckId = SetupVariablesNew.call('getBoardSouthsidedeckId')
+    local BoardSouthsideDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardSouthsideDeckId})
+    params.position = {BoardSouthsideDeckPos[1], BoardSouthsideDeckPos[2],BoardSouthsideDeckPos[3]}
+
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardSouthsideScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardSouthsideDeck = getObjectFromGUID(BoardSouthsideDeckId)
+    BoardSouthsideDeck.putObject(item)
+
+end
+
+function placeSkills()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohSkillsDeckId = PharaohVariables.call('getPharaohSkillsDeckId')
+
+    local params = {}
+    params.guid = PharaohSkillsDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = PharaohVariables.call('getPharaohPositionById',{PharaohSkillsDeckId})
+    local BoardSkillsDeckId = SetupVariablesNew.call('getBoardSkillsdeckId')
+    local BoardSkillsDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardSkillsDeckId})
+    params.position = {BoardSkillsDeckPos[1], BoardSkillsDeckPos[2],BoardSkillsDeckPos[3]}
+
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardSkillsScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardSkillsDeck = getObjectFromGUID(BoardSkillsDeckId)
+    BoardSkillsDeck.putObject(item)
+
+end
+
+function placeCommon()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohCommonDeckId = PharaohVariables.call('getPharaohCommonDeckId')
+
+    local params = {}
+    params.guid = PharaohCommonDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = PharaohVariables.call('getPharaohPositionById',{PharaohCommonDeckId})
+    local BoardCommonDeckId = SetupVariablesNew.call('getBoardCommondeckId')
+    local BoardCommonDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardCommonDeckId})
+    params.position = {BoardCommonDeckPos[1], BoardCommonDeckPos[2],BoardCommonDeckPos[3]}
+
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardCommonScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardCommonDeck = getObjectFromGUID(BoardCommonDeckId)
+    BoardCommonDeck.putObject(item)
+
+end
+
+function placeUnique()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohUniqueDeckId = PharaohVariables.call('getPharaohUniqueDeckId')
+
+    local params = {}
+    params.guid = PharaohUniqueDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = PharaohVariables.call('getPharaohPositionById',{PharaohUniqueDeckId})
+    local BoardUniqueDeckId = SetupVariablesNew.call('getBoardUniquedeckId')
+    local BoardUniqueDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardUniqueDeckId})
+    params.position = {BoardUniqueDeckPos[1], BoardUniqueDeckPos[2],BoardUniqueDeckPos[3]}
+
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardUniqueScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardUniqueDeck = getObjectFromGUID(BoardUniqueDeckId)
+    BoardUniqueDeck.putObject(item)
+
+end
+
+function placeSpells()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohSpellsDeckId = PharaohVariables.call('getPharaohSpellsDeckId')
+
+    local params = {}
+    params.guid = PharaohSpellsDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = PharaohVariables.call('getPharaohPositionById',{PharaohSpellsDeckId})
+    local BoardSpellsDeckId = SetupVariablesNew.call('getBoardSpellsdeckId')
+    local BoardSpellsDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardSpellsDeckId})
+    params.position = {BoardSpellsDeckPos[1], BoardSpellsDeckPos[2],BoardSpellsDeckPos[3]}
+
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardSpellsScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardSpellsDeck = getObjectFromGUID(BoardSpellsDeckId)
+    BoardSpellsDeck.putObject(item)
+
+end
+
+function placeAllies()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohAlliesDeckId = PharaohVariables.call('getPharaohAlliesDeckId')
+
+    local params = {}
+    params.guid = PharaohAlliesDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = PharaohVariables.call('getPharaohPositionById',{PharaohAlliesDeckId})
+    local BoardAlliesDeckId = SetupVariablesNew.call('getBoardAlliesdeckId')
+    local BoardAlliesDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardAlliesDeckId})
+    params.position = {BoardAlliesDeckPos[1], BoardAlliesDeckPos[2],BoardAlliesDeckPos[3]}
+
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardAlliesScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardAlliesDeck = getObjectFromGUID(BoardAlliesDeckId)
+    BoardAlliesDeck.putObject(item)
+
+end
+
+-- Expansion-specific
+
+function placeBenefits()
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohBenefitsDeckId = PharaohVariables.call('getPharaohBenefitsDeckId')
+
+    local params = {}
+    params.guid = PharaohBenefitsDeckId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = PharaohVariables.call('getPharaohPositionById',{PharaohBenefitsDeckId})
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+end
+
+function placeDetriments()
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohDetrimentsDeckId = PharaohVariables.call('getPharaohDetrimentsDeckId')
+
+    local params = {}
+    params.guid = PharaohDetrimentsDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    params.position = PharaohVariables.call('getPharaohPositionById',{PharaohDetrimentsDeckId})
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+end
+
+function placeExhibitItem()
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohExhibitItemDeckId = PharaohVariables.call('getPharaohExhibitItemDeckId')
+
+    local params = {}
+    params.guid = PharaohExhibitItemDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    params.position = PharaohVariables.call('getPharaohPositionById',{PharaohExhibitItemDeckId})
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+end
+
+function placeExhibitEncounter()
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohExhibitEncounterDeckId = PharaohVariables.call('getPharaohExhibitEncounterDeckId')
+
+    local params = {}
+    params.guid = PharaohExhibitEncounterDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    params.position = PharaohVariables.call('getPharaohPositionById',{PharaohExhibitEncounterDeckId})
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+end
+
+function placePatrolMarker()
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohPatrolMarkerId = PharaohVariables.call('getPharaohPatrolMarkerId')
+
+    local params = {}
+    params.guid = PharaohPatrolMarkerId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    params.position = PharaohVariables.call('getPharaohPositionById',{PharaohPatrolMarkerId})
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+end
+
+function placeAncientWhispers()
+    --Get the bag ID
+    local PharaohBagId = PharaohVariables.call('getPharaohBagId')
+
+    --Get the bag
+    local PharaohBag = getObjectFromGUID(PharaohBagId)
+
+    local PharaohAncientWhispersId = PharaohVariables.call('getPharaohAncientWhispersTokenId')
+
+    local params = {}
+    params.guid = PharaohAncientWhispersId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    params.position = PharaohVariables.call('getPharaohPositionById',{PharaohAncientWhispersId})
+    params.smooth = true
+
+    local item = PharaohBag.takeObject(params)
+
+end
+
+-- Flip it (Because if rotation is used, flip is ignored)
+-- Also, must wait before flipping
+function deckFlipper()
+
+    local PharaohDecks = PharaohVariables.getTable('PharaohDecks')
+
+    for i, obj in ipairs(PharaohDecks) do
+        getObjectFromGUID(obj).flip()
+    end
+end

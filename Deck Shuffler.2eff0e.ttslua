@@ -1,0 +1,23 @@
+local Board_Rivertown_Deck_Id = '296cbf'
+
+ShuffleRivertownButton = {
+click_function = 'ShuffleRivertownButtonClicked',
+function_owner = self,
+label = 'Shuffle Rivertown Deck',
+tooltip = "Shuffles the Rivertown Deck",
+position = {0,0,0},
+rotation = {0,270,0},
+width = 1380,
+height = 240,
+font_size = 100
+}
+
+function onload()
+
+    self.createButton(ShuffleRivertownButton)
+end
+
+function ShuffleRivertownButtonClicked()
+    local Board_Rivertown_Deck = getObjectFromGUID(Board_Rivertown_Deck_Id)
+    Board_Rivertown_Deck.randomize()
+end

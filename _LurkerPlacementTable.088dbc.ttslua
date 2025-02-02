@@ -1,0 +1,593 @@
+local LurkerVariables = getObjectFromGUID('edd1ef')
+
+function SetLurkerGatesOnTable(boardFlags)
+    KingsportSet = boardFlags[1]
+    DunwichSet = boardFlags[2]
+
+    placeGateMarkerBag()
+
+    if KingsportSet == true then
+        placeKingGateMarkerBag()
+    end
+    if DunwichSet == true then
+        placeDunwGateMarkerBag()
+    end
+
+
+end
+function SetLurkerComponentsOnTable()
+    placeMythos()
+    placeGate()
+    placeNorthside()
+    placeDowntown()
+    placeEasttown()
+    placeMerchant()
+    placeRivertown()
+    placeMiskatonic()
+    placeFrench()
+    placeUptown()
+    placeSouthside()
+    placeSkills()
+    placeCommon()
+    placeUnique()
+    placeSpells()
+-- The Lurker Gates refer to a variant and replace the original gates for
+-- all expansions. So they are set as per request.
+    -- placeGateMarkerBag()
+    -- placeDunwGateMarkerBag()
+    -- placeKingGateMarkerBag()
+    Wait.time(deckFlipper, 1)
+
+end
+
+function placeMythos()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local LurkerBagId = LurkerVariables.call('getLurkerBagId')
+
+    --Get the bag
+    local LurkerBag = getObjectFromGUID(LurkerBagId)
+
+    local LurkerMythosDeckId = LurkerVariables.call('getLurkerMythosDeckId')
+
+    local params = {}
+    params.guid = LurkerMythosDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = LurkerVariables.call('getLurkerPositionById',{LurkerMythosDeckId})
+    local BoardMythosDeckId = SetupVariablesNew.call('getBoardMythosdeckId')
+    local BoardMythosDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardMythosDeckId})
+    params.position = {BoardMythosDeckPos[1], BoardMythosDeckPos[2]+1,BoardMythosDeckPos[3]}
+    params.smooth = true
+
+    local item = LurkerBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardMythosScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardMythosDeck = getObjectFromGUID(BoardMythosDeckId)
+    BoardMythosDeck.putObject(item)
+
+end
+
+function placeGate()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local LurkerBagId = LurkerVariables.call('getLurkerBagId')
+
+    --Get the bag
+    local LurkerBag = getObjectFromGUID(LurkerBagId)
+
+    local LurkerGateDeckId = LurkerVariables.call('getLurkerGateDeckId')
+
+    local params = {}
+    params.guid = LurkerGateDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = LurkerVariables.call('getLurkerPositionById',{LurkerGateDeckId})
+    local BoardGateDeckId = SetupVariablesNew.call('getBoardGatedeckId')
+    local BoardGateDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardGateDeckId})
+    params.position = {BoardGateDeckPos[1], BoardGateDeckPos[2]+1,BoardGateDeckPos[3]}
+
+    params.smooth = true
+
+    local item = LurkerBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardGateScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- I don't know why, if I leave it as it is, the boardGateDeck gets the
+    -- GUID of the Pharaoh's Deck. So, I put the deck on the other.
+    local BoardGateDeck = getObjectFromGUID(BoardGateDeckId)
+    BoardGateDeck.putObject(item)
+
+end
+
+function placeNorthside()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local LurkerBagId = LurkerVariables.call('getLurkerBagId')
+
+    --Get the bag
+    local LurkerBag = getObjectFromGUID(LurkerBagId)
+
+    local LurkerNorthsideDeckId = LurkerVariables.call('getLurkerNorthsideDeckId')
+
+    local params = {}
+    params.guid = LurkerNorthsideDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = LurkerVariables.call('getLurkerPositionById',{LurkerNorthsideDeckId})
+    local BoardNorthsideDeckId = SetupVariablesNew.call('getBoardNorthsidedeckId')
+    local BoardNorthsideDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardNorthsideDeckId})
+    params.position = {BoardNorthsideDeckPos[1], BoardNorthsideDeckPos[2],BoardNorthsideDeckPos[3]}
+
+
+    params.smooth = true
+
+    local item = LurkerBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardNorthsideScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardNorthsideDeck = getObjectFromGUID(BoardNorthsideDeckId)
+    BoardNorthsideDeck.putObject(item)
+
+end
+
+function placeDowntown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local LurkerBagId = LurkerVariables.call('getLurkerBagId')
+
+    --Get the bag
+    local LurkerBag = getObjectFromGUID(LurkerBagId)
+
+    local LurkerDowntownDeckId = LurkerVariables.call('getLurkerDowntownDeckId')
+
+    local params = {}
+    params.guid = LurkerDowntownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = LurkerVariables.call('getLurkerPositionById',{LurkerDowntownDeckId})
+    local BoardDowntownDeckId = SetupVariablesNew.call('getBoardDowntowndeckId')
+    local BoardDowntownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardDowntownDeckId})
+    params.position = {BoardDowntownDeckPos[1], BoardDowntownDeckPos[2],BoardDowntownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = LurkerBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardDowntownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardDowntownDeck = getObjectFromGUID(BoardDowntownDeckId)
+    BoardDowntownDeck.putObject(item)
+
+end
+
+function placeEasttown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local LurkerBagId = LurkerVariables.call('getLurkerBagId')
+
+    --Get the bag
+    local LurkerBag = getObjectFromGUID(LurkerBagId)
+
+    local LurkerEasttownDeckId = LurkerVariables.call('getLurkerEasttownDeckId')
+
+    local params = {}
+    params.guid = LurkerEasttownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = LurkerVariables.call('getLurkerPositionById',{LurkerEasttownDeckId})
+    local BoardEasttownDeckId = SetupVariablesNew.call('getBoardEasttowndeckId')
+    local BoardEasttownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardEasttownDeckId})
+    params.position = {BoardEasttownDeckPos[1], BoardEasttownDeckPos[2],BoardEasttownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = LurkerBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardEasttownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardEasttownDeck = getObjectFromGUID(BoardEasttownDeckId)
+    BoardEasttownDeck.putObject(item)
+
+end
+
+function placeMerchant()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local LurkerBagId = LurkerVariables.call('getLurkerBagId')
+
+    --Get the bag
+    local LurkerBag = getObjectFromGUID(LurkerBagId)
+
+    local LurkerMerchantDeckId = LurkerVariables.call('getLurkerMerchantDeckId')
+
+    local params = {}
+    params.guid = LurkerMerchantDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = LurkerVariables.call('getLurkerPositionById',{LurkerMerchantDeckId})
+    local BoardMerchantDeckId = SetupVariablesNew.call('getBoardMerchantdeckId')
+    local BoardMerchantDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardMerchantDeckId})
+    params.position = {BoardMerchantDeckPos[1], BoardMerchantDeckPos[2],BoardMerchantDeckPos[3]}
+
+    params.smooth = true
+
+    local item = LurkerBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardMerchantScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardMerchantDeck = getObjectFromGUID(BoardMerchantDeckId)
+    BoardMerchantDeck.putObject(item)
+
+end
+
+function placeRivertown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local LurkerBagId = LurkerVariables.call('getLurkerBagId')
+
+    --Get the bag
+    local LurkerBag = getObjectFromGUID(LurkerBagId)
+
+    local LurkerRivertownDeckId = LurkerVariables.call('getLurkerRivertownDeckId')
+
+    local params = {}
+    params.guid = LurkerRivertownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = LurkerVariables.call('getLurkerPositionById',{LurkerRivertownDeckId})
+    local BoardRivertownDeckId = SetupVariablesNew.call('getBoardRivertowndeckId')
+    local BoardRivertownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardRivertownDeckId})
+    params.position = {BoardRivertownDeckPos[1], BoardRivertownDeckPos[2],BoardRivertownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = LurkerBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardRivertownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardRivertownDeck = getObjectFromGUID(BoardRivertownDeckId)
+    BoardRivertownDeck.putObject(item)
+
+end
+
+function placeMiskatonic()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local LurkerBagId = LurkerVariables.call('getLurkerBagId')
+
+    --Get the bag
+    local LurkerBag = getObjectFromGUID(LurkerBagId)
+
+    local LurkerMiskatonicDeckId = LurkerVariables.call('getLurkerMiskatonicDeckId')
+
+    local params = {}
+    params.guid = LurkerMiskatonicDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = LurkerVariables.call('getLurkerPositionById',{LurkerMiskatonicDeckId})
+    local BoardMiskatonicDeckId = SetupVariablesNew.call('getBoardMiskatonicdeckId')
+    local BoardMiskatonicDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardMiskatonicDeckId})
+    params.position = {BoardMiskatonicDeckPos[1], BoardMiskatonicDeckPos[2],BoardMiskatonicDeckPos[3]}
+
+    params.smooth = true
+
+    local item = LurkerBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardMiskatonicScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardMiskatonicDeck = getObjectFromGUID(BoardMiskatonicDeckId)
+    BoardMiskatonicDeck.putObject(item)
+
+end
+
+function placeFrench()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local LurkerBagId = LurkerVariables.call('getLurkerBagId')
+
+    --Get the bag
+    local LurkerBag = getObjectFromGUID(LurkerBagId)
+
+    local LurkerFrenchDeckId = LurkerVariables.call('getLurkerFrenchDeckId')
+
+    local params = {}
+    params.guid = LurkerFrenchDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = LurkerVariables.call('getLurkerPositionById',{LurkerFrenchDeckId})
+    local BoardFrenchDeckId = SetupVariablesNew.call('getBoardFrenchdeckId')
+    local BoardFrenchDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardFrenchDeckId})
+    params.position = {BoardFrenchDeckPos[1], BoardFrenchDeckPos[2],BoardFrenchDeckPos[3]}
+
+    params.smooth = true
+
+    local item = LurkerBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardFrenchScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardFrenchDeck = getObjectFromGUID(BoardFrenchDeckId)
+    BoardFrenchDeck.putObject(item)
+
+end
+
+function placeUptown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local LurkerBagId = LurkerVariables.call('getLurkerBagId')
+
+    --Get the bag
+    local LurkerBag = getObjectFromGUID(LurkerBagId)
+
+    local LurkerUptownDeckId = LurkerVariables.call('getLurkerUptownDeckId')
+
+    local params = {}
+    params.guid = LurkerUptownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = LurkerVariables.call('getLurkerPositionById',{LurkerUptownDeckId})
+    local BoardUptownDeckId = SetupVariablesNew.call('getBoardUptowndeckId')
+    local BoardUptownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardUptownDeckId})
+    params.position = {BoardUptownDeckPos[1], BoardUptownDeckPos[2],BoardUptownDeckPos[3]}
+
+
+    params.smooth = true
+
+    local item = LurkerBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardUptownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardUptownDeck = getObjectFromGUID(BoardUptownDeckId)
+    BoardUptownDeck.putObject(item)
+
+end
+
+function placeSouthside()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local LurkerBagId = LurkerVariables.call('getLurkerBagId')
+
+    --Get the bag
+    local LurkerBag = getObjectFromGUID(LurkerBagId)
+
+    local LurkerSouthsideDeckId = LurkerVariables.call('getLurkerSouthsideDeckId')
+
+    local params = {}
+    params.guid = LurkerSouthsideDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = LurkerVariables.call('getLurkerPositionById',{LurkerSouthsideDeckId})
+    local BoardSouthsideDeckId = SetupVariablesNew.call('getBoardSouthsidedeckId')
+    local BoardSouthsideDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardSouthsideDeckId})
+    params.position = {BoardSouthsideDeckPos[1], BoardSouthsideDeckPos[2],BoardSouthsideDeckPos[3]}
+
+    params.smooth = true
+
+    local item = LurkerBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardSouthsideScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardSouthsideDeck = getObjectFromGUID(BoardSouthsideDeckId)
+    BoardSouthsideDeck.putObject(item)
+
+end
+
+function placeSkills()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local LurkerBagId = LurkerVariables.call('getLurkerBagId')
+
+    --Get the bag
+    local LurkerBag = getObjectFromGUID(LurkerBagId)
+
+    local LurkerSkillsDeckId = LurkerVariables.call('getLurkerSkillsDeckId')
+
+    local params = {}
+    params.guid = LurkerSkillsDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = LurkerVariables.call('getLurkerPositionById',{LurkerSkillsDeckId})
+    local BoardSkillsDeckId = SetupVariablesNew.call('getBoardSkillsdeckId')
+    local BoardSkillsDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardSkillsDeckId})
+    params.position = {BoardSkillsDeckPos[1], BoardSkillsDeckPos[2],BoardSkillsDeckPos[3]}
+
+    params.smooth = true
+
+    local item = LurkerBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardSkillsScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardSkillsDeck = getObjectFromGUID(BoardSkillsDeckId)
+    BoardSkillsDeck.putObject(item)
+
+end
+
+function placeCommon()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local LurkerBagId = LurkerVariables.call('getLurkerBagId')
+
+    --Get the bag
+    local LurkerBag = getObjectFromGUID(LurkerBagId)
+
+    local LurkerCommonDeckId = LurkerVariables.call('getLurkerCommonDeckId')
+
+    local params = {}
+    params.guid = LurkerCommonDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = LurkerVariables.call('getLurkerPositionById',{LurkerCommonDeckId})
+    local BoardCommonDeckId = SetupVariablesNew.call('getBoardCommondeckId')
+    local BoardCommonDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardCommonDeckId})
+    params.position = {BoardCommonDeckPos[1], BoardCommonDeckPos[2],BoardCommonDeckPos[3]}
+
+    params.smooth = true
+
+    local item = LurkerBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardCommonScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardCommonDeck = getObjectFromGUID(BoardCommonDeckId)
+    BoardCommonDeck.putObject(item)
+
+end
+
+function placeUnique()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local LurkerBagId = LurkerVariables.call('getLurkerBagId')
+
+    --Get the bag
+    local LurkerBag = getObjectFromGUID(LurkerBagId)
+
+    local LurkerUniqueDeckId = LurkerVariables.call('getLurkerUniqueDeckId')
+
+    local params = {}
+    params.guid = LurkerUniqueDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = LurkerVariables.call('getLurkerPositionById',{LurkerUniqueDeckId})
+    local BoardUniqueDeckId = SetupVariablesNew.call('getBoardUniquedeckId')
+    local BoardUniqueDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardUniqueDeckId})
+    params.position = {BoardUniqueDeckPos[1], BoardUniqueDeckPos[2],BoardUniqueDeckPos[3]}
+
+    params.smooth = true
+
+    local item = LurkerBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardUniqueScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardUniqueDeck = getObjectFromGUID(BoardUniqueDeckId)
+    BoardUniqueDeck.putObject(item)
+
+end
+
+function placeSpells()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local LurkerBagId = LurkerVariables.call('getLurkerBagId')
+
+    --Get the bag
+    local LurkerBag = getObjectFromGUID(LurkerBagId)
+
+    local LurkerSpellsDeckId = LurkerVariables.call('getLurkerSpellsDeckId')
+
+    local params = {}
+    params.guid = LurkerSpellsDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = LurkerVariables.call('getLurkerPositionById',{LurkerSpellsDeckId})
+    local BoardSpellsDeckId = SetupVariablesNew.call('getBoardSpellsdeckId')
+    local BoardSpellsDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardSpellsDeckId})
+    params.position = {BoardSpellsDeckPos[1], BoardSpellsDeckPos[2],BoardSpellsDeckPos[3]}
+
+    params.smooth = true
+
+    local item = LurkerBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardSpellsScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardSpellsDeck = getObjectFromGUID(BoardSpellsDeckId)
+    BoardSpellsDeck.putObject(item)
+
+end
+
+function placeGateMarkerBag()
+    --Get the bag ID
+    local LurkerBagId = LurkerVariables.call('getLurkerBagId')
+
+    --Get the bag
+    local LurkerBag = getObjectFromGUID(LurkerBagId)
+
+    local LurkerGateMarkerBagId = LurkerVariables.call('getLurkerGateMarkerBagId')
+
+    local params = {}
+    params.guid = LurkerGateMarkerBagId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    params.position = LurkerVariables.call('getLurkerPositionById',{LurkerGateMarkerBagId})
+    params.smooth = true
+
+    local item = LurkerBag.takeObject(params)
+
+end
+
+function placeDunwGateMarkerBag()
+    --Get the bag ID
+    local LurkerBagId = LurkerVariables.call('getLurkerBagId')
+
+    --Get the bag
+    local LurkerBag = getObjectFromGUID(LurkerBagId)
+
+    local LurkerDunwGateMarkerBagId = LurkerVariables.call('getLurkerDunwGateMarkerBagId')
+
+    local params = {}
+    params.guid = LurkerDunwGateMarkerBagId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    params.position = LurkerVariables.call('getLurkerPositionById',{LurkerDunwGateMarkerBagId})
+    params.smooth = true
+
+    local item = LurkerBag.takeObject(params)
+
+end
+
+function placeKingGateMarkerBag()
+    --Get the bag ID
+    local LurkerBagId = LurkerVariables.call('getLurkerBagId')
+
+    --Get the bag
+    local LurkerBag = getObjectFromGUID(LurkerBagId)
+
+    local LurkerKingGateMarkerBagId = LurkerVariables.call('getLurkerKingGateMarkerBagId')
+
+    local params = {}
+    params.guid = LurkerKingGateMarkerBagId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    params.position = LurkerVariables.call('getLurkerPositionById',{LurkerKingGateMarkerBagId})
+    params.smooth = true
+
+    local item = LurkerBag.takeObject(params)
+
+end
+
+-- Flip it (Because if rotation is used, flip is ignored)
+-- Also, must wait before flipping
+function deckFlipper()
+
+    local LurkerDecks = LurkerVariables.getTable('LurkerDecks')
+
+    for i, obj in ipairs(LurkerDecks) do
+        getObjectFromGUID(obj).flip()
+    end
+end

@@ -1,0 +1,218 @@
+--setup
+-- local SetupVariables = getObjectFromGUID('f9d0b7')
+
+-- local Board_Monster_Bag_Id = 'f9fe2d'
+-- local Board_Mask_Monster_Bag_Id =  SetupVariables.call('getBoardMaskMonsterBagId')
+-- local Board_Mask_Monster_Bag =  getObjectFromGUID(Board_Mask_Monster_Bag_Id)
+
+-- local Board_Gate_Bag_Id = '8c026b'
+-- local Board_Gate_Bag_id = SetupVariables.call('getBoardGateBagId')
+-- local Board_Gate_Bag = getObjectFromGUID(Board_Gate_Bag_id)
+
+-- local Board_Monster_Bag_Id = SetupVariables.call('getBoardMonsterBagId')
+-- local Board_Monster_Bag = getObjectFromGUID(Board_Monster_Bag_Id)
+
+function placeLurkerBags()
+
+    local LurkerVariables = getObjectFromGUID('edd1ef')
+    local ControlPanelVariables = getObjectFromGUID('bf1ea5')
+    local SetupVariables = getObjectFromGUID('f9d0b7')
+    local Board_Gate_Bag_id = SetupVariables.call('getBoardGateBagId')
+    local Board_Gate_Bag = getObjectFromGUID(Board_Gate_Bag_id)
+
+    local Board_Gate_Bag_Position = SetupVariables.call('getBoardGateBagPosition')
+    local Board_Unused_Gates_Position = SetupVariables.call('getBoardUnusedGatesPosition')
+
+    KingsportSet = ControlPanelVariables.call('isKingsportSet')
+    DunwichSet = ControlPanelVariables.call('isDunwichSet')
+
+    -- The base gate bags will be replaced with the lurker ones
+    Board_Gate_Bag.setPosition(Board_Unused_Gates_Position)
+
+    local LurkerGateMarkerBagId = LurkerVariables.call('getLurkerGateMarkerBagId')
+    local LurkerGateMarkerBag = getObjectFromGUID(LurkerGateMarkerBagId)
+
+    LurkerGateMarkerBag.setPosition(Board_Gate_Bag_Position)
+
+    if KingsportSet == true then
+        local Lurker_King_Gate_Marker_Bag_id = LurkerVariables.call("getLurkerKingGateMarkerBagId")
+        local Lurker_King_Gate_Marker_Bag = getObjectFromGUID(Lurker_King_Gate_Marker_Bag_id)
+
+        -- Move from One Bag to the other
+        for _ = 1, #Lurker_King_Gate_Marker_Bag.getObjects() do
+            LurkerGateMarkerBag.putObject(Lurker_King_Gate_Marker_Bag.takeObject({}))
+        end
+    end
+
+    if DunwichSet == true then
+        local Lurker_Dunw_Gate_Marker_Bag_id = LurkerVariables.call("getLurkerDunwGateMarkerBagId")
+        local Lurker_Dunw_Gate_Marker_Bag = getObjectFromGUID(Lurker_Dunw_Gate_Marker_Bag_id)
+
+        for _ = 1, #Lurker_Dunw_Gate_Marker_Bag.getObjects() do
+            LurkerGateMarkerBag.putObject(Lurker_Dunw_Gate_Marker_Bag.takeObject({}))
+        end
+    end
+
+end
+
+function placeKingsportGateBags()
+
+    local KingsportVariables = getObjectFromGUID('00ac75')
+
+    local KingsportGateMarkerBagId = KingsportVariables.call('getKingsportGateMarkerBagId')
+    local KingsportGateMarkerBag = getObjectFromGUID(KingsportGateMarkerBagId)
+    local SetupVariables = getObjectFromGUID('f9d0b7')
+    local Board_Gate_Bag_id = SetupVariables.call('getBoardGateBagId')
+    local Board_Gate_Bag = getObjectFromGUID(Board_Gate_Bag_id)
+
+    -- Move from One Bag to the other
+    for _ = 1, #KingsportGateMarkerBag.getObjects() do
+        Board_Gate_Bag.putObject(KingsportGateMarkerBag.takeObject({}))
+    end
+end
+
+function placeDunwichGateBags()
+
+    local DunwichVariables = getObjectFromGUID('5932f9')
+
+    local DunwichGateMarkerBagId = DunwichVariables.call('getDunwichGateMarkerBagId')
+    local DunwichGateMarkerBag = getObjectFromGUID(DunwichGateMarkerBagId)
+    local SetupVariables = getObjectFromGUID('f9d0b7')
+    local Board_Gate_Bag_id = SetupVariables.call('getBoardGateBagId')
+    local Board_Gate_Bag = getObjectFromGUID(Board_Gate_Bag_id)
+
+    -- Move from One Bag to the other
+    for _ = 1, #DunwichGateMarkerBag.getObjects() do
+        Board_Gate_Bag.putObject(DunwichGateMarkerBag.takeObject({}))
+    end
+end
+
+function placeInnsmouthMonsterBags()
+
+    local SetupVariables = getObjectFromGUID('f9d0b7')
+    local InnsmouthVariables = getObjectFromGUID('5c39a4')
+
+    local Board_Monster_Bag_Id = SetupVariables.call('getBoardMonsterBagId')
+    local Board_Monster_Bag = getObjectFromGUID(Board_Monster_Bag_Id)
+
+    local InnsmouthMonsterBagId = InnsmouthVariables.call('getInnsmouthMonsterBagId')
+    local InnsmouthMonsterBag = getObjectFromGUID(InnsmouthMonsterBagId)
+
+    local InnsmouthMaskMonsterBagId = InnsmouthVariables.call('getInnsmouthMaskMonsterBagId')
+
+    -- Move from One Bag to the other
+    for _ = 1, #InnsmouthMonsterBag.getObjects() do
+        local obj = InnsmouthMonsterBag.takeObject({})
+        local objGUID = obj.getGUID()
+
+        if objGUID == InnsmouthMaskMonsterBagId then
+            takeInnsmouthMaskMonsters(obj)
+        else
+            Board_Monster_Bag.putObject(obj)
+        end
+    end
+end
+
+function takeInnsmouthMaskMonsters(obj)
+    local SetupVariables = getObjectFromGUID('f9d0b7')
+    local Board_Mask_Monster_Bag_Id =  SetupVariables.call('getBoardMaskMonsterBagId')
+    local Board_Mask_Monster_Bag =  getObjectFromGUID(Board_Mask_Monster_Bag_Id)
+
+    for _ = 1, #obj.getObjects() do
+        Board_Mask_Monster_Bag.putObject(obj.takeObject({}))
+    end
+end
+
+function placeDunwichMonsterBags()
+
+    local SetupVariables = getObjectFromGUID('f9d0b7')
+
+    local DunwichVariables = getObjectFromGUID('5932f9')
+    local DunwichMonsterBagId = DunwichVariables.call('getDunwichMonsterBagId')
+    local DunwichMonsterBag = getObjectFromGUID(DunwichMonsterBagId)
+
+    local Board_Monster_Bag_Id = SetupVariables.call('getBoardMonsterBagId')
+    local Board_Monster_Bag = getObjectFromGUID(Board_Monster_Bag_Id)
+
+    local Board_Mask_Monster_Bag_Id =  SetupVariables.call('getBoardMaskMonsterBagId')
+    local Board_Mask_Monster_Bag =  getObjectFromGUID(Board_Mask_Monster_Bag_Id)
+
+    local DunwichMaskMonsterBagId = DunwichVariables.call('getDunwichMaskMonsterBagId')
+
+    -- Move from One Bag to the other
+    for _ = 1, #DunwichMonsterBag.getObjects() do
+        local obj = DunwichMonsterBag.takeObject({})
+        local objGUID = obj.getGUID()
+
+        if objGUID == DunwichMaskMonsterBagId then
+            takeDunwichMaskMonsters(obj)
+        else
+            Board_Monster_Bag.putObject(obj)
+        end
+    end
+end
+
+function takeDunwichMaskMonsters(obj)
+    local SetupVariables = getObjectFromGUID('f9d0b7')
+    local Board_Mask_Monster_Bag_Id =  SetupVariables.call('getBoardMaskMonsterBagId')
+    local Board_Mask_Monster_Bag =  getObjectFromGUID(Board_Mask_Monster_Bag_Id)
+
+    for _ = 1, #obj.getObjects() do
+        Board_Mask_Monster_Bag.putObject(obj.takeObject({}))
+    end
+end
+
+function placeKingsportMonsterBags()
+
+    local SetupVariables = getObjectFromGUID('f9d0b7')
+
+    local KingsportVariables = getObjectFromGUID('00ac75')
+    local KingsportMonsterBagId = KingsportVariables.call('getKingsportMonsterBagId')
+    local KingsportMonsterBag = getObjectFromGUID(KingsportMonsterBagId)
+
+    local Board_Monster_Bag_Id = SetupVariables.call('getBoardMonsterBagId')
+    local Board_Monster_Bag = getObjectFromGUID(Board_Monster_Bag_Id)
+
+    local Board_Mask_Monster_Bag_Id =  SetupVariables.call('getBoardMaskMonsterBagId')
+    local Board_Mask_Monster_Bag =  getObjectFromGUID(Board_Mask_Monster_Bag_Id)
+
+    local KingsportMaskMonsterBagId = KingsportVariables.call('getKingsportMaskMonsterBagId')
+
+    -- Move from One Bag to the other
+    for _ = 1, #KingsportMonsterBag.getObjects() do
+        local obj = KingsportMonsterBag.takeObject({})
+        local objGUID = obj.getGUID()
+
+        if objGUID == KingsportMaskMonsterBagId then
+            takeKingsportMaskMonsters(obj)
+        else
+            Board_Monster_Bag.putObject(obj)
+        end
+    end
+end
+
+function takeKingsportMaskMonsters(obj)
+    local SetupVariables = getObjectFromGUID('f9d0b7')
+    local Board_Mask_Monster_Bag_Id =  SetupVariables.call('getBoardMaskMonsterBagId')
+    local Board_Mask_Monster_Bag =  getObjectFromGUID(Board_Mask_Monster_Bag_Id)
+
+    for _ = 1, #obj.getObjects() do
+        Board_Mask_Monster_Bag.putObject(obj.takeObject({}))
+    end
+end
+
+function placeGoatMonsterBags()
+
+    local SetupVariables = getObjectFromGUID('f9d0b7')
+
+    local Board_Monster_Bag_Id = SetupVariables.call('getBoardMonsterBagId')
+    local Board_Monster_Bag = getObjectFromGUID(Board_Monster_Bag_Id)
+
+    local GoatVariables = getObjectFromGUID('293f5a')
+    local GoatMonsterBagId = GoatVariables.call('getGoatMonsterBagId')
+    local GoatMonsterBag = getObjectFromGUID(GoatMonsterBagId)
+
+    for _ = 1, #GoatMonsterBag.getObjects() do
+        Board_Monster_Bag.putObject(GoatMonsterBag.takeObject({}))
+    end
+end

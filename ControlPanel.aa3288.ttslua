@@ -1,0 +1,1154 @@
+--The Pannel Itself
+local ControlPanelItself = getObjectFromGUID('aa3288')
+local ControlPanelVariables = getObjectFromGUID('bf1ea5')
+local CreateSetup = getObjectFromGUID('0f3048')
+
+-- The objects it knows
+
+function onload()
+    local ControlPanelVariables = getObjectFromGUID('bf1ea5')
+
+    LurkerSet = ControlPanelVariables.call('isLurkerSet')
+    PharaohSet = ControlPanelVariables.call('isPharaohSet')
+    GoatSet = ControlPanelVariables.call('isGoatSet')
+    YellowSet = ControlPanelVariables.call('isYellowSet')
+    InnsmouthSet = ControlPanelVariables.call('isInnsmouthSet')
+    KingsportSet = ControlPanelVariables.call('isKingsportSet')
+    DunwichSet = ControlPanelVariables.call('isDunwichSet')
+    MiskatonicSet = ControlPanelVariables.call('isMiskatonicSet')
+    LurkerGateSet = ControlPanelVariables.call('isLurkerGateSet')
+    DunwichMonsterOnly = ControlPanelVariables.call('isDunwichMonsterOnly')
+    InnsmouthMonsterOnly = ControlPanelVariables.call('isDunwichMonsterOnly')
+    KingsportMonsterOnly = ControlPanelVariables.call('isDunwichMonsterOnly')
+    GoatMonsterOnly = ControlPanelVariables.call('isGoatMonsterOnly')
+    YellowOriginalActs = ControlPanelVariables.call('isYellowOriginalActs')
+    LurkerSmallCardsOnly = ControlPanelVariables.call('isLurkerSmallCardsOnly')
+    PharaohSmallCardsOnly = ControlPanelVariables.call('isPharaohSmallCardsOnly')
+    GoatSmallCardsOnly = ControlPanelVariables.call('isGoatSmallCardsOnly')
+    YellowSmallCardsOnly = ControlPanelVariables.call('isYellowSmallCardsOnly')
+    InnsmouthSmallCardsOnly = ControlPanelVariables.call('isInnsmouthSmallCardsOnly')
+    KingsportSmallCardsOnly = ControlPanelVariables.call('isKingsportSmallCardsOnly')
+    DunwichSmallCardsOnly = ControlPanelVariables.call('isDunwichSmallCardsOnly')
+
+    self.createButton(LurkeraddButton)
+    self.createButton(LurkerRemoveButton)
+    self.createButton(LurkeraddVariantButton)
+    self.createButton(LurkerRemoveVariantButton)
+    self.createButton(LurkerAddSmallCardsButton)
+    self.createButton(LurkerRemoveSmallCardsButton)
+    self.createButton(PharaohAddButton)
+    self.createButton(PharaohRemoveButton)
+    self.createButton(PharaohAddSmallCardsButton)
+    self.createButton(PharaohRemoveSmallCardsButton)
+    self.createButton(GoatAddButton)
+    self.createButton(GoatRemoveButton)
+    self.createButton(GoataddMonsterButton)
+    self.createButton(GoatRemoveMonsterButton)
+    self.createButton(GoatAddSmallCardsButton)
+    self.createButton(GoatRemoveSmallCardsButton)
+    self.createButton(YellowAddButton)
+    self.createButton(YellowRemoveButton)
+    self.createButton(YellowaddActsButton)
+    self.createButton(YellowRemoveActsButton)
+    self.createButton(YellowAddSmallCardsButton)
+    self.createButton(YellowRemoveSmallCardsButton)
+    self.createButton(InnsmouthAddButton)
+    self.createButton(InnsmouthRemoveButton)
+    self.createButton(InnsmouthaddMonsterButton)
+    self.createButton(InnsmouthRemoveMonsterButton)
+    self.createButton(InnsmouthAddSmallCardsButton)
+    self.createButton(InnsmouthRemoveSmallCardsButton)
+    self.createButton(KingsportAddButton)
+    self.createButton(KingsportRemoveButton)
+    self.createButton(KingsportaddMonsterButton)
+    self.createButton(KingsportRemoveMonsterButton)
+    self.createButton(KingsportAddSmallCardsButton)
+    self.createButton(KingsportRemoveSmallCardsButton)
+    self.createButton(DunwichAddButton)
+    self.createButton(DunwichRemoveButton)
+    self.createButton(DunwichaddMonsterButton)
+    self.createButton(DunwichRemoveMonsterButton)
+    self.createButton(DunwichAddSmallCardsButton)
+    self.createButton(DunwichRemoveSmallCardsButton)
+    self.createButton(MiskatonicAddButton)
+    self.createButton(MiskatonicRemoveButton)
+    self.createButton(SetupButton)
+end
+
+--Adds Lurker to the table
+function LurkerButtonAddClicked()
+    local LurkerSet = ControlPanelVariables.call('isLurkerSet')
+    if LurkerSet == false then
+        -- LurkerPlacementTable.call('SetLurkerComponentsOnTable')
+        LurkerSet = true
+        ControlPanelVariables.call('setLurker',{LurkerSet})
+        broadcastToAll("Lurker at the Threshold Set will be added", Table)
+    else
+        broadcastToAll("Lurker at the Threshold is already selected", Table)
+    end
+end
+
+-- Removes Lurker from the set Table
+function LurkerButtonRemoveClicked()
+    local LurkerSet = ControlPanelVariables.call('isLurkerSet')
+    if LurkerSet == true then
+        -- LurkerRemove.call('LurkerRemove')
+        LurkerSet = false
+        ControlPanelVariables.call('setLurker',{LurkerSet})
+        broadcastToAll("Lurker at the Threshold Set will NOT be added", Table)
+    else
+        broadcastToAll("Lurker at the Threshold Gate Variant is not selected", Table)
+    end
+end
+
+-- Adds the Lurker Gate Variant - Removes the original gates and does not add
+-- gates for the big box expansions
+function LurkerButtonAddVariantClicked()
+    local LurkerGateSet = ControlPanelVariables.call('isLurkerGateSet')
+    if LurkerGateSet == false then
+        -- LurkerPlacementTable.call('SetLurkerComponentsOnTable')
+        LurkerGateSet = true
+        ControlPanelVariables.call('setLurkerGate',{LurkerGateSet})
+        broadcastToAll("Lurker at the Threshold Gate Variant will be added", Table)
+    else
+        broadcastToAll("Lurker at the Threshold Gate Variant is already selected", Table)
+    end
+end
+
+-- Removes Lurker from the set Table
+function LurkerButtonRemoveVariantClicked()
+    local LurkerGateSet = ControlPanelVariables.call('isLurkerGateSet')
+    if LurkerGateSet == true then
+        -- LurkerRemove.call('LurkerRemove')
+        LurkerGateSet = false
+        ControlPanelVariables.call('setLurkerGate',{LurkerGateSet})
+        broadcastToAll("Lurker at the Threshold Gate Variant will NOT be added", Table)
+    else
+        broadcastToAll("Lurker at the Threshold Gate Variant is not selected", Table)
+    end
+end
+
+--Adds Lurker to the table
+function LurkerButtonAddSmallCardsClicked()
+
+    if LurkerSmallCardsOnly == false then
+        LurkerSmallCardsOnly = true
+        ControlPanelVariables.call('setLurkerSmallCardsOnly',{LurkerSmallCardsOnly})
+        broadcastToAll("The Lurker Small Cards only will be added", Table)
+    else
+        broadcastToAll("Lurker Small Cards already selected", Table)
+    end
+end
+
+-- Removes Lurker from the set Table
+function LurkerButtonRemoveSmallCardsClicked()
+
+    if LurkerSmallCardsOnly == true then
+        LurkerSmallCardsOnly = false
+        ControlPanelVariables.call('setLurkerSmallCardsOnly',{LurkerSmallCardsOnly})
+        broadcastToAll("The Lurker Small Cards will NOT will be added", Table)
+    else
+        broadcastToAll("Lurker Small Cards is not selected", Table)
+    end
+end
+
+--Adds Pharaoh to the table
+function PharaohButtonAddClicked()
+    local PharaohSet = ControlPanelVariables.call('isPharaohSet')
+    if PharaohSet == false then
+        -- PharaohPlacement.call('SetPharaohComponentsOnTable')
+        PharaohSet = true
+        ControlPanelVariables.call('setPharaoh',{PharaohSet})
+        broadcastToAll("The curse of the Dark Pharaoh Revised Set will be added", Table)
+    else
+        broadcastToAll("The curse of the Dark Pharaoh Revised is already selected", Table)
+    end
+end
+
+-- Removes Pharaoh from the set Table
+function PharaohButtonRemoveClicked()
+    local PharaohSet = ControlPanelVariables.call('isPharaohSet')
+    if PharaohSet == true then
+        -- PharaohRemove.call('PharaohRemove')
+        PharaohSet = false
+        ControlPanelVariables.call('setPharaoh',{PharaohSet})
+        broadcastToAll("The curse of the Dark Pharaoh Revised Set will NOT be added", Table)
+    else
+        broadcastToAll("The curse of the Dark Pharaoh Revised is not on table", Table)
+    end
+end
+
+--Adds Pharaoh to the table
+function PharaohButtonAddSmallCardsClicked()
+
+    if PharaohSmallCardsOnly == false then
+        PharaohSmallCardsOnly = true
+        ControlPanelVariables.call('setPharaohSmallCardsOnly',{PharaohSmallCardsOnly})
+        broadcastToAll("The Pharaoh Small Cards only will be added", Table)
+    else
+        broadcastToAll("Pharaoh Small Cards already selected", Table)
+    end
+end
+
+-- Removes Pharaoh from the set Table
+function PharaohButtonRemoveSmallCardsClicked()
+
+    if PharaohSmallCardsOnly == true then
+        PharaohSmallCardsOnly = false
+        ControlPanelVariables.call('setPharaohSmallCardsOnly',{PharaohSmallCardsOnly})
+        broadcastToAll("The Pharaoh Small Cards will NOT will be added", Table)
+    else
+        broadcastToAll("Pharaoh Small Cards is not selected", Table)
+    end
+end
+
+--Adds Goat to the table
+function GoatButtonAddClicked()
+    local GoatSet = ControlPanelVariables.call('isGoatSet')
+    if GoatSet == false then
+        -- GoatPlacement.call('SetGoatComponentsOnTable')
+        GoatSet = true
+        ControlPanelVariables.call('setGoat',{GoatSet})
+        broadcastToAll("The black goat of the woods Set will be added", Table)
+    else
+        broadcastToAll("The black goat of the woods is already selected", Table)
+    end
+end
+
+-- Removes Goat from the set Table
+function GoatButtonRemoveClicked()
+    local GoatSet = ControlPanelVariables.call('isGoatSet')
+    if GoatSet == true then
+        -- GoatRemove.call('GoatRemove')
+        GoatSet = false
+        GoatMonsterOnly = false
+        ControlPanelVariables.call('setGoat',{GoatSet})
+        ControlPanelVariables.call('setGoatMonsterOnly',{GoatMonsterOnly})
+        broadcastToAll("The black goat of the woods Set will NOT be added", Table)
+    else
+        broadcastToAll("The black goat of the woods is not on table", Table)
+    end
+end
+--Adds Goat to the table
+function GoatButtonAddSmallCardsClicked()
+
+    if GoatSmallCardsOnly == false then
+        GoatSmallCardsOnly = true
+        ControlPanelVariables.call('setGoatSmallCardsOnly',{GoatSmallCardsOnly})
+        broadcastToAll("The Goat Small Cards only will be added", Table)
+    else
+        broadcastToAll("Goat Small Cards already selected", Table)
+    end
+end
+
+-- Removes Goat from the set Table
+function GoatButtonRemoveSmallCardsClicked()
+
+    if GoatSmallCardsOnly == true then
+        GoatSmallCardsOnly = false
+        ControlPanelVariables.call('setGoatSmallCardsOnly',{GoatSmallCardsOnly})
+        broadcastToAll("The Goat Small Cards will NOT will be added", Table)
+    else
+        broadcastToAll("Goat Small Cards is not selected", Table)
+    end
+end
+
+--Adds Yellow to the table
+function YellowButtonAddClicked()
+    local YellowSet = ControlPanelVariables.call('isYellowSet')
+    if YellowSet == false or YellowOriginalActs == true then
+        -- YellowPlacement.call('SetYellowComponentsOnTable')
+        YellowOriginalActs = false
+        ControlPanelVariables.call('setYellowOriginalActs',{YellowOriginalActs})
+        YellowSet = true
+        ControlPanelVariables.call('setYellow',{YellowSet})
+        broadcastToAll("The King in Yellow Set will be added (With Miskatonic Acts)", Table)
+    else
+        broadcastToAll("The King in Yellow is already selected", Table)
+    end
+end
+
+-- Removes Yellow from the set Table
+function YellowButtonRemoveClicked()
+    local YellowSet = ControlPanelVariables.call('isYellowSet')
+    if YellowSet == true then
+        -- YellowRemove.call('YellowRemove')
+        YellowSet = false
+        ControlPanelVariables.call('setYellow',{YellowSet})
+        YellowOriginalActs = false
+        ControlPanelVariables.call('setYellowOriginalActs',{YellowOriginalActs})
+        broadcastToAll("The King in Yellow Set will NOT be added", Table)
+    else
+        broadcastToAll("The King in Yellow is not on table", Table)
+    end
+end
+--Adds Yellow to the table
+function YellowButtonAddSmallCardsClicked()
+
+    if YellowSmallCardsOnly == false then
+        YellowSmallCardsOnly = true
+        ControlPanelVariables.call('setYellowSmallCardsOnly',{YellowSmallCardsOnly})
+        broadcastToAll("The Yellow Small Cards only will be added", Table)
+    else
+        broadcastToAll("Yellow Small Cards already selected", Table)
+    end
+end
+
+-- Removes Yellow from the set Table
+function YellowButtonRemoveSmallCardsClicked()
+
+    if YellowSmallCardsOnly == true then
+        YellowSmallCardsOnly = false
+        ControlPanelVariables.call('setYellowSmallCardsOnly',{YellowSmallCardsOnly})
+        broadcastToAll("The Yellow Small Cards will NOT will be added", Table)
+    else
+        broadcastToAll("Yellow Small Cards is not selected", Table)
+    end
+end
+--Adds Innsmouth to the table
+function InnsmouthButtonAddClicked()
+    local InnsmouthSet = ControlPanelVariables.call('isInnsmouthSet')
+    if InnsmouthSet == false then
+        -- InnsmouthPlacement.call('SetInnsmouthComponentsOnTable')
+        InnsmouthSet = true
+        InnsmouthMonsterOnly = false
+        ControlPanelVariables.call('setInnsmouth',{InnsmouthSet})
+        ControlPanelVariables.call('setInnsmouthMonsterOnly',{InnsmouthMonsterOnly})
+        broadcastToAll("The Innsmouth Horror Set will be added", Table)
+    else
+        broadcastToAll("Innsmouth Horror is already selected", Table)
+    end
+end
+
+-- Removes Innsmouth from the set Table
+function InnsmouthButtonRemoveClicked()
+    local InnsmouthSet = ControlPanelVariables.call('isInnsmouthSet')
+    if InnsmouthSet == true then
+        -- InnsmouthRemove.call('InnsmouthRemove')
+        InnsmouthSet = false
+        ControlPanelVariables.call('setInnsmouth',{InnsmouthSet})
+        broadcastToAll("The Innsmouth Horror Set will NOT be added", Table)
+    else
+        broadcastToAll("Innsmouth Horror is not on table", Table)
+    end
+end
+--Adds Innsmouth to the table
+function InnsmouthButtonAddSmallCardsClicked()
+
+    if InnsmouthSmallCardsOnly == false then
+        InnsmouthSmallCardsOnly = true
+        ControlPanelVariables.call('setInnsmouthSmallCardsOnly',{InnsmouthSmallCardsOnly})
+        broadcastToAll("The Innsmouth Small Cards only will be added", Table)
+    else
+        broadcastToAll("Innsmouth Small Cards already selected", Table)
+    end
+end
+
+-- Removes Innsmouth from the set Table
+function InnsmouthButtonRemoveSmallCardsClicked()
+
+    if InnsmouthSmallCardsOnly == true then
+        InnsmouthSmallCardsOnly = false
+        ControlPanelVariables.call('setInnsmouthSmallCardsOnly',{InnsmouthSmallCardsOnly})
+        broadcastToAll("The Innsmouth Small Cards will NOT will be added", Table)
+    else
+        broadcastToAll("Innsmouth Small Cards is not selected", Table)
+    end
+end
+
+--Adds Kingsport to the table
+function KingsportButtonAddClicked()
+    local KingsportSet = ControlPanelVariables.call('isKingsportSet')
+    if KingsportSet == false then
+        -- KingsportPlacement.call('SetKingsportComponentsOnTable')
+        KingsportSet = true
+        KingsportMonsterOnly = false
+        ControlPanelVariables.call('setKingsport',{KingsportSet})
+        ControlPanelVariables.call('setKingsportMonsterOnly',{KingsportMonsterOnly})
+        broadcastToAll("The Kingsport Horror Set will be added", Table)
+    else
+        broadcastToAll("Kingsport Horror is already selected", Table)
+    end
+end
+
+-- Removes Kingsport from the set Table
+function KingsportButtonRemoveClicked()
+    local KingsportSet = ControlPanelVariables.call('isKingsportSet')
+    if KingsportSet == true then
+        -- KingsportRemove.call('KingsportRemove')
+        KingsportSet = false
+        ControlPanelVariables.call('setKingsport',{KingsportSet})
+        broadcastToAll("The Kingsport Horror Set will NOT be added", Table)
+    else
+        broadcastToAll("Kingsport Horror is not on table", Table)
+    end
+end
+--Adds Kingsport to the table
+function KingsportButtonAddSmallCardsClicked()
+
+    if KingsportSmallCardsOnly == false then
+        KingsportSmallCardsOnly = true
+        ControlPanelVariables.call('setKingsportSmallCardsOnly',{KingsportSmallCardsOnly})
+        broadcastToAll("The Kingsport Small Cards only will be added", Table)
+    else
+        broadcastToAll("Kingsport Small Cards already selected", Table)
+    end
+end
+
+-- Removes Kingsport from the set Table
+function KingsportButtonRemoveSmallCardsClicked()
+
+    if KingsportSmallCardsOnly == true then
+        KingsportSmallCardsOnly = false
+        ControlPanelVariables.call('setKingsportSmallCardsOnly',{KingsportSmallCardsOnly})
+        broadcastToAll("The Kingsport Small Cards will NOT will be added", Table)
+    else
+        broadcastToAll("Kingsport Small Cards is not selected", Table)
+    end
+end
+
+--Adds Dunwich to the table
+function DunwichButtonAddClicked()
+    local DunwichSet = ControlPanelVariables.call('isDunwichSet')
+    if DunwichSet == false then
+        -- DunwichPlacement.call('SetDunwichComponentsOnTable')
+        DunwichSet = true
+        DunwichMonsterOnly = false
+        ControlPanelVariables.call('setDunwich',{DunwichSet})
+        ControlPanelVariables.call('setDunwichMonsterOnly',{DunwichMonsterOnly})
+
+        broadcastToAll("The Dunwich Horror Set will be added", Table)
+    else
+        broadcastToAll("Dunwich Horror already selected", Table)
+    end
+end
+
+-- Removes Dunwich from the set Table
+function DunwichButtonRemoveClicked()
+    local DunwichSet = ControlPanelVariables.call('isDunwichSet')
+    if DunwichSet == true then
+        -- DunwichRemove.call('DunwichRemove')
+        DunwichSet = false
+        ControlPanelVariables.call('setDunwich',{DunwichSet})
+        broadcastToAll("The Dunwich Horror Set will NOT will be added", Table)
+    else
+        broadcastToAll("Dunwich Horror is not on table", Table)
+    end
+end
+--Adds Dunwich to the table
+function DunwichButtonAddSmallCardsClicked()
+
+    if DunwichSmallCardsOnly == false then
+        DunwichSmallCardsOnly = true
+        ControlPanelVariables.call('setDunwichSmallCardsOnly',{DunwichSmallCardsOnly})
+        broadcastToAll("The Dunwich Small Cards only will be added", Table)
+    else
+        broadcastToAll("Dunwich Small Cards already selected", Table)
+    end
+end
+
+-- Removes Dunwich from the set Table
+function DunwichButtonRemoveSmallCardsClicked()
+
+    if DunwichSmallCardsOnly == true then
+        DunwichSmallCardsOnly = false
+        ControlPanelVariables.call('setDunwichSmallCardsOnly',{DunwichSmallCardsOnly})
+        broadcastToAll("The Dunwich Small Cards will NOT will be added", Table)
+    else
+        broadcastToAll("Dunwich Small Cards is not selected", Table)
+    end
+end
+
+--
+function MiskatonicButtonAddClicked(MiskatonicSet)
+    local MiskatonicSet = ControlPanelVariables.call('isMiskatonicSet')
+    if MiskatonicSet == false then
+        -- DunwichPlacement.call('SetDunwichComponentsOnTable')
+        MiskatonicSet = true
+        ControlPanelVariables.call('setMiskatonic',{MiskatonicSet})
+        broadcastToAll("The Miskatonic Horror Set will be added", Table)
+    else
+        broadcastToAll("Miskatonic Horror already selected", Table)
+    end
+end
+
+--
+function MiskatonicButtonRemoveClicked()
+    local MiskatonicSet = ControlPanelVariables.call('isMiskatonicSet')
+    if MiskatonicSet == true then
+        -- MiskatonicRemove.call('MiskatonicRemove')
+        MiskatonicSet = false
+        ControlPanelVariables.call('setMiskatonic',{MiskatonicSet})
+        broadcastToAll("The Miskatonic Horror Set will NOT be added", Table)
+    else
+        broadcastToAll("Miskatonic Horror is not on table", Table)
+    end
+end
+
+function setupButtonClicked()
+
+    if LurkerSet == nil then
+        LurkerSet = false
+        ControlPanelVariables.call('setLurker',{LurkerSet})
+    end
+
+    if PharaohSet == nil then
+        PharaohSet = false
+        ControlPanelVariables.call('setPharaoh',{PharaohSet})
+    end
+
+    if GoatSet == nil then
+        GoatSet = false
+        ControlPanelVariables.call('setGoat',{GoatSet})
+    end
+
+    if YellowSet == nil then
+        YellowSet = false
+        ControlPanelVariables.call('setYellow',{YellowSet})
+    end
+
+    if InnsmouthSet == nil then
+        InnsmouthSet = false
+        ControlPanelVariables.call('setInnsmouth',{InnsmouthSet})
+    end
+
+    if KingsportSet == nil then
+        KingsportSet = false
+        ControlPanelVariables.call('setKingsport',{KingsportSet})
+    end
+
+    if DunwichSet == nil then
+        DunwichSet = false
+        ControlPanelVariables.call('setDunwich',{DunwichSet})
+    end
+
+    if MiskatonicSet == nil then
+        MiskatonicSet = false
+        ControlPanelVariables.call('setMiskatonic',{MiskatonicSet})
+    end
+
+    if LurkerGateSet == nil then
+        LurkerGateSet = false
+        ControlPanelVariables.call('setLurkerGateSet',{LurkerGateSet})
+    end
+
+    if DunwichMonsterOnly == nil then
+        DunwichMonsterOnly = false
+        ControlPanelVariables.call('setDunwichMonsterOnly',{DunwichMonsterOnly})
+    end
+
+    if InnsmouthMonsterOnly == nil then
+        InnsmouthMonsterOnly = false
+        ControlPanelVariables.call('setInnsmouthMonsterOnly',{InnsmouthMonsterOnly})
+    end
+
+    if KingsportMonsterOnly == nil then
+        KingsportMonsterOnly = false
+        ControlPanelVariables.call('setKingsportMonsterOnly',{KingsportMonsterOnly})
+    end
+
+    if GoatMonsterOnly == nil then
+        GoatMonsterOnly = false
+        ControlPanelVariables.call('setGoatMonsterOnly',{GoatMonsterOnly})
+    end
+
+    if YellowOriginalActs == nil then
+        YellowOriginalActs = false
+        ControlPanelVariables.call('setYellowOriginalActs',{YellowOriginalActs})
+    end
+
+    if LurkerSmallCardsOnly == nil then
+        LurkerSmallCardsOnly = false
+        ControlPanelVariables.call('setLurkerSmallCardsOnly',{LurkerSmallCardsOnly})
+    end
+
+    if PharaohSmallCardsOnly == nil then
+        PharaohSmallCardsOnly = false
+        ControlPanelVariables.call('setPharaohSmallCardsOnly',{PharaohSmallCardsOnly})
+    end
+
+    if GoatSmallCardsOnly == nil then
+        GoatSmallCardsOnly = false
+        ControlPanelVariables.call('setGoatSmallCardsOnly',{GoatSmallCardsOnly})
+    end
+
+    if YellowSmallCardsOnly == nil then
+        YellowSmallCardsOnly = false
+        ControlPanelVariables.call('setYellowSmallCardsOnly',{YellowSmallCardsOnly})
+    end
+
+    if InnsmouthSmallCardsOnly == nil then
+        InnsmouthSmallCardsOnly = false
+        ControlPanelVariables.call('setInnsmouthSmallCardsOnly',{InnsmouthSmallCardsOnly})
+    end
+
+    if KingsportSmallCardsOnly == nil then
+        KingsportSmallCardsOnly = false
+        ControlPanelVariables.call('setKingsportSmallCardsOnly',{KingsportSmallCardsOnly})
+    end
+
+    if DunwichSmallCardsOnly == nil then
+        DunwichSmallCardsOnly = false
+        ControlPanelVariables.call('setDunwichSmallCardsOnly',{DunwichSmallCardsOnly})
+    end
+
+
+    --Remove the Setup button
+    -- self.removeButton(43)
+    CreateSetup.call('performSetup')
+end
+
+--Adds Goat to the table
+function GoataddMonsterButtonClicked()
+
+    if GoatMonsterOnly == false then
+        GoatMonsterOnly = true
+        ControlPanelVariables.call('setGoatMonsterOnly',{GoatMonsterOnly})
+        broadcastToAll("The Black Goat Monsters only will be added", Table)
+    else
+        broadcastToAll("Black Goat Monsters already selected", Table)
+    end
+end
+
+-- Removes Goat from the set Table
+function GoatRemoveMonsterButtonClicked()
+
+    if GoatMonsterOnly == true then
+        GoatMonsterOnly = false
+        ControlPanelVariables.call('setGoatMonsterOnly',{GoatMonsterOnly})
+        broadcastToAll("The Black Goat Monsters will NOT will be added", Table)
+    else
+        broadcastToAll("Black Goat Monsters is not selected", Table)
+    end
+end
+
+--Adds Yellow to the table
+function YellowActsButtonAddClicked()
+    local YellowSet = ControlPanelVariables.call('isYellowSet')
+    if YellowOriginalActs == false or YellowSet == false then
+        -- YellowPlacement.call('SetYellowComponentsOnTable')
+        YellowOriginalActs = true
+        ControlPanelVariables.call('setYellowOriginalActs',{YellowOriginalActs})
+        YellowSet = true
+        ControlPanelVariables.call('setYellow',{YellowSet})
+        broadcastToAll("The King in Yellow Set will be added (With The Original expansion acts)", Table)
+    else
+        broadcastToAll("The King in Yellow is already selected", Table)
+    end
+end
+
+-- Removes Yellow from the set Table
+function YellowActsButtonRemoveClicked()
+    local YellowSet = ControlPanelVariables.call('isYellowSet')
+    if YellowSet == true then
+        -- YellowRemove.call('YellowRemove')
+        YellowOriginalActs = false
+        ControlPanelVariables.call('setYellowOriginalActs',{YellowOriginalActs})
+        YellowSet = false
+        ControlPanelVariables.call('setYellow',{YellowSet})
+        broadcastToAll("The King in Yellow Set will NOT be added", Table)
+    else
+        broadcastToAll("The King in Yellow is not on table", Table)
+    end
+end
+
+
+--Adds Innsmouth Monsters to the table
+function InnsmouthaddMonsterButtonClicked()
+
+    if InnsmouthMonsterOnly == false then
+        InnsmouthMonsterOnly = true
+        ControlPanelVariables.call('setInnsmouthMonsterOnly',{InnsmouthMonsterOnly})
+        broadcastToAll("The Innsmouth Horror Monsters only will be added", Table)
+    else
+        broadcastToAll("Innsmouth Horror Monsters already selected", Table)
+    end
+end
+
+-- Removes Innsmouth Monsters from the set Table
+function InnsmouthRemoveMonsterButtonClicked()
+
+    if InnsmouthMonsterOnly == true then
+        InnsmouthMonsterOnly = false
+        ControlPanelVariables.call('setInnsmouthMonsterOnly',{InnsmouthMonsterOnly})
+        broadcastToAll("The Innsmouth Horror Monsters will NOT will be added", Table)
+    else
+        broadcastToAll("Innsmouth Horror Monsters is not selected", Table)
+    end
+end
+
+--Adds Dunwich to the table
+function DunwichaddMonsterButtonClicked()
+
+    if DunwichMonsterOnly == false then
+        DunwichMonsterOnly = true
+        ControlPanelVariables.call('setDunwichMonsterOnly',{DunwichMonsterOnly})
+        broadcastToAll("The Dunwich Horror Monsters only will be added", Table)
+    else
+        broadcastToAll("Dunwich Horror Monsters already selected", Table)
+    end
+end
+
+-- Removes Dunwich from the set Table
+function DunwichRemoveMonsterButtonClicked()
+
+    if DunwichMonsterOnly == true then
+        DunwichMonsterOnly = false
+        ControlPanelVariables.call('setDunwichMonsterOnly',{DunwichMonsterOnly})
+        broadcastToAll("The Dunwich Horror Monsters will NOT will be added", Table)
+    else
+        broadcastToAll("Dunwich Horror Monsters is not selected", Table)
+    end
+end
+--Adds Kingsport to the table
+function KingsportaddMonsterButtonClicked()
+
+    if KingsportMonsterOnly == false then
+        KingsportMonsterOnly = true
+        ControlPanelVariables.call('setKingsportMonsterOnly',{KingsportMonsterOnly})
+        broadcastToAll("The Kingsport Horror Monsters only will be added", Table)
+    else
+        broadcastToAll("Kingsport Horror Monsters already selected", Table)
+    end
+end
+
+-- Removes Kingsport from the set Table
+function KingsportRemoveMonsterButtonClicked()
+
+    if KingsportMonsterOnly == true then
+        KingsportMonsterOnly = false
+        ControlPanelVariables.call('setKingsportMonsterOnly',{KingsportMonsterOnly})
+        broadcastToAll("The Kingsport Horror Monsters will NOT will be added", Table)
+    else
+        broadcastToAll("Kingsport Horror Monsters is not selected", Table)
+    end
+end
+
+----tables for buttons
+LurkeraddButton = {
+click_function = 'LurkerButtonAddClicked',
+function_owner = self,
+label = 'Add Lurker at the Threshold',
+tooltip = "Add The Lurker at the Threshold Expansion set to the Setup (Keeps Original Gates)",
+position = {-6.5,0.75,-7.5},
+width = 1380,
+height = 240,
+font_size = 100
+}
+LurkerRemoveButton = {
+click_function = 'LurkerButtonRemoveClicked',
+function_owner = self,
+label = 'Remove Lurker at the Threshold',
+tooltip = "Remove The Lurker at the Threshold Expansion set from Setup",
+position = {-3.5,0.75,-7.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+LurkeraddVariantButton = {
+click_function = 'LurkerButtonAddVariantClicked',
+function_owner = self,
+label = 'Add Lurker Gate Variant',
+tooltip = "Add Lurker Gate Variant Expansion set to the Setup (Replaces Original Gates)",
+position = {0,0.75,-7.5},
+width = 1380,
+height = 240,
+font_size = 100
+}
+LurkerRemoveVariantButton = {
+click_function = 'LurkerButtonRemoveVariantClicked',
+function_owner = self,
+label = 'Remove Lurker Gate Variant',
+tooltip = "Remove Lurker Gate Variant set from Setup (Adds Original Gates)",
+position = {3,0.75,-7.5},
+width = 1380,
+height = 240,
+font_size = 100
+}
+LurkerAddSmallCardsButton = {
+click_function = "LurkerButtonAddSmallCardsClicked",
+function_owner = self,
+label = "Add Small Cards",
+tooltip = "Add Lurker Small Cards",
+position = {5.5, 0.75, -7.5},
+width = 880,
+height = 240,
+font_size = 100
+}
+LurkerRemoveSmallCardsButton = {
+click_function = "LurkerButtonRemoveSmallCardsClicked",
+function_owner = self,
+label = "Remove Small Cards",
+tooltip = "Remove Lurker Small Cards",
+position = {7.5, 0.75, -7.5},
+width = 980,
+height = 240
+}
+PharaohAddButton = {
+click_function = 'PharaohButtonAddClicked',
+function_owner = self,
+label = 'Add Curse of Dark Pharaoh',
+tooltip = "Add Curse of Dark Pharaoh Expansion set to the Setup",
+position = {-6.5,0.75,-6.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+PharaohRemoveButton = {
+click_function = 'PharaohButtonRemoveClicked',
+function_owner = self,
+label = 'Remove Curse of Dark Pharaoh',
+tooltip = "Remove Curse of Dark Pharaoh Expansion set from Setup",
+position = {-3.5,0.75,-6.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+PharaohAddSmallCardsButton = {
+click_function = "PharaohButtonAddSmallCardsClicked",
+function_owner = self,
+label = "Add Small Cards",
+tooltip = "Add Pharaoh Small Cards",
+position = {5.5, 0.75, -6.5},
+width = 880,
+height = 240,
+font_size = 100
+}
+PharaohRemoveSmallCardsButton = {
+click_function = "PharaohButtonRemoveSmallCardsClicked",
+function_owner = self,
+label = "Remove Small Cards",
+tooltip = "Remove Pharaoh Small Cards",
+position = {7.5, 0.75, -6.5},
+width = 980,
+height = 240
+}
+GoatAddButton = {
+click_function = 'GoatButtonAddClicked',
+function_owner = self,
+label = 'Add Black Goat of the Woods',
+tooltip = "Add Black Goat of the Woods Expansion set to the Setup",
+position = {-6.5,0.75,-5.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+GoatRemoveButton = {
+click_function = 'GoatButtonRemoveClicked',
+function_owner = self,
+label = 'Remove Black Goat of the Woods',
+tooltip = "Remove Black Goat of the Woods Expansion set from Setup",
+position = {-3.5,0.75,-5.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+GoataddMonsterButton = {
+click_function = 'GoataddMonsterButtonClicked',
+function_owner = self,
+label = 'Add Black Goat Monsters',
+tooltip = "Adds only the Black Goat Monsters to the Setup (overriden by Black Goat selection)",
+position = {0,0.75,-5.5},
+width = 1380,
+height = 240,
+font_size = 100
+}
+GoatRemoveMonsterButton = {
+click_function = 'GoatRemoveMonsterButtonClicked',
+function_owner = self,
+label = 'Remove Black Goat Monsters',
+tooltip = "Removes only the Black Goat Monsters only from Setup (overriden by Black Goat selection)",
+position = {3,0.75,-5.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+GoatAddSmallCardsButton = {
+click_function = "GoatButtonAddSmallCardsClicked",
+function_owner = self,
+label = "Add Small Cards",
+tooltip = "Add Goat Small Cards",
+position = {5.5, 0.75, -5.5},
+width = 880,
+height = 240,
+font_size = 100
+}
+GoatRemoveSmallCardsButton = {
+click_function = "GoatButtonRemoveSmallCardsClicked",
+function_owner = self,
+label = "Remove Small Cards",
+tooltip = "Remove Goat Small Cards",
+position = {7.5, 0.75, -5.5},
+width = 980,
+height = 240
+}
+YellowAddButton = {
+click_function = 'YellowButtonAddClicked',
+function_owner = self,
+label = 'Add The King in Yellow',
+tooltip = "Add The King in Yellow Expansion set to the Setup",
+position = {-6.5,0.75,-4.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+YellowRemoveButton = {
+click_function = 'YellowButtonRemoveClicked',
+function_owner = self,
+label = 'Remove The King in Yellow',
+tooltip = "Remove The King in Yellow Expansion set from Setup",
+position = {-3.5,0.75,-4.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+YellowaddActsButton = {
+click_function = 'YellowActsButtonAddClicked',
+function_owner = self,
+label = 'Add KIY Original Acts',
+tooltip = "Adds the original King in Yellow acts to the Setup (overriden by King in Yellow selection)",
+position = {0,0.75,-4.5},
+width = 1380,
+height = 240,
+font_size = 100
+}
+YellowRemoveActsButton = {
+click_function = 'YellowActsButtonRemoveClicked',
+function_owner = self,
+label = 'Remove KIY Original Acts',
+tooltip = "Removes the original King in Yellow acts from Setup (overriden by King in Yellow selection)",
+position = {3,0.75,-4.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+YellowAddSmallCardsButton = {
+click_function = "YellowButtonAddSmallCardsClicked",
+function_owner = self,
+label = "Add Small Cards",
+tooltip = "Add Yellow Small Cards",
+position = {5.5, 0.75, -4.5},
+width = 880,
+height = 240,
+font_size = 100
+}
+YellowRemoveSmallCardsButton = {
+click_function = "YellowButtonRemoveSmallCardsClicked",
+function_owner = self,
+label = "Remove Small Cards",
+tooltip = "Remove Yellow Small Cards",
+position = {7.5, 0.75, -4.5},
+width = 980,
+height = 240
+}
+
+InnsmouthAddButton = {
+click_function = 'InnsmouthButtonAddClicked',
+function_owner = self,
+label = 'Add Innsmouth Horror',
+tooltip = "Add Innsmouth Horror Expansion set to the Setup",
+position = {-6.5,0.75,-3.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+InnsmouthRemoveButton = {
+click_function = 'InnsmouthButtonRemoveClicked',
+function_owner = self,
+label = 'Remove Innsmouth Horror',
+tooltip = "Remove Innsmouth Horror Expansion set from Setup",
+position = {-3.5,0.75,-3.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+InnsmouthaddMonsterButton = {
+click_function = 'InnsmouthaddMonsterButtonClicked',
+function_owner = self,
+label = 'Add Innsmouth Monsters',
+tooltip = "Adds only the Innsmouth Monsters to the Setup (overriden by Insmouth Horror selection)",
+position = {0,0.75,-3.5},
+width = 1380,
+height = 240,
+font_size = 100
+}
+InnsmouthRemoveMonsterButton = {
+click_function = 'InnsmouthRemoveMonsterButtonClicked',
+function_owner = self,
+label = 'Remove Innsmouth Monsters',
+tooltip = "Removes only the Innsmouth horror Monsters only from Setup (overriden by Insmouth Horror selection)",
+position = {3,0.75,-3.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+InnsmouthAddSmallCardsButton = {
+click_function = "InnsmouthButtonAddSmallCardsClicked",
+function_owner = self,
+label = "Add Small Cards",
+tooltip = "Add Innsmouth Small Cards",
+position = {5.5, 0.75, -3.5},
+width = 880,
+height = 240,
+font_size = 100
+}
+InnsmouthRemoveSmallCardsButton = {
+click_function = "InnsmouthButtonRemoveSmallCardsClicked",
+function_owner = self,
+label = "Remove Small Cards",
+tooltip = "Remove Innsmouth Small Cards",
+position = {7.5, 0.75, -3.5},
+width = 980,
+height = 240
+}
+
+KingsportAddButton = {
+click_function = 'KingsportButtonAddClicked',
+function_owner = self,
+label = 'Add Kingsport Horror',
+tooltip = "Add Kingsport Horror Expansion set to the Setup",
+position = {-6.5,0.75,-2.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+KingsportRemoveButton = {
+click_function = 'KingsportButtonRemoveClicked',
+function_owner = self,
+label = 'Remove Kingsport Horror',
+tooltip = "Remove Kingsport Horror Expansion set from Setup",
+position = {-3.5,0.75,-2.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+KingsportaddMonsterButton = {
+click_function = 'KingsportaddMonsterButtonClicked',
+function_owner = self,
+label = 'Add Kingsport Monsters',
+tooltip = "Adds only the Kingsport Horror Monsters to the Setup (overriden by Kingsport Horror selection)",
+position = {0,0.75,-2.5},
+width = 1380,
+height = 240,
+font_size = 100
+}
+KingsportRemoveMonsterButton = {
+click_function = 'KingsportRemoveMonsterButtonClicked',
+function_owner = self,
+label = 'Remove Kingsport Monsters',
+tooltip = "Removes only the Kingsport Horror Monsters from Setup (overriden by Kingsport Horror selection)",
+position = {3,0.75,-2.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+KingsportAddSmallCardsButton = {
+click_function = "KingsportButtonAddSmallCardsClicked",
+function_owner = self,
+label = "Add Small Cards",
+tooltip = "Add Kingsport Small Cards",
+position = {5.5, 0.75, -2.5},
+width = 880,
+height = 240,
+font_size = 100
+}
+KingsportRemoveSmallCardsButton = {
+click_function = "KingsportButtonRemoveSmallCardsClicked",
+function_owner = self,
+label = "Remove Small Cards",
+tooltip = "Remove Kingsport Small Cards",
+position = {7.5, 0.75, -2.5},
+width = 980,
+height = 240
+}
+
+DunwichAddButton = {
+click_function = 'DunwichButtonAddClicked',
+function_owner = self,
+label = 'Add Dunwich Horror',
+tooltip = "Add Dunwich Horror Expansion set to the Setup",
+position = {-6.5,0.75,-1.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+DunwichRemoveButton = {
+click_function = 'DunwichButtonRemoveClicked',
+function_owner = self,
+label = 'Remove Dunwich Horror',
+tooltip = "Remove Dunwich Horror Expansion set from Setup",
+position = {-3.5,0.75,-1.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+DunwichaddMonsterButton = {
+click_function = 'DunwichaddMonsterButtonClicked',
+function_owner = self,
+label = 'Add Dunwich Monsters',
+tooltip = "Adds only the Dunwich Horror Monsters to the Setup (overriden by Dunwich Horror selection)",
+position = {0,0.75,-1.5},
+width = 1380,
+height = 240,
+font_size = 100
+}
+DunwichRemoveMonsterButton = {
+click_function = 'DunwichRemoveMonsterButtonClicked',
+function_owner = self,
+label = 'Remove Dunwich Monsters',
+tooltip = "Removes Dunwich Monsters only from Setup (overriden by Dunwich Horror selection)",
+position = {3,0.75,-1.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+DunwichAddSmallCardsButton = {
+click_function = "DunwichButtonAddSmallCardsClicked",
+function_owner = self,
+label = "Add Small Cards",
+tooltip = "Add Dunwich Small Cards",
+position = {5.5, 0.75, -1.5},
+width = 880,
+height = 240,
+font_size = 100
+}
+DunwichRemoveSmallCardsButton = {
+click_function = "DunwichButtonRemoveSmallCardsClicked",
+function_owner = self,
+label = "Remove Small Cards",
+tooltip = "Remove Dunwich Small Cards",
+position = {7.5, 0.75, -1.5},
+width = 980,
+height = 240
+}
+
+MiskatonicAddButton = {
+click_function = 'MiskatonicButtonAddClicked',
+function_owner = self,
+label = 'Add Miskatonic Horror',
+tooltip = "Add Miskatonic Horror Expansion set to the Setup",
+position = {-6.5,0.75,-0.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+MiskatonicRemoveButton = {
+click_function = 'MiskatonicButtonRemoveClicked',
+function_owner = self,
+label = 'Remove Miskatonic Horror',
+tooltip = "Remove Miskatonic Horror Expansion set from Setup",
+position = {-3.5,0.75,-0.5},
+width = 1380,
+height = 240,
+font_size = 100,
+}
+SetupButton = {
+click_function = 'setupButtonClicked',
+function_owner = self,
+label = 'SETUP',
+tooltip = "Perform the Chosen Setup",
+position = {0,0.75,2.5},
+width = 1680,
+height = 640,
+font_size = 400,
+}

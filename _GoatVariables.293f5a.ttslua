@@ -1,0 +1,406 @@
+local Goat_Bag_id = '8dcaec'
+local Goat_Northside_deck_id = '0820a3'
+local Goat_Downtown_deck_id = '7447c1'
+local Goat_Easttown_deck_id = '1bc106'
+local Goat_Merchant_deck_id = 'ca5e22'
+local Goat_Rivertown_deck_id = 'dc5ba0'
+local Goat_Miskatonic_deck_id = '123936'
+local Goat_French_deck_id = '270bff'
+local Goat_Uptown_deck_id = '9f52f6'
+local Goat_Southside_deck_id = 'e0ae1f'
+
+local Goat_Common_deck_id = '37c475'
+local Goat_Unique_deck_id = 'b0352f'
+local Goat_Spells_deck_id = 'cf1b0a'
+--local Goat_Skills_deck_id = 'eb8af9'
+local Goat_Skills_deck_id = 'eddbc4'
+--Goat has no Allies... No one likes Nyarlathotep :(
+--local Goat_Allies_deck_id = '5de360'
+
+local Goat_Mythos_deck_id = '7249d5'
+local Goat_Gate_deck_id = '9135be'
+
+-- Dark Goat Specific Items
+local Goat_Encounters_Deck_id = '781281'
+local Goat_Membership_Deck_id = '2bf735'
+local Goat_Red_Corruption_Deck_id = '2918d0'
+local Goat_Green_Corruption_Deck_Id = 'c726cf'
+local Goat_Monster_Bag_Id = '0dd6d6'
+
+
+local Goat_Scripting_Zone = '9a90da'
+
+-- Which of these are decks
+GoatDecks={'781281','2bf735','2918d0','c726cf'}
+-- -- Which of these are decks
+-- GoatDecks={'0820a3','7447c1','1bc106', 'ca5e22','dc5ba0','123936','270bff',
+--               '9f52f6','37c475','b0352f','781281','2bf735','2918d0','c726cf',
+--        'e0ae1f','cf1b0a','eddbc4','7249d5','9135be'
+--        }
+
+       -- x, y, z for each die.
+       -- y is the height over the table and setting it to
+       -- a number higher than zero will make it fall down
+       -- to the board
+local GoatPositions = {
+  [Goat_Bag_id] = {-87.86, 1.5, -30.12},
+  [Goat_Mythos_deck_id] = {-87.86, 1.5, -23.55},
+  [Goat_Gate_deck_id] = {-87.86, 1.5, -21.14},
+  [Goat_Northside_deck_id] = {-87.86, 1.5, -18.98},
+  [Goat_Downtown_deck_id] = {-87.86, 1.5, -16.57},
+  [Goat_Easttown_deck_id] = {-87.86, 1.5, -14.25},
+  [Goat_Merchant_deck_id] = {-87.86, 1.5, -11.85},
+  [Goat_Rivertown_deck_id] = {-87.86, 1.5, -9.32},
+  [Goat_Miskatonic_deck_id] = {-87.86, 1.5, -6.91},
+  [Goat_French_deck_id] = {-87.86, 1.5, -4.34},
+  [Goat_Uptown_deck_id] = {-87.86, 1.5, -1.87},
+  [Goat_Southside_deck_id] = {-87.86, 1.5, 0.61},
+  [Goat_Skills_deck_id] = {-87.86, 1.5, 2.99},
+  [Goat_Common_deck_id] = {-87.86, 1.5, 7.8},
+  [Goat_Unique_deck_id] = {-87.86, 1.5, 10.21},
+  [Goat_Spells_deck_id] = {-87.86, 1.5, 12.39},
+  [Goat_Encounters_Deck_id] = {-87.86, 1.5, 16.62},
+  [Goat_Membership_Deck_id] = {-87.86, 1.5, 19.92},
+  [Goat_Red_Corruption_Deck_id] = {-87.86, 1.5, 22.62},
+  [Goat_Green_Corruption_Deck_Id] = {-87.86, 1.5, 25.62},
+  [Goat_Monster_Bag_Id] = {-87.86, 1.5, 30},
+
+-- -- No allies
+ --[Goat_Allies_deck_id] = {-87.86, 4.8, 6.08},
+}
+
+function onload()
+
+end
+
+------------Generating getters and setters for all the junk
+
+---------------------------------- BAG ----------------------------------------
+
+--returns the bag id to whoever calls it
+function getGoatBagId()
+    return Goat_Bag_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatBagId(id)
+    Goat_Bag_id = id.getGUID()
+end
+
+---------------------------------- BAG ----------------------------------------
+-------------------------------Northside --------------------------------------
+
+--returns the id to whoever calls it
+function getGoatNorthsideDeckId()
+    return Goat_Northside_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatNorthsideDeckId(id)
+    Goat_Northside_deck_id = id.getGUID()
+end
+
+-------------------------------Northside --------------------------------------
+------------------------------- Downtown --------------------------------------
+
+--returns the id to whoever calls it
+function getGoatDowntownDeckId()
+    return Goat_Downtown_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatDowntownDeckId(id)
+    Goat_Downtown_deck_id = id.getGUID()
+end
+
+------------------------------- Downtown --------------------------------------
+------------------------------- Easttown --------------------------------------
+
+--returns the id to whoever calls it
+function getGoatEasttownDeckId()
+    return Goat_Easttown_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatEasttownDeckId(id)
+    Goat_Easttown_deck_id = id.getGUID()
+end
+
+------------------------------- Easttown --------------------------------------
+------------------------------- Merchant --------------------------------------
+
+--returns the id to whoever calls it
+function getGoatMerchantDeckId()
+    return Goat_Merchant_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatMerchantDeckId(id)
+    Goat_Merchant_deck_id = id.getGUID()
+end
+
+------------------------------- Merchant --------------------------------------
+------------------------------- Rivertown --------------------------------------
+
+--returns the id to whoever calls it
+function getGoatRivertownDeckId()
+    return Goat_Rivertown_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatRivertownDeckId(id)
+    Goat_Rivertown_deck_id = id.getGUID()
+end
+
+------------------------------- Rivertown --------------------------------------
+------------------------------- Miskatonic --------------------------------------
+
+--returns the id to whoever calls it
+function getGoatMiskatonicDeckId()
+    return Goat_Miskatonic_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatMiskatonicDeckId(id)
+    Goat_Miskatonic_deck_id = id.getGUID()
+end
+
+------------------------------- Miskatonic -------------------------------------
+------------------------------- French Hill ------------------------------------
+
+--returns the id to whoever calls it
+function getGoatFrenchDeckId()
+    return Goat_French_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatFrenchDeckId(id)
+    Goat_French_deck_id = id.getGUID()
+end
+
+------------------------------- French Hill ------------------------------------
+--------------------------------- Uptown --------------------------------------
+
+--returns the id to whoever calls it
+function getGoatUptownDeckId()
+    return Goat_Uptown_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatUptownDeckId(id)
+    Goat_Uptown_deck_id = id.getGUID()
+end
+
+--------------------------------- Uptown --------------------------------------
+-------------------------------- Southside -------------------------------------
+--returns the id to whoever calls it
+function getGoatSouthsideDeckId()
+    return Goat_Southside_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatSouthsideDeckId(id)
+    Goat_Southside_deck_id = id.getGUID()
+end
+
+-------------------------------- Southside -------------------------------------
+--------------------------------- Common --------------------------------------
+
+--returns the id to whoever calls it
+function getGoatCommonDeckId()
+    return Goat_Common_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatCommonDeckId(id)
+    Goat_Common_deck_id = id.getGUID()
+end
+
+--------------------------------- Common --------------------------------------
+--------------------------------- Unique --------------------------------------
+
+--returns the id to whoever calls it
+function getGoatUniqueDeckId()
+    return Goat_Unique_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatUniqueDeckId(id)
+    Goat_Unique_deck_id = id.getGUID()
+end
+
+--------------------------------- Unique --------------------------------------
+--------------------------------- Spells --------------------------------------
+
+
+--returns the id to whoever calls it
+function getGoatSpellsDeckId()
+    return Goat_Spells_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatSpellsDeckId(id)
+    Goat_Spells_deck_id = id.getGUID()
+end
+
+--------------------------------- Spells --------------------------------------
+--------------------------------- Skills --------------------------------------
+
+--returns the id to whoever calls it
+function getGoatSkillsDeckId()
+    return Goat_Skills_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatSkillsDeckId(id)
+    Goat_Skills_deck_id = id.getGUID()
+end
+
+--------------------------------- Skills --------------------------------------
+--------------------------------- Allies --------------------------------------
+-- --returns the id to whoever calls it
+-- function getGoatAlliesDeckId()
+--     return Goat_Allies_deck_id
+-- end
+--
+-- --Probably not used, but just in case
+-- --sets the id as given object
+-- function setGoatAlliesDeckId(id)
+--     Goat_Allies_deck_id = id.getGUID()
+-- end
+--------------------------------- Allies --------------------------------------
+--------------------------------- Mythos --------------------------------------
+
+--returns the id to whoever calls it
+function getGoatMythosDeckId()
+    return Goat_Mythos_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatMythosDeckId(id)
+    Goat_Mythos_deck_id = id.getGUID()
+end
+--------------------------------- Mythos --------------------------------------
+---------------------------------- Gate ---------------------------------------
+
+--returns the id to whoever calls it
+function getGoatGateDeckId()
+    return Goat_Gate_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatGateDeckId(id)
+    Goat_Gate_deck_id = id.getGUID()
+end
+
+---------------------------------- Gate ---------------------------------------
+
+--Expansion-specific
+
+----------------------------- Cult Encounter -----------------------------------
+
+--returns the id to whoever calls it
+function getGoatEncountersDeckId()
+    return Goat_Encounters_Deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatEncountersDeckId(id)
+    Goat_Encounters_Deck_id = id.getGUID()
+end
+----------------------------- Cult Encounter -----------------------------------
+---------------------------- Cult Membership ----------------------------------
+
+--returns the id to whoever calls it
+function getGoatMembershipDeckId()
+    return Goat_Membership_Deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatMembershipDeckId(id)
+    Goat_Membership_Deck_id = id.getGUID()
+end
+---------------------------- Cult Membership ----------------------------------
+---------------------------- Red Corruption ----------------------------------
+
+--returns the id to whoever calls it
+function getGoatRedCorruptionDeckId()
+    return Goat_Red_Corruption_Deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatRedCorruptionDeckId(id)
+    Goat_Red_Corruption_Deck_id = id.getGUID()
+end
+---------------------------- Red Corruption ----------------------------------
+--------------------------- Green Corruption ---------------------------------
+
+--returns the id to whoever calls it
+function getGoatGreenCorruptionDeckId()
+    return Goat_Green_Corruption_Deck_Id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatGreenCorruptionDeckId(id)
+    Goat_Green_Corruption_Deck_Id = id.getGUID()
+end
+--------------------------- Green Corruption ---------------------------------
+------------------------------ Monster Bag -----------------------------------
+
+--returns the id to whoever calls it
+function getGoatMonsterBagId()
+    return Goat_Monster_Bag_Id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatMonsterBagId(id)
+    Goat_Monster_Bag_Id = id.getGUID()
+end
+------------------------------ Monster Bag -----------------------------------
+
+-------------------------- Goat Scripting Zone -------------------------------
+
+--returns the id to whoever calls it
+function getGoatScriptingZone()
+    return Goat_Scripting_Zone
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setGoatScriptingZone(id)
+    Goat_Scripting_Zone = id.getGUID()
+end
+-------------------------- Goat Scripting Zone -------------------------------
+
+
+
+--Returns a vector with the placing positions for the object id given
+function getGoatPositionById(id)
+    return GoatPositions[id[1]]
+end
+
+--Returns a vector with the placing positions for the object id given
+function getGoatDecks()
+    return GoatDecks
+end

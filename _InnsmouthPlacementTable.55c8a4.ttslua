@@ -1,0 +1,755 @@
+local InnsmouthVariables = getObjectFromGUID('5c39a4')
+
+function SetInnsmouthMonstersOnTable()
+    placeMonsterBag()
+end
+
+
+function SetInnsmouthComponentsOnTable()
+    placeMythos()
+    placeGate()
+    placeNorthside()
+    placeDowntown()
+    placeEasttown()
+    placeMerchant()
+    placeRivertown()
+    placeMiskatonic()
+    placeFrench()
+    placeUptown()
+    placeSouthside()
+    placeSkills()
+	--No allies, common or unique
+    --placeAllies()
+	--placeCommon()
+    --placeUnique()
+    --placeSpells()
+
+    -- Expansion-specific
+    placeLook()
+    placeFactory()
+    placeShore()
+    placeChurch()
+    placeDeepToken()
+    -- placeClueDeck()
+    -- placeMonsterBag()
+    placeInnsmouthBoard()
+    placeClueTokens()
+
+    Wait.time(deckFlipper, 1)
+
+end
+
+function placeMythos()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthMythosDeckId = InnsmouthVariables.call('getInnsmouthMythosDeckId')
+
+    local params = {}
+    params.guid = InnsmouthMythosDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthMythosDeckId})
+    local BoardMythosDeckId = SetupVariablesNew.call('getBoardMythosdeckId')
+    local BoardMythosDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardMythosDeckId})
+    params.position = {BoardMythosDeckPos[1], BoardMythosDeckPos[2]+1.75,BoardMythosDeckPos[3]}
+
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardMythosScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardMythosDeck = getObjectFromGUID(BoardMythosDeckId)
+    BoardMythosDeck.putObject(item)
+
+end
+
+function placeGate()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthGateDeckId = InnsmouthVariables.call('getInnsmouthGateDeckId')
+
+    local params = {}
+    params.guid = InnsmouthGateDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthGateDeckId})
+    local BoardGateDeckId = SetupVariablesNew.call('getBoardGatedeckId')
+    local BoardGateDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardGateDeckId})
+    params.position = {BoardGateDeckPos[1], BoardGateDeckPos[2]+1.75,BoardGateDeckPos[3]}
+
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardGateScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- I don't know why, if I leave it as it is, the boardGateDeck gets the
+    -- GUID of the Pharaoh's Deck. So, I put the deck on the other.
+    local BoardGateDeck = getObjectFromGUID(BoardGateDeckId)
+    BoardGateDeck.putObject(item)
+
+end
+
+function placeNorthside()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthNorthsideDeckId = InnsmouthVariables.call('getInnsmouthNorthsideDeckId')
+
+    local params = {}
+    params.guid = InnsmouthNorthsideDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthNorthsideDeckId})
+    local BoardNorthsideDeckId = SetupVariablesNew.call('getBoardNorthsidedeckId')
+    local BoardNorthsideDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardNorthsideDeckId})
+    params.position = {BoardNorthsideDeckPos[1], BoardNorthsideDeckPos[2],BoardNorthsideDeckPos[3]}
+
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardNorthsideScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardNorthsideDeck = getObjectFromGUID(BoardNorthsideDeckId)
+    BoardNorthsideDeck.putObject(item)
+
+end
+
+function placeDowntown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthDowntownDeckId = InnsmouthVariables.call('getInnsmouthDowntownDeckId')
+
+    local params = {}
+    params.guid = InnsmouthDowntownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthDowntownDeckId})
+    local BoardDowntownDeckId = SetupVariablesNew.call('getBoardDowntowndeckId')
+    local BoardDowntownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardDowntownDeckId})
+    params.position = {BoardDowntownDeckPos[1], BoardDowntownDeckPos[2],BoardDowntownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardDowntownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardDowntownDeck = getObjectFromGUID(BoardDowntownDeckId)
+    BoardDowntownDeck.putObject(item)
+
+end
+
+function placeEasttown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthEasttownDeckId = InnsmouthVariables.call('getInnsmouthEasttownDeckId')
+
+    local params = {}
+    params.guid = InnsmouthEasttownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthEasttownDeckId})
+    local BoardEasttownDeckId = SetupVariablesNew.call('getBoardEasttowndeckId')
+    local BoardEasttownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardEasttownDeckId})
+    params.position = {BoardEasttownDeckPos[1], BoardEasttownDeckPos[2],BoardEasttownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardEasttownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardEasttownDeck = getObjectFromGUID(BoardEasttownDeckId)
+    BoardEasttownDeck.putObject(item)
+
+end
+
+function placeMerchant()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthMerchantDeckId = InnsmouthVariables.call('getInnsmouthMerchantDeckId')
+
+    local params = {}
+    params.guid = InnsmouthMerchantDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthMerchantDeckId})
+    local BoardMerchantDeckId = SetupVariablesNew.call('getBoardMerchantdeckId')
+    local BoardMerchantDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardMerchantDeckId})
+    params.position = {BoardMerchantDeckPos[1], BoardMerchantDeckPos[2],BoardMerchantDeckPos[3]}
+
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardMerchantScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardMerchantDeck = getObjectFromGUID(BoardMerchantDeckId)
+    BoardMerchantDeck.putObject(item)
+
+end
+
+function placeRivertown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthRivertownDeckId = InnsmouthVariables.call('getInnsmouthRivertownDeckId')
+
+    local params = {}
+    params.guid = InnsmouthRivertownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthRivertownDeckId})
+    local BoardRivertownDeckId = SetupVariablesNew.call('getBoardRivertowndeckId')
+    local BoardRivertownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardRivertownDeckId})
+    params.position = {BoardRivertownDeckPos[1], BoardRivertownDeckPos[2],BoardRivertownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardRivertownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardRivertownDeck = getObjectFromGUID(BoardRivertownDeckId)
+    BoardRivertownDeck.putObject(item)
+
+end
+
+function placeMiskatonic()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthMiskatonicDeckId = InnsmouthVariables.call('getInnsmouthMiskatonicDeckId')
+
+    local params = {}
+    params.guid = InnsmouthMiskatonicDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthMiskatonicDeckId})
+    local BoardMiskatonicDeckId = SetupVariablesNew.call('getBoardMiskatonicdeckId')
+    local BoardMiskatonicDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardMiskatonicDeckId})
+    params.position = {BoardMiskatonicDeckPos[1], BoardMiskatonicDeckPos[2],BoardMiskatonicDeckPos[3]}
+
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+    local scale = SetupVariablesNew.call('getBoardMiskatonicScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardMiskatonicDeck = getObjectFromGUID(BoardMiskatonicDeckId)
+    BoardMiskatonicDeck.putObject(item)
+
+end
+
+function placeFrench()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthFrenchDeckId = InnsmouthVariables.call('getInnsmouthFrenchDeckId')
+
+    local params = {}
+    params.guid = InnsmouthFrenchDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthFrenchDeckId})
+    local BoardFrenchDeckId = SetupVariablesNew.call('getBoardFrenchdeckId')
+    local BoardFrenchDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardFrenchDeckId})
+    params.position = {BoardFrenchDeckPos[1], BoardFrenchDeckPos[2],BoardFrenchDeckPos[3]}
+
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardFrenchScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardFrenchDeck = getObjectFromGUID(BoardFrenchDeckId)
+    BoardFrenchDeck.putObject(item)
+
+end
+
+function placeUptown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthUptownDeckId = InnsmouthVariables.call('getInnsmouthUptownDeckId')
+
+    local params = {}
+    params.guid = InnsmouthUptownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthUptownDeckId})
+    local BoardUptownDeckId = SetupVariablesNew.call('getBoardUptowndeckId')
+    local BoardUptownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardUptownDeckId})
+    params.position = {BoardUptownDeckPos[1], BoardUptownDeckPos[2],BoardUptownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardUptownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardUptownDeck = getObjectFromGUID(BoardUptownDeckId)
+    BoardUptownDeck.putObject(item)
+
+end
+
+function placeSouthside()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthSouthsideDeckId = InnsmouthVariables.call('getInnsmouthSouthsideDeckId')
+
+    local params = {}
+    params.guid = InnsmouthSouthsideDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthSouthsideDeckId})
+    local BoardSouthsideDeckId = SetupVariablesNew.call('getBoardSouthsidedeckId')
+    local BoardSouthsideDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardSouthsideDeckId})
+    params.position = {BoardSouthsideDeckPos[1], BoardSouthsideDeckPos[2],BoardSouthsideDeckPos[3]}
+
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardSouthsideScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardSouthsideDeck = getObjectFromGUID(BoardSouthsideDeckId)
+    BoardSouthsideDeck.putObject(item)
+
+end
+
+function placeSkills()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthSkillsDeckId = InnsmouthVariables.call('getInnsmouthSkillsDeckId')
+
+    local params = {}
+    params.guid = InnsmouthSkillsDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthSkillsDeckId})
+    local BoardSkillsDeckId = SetupVariablesNew.call('getBoardSkillsdeckId')
+    local BoardSkillsDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardSkillsDeckId})
+    params.position = {BoardSkillsDeckPos[1], BoardSkillsDeckPos[2],BoardSkillsDeckPos[3]}
+
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardSkillsScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardSkillsDeck = getObjectFromGUID(BoardSkillsDeckId)
+    BoardSkillsDeck.putObject(item)
+
+end
+
+function placeCommon()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthCommonDeckId = InnsmouthVariables.call('getInnsmouthCommonDeckId')
+
+    local params = {}
+    params.guid = InnsmouthCommonDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthCommonDeckId})
+    local BoardCommonDeckId = SetupVariablesNew.call('getBoardCommondeckId')
+    local BoardCommonDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardCommonDeckId})
+    params.position = {BoardCommonDeckPos[1], BoardCommonDeckPos[2],BoardCommonDeckPos[3]}
+
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardCommonScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardCommonDeck = getObjectFromGUID(BoardCommonDeckId)
+    BoardCommonDeck.putObject(item)
+
+end
+
+function placeUnique()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthUniqueDeckId = InnsmouthVariables.call('getInnsmouthUniqueDeckId')
+
+    local params = {}
+    params.guid = InnsmouthUniqueDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthUniqueDeckId})
+    local BoardUniqueDeckId = SetupVariablesNew.call('getBoardUniquedeckId')
+    local BoardUniqueDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardUniqueDeckId})
+    params.position = {BoardUniqueDeckPos[1], BoardUniqueDeckPos[2],BoardUniqueDeckPos[3]}
+
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardUniqueScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardUniqueDeck = getObjectFromGUID(BoardUniqueDeckId)
+    BoardUniqueDeck.putObject(item)
+
+end
+
+function placeSpells()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthSpellsDeckId = InnsmouthVariables.call('getInnsmouthSpellsDeckId')
+
+    local params = {}
+    params.guid = InnsmouthSpellsDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthSpellsDeckId})
+    local BoardSpellsDeckId = SetupVariablesNew.call('getBoardSpellsdeckId')
+    local BoardSpellsDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardSpellsDeckId})
+    params.position = {BoardSpellsDeckPos[1], BoardSpellsDeckPos[2],BoardSpellsDeckPos[3]}
+
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardSpellsScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardSpellsDeck = getObjectFromGUID(BoardSpellsDeckId)
+    BoardSpellsDeck.putObject(item)
+
+end
+
+function placeAllies()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthAlliesDeckId = InnsmouthVariables.call('getInnsmouthAlliesDeckId')
+
+    local params = {}
+    params.guid = InnsmouthAlliesDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthAlliesDeckId})
+    local BoardAlliesDeckId = SetupVariablesNew.call('getBoardAlliesdeckId')
+    local BoardAlliesDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardAlliesDeckId})
+    params.position = {BoardAlliesDeckPos[1], BoardAlliesDeckPos[2],BoardAlliesDeckPos[3]}
+
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardAlliesScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardAlliesDeck = getObjectFromGUID(BoardAlliesDeckId)
+    BoardAlliesDeck.putObject(item)
+
+end
+
+-- Expansion-specific
+
+function placeLook()
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthLookDeckId = InnsmouthVariables.call('getInnsmouthLookDeckId')
+
+    local params = {}
+    params.guid = InnsmouthLookDeckId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthLookDeckId})
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+end
+
+function placeFactory()
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthFactoryDeckId = InnsmouthVariables.call('getInnsmouthFactoryDeckId')
+
+    local params = {}
+    params.guid = InnsmouthFactoryDeckId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthFactoryDeckId})
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+end
+
+function placeShore()
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthShoreDeckId = InnsmouthVariables.call('getInnsmouthShoreDeckId')
+
+    local params = {}
+    params.guid = InnsmouthShoreDeckId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthShoreDeckId})
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+end
+
+function placeChurch()
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthChurchDeckId = InnsmouthVariables.call('getInnsmouthChurchDeckId')
+
+    local params = {}
+    params.guid = InnsmouthChurchDeckId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthChurchDeckId})
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+end
+
+function placeDeepToken()
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthDeepTokenId = InnsmouthVariables.call('getInnsmouthDeepTokenId')
+
+    local params = {}
+    params.guid = InnsmouthDeepTokenId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthDeepTokenId})
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+end
+
+-- function placeClueDeck()
+--     --Get the bag ID
+--     local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+--
+--     --Get the bag
+--     local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+--
+--     local InnsmouthClueDeckId = InnsmouthVariables.call('getInnsmouthClueDeckId')
+--
+--     local params = {}
+--     params.guid = InnsmouthClueDeckId
+--     params.rotation = {0, 90, 0}
+--
+--     -- look up the position based on the guid
+--     params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthClueDeckId})
+--     params.smooth = true
+--
+--     local item = InnsmouthBag.takeObject(params)
+--
+-- end
+
+function placeMonsterBag()
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthMonsterBagId = InnsmouthVariables.call('getInnsmouthMonsterBagId')
+
+    local params = {}
+    params.guid = InnsmouthMonsterBagId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthMonsterBagId})
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+end
+
+function placeInnsmouthBoard()
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthBoardId = InnsmouthVariables.call('getInnsmouthBoardId')
+
+    local params = {}
+    params.guid = InnsmouthBoardId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthBoardId})
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+    item.setScale({1, 1, 1})
+end
+
+function placeClueTokens()
+    --Get the bag ID
+    local InnsmouthBagId = InnsmouthVariables.call('getInnsmouthBagId')
+
+    --Get the bag
+    local InnsmouthBag = getObjectFromGUID(InnsmouthBagId)
+
+    local InnsmouthClueTokensId = InnsmouthVariables.call('getInnsmouthClueTokensId')
+
+    local params = {}
+    params.guid = InnsmouthClueTokensId
+    params.rotation = {0, 90, 0}
+
+
+    -- look up the position based on the guid
+    params.position = InnsmouthVariables.call('getInnsmouthPositionById',{InnsmouthClueTokensId})
+    params.smooth = true
+
+    local item = InnsmouthBag.takeObject(params)
+
+end
+
+-- Flip it (Because if rotation is used, flip is ignored)
+-- Also, must wait before flipping
+function deckFlipper()
+
+    local InnsmouthDecks = InnsmouthVariables.getTable('InnsmouthDecks')
+
+    for i, obj in ipairs(InnsmouthDecks) do
+        getObjectFromGUID(obj).flip()
+    end
+end

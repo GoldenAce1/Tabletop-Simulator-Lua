@@ -1,0 +1,887 @@
+local KingsportVariables = getObjectFromGUID('00ac75')
+
+local isLurkerGateSet = false
+function SetKingsportMonstersOnTable()
+
+    placeMonsterBag()
+end
+
+function SetKingsportComponentsOnTable(LurkerGateSet)
+
+    isLurkerGateSet = LurkerGateSet
+
+    placeMythos()
+    placeGate()
+    placeNorthside()
+    placeDowntown()
+    placeEasttown()
+    placeMerchant()
+    placeRivertown()
+    placeMiskatonic()
+    placeFrench()
+    placeUptown()
+    placeSouthside()
+    placeSkills()
+    placeAllies()
+	placeCommon()
+    placeUnique()
+    placeSpells()
+
+    -- Expansion-specific
+    placeCondition()
+    placeChanged()
+    placeKingsportHead()
+    placeHarborside()
+    placeCentralHill()
+    placeSouthShoreDeck()
+    -- placeClueDeck()
+    placeRiftMarkerBag()
+    -- placeMonsterBag()
+    placeRiftProgress()
+
+    -- These gates are only set of the Lurker Gate Variant is not Active
+    if isLurkerGateSet == false then
+        placeGateMarker()
+    end
+
+    placeKingsportBoard()
+
+    Wait.time(deckFlipper, 1)
+
+end
+
+function placeMythos()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportMythosDeckId = KingsportVariables.call('getKingsportMythosDeckId')
+
+    local params = {}
+    params.guid = KingsportMythosDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = KingsportVariables.call('getKingsportPositionById',{KingsportMythosDeckId})
+    local BoardMythosDeckId = SetupVariablesNew.call('getBoardMythosdeckId')
+    local BoardMythosDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardMythosDeckId})
+    params.position = {BoardMythosDeckPos[1], BoardMythosDeckPos[2]+2,BoardMythosDeckPos[3]}
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+    local scale = SetupVariablesNew.call('getBoardMythosScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardMythosDeck = getObjectFromGUID(BoardMythosDeckId)
+    BoardMythosDeck.putObject(item)
+
+end
+
+function placeGate()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportGateDeckId = KingsportVariables.call('getKingsportGateDeckId')
+
+    local params = {}
+    params.guid = KingsportGateDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = KingsportVariables.call('getKingsportPositionById',{KingsportGateDeckId})
+    local BoardGateDeckId = SetupVariablesNew.call('getBoardGatedeckId')
+    local BoardGateDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardGateDeckId})
+    params.position = {BoardGateDeckPos[1], BoardGateDeckPos[2]+2,BoardGateDeckPos[3]}
+
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardGateScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- I don't know why, if I leave it as it is, the boardGateDeck gets the
+    -- GUID of the Pharaoh's Deck. So, I put the deck on the other.
+    local BoardGateDeck = getObjectFromGUID(BoardGateDeckId)
+    BoardGateDeck.putObject(item)
+
+end
+
+function placeNorthside()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportNorthsideDeckId = KingsportVariables.call('getKingsportNorthsideDeckId')
+
+    local params = {}
+    params.guid = KingsportNorthsideDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = KingsportVariables.call('getKingsportPositionById',{KingsportNorthsideDeckId})
+    local BoardNorthsideDeckId = SetupVariablesNew.call('getBoardNorthsidedeckId')
+    local BoardNorthsideDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardNorthsideDeckId})
+    params.position = {BoardNorthsideDeckPos[1], BoardNorthsideDeckPos[2],BoardNorthsideDeckPos[3]}
+
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardNorthsideScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardNorthsideDeck = getObjectFromGUID(BoardNorthsideDeckId)
+    BoardNorthsideDeck.putObject(item)
+
+end
+
+function placeDowntown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportDowntownDeckId = KingsportVariables.call('getKingsportDowntownDeckId')
+
+    local params = {}
+    params.guid = KingsportDowntownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = KingsportVariables.call('getKingsportPositionById',{KingsportDowntownDeckId})
+    local BoardDowntownDeckId = SetupVariablesNew.call('getBoardDowntowndeckId')
+    local BoardDowntownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardDowntownDeckId})
+    params.position = {BoardDowntownDeckPos[1], BoardDowntownDeckPos[2],BoardDowntownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardDowntownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardDowntownDeck = getObjectFromGUID(BoardDowntownDeckId)
+    BoardDowntownDeck.putObject(item)
+
+end
+
+function placeEasttown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportEasttownDeckId = KingsportVariables.call('getKingsportEasttownDeckId')
+
+    local params = {}
+    params.guid = KingsportEasttownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = KingsportVariables.call('getKingsportPositionById',{KingsportEasttownDeckId})
+    local BoardEasttownDeckId = SetupVariablesNew.call('getBoardEasttowndeckId')
+    local BoardEasttownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardEasttownDeckId})
+    params.position = {BoardEasttownDeckPos[1], BoardEasttownDeckPos[2],BoardEasttownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardEasttownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardEasttownDeck = getObjectFromGUID(BoardEasttownDeckId)
+    BoardEasttownDeck.putObject(item)
+
+end
+
+function placeMerchant()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportMerchantDeckId = KingsportVariables.call('getKingsportMerchantDeckId')
+
+    local params = {}
+    params.guid = KingsportMerchantDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = KingsportVariables.call('getKingsportPositionById',{KingsportMerchantDeckId})
+    local BoardMerchantDeckId = SetupVariablesNew.call('getBoardMerchantdeckId')
+    local BoardMerchantDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardMerchantDeckId})
+    params.position = {BoardMerchantDeckPos[1], BoardMerchantDeckPos[2],BoardMerchantDeckPos[3]}
+
+
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardMerchantScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardMerchantDeck = getObjectFromGUID(BoardMerchantDeckId)
+    BoardMerchantDeck.putObject(item)
+
+end
+
+function placeRivertown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportRivertownDeckId = KingsportVariables.call('getKingsportRivertownDeckId')
+
+    local params = {}
+    params.guid = KingsportRivertownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = KingsportVariables.call('getKingsportPositionById',{KingsportRivertownDeckId})
+    local BoardRivertownDeckId = SetupVariablesNew.call('getBoardRivertowndeckId')
+    local BoardRivertownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardRivertownDeckId})
+    params.position = {BoardRivertownDeckPos[1], BoardRivertownDeckPos[2],BoardRivertownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardRivertownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardRivertownDeck = getObjectFromGUID(BoardRivertownDeckId)
+    BoardRivertownDeck.putObject(item)
+
+end
+
+function placeMiskatonic()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportMiskatonicDeckId = KingsportVariables.call('getKingsportMiskatonicDeckId')
+
+    local params = {}
+    params.guid = KingsportMiskatonicDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = KingsportVariables.call('getKingsportPositionById',{KingsportMiskatonicDeckId})
+    local BoardMiskatonicDeckId = SetupVariablesNew.call('getBoardMiskatonicdeckId')
+    local BoardMiskatonicDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardMiskatonicDeckId})
+    params.position = {BoardMiskatonicDeckPos[1], BoardMiskatonicDeckPos[2],BoardMiskatonicDeckPos[3]}
+
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardMiskatonicScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardMiskatonicDeck = getObjectFromGUID(BoardMiskatonicDeckId)
+    BoardMiskatonicDeck.putObject(item)
+
+end
+
+function placeFrench()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportFrenchDeckId = KingsportVariables.call('getKingsportFrenchDeckId')
+
+    local params = {}
+    params.guid = KingsportFrenchDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = KingsportVariables.call('getKingsportPositionById',{KingsportFrenchDeckId})
+    local BoardFrenchDeckId = SetupVariablesNew.call('getBoardFrenchdeckId')
+    local BoardFrenchDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardFrenchDeckId})
+    params.position = {BoardFrenchDeckPos[1], BoardFrenchDeckPos[2],BoardFrenchDeckPos[3]}
+
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardFrenchScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardFrenchDeck = getObjectFromGUID(BoardFrenchDeckId)
+    BoardFrenchDeck.putObject(item)
+
+end
+
+function placeUptown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportUptownDeckId = KingsportVariables.call('getKingsportUptownDeckId')
+
+    local params = {}
+    params.guid = KingsportUptownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = KingsportVariables.call('getKingsportPositionById',{KingsportUptownDeckId})
+    local BoardUptownDeckId = SetupVariablesNew.call('getBoardUptowndeckId')
+    local BoardUptownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardUptownDeckId})
+    params.position = {BoardUptownDeckPos[1], BoardUptownDeckPos[2],BoardUptownDeckPos[3]}
+
+
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardUptownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardUptownDeck = getObjectFromGUID(BoardUptownDeckId)
+    BoardUptownDeck.putObject(item)
+
+end
+
+function placeSouthside()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportSouthsideDeckId = KingsportVariables.call('getKingsportSouthsideDeckId')
+
+    local params = {}
+    params.guid = KingsportSouthsideDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = KingsportVariables.call('getKingsportPositionById',{KingsportSouthsideDeckId})
+    local BoardSouthsideDeckId = SetupVariablesNew.call('getBoardSouthsidedeckId')
+    local BoardSouthsideDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardSouthsideDeckId})
+    params.position = {BoardSouthsideDeckPos[1], BoardSouthsideDeckPos[2],BoardSouthsideDeckPos[3]}
+
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardSouthsideScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardSouthsideDeck = getObjectFromGUID(BoardSouthsideDeckId)
+    BoardSouthsideDeck.putObject(item)
+
+end
+
+function placeSkills()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportSkillsDeckId = KingsportVariables.call('getKingsportSkillsDeckId')
+
+    local params = {}
+    params.guid = KingsportSkillsDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = KingsportVariables.call('getKingsportPositionById',{KingsportSkillsDeckId})
+    local BoardSkillsDeckId = SetupVariablesNew.call('getBoardSkillsdeckId')
+    local BoardSkillsDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardSkillsDeckId})
+    params.position = {BoardSkillsDeckPos[1], BoardSkillsDeckPos[2],BoardSkillsDeckPos[3]}
+
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardSkillsScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardSkillsDeck = getObjectFromGUID(BoardSkillsDeckId)
+    BoardSkillsDeck.putObject(item)
+
+end
+
+function placeCommon()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportCommonDeckId = KingsportVariables.call('getKingsportCommonDeckId')
+
+    local params = {}
+    params.guid = KingsportCommonDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = KingsportVariables.call('getKingsportPositionById',{KingsportCommonDeckId})
+    local BoardCommonDeckId = SetupVariablesNew.call('getBoardCommondeckId')
+    local BoardCommonDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardCommonDeckId})
+    params.position = {BoardCommonDeckPos[1], BoardCommonDeckPos[2],BoardCommonDeckPos[3]}
+
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardCommonScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardCommonDeck = getObjectFromGUID(BoardCommonDeckId)
+    BoardCommonDeck.putObject(item)
+
+end
+
+function placeUnique()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportUniqueDeckId = KingsportVariables.call('getKingsportUniqueDeckId')
+
+    local params = {}
+    params.guid = KingsportUniqueDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = KingsportVariables.call('getKingsportPositionById',{KingsportUniqueDeckId})
+    local BoardUniqueDeckId = SetupVariablesNew.call('getBoardUniquedeckId')
+    local BoardUniqueDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardUniqueDeckId})
+    params.position = {BoardUniqueDeckPos[1], BoardUniqueDeckPos[2],BoardUniqueDeckPos[3]}
+
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardUniqueScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardUniqueDeck = getObjectFromGUID(BoardUniqueDeckId)
+    BoardUniqueDeck.putObject(item)
+
+end
+
+function placeSpells()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportSpellsDeckId = KingsportVariables.call('getKingsportSpellsDeckId')
+
+    local params = {}
+    params.guid = KingsportSpellsDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = KingsportVariables.call('getKingsportPositionById',{KingsportSpellsDeckId})
+    local BoardSpellsDeckId = SetupVariablesNew.call('getBoardSpellsdeckId')
+    local BoardSpellsDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardSpellsDeckId})
+    params.position = {BoardSpellsDeckPos[1], BoardSpellsDeckPos[2],BoardSpellsDeckPos[3]}
+
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardSpellsScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardSpellsDeck = getObjectFromGUID(BoardSpellsDeckId)
+    BoardSpellsDeck.putObject(item)
+
+end
+
+function placeAllies()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportAlliesDeckId = KingsportVariables.call('getKingsportAlliesDeckId')
+
+    local params = {}
+    params.guid = KingsportAlliesDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = KingsportVariables.call('getKingsportPositionById',{KingsportAlliesDeckId})
+    local BoardAlliesDeckId = SetupVariablesNew.call('getBoardAlliesdeckId')
+    local BoardAlliesDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardAlliesDeckId})
+    params.position = {BoardAlliesDeckPos[1], BoardAlliesDeckPos[2],BoardAlliesDeckPos[3]}
+
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardAlliesScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardAlliesDeck = getObjectFromGUID(BoardAlliesDeckId)
+    BoardAlliesDeck.putObject(item)
+
+end
+
+-- Expansion-specific
+
+function placeCondition()
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportCaptainDeckId = KingsportVariables.call('getKingsportCaptainDeckId')
+
+    local params = {}
+    params.guid = KingsportCaptainDeckId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = KingsportVariables.call('getKingsportPositionById',{KingsportCaptainDeckId})
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+end
+
+function placeChanged()
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportChangedDeckId = KingsportVariables.call('getKingsportChangedDeckId')
+
+    local params = {}
+    params.guid = KingsportChangedDeckId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = KingsportVariables.call('getKingsportPositionById',{KingsportChangedDeckId})
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+end
+
+function placeKingsportHead()
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportHeadDeckId = KingsportVariables.call('getKingsportHeadDeckId')
+
+    local params = {}
+    params.guid = KingsportHeadDeckId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = KingsportVariables.call('getKingsportPositionById',{KingsportHeadDeckId})
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+end
+
+function placeHarborside()
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportHarborsideDeckId = KingsportVariables.call('getKingsportHarborsideDeckId')
+
+    local params = {}
+    params.guid = KingsportHarborsideDeckId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = KingsportVariables.call('getKingsportPositionById',{KingsportHarborsideDeckId})
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+end
+
+function placeCentralHill()
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportCentralHillDeckId = KingsportVariables.call('getKingsportCentralHillDeckId')
+
+    local params = {}
+    params.guid = KingsportCentralHillDeckId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = KingsportVariables.call('getKingsportPositionById',{KingsportCentralHillDeckId})
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+end
+function placeSouthShoreDeck()
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportSouthShoreDeckId = KingsportVariables.call('getKingsportSouthShoreDeckId')
+
+    local params = {}
+    params.guid = KingsportSouthShoreDeckId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = KingsportVariables.call('getKingsportPositionById',{KingsportSouthShoreDeckId})
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+end
+
+-- function placeClueDeck()
+--     --Get the bag ID
+--     local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+--
+--     --Get the bag
+--     local KingsportBag = getObjectFromGUID(KingsportBagId)
+--
+--     local KingsportClueDeckId = KingsportVariables.call('getKingsportClueDeckId')
+--
+--     local params = {}
+--     params.guid = KingsportClueDeckId
+--     params.rotation = {0, 90, 0}
+--
+--     -- look up the position based on the guid
+--     params.position = KingsportVariables.call('getKingsportPositionById',{KingsportClueDeckId})
+--     params.smooth = true
+--
+--     local item = KingsportBag.takeObject(params)
+--
+-- end
+function placeRiftMarkerBag()
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportRiftMarkerBagId = KingsportVariables.call('getKingsportRiftMarkerBagId')
+
+    local params = {}
+    params.guid = KingsportRiftMarkerBagId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = KingsportVariables.call('getKingsportPositionById',{KingsportRiftMarkerBagId})
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+end
+
+function placeMonsterBag()
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportMonsterBagId = KingsportVariables.call('getKingsportMonsterBagId')
+
+    local params = {}
+    params.guid = KingsportMonsterBagId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = KingsportVariables.call('getKingsportPositionById',{KingsportMonsterBagId})
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+end
+
+function placeRiftProgress()
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportRiftProgressBagId = KingsportVariables.call('getKingsportRiftProgressBagId')
+
+    local params = {}
+    params.guid = KingsportRiftProgressBagId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = KingsportVariables.call('getKingsportPositionById',{KingsportRiftProgressBagId})
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+end
+function placeGateMarker()
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportGateMarkerBagId = KingsportVariables.call('getKingsportGateMarkerBagId')
+
+    local params = {}
+    params.guid = KingsportGateMarkerBagId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = KingsportVariables.call('getKingsportPositionById',{KingsportGateMarkerBagId})
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+end
+
+function placeKingsportBoard()
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportBoardId = KingsportVariables.call('getKingsportBoardId')
+
+    local params = {}
+    params.guid = KingsportBoardId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = KingsportVariables.call('getKingsportPositionById',{KingsportBoardId})
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+    item.setScale({1, 1, 1})
+end
+
+function placeCommonInvestSetup()
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportCommonDeckId = KingsportVariables.call('getKingsportCommonDeckId')
+
+    local params = {}
+    params.guid = KingsportCommonDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    params.position = KingsportVariables.call('getKingsportPositionById',{KingsportCommonDeckId})
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+end
+
+function placeUniqueInvestSetup()
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportUniqueDeckId = KingsportVariables.call('getKingsportUniqueDeckId')
+
+    local params = {}
+    params.guid = KingsportUniqueDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    params.position = KingsportVariables.call('getKingsportPositionById',{KingsportUniqueDeckId})
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+end
+
+function placeSkillsInvestSetup()
+    --Get the bag ID
+    local KingsportBagId = KingsportVariables.call('getKingsportBagId')
+
+    --Get the bag
+    local KingsportBag = getObjectFromGUID(KingsportBagId)
+
+    local KingsportSkillsDeckId = KingsportVariables.call('getKingsportSkillsDeckId')
+
+    local params = {}
+    params.guid = KingsportSkillsDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    params.position = KingsportVariables.call('getKingsportPositionById',{KingsportSkillsDeckId})
+    params.smooth = true
+
+    local item = KingsportBag.takeObject(params)
+
+end
+
+
+-- Flip it (Because if rotation is used, flip is ignored)
+-- Also, must wait before flipping
+function deckFlipper()
+
+    local KingsportDecks = KingsportVariables.getTable('KingsportDecks')
+
+    for i, obj in ipairs(KingsportDecks) do
+        getObjectFromGUID(obj).flip()
+    end
+end

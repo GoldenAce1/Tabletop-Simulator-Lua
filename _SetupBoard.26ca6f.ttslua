@@ -1,0 +1,286 @@
+--The Pannel Itself
+local ControlPanelItself = getObjectFromGUID('aa3288')
+local ControlPanelVariables = getObjectFromGUID('bf1ea5')
+
+local BoardPlacement = getObjectFromGUID('3f0e8f')
+local BagPlacement = getObjectFromGUID('0bf0fc')
+local Conan = getObjectFromGUID('ef83e9')
+local GlobalVariablesId = '7fc89f'
+local FinisherId = '30c7b9'
+local GlobalVariables = getObjectFromGUID(GlobalVariablesId)
+
+--Miskatonic Variables to set up Mythos, if it's the case
+local MiskatonicVariables = getObjectFromGUID('b76591')  
+
+--setup
+local SetupVariables = getObjectFromGUID('f9d0b7')
+
+-- What is set?
+local LurkerSet = false
+local PharaohSet = false
+local GoatSet = false
+local YellowSet = false
+local InnsmouthSet = false
+local KingsportSet = false
+local DunwichSet = false
+local MiskatonicSet = false
+
+-- Variants
+local LurkerGateSet = false
+local DunwichMonsterOnly = false
+local InnsmouthMonsterOnly = false
+local KingsportMonsterOnly = false
+local LurkerSmallCardsOnly = false
+local PharaohSmallCardsOnly = false
+local GoatSmallCardsOnly = false
+local YellowSmallCardsOnly = false
+local InnsmouthSmallCardsOnly = false
+local KingsportSmallCardsOnly = false
+local DunwichSmallCardsOnly = false
+
+-- board types - If big expansion apply, only one will be lit
+local InnsmouthSolo = false
+local KingsportSolo = false
+local DunwichSolo = false
+local KingsportDunwich = false
+local InnsmouthKingsport = false
+local InnsmouthDunwich = false
+-- The bravest man of all - All boards!
+local AllThreeBoards = false
+
+local CountExtraBoards = 0
+
+function onload()
+
+end
+
+--Places All the sets on the board
+function mixItAllUp()
+
+    LurkerSet = ControlPanelVariables.call('isLurkerSet')
+    PharaohSet = ControlPanelVariables.call('isPharaohSet')
+    GoatSet = ControlPanelVariables.call('isGoatSet')
+    YellowSet = ControlPanelVariables.call('isYellowSet')
+    InnsmouthSet = ControlPanelVariables.call('isInnsmouthSet')
+    KingsportSet = ControlPanelVariables.call('isKingsportSet')
+    DunwichSet = ControlPanelVariables.call('isDunwichSet')
+    MiskatonicSet = ControlPanelVariables.call('isMiskatonicSet')
+    LurkerGateSet = ControlPanelVariables.call('isLurkerGateSet')
+    DunwichMonsterOnly = ControlPanelVariables.call('isDunwichMonsterOnly')
+    InnsmouthMonsterOnly = ControlPanelVariables.call('isInnsmouthMonsterOnly')
+    KingsportMonsterOnly = ControlPanelVariables.call('isKingsportMonsterOnly')
+    GoatMonsterOnly = ControlPanelVariables.call('isGoatMonsterOnly')
+    YellowOriginalActs = ControlPanelVariables.call('isYellowOriginalActs')
+    LurkerSmallCardsOnly = ControlPanelVariables.call('isLurkerSmallCardsOnly')
+    PharaohSmallCardsOnly = ControlPanelVariables.call('isPharaohSmallCardsOnly')
+    GoatSmallCardsOnly = ControlPanelVariables.call('isGoatSmallCardsOnly')
+    YellowSmallCardsOnly = ControlPanelVariables.call('isYellowSmallCardsOnly')
+    InnsmouthSmallCardsOnly = ControlPanelVariables.call('isInnsmouthSmallCardsOnly')
+    KingsportSmallCardsOnly = ControlPanelVariables.call('isKingsportSmallCardsOnly')
+    DunwichSmallCardsOnly = ControlPanelVariables.call('isDunwichSmallCardsOnly')
+    Finisher = getObjectFromGUID(FinisherId)
+
+    EvaluateBoardPlacement()
+
+    if InnsmouthSet == true or InnsmouthMonsterOnly == true or InnsmouthSmallCardsOnly == true then
+        BoardPlacement.call('PlaceInnsmouth')
+    end
+
+    if KingsportSet == true or KingsportMonsterOnly == true or KingsportSmallCardsOnly == true then
+        function coinsidePlaceKingsport()
+            waitFrames(20)
+            BoardPlacement.call('PlaceKingsport')
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        startLuaCoroutine(self, "coinsidePlaceKingsport") --must use this way to make coroutine in order to wait frames
+    end
+
+    if DunwichSet == true or DunwichMonsterOnly == true or DunwichSmallCardsOnly == true then
+        function coinsidePlaceDunwich()
+            waitFrames(25)
+            BoardPlacement.call('PlaceDunwich')
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        startLuaCoroutine(self, "coinsidePlaceDunwich") --must use this way to make coroutine in order to wait frames
+    end
+
+    -- Now that the boards are set, let's set the Locations
+
+    function coinsideSetupLocations()
+        waitFrames(20)
+        Finisher.call('SetupLocations')
+        waitFrames(260)
+        Finisher.call('PlaceLocks')
+        return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+    end
+    startLuaCoroutine(self, "coinsideSetupLocations") --must use this way to make coroutine in order to wait frames
+
+    if YellowSet == true or YellowSmallCardsOnly == true then
+        function coinsidePlaceYellow()
+            waitFrames(20)
+            BoardPlacement.call('PlaceYellow')
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        startLuaCoroutine(self, "coinsidePlaceYellow") --must use this way to make coroutine in order to wait frames
+
+    end
+
+    if GoatSet == true  or GoatMonsterOnly == true or GoatSmallCardsOnly == true then
+        function coinsidePlaceGoat()
+            waitFrames(20)
+            BoardPlacement.call('PlaceGoat')
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        startLuaCoroutine(self, "coinsidePlaceGoat") --must use this way to make coroutine in order to wait frames
+    end
+
+    if PharaohSet == true or PharaohSmallCardsOnly == true then
+        function coinsidePlacePharaoh()
+            waitFrames(20)
+            BoardPlacement.call('PlacePharaoh')
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        startLuaCoroutine(self, "coinsidePlacePharaoh") --must use this way to make coroutine in order to wait frames
+    end
+
+    if LurkerSet == true  or LurkerGateSet == true or LurkerSmallCardsOnly == true then
+        function coinsidePlaceLurker()
+            waitFrames(20)
+            BoardPlacement.call('PlaceLurker')
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        startLuaCoroutine(self, "coinsidePlaceLurker") --must use this way to make coroutine in order to wait frames
+    end
+
+    if LurkerGateSet == true then
+        BagPlacement.call('placeLurkerBags')
+    else
+        if KingsportSet == true then
+            BagPlacement.call('placeKingsportGateBags')
+        end
+        if DunwichSet == true then
+            BagPlacement.call('placeDunwichGateBags')
+        end
+    end
+
+    broadcastToAll("Placing things inside other things and leaving trash for Conan to Destroy.", Table)
+
+    if InnsmouthSet == true or InnsmouthMonsterOnly == true then
+        BagPlacement.call('placeInnsmouthMonsterBags')
+    end
+
+    if DunwichSet == true or DunwichMonsterOnly == true then
+        BagPlacement.call('placeDunwichMonsterBags')
+    end
+
+    if KingsportSet == true or KingsportMonsterOnly == true then
+        BagPlacement.call('placeKingsportMonsterBags')
+    end
+
+    if GoatSet == true or GoatMonsterOnly == true then
+        BagPlacement.call('placeGoatMonsterBags')
+    end
+
+
+    if MiskatonicSet == true then
+        local MiskatonicMythosDeckID = MiskatonicVariables.call('getMiskatonicMythosDeckId')
+        local MiskatonicMythosDeck = getObjectFromGUID(MiskatonicMythosDeckID)
+        local BoardMythosDeckId = SetupVariables.call('getBoardMythosdeckId')
+        local BoardMythosDeck = getObjectFromGUID(BoardMythosDeckId)
+        BoardMythosDeck.putObject(MiskatonicMythosDeck)
+    end
+
+    Wait.time(function() Finisher.call('boardDeckRandomizer') end,1)
+
+    Wait.time(function() Conan.call('ConanDestroys') end,3)
+
+    Finisher.call('boardBagsRandomizer')
+
+    Wait.time(function() Finisher.call('Finisher') end,2)
+
+end
+--Counts number of extra boards. If none, skips this step
+-- These board flags are important to know the setup ( check _SetupVariables for the board positions
+-- depending on the number of extra boards)
+-- Btw, don't you love ASCII drawings? I made some with my Ifs... (how I miss switch functions...)
+function EvaluateBoardPlacement()
+    -- board types - If big expansion apply, only one will be lit
+    InnsmouthSolo = false
+    KingsportSolo = false
+    DunwichSolo = false
+    KingsportDunwich = false
+    InnsmouthKingsport = false
+    InnsmouthDunwich = false
+    AllThreeBoards = false
+
+    GlobalVariables = getObjectFromGUID(GlobalVariablesId)
+
+    GlobalVariables.call('setInnsmouthSolo', {InnsmouthSolo})
+    GlobalVariables.call('setKingsportSolo', {KingsportSolo})
+    GlobalVariables.call('setDunwichSolo', {DunwichSolo})
+    GlobalVariables.call('setInnsmouthDunwich', {InnsmouthDunwich})
+    GlobalVariables.call('setInnsmouthKingsport', {InnsmouthKingsport})
+    GlobalVariables.call('setKingsportDunwich', {KingsportDunwich})
+    GlobalVariables.call('setAllThreeBoards', {AllThreeBoards})
+
+    if InnsmouthSet == true then
+        CountExtraBoards = CountExtraBoards + 1
+    end
+
+    if KingsportSet == true then
+        CountExtraBoards = CountExtraBoards + 1
+    end
+
+    if DunwichSet == true then
+        CountExtraBoards = CountExtraBoards + 1
+    end
+
+    if CountExtraBoards > 0 then
+        -- one board
+        if CountExtraBoards == 1 then
+            if InnsmouthSet == true then
+                InnsmouthSolo = true
+                GlobalVariables.call('setInnsmouthSolo', {InnsmouthSolo})
+            end
+            if KingsportSet == true then
+                KingsportSolo = true
+                GlobalVariables.call('setKingsportSolo', {KingsportSolo})
+            end
+            if DunwichSet == true then
+                DunwichSolo = true
+                GlobalVariables.call('setDunwichSolo', {DunwichSolo})
+            end
+        end
+        -- Two Boards
+        if CountExtraBoards == 2 then
+            if InnsmouthSet == true then
+                if KingsportSet == true then
+                    InnsmouthKingsport = true
+                    GlobalVariables.call('setInnsmouthKingsport', {InnsmouthKingsport})
+                else
+                    InnsmouthDunwich = true
+                    GlobalVariables.call('setInnsmouthDunwich', {InnsmouthDunwich})
+                end
+            else
+                -- Since Innsmouth is out of the game and there are two extra boards...
+                KingsportDunwich = true
+                GlobalVariables.call('setKingsportDunwich', {KingsportDunwich})
+            end
+
+        end
+
+        if CountExtraBoards == 3 then
+            -- Iron man!
+            AllThreeBoards = true
+            GlobalVariables.call('setAllThreeBoards', {AllThreeBoards})
+        end
+    end
+end
+
+-- For Coroutines, waits X frames
+function waitFrames(frames)
+    while frames > 0 do
+        coroutine.yield(0)
+        frames = frames - 1
+    end
+end

@@ -1,0 +1,50 @@
+local Mat_Scripting_Zone = '619d27'
+local Money_Bag = '3e95f5'
+local clues_Bag_Id = '43faab'
+local TrashId = 'fd7ecf'
+local StaminaToken = 'f61cd6'
+local SanityToken = '5b1ac4'
+local MirroredLocationsGuid = '5f6af6'
+
+local FirstplayerPosition = {63.33, 0.60, 66.03}
+local FirstplayerRotation = {0, 90, 180}
+local PhaseIndicatorPosition = {67.84, 0.54, 69.76}
+local PhaseIndicatorRotation = {0, 90, 0}
+
+local moneyPosition = {67.31, 1.08, 43.00}
+local moneyRotation = {0.00, 0.00, 180.00}
+
+local cluesPosition = {67.31, 1.08, 45.00}
+local cluesRotation = {0.00, 0.00, 180.00}
+
+local staminaPosition = {72.72, 0.76, 48.93}
+local staminaRotation = {0.00, 0.00, 180.00}
+
+local sanityPosition = {74.75, 0.75, 49.06}
+local sanityRotation = {0.00, 0.00, 180.00}
+
+local FixedCommonPosition = {67.31, 2.08, 47.00}
+local FixedCommonRotation = {0.00, 90.00, 0.00}
+
+local FixedUniquePosition = {67.31, 2.08, 49.00}
+local FixedUniqueRotation = {0.00, 90.00, 0.00}
+
+local FixedSpellPosition = {67.31, 2.08, 51.00}
+local FixedSpellRotation = {0.00, 90.00, 0.00}
+
+local FixedSkillPosition = {67.31, 2.08, 53.00}
+local FixedSkillRotation = {0.00, 90.00, 0.00}
+
+local FixedAllyPosition = {67.31, 2.08, 55.00}
+local FixedAllyRotation = {0.00, 90.00, 0.00}
+
+local FixedSpecialPosition = {67.31, 2.08, 57.00}
+local FixedSpecialRotation = {0.00, 90.00, 0.00}
+
+local RandomDeckPosition = {71.31, 2.08, 47.00}
+local RandomDeckRotation = {0.00, 90.00, 0.00}
+
+local RandomSpecialPosition = {71.31, 2.08, 49.00}
+local RandomSpecialRotation = {0.00, 90.00, 0.00}
+
+require("Playermat_Functions")

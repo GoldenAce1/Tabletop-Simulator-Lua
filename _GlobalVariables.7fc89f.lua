@@ -66,21 +66,21 @@ local Board_Madness_Discard = {32.18, 0.69, 22.10}
 
 local Board_Bless_Curse_Discard = {20.36, 1.01, 15.50}
 local Board_Deputy_Discard = {20.44, 1.01, 18.29}
-local Board_Bank_Loan_Discard = {20.45, 1.01, 21.11}
+local Board_Bank_Loan_Discard = {20.63, 0.73, 21.69}
 local Board_Changed_Discard = {24.89, 1.01, 12.91}
-local Board_Captain_Discard = {24.92, 1.01, 15.58}
+local Board_Captain_Discard = {25.33, 0.60, 16.52}
 local Board_Sheldon_Discard = {25.32, 0.64, 20.21}
 local Board_Sheldon_Rotation = {0, 90, 0}
-local Board_Rail_Pass_Discard = {25.29, 0.60, 28.46}
-local Board_Magical_Effect_Discard = {20.60, 1.01, 26.70}
-local Board_Silver_Twilight_Lodge_Discard = {20.56, 1.01, 23.91}
+local Board_Rail_Pass_Discard = {25.29, 0.64, 28.46}
+local Board_Magical_Effect_Discard = {34.79, 0.63, 28.99}
+local Board_Silver_Twilight_Lodge_Discard = {20.60, 0.73, 25.12}
 local Board_Retainer_Discard = {20.29, 1.01, 12.83}
 local Board_Relationship_Discard = {45.70, 0.57, 5.73}
-local Pharaoh_Detriments_Discard = {43.77, 1.01, 10.74}
-local Pharaoh_Benefits_Discard = {43.80, 1.01, 7.83}
+local Pharaoh_Detriments_Discard = {30.11, 0.61, 17.15}
+local Pharaoh_Benefits_Discard = {30.12, 0.62, 13.30}
 local Goat_Corruption_Discard = {29.95, 0.59, 24.34}
 local Pharaoh_Exhibit_Items_Discard = {38.15, 0.58, 15.07}
-local Goat_Membership_Discard = {38.26, 1.21, 19.40}
+local Goat_Membership_Discard = {35.02, 0.63, 25.30}
 local Board_Mythos_Scale = {1.25, 1.00, 1.25}
 local Board_Gate_Scale = {1.25, 1.00, 1.25}
 local Board_Common_Scale = {1.25, 1.00, 1.25}
@@ -146,6 +146,8 @@ local Yellow_Magical_Effect_Deck_id= ''
 
 -- The Black Goat of the woods
 local Goat_Encounters_Deck_id = ''
+local Goat_Encounters_Deck_pos = {34.96, 0.59, 21.33}
+local Goat_Encounters_Deck_rot = {0,90,180}
 local Goat_Membership_Deck_id = ''
 local Goat_Red_Corruption_Deck_id = ''
 local Goat_Green_Corruption_Deck_Id = ''
@@ -154,7 +156,9 @@ local Goat_Green_Corruption_Deck_Id = ''
 local Pharaoh_Benefits_Deck_id = ''
 local Pharaoh_Detriments_Deck_id = ''
 local Pharaoh_Exhibit_Item_Deck_id = ''
-local Pharaoh_Exhibit_Encounter_Deck_Id = '' 
+local Pharaoh_Exhibit_Encounter_Deck_Id = ''
+local Pharaoh_Exhibit_Encounter_Deck_pos = {34.93, 0.72, 17.11}
+local Pharaoh_Exhibit_Encounter_Deck_rot = {0.08, 90.00, 179.98}
 local Pharaoh_Patrol_Marker_Id = ''
 local Pharaoh_Ancient_Whispers_Token_Id = ''
 
@@ -1341,6 +1345,14 @@ function getGoatEncountersDeckid()
     return Goat_Encounters_Deck_id
 end
 
+function getGoatEncountersDeckpos()
+    return Goat_Encounters_Deck_pos
+end
+
+function getGoatEncountersDeckrot()
+    return Goat_Encounters_Deck_rot
+end
+
 function getGoatMembershipDeckid()
     return Goat_Membership_Deck_id
 end
@@ -1361,6 +1373,14 @@ end
 
 function getPharaohExhibitItemDeckid()
     return Pharaoh_Exhibit_Item_Deck_id
+end
+
+function getPharaohExhibitEncounterDeckPos()
+    return Pharaoh_Exhibit_Encounter_Deck_pos
+end
+
+function getPharaohExhibitEncounterDeckRot()
+    return Pharaoh_Exhibit_Encounter_Deck_rot
 end
 
 function getPharaohBenefitsDeckid()

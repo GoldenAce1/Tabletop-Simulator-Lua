@@ -1,0 +1,7 @@
+
+local objectPosition = {62.67, 0.65, 12.90}
+-- local objectPosition = {-1.3, 0.63, 0}
+local objectRotation = {0, 90.00, 0}
+local Mirrored_Location_Scripting_Zone = 'a24198'
+
+require("Mirrored_Location")

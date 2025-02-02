@@ -1,0 +1,893 @@
+local DunwichVariables = getObjectFromGUID('5932f9')
+
+local isLurkerGateSet = false
+
+function SetDunwichMonstersOnTable()
+    placeMonsterBag()
+end
+
+function SetDunwichComponentsOnTable(LurkerGateSet)
+
+    isLurkerGateSet = LurkerGateSet
+
+    placeMythos()
+    placeGate()
+    placeNorthside()
+    placeDowntown()
+    placeEasttown()
+    placeMerchant()
+    placeRivertown()
+    placeMiskatonic()
+    placeFrench()
+    placeUptown()
+    placeSouthside()
+    placeSkills()
+    placeAllies()
+	placeCommon()
+    placeUnique()
+    placeSpells()
+
+    -- Expansion-specific
+    placeCondition()
+    placeSheldonGang()
+    placeRailPass()
+    placeBlastedHeath()
+    placeBackwoods()
+    placeVilageCommons()
+    -- Clues Variant.
+    -- placeClueDeck()
+    placeDunwichHorrorDeck()
+    placeDunwichHorrorMonster()
+    -- placeMonsterBag()
+    placeDunwichHorrorToken()
+
+    -- These gates are only set of the Lurker Gate Variant is not Active
+    if isLurkerGateSet == false then
+        placeGateMarker()
+    end
+
+    placeDunwichBoard()
+
+    Wait.time(deckFlipper, 1)
+
+end
+
+function placeMythos()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichMythosDeckId = DunwichVariables.call('getDunwichMythosDeckId')
+
+    local params = {}
+    params.guid = DunwichMythosDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = DunwichVariables.call('getDunwichPositionById',{DunwichMythosDeckId})
+    local BoardMythosDeckId = SetupVariablesNew.call('getBoardMythosdeckId')
+    local BoardMythosDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardMythosDeckId})
+    params.position = {BoardMythosDeckPos[1], BoardMythosDeckPos[2]+1.5,BoardMythosDeckPos[3]}
+
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardMythosScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardMythosDeck = getObjectFromGUID(BoardMythosDeckId)
+    BoardMythosDeck.putObject(item)
+
+end
+
+function placeGate()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichGateDeckId = DunwichVariables.call('getDunwichGateDeckId')
+
+    local params = {}
+    params.guid = DunwichGateDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = DunwichVariables.call('getDunwichPositionById',{DunwichGateDeckId})
+    local BoardGateDeckId = SetupVariablesNew.call('getBoardGatedeckId')
+    local BoardGateDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardGateDeckId})
+    params.position = {BoardGateDeckPos[1], BoardGateDeckPos[2]+1.5,BoardGateDeckPos[3]}
+
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardGateScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- I don't know why, if I leave it as it is, the boardGateDeck gets the
+    -- GUID of the Pharaoh's Deck. So, I put the deck on the other.
+    local BoardGateDeck = getObjectFromGUID(BoardGateDeckId)
+    BoardGateDeck.putObject(item)
+
+end
+
+function placeNorthside()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichNorthsideDeckId = DunwichVariables.call('getDunwichNorthsideDeckId')
+
+    local params = {}
+    params.guid = DunwichNorthsideDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = DunwichVariables.call('getDunwichPositionById',{DunwichNorthsideDeckId})
+    local BoardNorthsideDeckId = SetupVariablesNew.call('getBoardNorthsidedeckId')
+    local BoardNorthsideDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardNorthsideDeckId})
+    params.position = {BoardNorthsideDeckPos[1], BoardNorthsideDeckPos[2],BoardNorthsideDeckPos[3]}
+
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardNorthsideScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    local BoardNorthsideDeck = getObjectFromGUID(BoardNorthsideDeckId)
+    BoardNorthsideDeck.putObject(item)
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardNorthsideDeck = getObjectFromGUID(BoardNorthsideDeckId)
+    BoardNorthsideDeck.putObject(item)
+
+end
+
+function placeDowntown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichDowntownDeckId = DunwichVariables.call('getDunwichDowntownDeckId')
+
+    local params = {}
+    params.guid = DunwichDowntownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = DunwichVariables.call('getDunwichPositionById',{DunwichDowntownDeckId})
+    local BoardDowntownDeckId = SetupVariablesNew.call('getBoardDowntowndeckId')
+    local BoardDowntownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardDowntownDeckId})
+    params.position = {BoardDowntownDeckPos[1], BoardDowntownDeckPos[2],BoardDowntownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardDowntownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardDowntownDeck = getObjectFromGUID(BoardDowntownDeckId)
+    BoardDowntownDeck.putObject(item)
+
+end
+
+function placeEasttown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichEasttownDeckId = DunwichVariables.call('getDunwichEasttownDeckId')
+
+    local params = {}
+    params.guid = DunwichEasttownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = DunwichVariables.call('getDunwichPositionById',{DunwichEasttownDeckId})
+    local BoardEasttownDeckId = SetupVariablesNew.call('getBoardEasttowndeckId')
+    local BoardEasttownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardEasttownDeckId})
+    params.position = {BoardEasttownDeckPos[1], BoardEasttownDeckPos[2],BoardEasttownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardEasttownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardEasttownDeck = getObjectFromGUID(BoardEasttownDeckId)
+    BoardEasttownDeck.putObject(item)
+
+end
+
+function placeMerchant()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichMerchantDeckId = DunwichVariables.call('getDunwichMerchantDeckId')
+
+    local params = {}
+    params.guid = DunwichMerchantDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = DunwichVariables.call('getDunwichPositionById',{DunwichMerchantDeckId})
+    local BoardMerchantDeckId = SetupVariablesNew.call('getBoardMerchantdeckId')
+    local BoardMerchantDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardMerchantDeckId})
+    params.position = {BoardMerchantDeckPos[1], BoardMerchantDeckPos[2],BoardMerchantDeckPos[3]}
+
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardMerchantScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardMerchantDeck = getObjectFromGUID(BoardMerchantDeckId)
+    BoardMerchantDeck.putObject(item)
+
+end
+
+function placeRivertown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichRivertownDeckId = DunwichVariables.call('getDunwichRivertownDeckId')
+
+    local params = {}
+    params.guid = DunwichRivertownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = DunwichVariables.call('getDunwichPositionById',{DunwichRivertownDeckId})
+    local BoardRivertownDeckId = SetupVariablesNew.call('getBoardRivertowndeckId')
+    local BoardRivertownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardRivertownDeckId})
+    params.position = {BoardRivertownDeckPos[1], BoardRivertownDeckPos[2],BoardRivertownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardRivertownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardRivertownDeck = getObjectFromGUID(BoardRivertownDeckId)
+    BoardRivertownDeck.putObject(item)
+
+end
+
+function placeMiskatonic()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichMiskatonicDeckId = DunwichVariables.call('getDunwichMiskatonicDeckId')
+
+    local params = {}
+    params.guid = DunwichMiskatonicDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = DunwichVariables.call('getDunwichPositionById',{DunwichMiskatonicDeckId})
+    local BoardMiskatonicDeckId = SetupVariablesNew.call('getBoardMiskatonicdeckId')
+    local BoardMiskatonicDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardMiskatonicDeckId})
+    params.position = {BoardMiskatonicDeckPos[1], BoardMiskatonicDeckPos[2],BoardMiskatonicDeckPos[3]}
+
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+    local scale = SetupVariablesNew.call('getBoardMiskatonicScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardMiskatonicDeck = getObjectFromGUID(BoardMiskatonicDeckId)
+    BoardMiskatonicDeck.putObject(item)
+
+end
+
+function placeFrench()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichFrenchDeckId = DunwichVariables.call('getDunwichFrenchDeckId')
+
+    local params = {}
+    params.guid = DunwichFrenchDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = DunwichVariables.call('getDunwichPositionById',{DunwichFrenchDeckId})
+    local BoardFrenchDeckId = SetupVariablesNew.call('getBoardFrenchdeckId')
+    local BoardFrenchDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardFrenchDeckId})
+    params.position = {BoardFrenchDeckPos[1], BoardFrenchDeckPos[2],BoardFrenchDeckPos[3]}
+
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardFrenchScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardFrenchDeck = getObjectFromGUID(BoardFrenchDeckId)
+    BoardFrenchDeck.putObject(item)
+
+end
+
+function placeUptown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichUptownDeckId = DunwichVariables.call('getDunwichUptownDeckId')
+
+    local params = {}
+    params.guid = DunwichUptownDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = DunwichVariables.call('getDunwichPositionById',{DunwichUptownDeckId})
+    local BoardUptownDeckId = SetupVariablesNew.call('getBoardUptowndeckId')
+    local BoardUptownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardUptownDeckId})
+    params.position = {BoardUptownDeckPos[1], BoardUptownDeckPos[2],BoardUptownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardUptownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardUptownDeck = getObjectFromGUID(BoardUptownDeckId)
+    BoardUptownDeck.putObject(item)
+
+end
+
+function placeSouthside()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichSouthsideDeckId = DunwichVariables.call('getDunwichSouthsideDeckId')
+
+    local params = {}
+    params.guid = DunwichSouthsideDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = DunwichVariables.call('getDunwichPositionById',{DunwichSouthsideDeckId})
+    local BoardSouthsideDeckId = SetupVariablesNew.call('getBoardSouthsidedeckId')
+    local BoardSouthsideDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardSouthsideDeckId})
+    params.position = {BoardSouthsideDeckPos[1], BoardSouthsideDeckPos[2],BoardSouthsideDeckPos[3]}
+
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardSouthsideScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardSouthsideDeck = getObjectFromGUID(BoardSouthsideDeckId)
+    BoardSouthsideDeck.putObject(item)
+
+end
+
+function placeSkills()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichSkillsDeckId = DunwichVariables.call('getDunwichSkillsDeckId')
+
+    local params = {}
+    params.guid = DunwichSkillsDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = DunwichVariables.call('getDunwichPositionById',{DunwichSkillsDeckId})
+    local BoardSkillsDeckId = SetupVariablesNew.call('getBoardSkillsdeckId')
+    local BoardSkillsDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardSkillsDeckId})
+    params.position = {BoardSkillsDeckPos[1], BoardSkillsDeckPos[2],BoardSkillsDeckPos[3]}
+
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardSkillsScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardSkillsDeck = getObjectFromGUID(BoardSkillsDeckId)
+    BoardSkillsDeck.putObject(item)
+
+end
+
+function placeCommon()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichCommonDeckId = DunwichVariables.call('getDunwichCommonDeckId')
+
+    local params = {}
+    params.guid = DunwichCommonDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = DunwichVariables.call('getDunwichPositionById',{DunwichCommonDeckId})
+    local BoardCommonDeckId = SetupVariablesNew.call('getBoardCommondeckId')
+    local BoardCommonDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardCommonDeckId})
+    params.position = {BoardCommonDeckPos[1], BoardCommonDeckPos[2],BoardCommonDeckPos[3]}
+
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardCommonScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardCommonDeck = getObjectFromGUID(BoardCommonDeckId)
+    BoardCommonDeck.putObject(item)
+
+end
+
+function placeUnique()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichUniqueDeckId = DunwichVariables.call('getDunwichUniqueDeckId')
+
+    local params = {}
+    params.guid = DunwichUniqueDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = DunwichVariables.call('getDunwichPositionById',{DunwichUniqueDeckId})
+    local BoardUniqueDeckId = SetupVariablesNew.call('getBoardUniquedeckId')
+    local BoardUniqueDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardUniqueDeckId})
+    params.position = {BoardUniqueDeckPos[1], BoardUniqueDeckPos[2],BoardUniqueDeckPos[3]}
+
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardUniqueScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardUniqueDeck = getObjectFromGUID(BoardUniqueDeckId)
+    BoardUniqueDeck.putObject(item)
+
+end
+
+function placeSpells()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichSpellsDeckId = DunwichVariables.call('getDunwichSpellsDeckId')
+
+    local params = {}
+    params.guid = DunwichSpellsDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = DunwichVariables.call('getDunwichPositionById',{DunwichSpellsDeckId})
+    local BoardSpellsDeckId = SetupVariablesNew.call('getBoardSpellsdeckId')
+    local BoardSpellsDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardSpellsDeckId})
+    params.position = {BoardSpellsDeckPos[1], BoardSpellsDeckPos[2],BoardSpellsDeckPos[3]}
+
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardSpellsScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardSpellsDeck = getObjectFromGUID(BoardSpellsDeckId)
+    BoardSpellsDeck.putObject(item)
+
+end
+
+function placeAllies()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichAlliesDeckId = DunwichVariables.call('getDunwichAlliesDeckId')
+
+    local params = {}
+    params.guid = DunwichAlliesDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = DunwichVariables.call('getDunwichPositionById',{DunwichAlliesDeckId})
+    local BoardAlliesDeckId = SetupVariablesNew.call('getBoardAlliesdeckId')
+    local BoardAlliesDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardAlliesDeckId})
+    params.position = {BoardAlliesDeckPos[1], BoardAlliesDeckPos[2],BoardAlliesDeckPos[3]}
+
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardAlliesScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardAlliesDeck = getObjectFromGUID(BoardAlliesDeckId)
+    BoardAlliesDeck.putObject(item)
+
+end
+
+-- Expansion-specific
+
+function placeCondition()
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichConditionDeckId = DunwichVariables.call('getDunwichConditionDeckId')
+
+    local params = {}
+    params.guid = DunwichConditionDeckId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = DunwichVariables.call('getDunwichPositionById',{DunwichConditionDeckId})
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+end
+
+function placeSheldonGang()
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichSheldonGangDeckId = DunwichVariables.call('getDunwichSheldonGangDeckId')
+
+    local params = {}
+    params.guid = DunwichSheldonGangDeckId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = DunwichVariables.call('getDunwichPositionById',{DunwichSheldonGangDeckId})
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+end
+
+function placeRailPass()
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichRailPassDeckId = DunwichVariables.call('getDunwichRailPassDeckId')
+
+    local params = {}
+    params.guid = DunwichRailPassDeckId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = DunwichVariables.call('getDunwichPositionById',{DunwichRailPassDeckId})
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+end
+
+function placeBlastedHeath()
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichBlastedHeathDeckId = DunwichVariables.call('getDunwichBlastedHeathDeckId')
+
+    local params = {}
+    params.guid = DunwichBlastedHeathDeckId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = DunwichVariables.call('getDunwichPositionById',{DunwichBlastedHeathDeckId})
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+end
+
+function placeBackwoods()
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichBackwoodsDeckId = DunwichVariables.call('getDunwichBackwoodsDeckId')
+
+    local params = {}
+    params.guid = DunwichBackwoodsDeckId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = DunwichVariables.call('getDunwichPositionById',{DunwichBackwoodsDeckId})
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+end
+
+function placeVilageCommons()
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichVillageCommonsDeckId = DunwichVariables.call('getDunwichVillageCommonsDeckId')
+
+    local params = {}
+    params.guid = DunwichVillageCommonsDeckId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = DunwichVariables.call('getDunwichPositionById',{DunwichVillageCommonsDeckId})
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+end
+
+-- function placeClueDeck()
+--     --Get the bag ID
+--     local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+--
+--     --Get the bag
+--     local DunwichBag = getObjectFromGUID(DunwichBagId)
+--
+--     local DunwichClueDeckId = DunwichVariables.call('getDunwichClueDeckId')
+--
+--     local params = {}
+--     params.guid = DunwichClueDeckId
+--     params.rotation = {0, 90, 0}
+--
+--     -- look up the position based on the guid
+--     params.position = DunwichVariables.call('getDunwichPositionById',{DunwichClueDeckId})
+--     params.smooth = true
+--
+--     local item = DunwichBag.takeObject(params)
+--
+-- end
+
+function placeDunwichHorrorDeck()
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichHorrorDeckId = DunwichVariables.call('getDunwichHorrorDeckId')
+
+    local params = {}
+    params.guid = DunwichHorrorDeckId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = DunwichVariables.call('getDunwichPositionById',{DunwichHorrorDeckId})
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+end
+
+function placeDunwichHorrorMonster()
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichHorrorMonsterId = DunwichVariables.call('getDunwichHorrorMonsterId')
+
+    local params = {}
+    params.guid = DunwichHorrorMonsterId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = DunwichVariables.call('getDunwichPositionById',{DunwichHorrorMonsterId})
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+end
+
+function placeMonsterBag()
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichMonsterBagId = DunwichVariables.call('getDunwichMonsterBagId')
+
+    local params = {}
+    params.guid = DunwichMonsterBagId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = DunwichVariables.call('getDunwichPositionById',{DunwichMonsterBagId})
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+end
+
+function placeDunwichHorrorToken()
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichHorrorTokenId = DunwichVariables.call('getDunwichHorrorTokenId')
+
+    local params = {}
+    params.guid = DunwichHorrorTokenId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = DunwichVariables.call('getDunwichPositionById',{DunwichHorrorTokenId})
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+end
+function placeGateMarker()
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichGateMarkerBagId = DunwichVariables.call('getDunwichGateMarkerBagId')
+
+    local params = {}
+    params.guid = DunwichGateMarkerBagId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = DunwichVariables.call('getDunwichPositionById',{DunwichGateMarkerBagId})
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+end
+
+function placeDunwichBoard()
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichBoardId = DunwichVariables.call('getDunwichBoardId')
+
+    local params = {}
+    params.guid = DunwichBoardId
+    params.rotation = {0, 90, 0}
+
+    -- look up the position based on the guid
+    params.position = DunwichVariables.call('getDunwichPositionById',{DunwichBoardId})
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+    item.setScale({1, 1, 1})
+end
+
+function placeCommonInvestSetup()
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichCommonDeckId = DunwichVariables.call('getDunwichCommonDeckId')
+
+    local params = {}
+    params.guid = DunwichCommonDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    params.position = DunwichVariables.call('getDunwichPositionById',{DunwichCommonDeckId})
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+end
+
+function placeUniqueInvestSetup()
+    --Get the bag ID
+    local DunwichBagId = DunwichVariables.call('getDunwichBagId')
+
+    --Get the bag
+    local DunwichBag = getObjectFromGUID(DunwichBagId)
+
+    local DunwichUniqueDeckId = DunwichVariables.call('getDunwichUniqueDeckId')
+
+    local params = {}
+    params.guid = DunwichUniqueDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    params.position = DunwichVariables.call('getDunwichPositionById',{DunwichUniqueDeckId})
+    params.smooth = true
+
+    local item = DunwichBag.takeObject(params)
+
+end
+
+-- Flip it (Because if rotation is used, flip is ignored)
+-- Also, must wait before flipping
+function deckFlipper()
+
+    local DunwichDecks = DunwichVariables.getTable('DunwichDecks')
+
+    for i, obj in ipairs(DunwichDecks) do
+        getObjectFromGUID(obj).flip()
+    end
+end

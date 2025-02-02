@@ -1,4 +1,4 @@
-local GoatVariablesId = '293f5a'
+local GlobalVariablesId = '7fc89f'
 local ControlPanelVariablesId = 'bf1ea5'
 --{41.75, 0.68, 24.19}
 
@@ -32,8 +32,8 @@ function onload()
 end
 
 function ShuffleCultEncountersButtonClicked()
-    local GoatVariables = getObjectFromGUID(GoatVariablesId)
-    local Board_Cult_Encounters_Deck_Id = GoatVariables.call('getGoatEncountersDeckId')
+    local GlobalVariables = getObjectFromGUID(GlobalVariablesId)
+    local Board_Cult_Encounters_Deck_Id = GlobalVariables.call('getGoatEncountersDeckid')
 
     local Board_Cult_Encounters_Deck = getObjectFromGUID(Board_Cult_Encounters_Deck_Id)
     Board_Cult_Encounters_Deck.randomize()

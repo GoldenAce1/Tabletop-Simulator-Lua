@@ -1,0 +1,7 @@
+
+local objectPosition = {31.42, 0.68, 43.68}
+-- local objectPosition = {-1.3, 0.63, 0}
+local objectRotation = {0, 0, 0}
+local Mirrored_Location_Scripting_Zone = 'ff1dad'
+
+require("Mirrored_Location_Right")

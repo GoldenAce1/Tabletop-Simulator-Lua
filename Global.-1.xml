@@ -505,7 +505,7 @@
     cellBackgroundColor="rgba(69, 69, 69, 1)" columnWidths="340" autoCalculateHeight="false"
     rectAlignment="UpperCenter" />
   <Row class="ImageRow" preferredHeight="100" rectAlignment="MiddleCenter"
-    cellBackgroundColor="rgba(0, 0, 0, 0)" />
+    cellBackgroundColor="rgba(0, 0, 0, 0)" preserveAspect = "true" />
   <Panel class="SetupPanel"/>
   <ToggleButton class="iconButton" textAlignment="MiddleLeft" textColor="#000000" isOn="false"
     selectedBackgroundColor="rgba(255, 255, 255, 1)"
@@ -534,19 +534,19 @@
             <Row class="ImageRow">
               <Cell id="LurkerImageCell">
                 <ToggleButton id="LurkerImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870518316184/480D9D2A581C402991ACA46E0D6F5D4C7929768E/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698502714/DBBA5FF3A014FB3642AD90A7461D0158DD6E2B4B/"
                   onValueChanged="19615d/LurkerToggleClicked"
                   tooltip="Adds/Removes The Lurker at the Threshold Expansion (OVERRIDES Lurker Small Cards!)"></ToggleButton>
               </Cell>
               <Cell id="LurkerSmallCardsImageCell">
                 <ToggleButton id="LurkerSmallCardsImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870518316439/3422CB03E0881310F0ED90B1BBDCB0A8C517F831/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698502638/7A01D3DDFE87AF4B73509DBCC0762FF7AF6CC918/"
                   onValueChanged="19615d/LurkerToggleSmallCardsClicked"
                   tooltip="Adds/Removes The Lurker at the Threshold Small Cards only."></ToggleButton>
               </Cell>
               <Cell id="LurkerGatesImageCell">
                 <ToggleButton id="LurkerGatesImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870518316329/F336A5A284AD313AAAD953B749FB2FE641B078CA/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698502600/C0DFF69D3734FE681ED555E8353BF960F9DEE8D1/"
                   onValueChanged="19615d/LurkerToggleVariantClicked"
                   tooltip="Adds/Removes The Lurker at the Threshold Gates Variant (Does NOT add Expansion)."></ToggleButton>
               </Cell>
@@ -554,13 +554,13 @@
             <Row class="ImageRow">
               <Cell id="PharaohImageCell">
                 <ToggleButton id="PharaohImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516586920/7D64016893B90C4899D88AFEE512813C08A37E7F/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698502903/BB662BD7FA6E4A6E28317C671A4120516B2A74B9/"
                   onValueChanged="19615d/PharaohToggleClicked"
                   tooltip="Adds/Removes The Curse of the Dark Pharaoh Revised Expansion (OVERRIDES Pharaoh Small Cards!)"></ToggleButton>
               </Cell>
               <Cell id="PharaohSmallCardsImageCell">
                 <ToggleButton id="PharaohSmallCardsImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516587050/418C15D48D87539725F3DAF52315B9731F5103CD/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698503005/2F1F2FC0C72AD887E1B146BC4E27991C6DBFD0CD/"
                   onValueChanged="19615d/PharaohToggleSmallCardsClicked"
                   tooltip="Adds/Removes The Curse of the Dark Pharaoh Revised Small Cards only."></ToggleButton>
               </Cell>
@@ -568,19 +568,19 @@
             <Row class="ImageRow">
               <Cell id="GoatImageCell">
                 <ToggleButton id="GoatImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516585673/E6C9A753F65E3175D5D31D43256358307C5011D1/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698501689/3D1C817D7C526E38786AA84672D96630394AC5F2/"
                   onValueChanged="19615d/GoatToggleClicked"
                   tooltip="Adds/Removes The Black Goat of the Woods Expansion (OVERRIDES Black Goat Small Cards!)"></ToggleButton>
               </Cell>
               <Cell id="GoatSmallCardsImageCell">
                 <ToggleButton id="GoatSmallCardsImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516585831/D28E57BFE7E3D06ECFB6C8D7FEDEFA5AEE0EC8CF/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698501520/15D1EDC7D587D01867C68B758DDD05D485023764/"
                   onValueChanged="19615d/GoatToggleSmallCardsClicked"
                   tooltip="Adds/Removes The Black Goat of the Woods Small Cards only."></ToggleButton>
               </Cell>
                             <Cell id="GoatMonstersImageCell">
                 <ToggleButton id="GoatMonsterImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870521441590/1D112944A085013854A6EB10B04C0D52234A4A25/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698501595/D724753C81E9E3B046A5ED386001814B6E19BEAF/"
                   onValueChanged="19615d/GoatToggleMonsterClicked"
                   tooltip="Adds/Removes The Black Goat of the Woods Monsters only."></ToggleButton>
               </Cell>
@@ -588,19 +588,19 @@
             <Row class="ImageRow">
               <Cell id="KiYImageCell">
                 <ToggleButton id="KiYImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516587259/D152438F74EDFAC9B9C6F2D1C3B9176BA52FA07D/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698502337/1EEDEFDA31B594E13FD5DE3D88EEF84332FC78A0/"
                   onValueChanged="19615d/YellowToggleClicked"
                   tooltip="Adds/Removes The King in Yellow Expansion (OVERRIDES The King in Yellow Small Cards option!)"></ToggleButton>
               </Cell>
               <Cell id="KiYOriginalActsImageCell">
                 <ToggleButton id="KiYOriginalActsImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516587345/C5215FCD18E200C0AA7F24782A6ABA1F8CFBA2B1/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698502401/F948810E05BB74D6CEB53FE43B4A64C7E2F1EE85/"
                   onValueChanged="19615d/YellowActstoggleClicked"
                   tooltip="Adds/Removes The King in Yellow Expansion (OVERRIDES The King in Yellow Small Cards option and Miskatonic Acts!)"></ToggleButton>
               </Cell>
               <Cell id="KiYSmallCardsImageCell">
                 <ToggleButton id="KiYSmallCardsImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516587561/EAD8AF719805FB2714CB67FEF37417245910F532/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698502481/90C7A0C06054EFF9BB1AD101D580E38711382574/"
                   onValueChanged="19615d/YellowButtonAddSmallCardsClicked"
                   tooltip="Adds/Removes The King in Yellow Small Cards only."></ToggleButton>
               </Cell>
@@ -608,19 +608,19 @@
             <Row class="ImageRow">
               <Cell id="InnsmouthImageCell">
                 <ToggleButton id="InnsmouthImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870518545440/C69F43870DFFEE59C85E791EB95F74B818A5A954/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698502060/804F0A4A86550664F45CD79C0A0BC1874C283404/"
                   onValueChanged="19615d/InnsmouthToggleClicked"
                   tooltip="Adds/Removes Innsmouth Horror Expansion (OVERRIDES Innsmouth Horror Small Cards option!)"></ToggleButton>
               </Cell>
               <Cell id="InnsmouthSmallCardsImageCell">
                 <ToggleButton id="InnsmouthSmallCardsImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870518545533/53B3ECCFDB1B86917CC9ADA50574F8EB47F3F13D/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698501921/084CC2C432F7C9CD9D8E9D60283204E1644C5504/"
                   onValueChanged="19615d/InnsmouthToggleSmallCardsClicked"
                   tooltip="Adds/Removes Innsmouth Horror Small Cards only."></ToggleButton>
               </Cell>
                             <Cell id="InnsmouthMonstersImageCell">
                 <ToggleButton id="InnsmouthMonsterImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870521441689/D3C58C6647B08CDB26BDED1131B5FCD19A983779/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698501851/F2E3DA35985A7BDBA5B51EBFFB92CD77E3DD31BA/"
                   onValueChanged="19615d/InnsmouthToggleMonsterClicked"
                   tooltip="Adds/Removes Innsmouth Horror Monsters only."></ToggleButton>
               </Cell>
@@ -628,19 +628,19 @@
             <Row class="ImageRow">
               <Cell id="KingsportImageCell">
                 <ToggleButton id="KingsportImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870518562009/D3948C65054E27DBCDE25B617D4597FA79D1A248/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698502294/E15329B19FCA47F02273626745825B5AF901D329/"
                   onValueChanged="19615d/KingsportToggleClicked"
                   tooltip="Adds/Removes Kingsport Horror Expansion (OVERRIDES Kingsport Horror Small Cards option!)"></ToggleButton>
               </Cell>
               <Cell id="KingsportSmallCardsImageCell">
                 <ToggleButton id="KingsportSmallCardsImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870518561153/8FAAB8EC3CC4596D50D94DB0BABF8D3010BE56CA/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698502246/740D32BE00E137D9C0BC4CBE50DE19711376C929/"
                   onValueChanged="19615d/KingsportToggleSmallCardsClicked"
                   tooltip="Adds/Removes Kingsport Horror Small Cards only."></ToggleButton>
               </Cell>
                 <Cell id="KingsportMonstersImageCell">
                 <ToggleButton id="KingsportMonsterImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870521441774/48C92B0BDEBEAA6DE29AB6F1DBBD2D30C0E6D882/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698502190/1C9F0A26CC6EC02FAD28276A8C5AC364332BE2E0/"
                   onValueChanged="19615d/KingsportToggleMonsterClicked"
                   tooltip="Adds/Removes Kingsport Horror Monsters only."></ToggleButton>
               </Cell>
@@ -648,19 +648,19 @@
             <Row class="ImageRow">
               <Cell id="DunwichImageCell">
                 <ToggleButton id="DunwichImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516585325/6E3C1AFCBC7DCEEC5166C5C2A723BEB217D00E06/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698501432/EC13423688B766EF8016663892B567555F13F566/"
                   onValueChanged="19615d/DunwichToggleClicked"
                   tooltip="Adds/Removes Dunwich Horror Expansion (OVERRIDES Dunwich Horror Small Cards option!)"></ToggleButton>
               </Cell>
               <Cell id="DunwichSmallCardsImageCell">
                 <ToggleButton id="DunwichSmallCardsImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516585458/0DF7214094F6D2364AD40D7DE36E9FC2646F3A6F/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698501355/71EFA73DAFD28B54434B2C67B965443903CDF07C/"
                   onValueChanged="19615d/DunwichToggleSmallCardsClicked"
                   tooltip="Adds/Removes Dunwich Horror Small Cards only."></ToggleButton>
               </Cell>
                 <Cell id="DunwichMonstersImageCell">
                 <ToggleButton id="DunwichMonsterImageToggle" class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870521441497/48C4B9518DBBD1543BB34831E1DDCB466E6EDAD3/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698501241/4EDD0558F814BCEAB0184AA755CEA493186C9CB2/"
                   onValueChanged="19615d/DunwichToggleMonsterClicked"
                   tooltip="Adds/Removes Dunwich Horror Monsters only."></ToggleButton>
               </Cell>
@@ -668,7 +668,7 @@
             <Row class="ImageRow">
               <Cell id="MiskatonicImageCell">
                 <ToggleButton class="iconButton"
-                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516586744/451856466147D381DEAF36278E645C4E13B942AA/"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43448510698502795/0F725B94EBA8D4A948578DD03CF91BD0EB13046D/"
                   onValueChanged="19615d/MiskatonicToggleClicked"
                   tooltip="Adds/Removes Miskatonic Horror Double expansion Locations, Mythos and Gate cards."></ToggleButton>
               </Cell>

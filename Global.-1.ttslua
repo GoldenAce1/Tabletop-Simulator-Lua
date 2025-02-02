@@ -1,0 +1,180 @@
+--[[ Lua code. See documentation: http://berserk-games.com/knowledgebase/scripting/ --]]
+local SetNotesId = 'eab95f'
+local SetNotesXMLId = '218b75'
+
+local players = {}
+local nrPlayers = 0
+local minimized = false
+numberFrames = 0
+NumberFramesMythosCount = 0
+local onLoadGetMythos = false
+
+function onSave()
+	local state = {}
+
+	state.players = players
+	state.nrPlayers = nrPlayers
+
+
+	return JSON.encode_pretty(state)
+end
+
+--[[ The onLoad event is called after the game save finishes loading. --]]
+function onLoad(saveState)
+
+    self.createButton(ShuffleNorthsideButton)
+    self.createButton(ShuffleDowntownButton)
+    self.createButton(ShuffleEasttownButton)
+    self.createButton(ShuffleMerchantButton)
+    self.createButton(ShuffleRivertownButton)
+    self.createButton(ShuffleMiskatonicButton)
+    self.createButton(ShuffleFrenchButton)
+    self.createButton(ShuffleUptownButton)
+    self.createButton(ShuffleSouthsideButton)
+
+	FixHandZones()
+
+	if saveState ~= "" then
+
+		local data = JSON.decode(saveState)
+
+		players = data.players
+		nrPlayers = data.nrPlayers
+
+        if players == nil then
+            players = {}
+        end
+
+        if nrPlayers == nil then
+            nrPlayers = 0
+        end
+		onLoadGetMythos = true
+
+		-- -- TEST
+		-- for i, player in ipairs(players) do
+		--     print("Player ", players[i])
+		-- end
+
+	else
+
+        players = {}
+        nrPlayers = 0
+		onLoadGetMythos = false
+	end
+	minimized = false
+end
+
+--[[ The onUpdate event is called once per frame. --]]
+function onUpdate ()
+    numberFrames = numberFrames + 1
+    if  numberFrames > 50 then
+		NumberFramesMythosCount = NumberFramesMythosCount + 1
+		variableTable = {}
+		variableTable[1] = players
+		variableTable[2] = nrPlayers
+		variableTable[3] = NumberFramesMythosCount
+		variableTable[4] = onLoadGetMythos
+		variableTable[5] = minimized
+
+
+		-- ATTENTION: Never set both SetNotes at once. The onUpdate Function makes it too slow!
+
+		-- Old SetNotes
+		-- local SetNotes = getObjectFromGUID(SetNotesId)
+    	-- SetNotes.call('getPlacements',variableTable)
+
+		local SetNotesXML = getObjectFromGUID(SetNotesXMLId)
+    	SetNotesXML.call('getPlacements',variableTable)
+
+		--Making sure it stays as false after the initial load
+		onLoadGetMythos = false
+
+        numberFrames = 0
+		if  NumberFramesMythosCount >= 2 then
+			NumberFramesMythosCount = 0
+		end
+    end
+end
+
+function addPlayer(guid)
+	nrPlayers = nrPlayers + 1
+	players[nrPlayers] = guid
+	local investigatorFigurine = getObjectFromGUID(guid)
+	if investigatorFigurine ~= nil then
+		broadcastToAll("The Investigator ".. investigatorFigurine.getName() .. " is on the case.")
+	else
+		broadcastToAll("Please remove figurine from the bag.")
+	end
+end
+
+function removePlayer(guid)
+	for i, player in ipairs(players) do
+		if players[i] == guid then
+			table.remove(players, i)
+		end
+	end
+	local investigatorFigurine = getObjectFromGUID(guid)
+	if investigatorFigurine ~= nil then
+		broadcastToAll("The Investigator ".. getObjectFromGUID(guid).getName() .. " has left the case.")
+	end
+
+	if nrPlayers > 0 then
+		nrPlayers = nrPlayers - 1
+	end
+end
+
+-- Make Sure Hand Zones are where they're supposed to be
+function FixHandZones()
+	local RotationY = 270
+	local Y = 4.55
+
+	local playerList = Player.getAvailableColors()
+	for _, colour in ipairs(playerList) do
+		local pramsOLD = Player[colour].getHandTransform()
+
+		if colour == "White" then
+			pramsNew = {position={pramsOLD.position.x, Y, pramsOLD.position.z}
+			,rotation={0,RotationY,0}
+			,scale={15.50, 5.40, 0.82}
+		}
+		Player[colour].setHandTransform(pramsNew, 1)
+		elseif colour == "Blue" then
+			pramsNew = {position={pramsOLD.position.x, Y, pramsOLD.position.z}
+			,rotation={0,RotationY,0}
+			,scale={15.50, 5.40, 0.82}
+			}
+			Player[colour].setHandTransform(pramsNew, 1)
+		elseif colour == "Green" then
+			pramsNew = {position={pramsOLD.position.x, Y, pramsOLD.position.z}
+			,rotation={0,RotationY,0}
+			,scale={15.50, 5.40, 0.82}
+			}
+			Player[colour].setHandTransform(pramsNew, 1)
+		elseif colour == "Teal" then
+			pramsNew = {position={pramsOLD.position.x, Y, pramsOLD.position.z}
+			,rotation={0,RotationY,0}
+			,scale={15.50, 5.40, 0.82}
+			}
+			Player[colour].setHandTransform(pramsNew, 1)
+		else
+			pramsNew = {position={pramsOLD.position.x, Y, pramsOLD.position.z}
+			,rotation={0,0,0}
+			,scale={15.50, 5.40, 0.82}
+			}
+			Player[colour].setHandTransform(pramsNew, 1)
+		end
+	end
+end
+
+-- Function to minimize the window
+function minimize(player, value, id)
+  -- Is the size of the window bigger than its top bar?
+  if(tonumber(UI.getAttribute("Window", "Height")) > tonumber(UI.getAttribute("TopBar", "Height"))) then
+    UI.setAttribute("Window","OffsetXY", "0 135") -- Offset is set to (Height - Height_of_Top_Bar) /2
+    UI.setAttribute("Window", "Height", tonumber(UI.getAttribute("TopBar", "Height")))
+  else
+    UI.setAttribute("Window","OffsetXY", "0 0")
+    UI.setAttribute("Window", "Height", 300)
+  end
+  minimized = true
+end

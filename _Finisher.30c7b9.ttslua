@@ -1,0 +1,623 @@
+--setup
+local SetupVariables = getObjectFromGUID('f9d0b7')
+local ControlPanelVariables = getObjectFromGUID('bf1ea5')
+
+local ExpansionDeckShuffler1Id = 'f92f33'
+local ExpansionDeckShuffler2Id = '6987b9'
+local ExpansionDeckShuffler3Id = 'f7f2a4'
+local ExpansionDeckShuffler4Id = '1cd0c9'
+local ExpansionDeckShuffler5Id = '37bcaa'
+local ExpansionDeckShuffler6Id = 'c73243'
+local ExpansionDeckShuffler7Id = '978ca9'
+local ExpansionDeckShuffler8Id = '590d98'
+local ExpansionDeckShuffler9Id = '0c1562'
+local ExpansionDeckShuffler10Id = '7c05a4'
+local ExpansionDeckShuffler11Id = '6dec5e'
+local ExpansionDeckShuffler12Id = '2af77c'
+local ExpansionDeckShuffler13Id = '7f2ca2'
+local SpawnableTextId = '2c56ce'
+local ScrZoneExpansionsPlacement = getObjectFromGUID('abb672')
+
+function SetupLocations()
+
+    local BoardLocationPlacement = getObjectFromGUID('a22e16')
+    InnsmouthSet = ControlPanelVariables.call('isInnsmouthSet')
+    KingsportSet = ControlPanelVariables.call('isKingsportSet')
+    DunwichSet = ControlPanelVariables.call('isDunwichSet')
+
+    if InnsmouthSet == true then
+        BoardLocationPlacement.call('PlaceInnsmouthLocations')
+    end
+    if KingsportSet == true then
+        function coinsidePlaceKingsportLocations()
+            waitFrames(20)
+            BoardLocationPlacement.call('PlaceKingsportLocations')
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        startLuaCoroutine(self, "coinsidePlaceKingsportLocations") --must use this way to make coroutine in order to wait frames
+    end
+    if DunwichSet == true then
+        function coinsidePlaceDunwichLocations()
+            waitFrames(20)
+            BoardLocationPlacement.call('PlaceDunwichLocations')
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        startLuaCoroutine(self, "coinsidePlaceDunwichLocations") --must use this way to make coroutine in order to wait frames
+    end
+end
+
+function PlaceLocks()
+
+    BoardLocations = getObjectFromGUID('60fa72')
+    InnsmouthSet = ControlPanelVariables.call('isInnsmouthSet')
+    KingsportSet = ControlPanelVariables.call('isKingsportSet')
+    DunwichSet = ControlPanelVariables.call('isDunwichSet')
+
+    if InnsmouthSet == true then
+        local InnsmouthLocationDevilReefid = BoardLocations.call('getInnsmouthLocationDevilReefid')
+        local InnsmouthLocationDevilReef = getObjectFromGUID(InnsmouthLocationDevilReefid)
+        InnsmouthLocationDevilReef.locked = true
+
+        local InnsmouthLocationJailid = BoardLocations.call('getInnsmouthLocationJailid')
+        local InnsmouthLocationJail = getObjectFromGUID(InnsmouthLocationJailid)
+        InnsmouthLocationJail.locked = true
+
+        local InnsmouthLocationJailWindowid = BoardLocations.call('getInnsmouthLocationJailWindowid')
+        local InnsmouthLocationJailWindow = getObjectFromGUID(InnsmouthLocationJailWindowid)
+        InnsmouthLocationJailWindow.locked = true
+
+        local InnsmouthLocationSawboneAlleyid = BoardLocations.call('getInnsmouthLocationSawboneAlleyid')
+        local InnsmouthLocationSawboneAlley = getObjectFromGUID(InnsmouthLocationSawboneAlleyid)
+        InnsmouthLocationSawboneAlley.locked = true
+
+        local InnsmouthLocationEsotericDagonid = BoardLocations.call('getInnsmouthLocationEsotericDagonid')
+        local InnsmouthLocationEsotericDagon = getObjectFromGUID(InnsmouthLocationEsotericDagonid)
+        InnsmouthLocationEsotericDagon.locked = true
+
+        local InnsmouthLocationChurchGreenid = BoardLocations.call('getInnsmouthLocationChurchGreenid')
+        local InnsmouthLocationChurchGreen = getObjectFromGUID(InnsmouthLocationChurchGreenid)
+        InnsmouthLocationChurchGreen.locked = true
+
+        local InnsmouthLocationFactoryDistrictid = BoardLocations.call('getInnsmouthLocationFactoryDistrictid')
+        local InnsmouthLocationFactoryDistrict = getObjectFromGUID(InnsmouthLocationFactoryDistrictid)
+        InnsmouthLocationFactoryDistrict.locked = true
+
+        local InnsmouthLocationFirstNationalGroceryid = BoardLocations.call('getInnsmouthLocationFirstNationalGroceryid')
+        local InnsmouthLocationFirstNationalGrocery = getObjectFromGUID(InnsmouthLocationFirstNationalGroceryid)
+        InnsmouthLocationFirstNationalGrocery.locked = true
+
+        local InnsmouthLocationGilmanHouseHotelid = BoardLocations.call('getInnsmouthLocationGilmanHouseHotelid')
+        local InnsmouthLocationGilmanHouseHotel = getObjectFromGUID(InnsmouthLocationGilmanHouseHotelid)
+        InnsmouthLocationGilmanHouseHotel.locked = true
+
+        local InnsmouthLocationMarshRefineryid = BoardLocations.call('getInnsmouthLocationMarshRefineryid')
+        local InnsmouthLocationMarshRefinery = getObjectFromGUID(InnsmouthLocationMarshRefineryid)
+        InnsmouthLocationMarshRefinery.locked = true
+
+        local InnsmouthLocationInnsmouthShoreid = BoardLocations.call('getInnsmouthLocationInnsmouthShoreid')
+        local InnsmouthLocationInnsmouthShore = getObjectFromGUID(InnsmouthLocationInnsmouthShoreid)
+        InnsmouthLocationInnsmouthShore.locked = true
+
+        local InnsmouthLocationJoeSargentsid = BoardLocations.call('getInnsmouthLocationJoeSargentsid')
+        local InnsmouthLocationJoeSargents = getObjectFromGUID(InnsmouthLocationJoeSargentsid)
+        InnsmouthLocationJoeSargents.locked = true
+
+        local InnsmouthLocationFalconPointid = BoardLocations.call('getInnsmouthLocationFalconPointid')
+        local InnsmouthLocationFalconPoint = getObjectFromGUID(InnsmouthLocationFalconPointid)
+        InnsmouthLocationFalconPoint.locked = true
+
+        local InnsmouthLocationYhaNthleiid = BoardLocations.call('getInnsmouthLocationYhaNthleiid')
+        local InnsmouthLocationYhaNthlei = getObjectFromGUID(InnsmouthLocationYhaNthleiid)
+        InnsmouthLocationYhaNthlei.locked = true
+    end
+    if DunwichSet == true then
+        local DunwichLocationWhateleyFarmid = BoardLocations.call('getDunwichLocationWhateleyFarmid')
+        local DunwichLocationWhateleyFarm = getObjectFromGUID(DunwichLocationWhateleyFarmid)
+        DunwichLocationWhateleyFarm.locked = true
+
+        local DunwichLocationWizardsHillid = BoardLocations.call('getDunwichLocationWizardsHillid')
+        local DunwichLocationWizardsHill = getObjectFromGUID(DunwichLocationWizardsHillid)
+        DunwichLocationWizardsHill.locked = true
+
+        local DunwichLocationColdSpringid = BoardLocations.call('getDunwichLocationColdSpringid')
+        local DunwichLocationColdSpring = getObjectFromGUID(DunwichLocationColdSpringid)
+        DunwichLocationColdSpring.locked = true
+
+        local DunwichLocationBackwoodsid = BoardLocations.call('getDunwichLocationBackwoodsid')
+        local DunwichLocationBackwoods = getObjectFromGUID(DunwichLocationBackwoodsid)
+        DunwichLocationBackwoods.locked = true
+
+        local DunwichLocationSentinelHillid = BoardLocations.call('getDunwichLocationSentinelHillid')
+        local DunwichLocationSentinelHill = getObjectFromGUID(DunwichLocationSentinelHillid)
+        DunwichLocationSentinelHill.locked = true
+
+        local DunwichLocationVillageCommonsid = BoardLocations.call('getDunwichLocationVillageCommonsid')
+        local DunwichLocationVillageCommons = getObjectFromGUID(DunwichLocationVillageCommonsid)
+        DunwichLocationVillageCommons.locked = true
+
+        local DunwichLocationDarkesCarnivalid = BoardLocations.call('getDunwichLocationDarkesCarnivalid')
+        local DunwichLocationDarkesCarnival = getObjectFromGUID(DunwichLocationDarkesCarnivalid)
+        DunwichLocationDarkesCarnival.locked = true
+
+        local DunwichLocationBishopBrookeid = BoardLocations.call('getDunwichLocationBishopBrookeid')
+        local DunwichLocationBishopBrooke = getObjectFromGUID(DunwichLocationBishopBrookeid)
+        DunwichLocationBishopBrooke.locked = true
+
+        local DunwichLocationDunwichVillageid = BoardLocations.call('getDunwichLocationDunwichVillageid')
+        local DunwichLocationDunwichVillage = getObjectFromGUID(DunwichLocationDunwichVillageid)
+        DunwichLocationDunwichVillage.locked = true
+
+        local DunwichLocationBlastedHeathid = BoardLocations.call('getDunwichLocationBlastedHeathid')
+        local DunwichLocationBlastedHeath = getObjectFromGUID(DunwichLocationBlastedHeathid)
+        DunwichLocationBlastedHeath.locked = true
+
+        local DunwichLocationGardnersPlaceid = BoardLocations.call('getDunwichLocationGardnersPlaceid')
+        local DunwichLocationGardnersPlace = getObjectFromGUID(DunwichLocationGardnersPlaceid)
+        DunwichLocationGardnersPlace.locked = true
+
+        local DunwichLocationDevilsHopyardid = BoardLocations.call('getDunwichLocationDevilsHopyardid')
+        local DunwichLocationDevilsHopyard = getObjectFromGUID(DunwichLocationDevilsHopyardid)
+        DunwichLocationDevilsHopyard.locked = true
+
+        local DunwichLocationHarneyJonesShackid = BoardLocations.call('getDunwichLocationHarneyJonesShackid')
+        local DunwichLocationHarneyJonesShack = getObjectFromGUID(DunwichLocationHarneyJonesShackid)
+        DunwichLocationHarneyJonesShack.locked = true
+
+        local DunwichLocationAnotherTimeid = BoardLocations.call('getDunwichLocationAnotherTimeid')
+        local DunwichLocationAnotherTime = getObjectFromGUID(DunwichLocationAnotherTimeid)
+        DunwichLocationAnotherTime.locked = true
+
+        local DunwichLocationLostCarcosaid = BoardLocations.call('getDunwichLocationLostCarcosaid')
+        local DunwichLocationLostCarcosa = getObjectFromGUID(DunwichLocationLostCarcosaid)
+        DunwichLocationLostCarcosa.locked = true
+    end
+
+    if KingsportSet == true then
+        local KingsportLocationHallSchoolid = BoardLocations.call('getKingsportLocationHallSchoolid')
+        local KingsportLocationHallSchool = getObjectFromGUID(KingsportLocationHallSchoolid)
+        KingsportLocationHallSchool.locked = true
+
+        local KingsportLocation607WaterStreetid = BoardLocations.call('getKingsportLocation607WaterStreetid')
+        local KingsportLocation607WaterStreet = getObjectFromGUID(KingsportLocation607WaterStreetid)
+        KingsportLocation607WaterStreet.locked = true
+
+        local KingsportLocationCentralHillid = BoardLocations.call('getKingsportLocationCentralHillid')
+        local KingsportLocationCentralHill = getObjectFromGUID(KingsportLocationCentralHillid)
+        KingsportLocationCentralHill.locked = true
+
+        local KingsportLocationCongregationalHospitalid = BoardLocations.call('getKingsportLocationCongregationalHospitalid')
+        local KingsportLocationCongregationalHospital = getObjectFromGUID(KingsportLocationCongregationalHospitalid)
+        KingsportLocationCongregationalHospital.locked = true
+
+        local KingsportLocationHarborsideid = BoardLocations.call('getKingsportLocationHarborsideid')
+        local KingsportLocationHarborside = getObjectFromGUID(KingsportLocationHarborsideid)
+        KingsportLocationHarborside.locked = true
+
+        local KingsportLocationRopeAndAnchorCommonsid = BoardLocations.call('getKingsportLocationRopeAndAnchorCommonsid')
+        local KingsportLocationRopeAndAnchorCommons = getObjectFromGUID(KingsportLocationRopeAndAnchorCommonsid)
+        KingsportLocationRopeAndAnchorCommons.locked = true
+
+        local KingsportLocationWirelessStationid = BoardLocations.call('getKingsportLocationWirelessStationid')
+        local KingsportLocationWirelessStation = getObjectFromGUID(KingsportLocationWirelessStationid)
+        KingsportLocationWirelessStation.locked = true
+
+        local KingsportLocationArtistsColonyid = BoardLocations.call('getKingsportLocationArtistsColonyid')
+        local KingsportLocationArtistsColony = getObjectFromGUID(KingsportLocationArtistsColonyid)
+        KingsportLocationArtistsColony.locked = true
+
+        local KingsportLocation7thHouseid = BoardLocations.call('getKingsportLocation7thHouseid')
+        local KingsportLocation7thHouse = getObjectFromGUID(KingsportLocation7thHouseid)
+        KingsportLocation7thHouse.locked = true
+
+        local KingsportLocationNeilsCuriosityid = BoardLocations.call('getKingsportLocationNeilsCuriosityid')
+        local KingsportLocationNeilsCuriosity = getObjectFromGUID(KingsportLocationNeilsCuriosityid)
+        KingsportLocationNeilsCuriosity.locked = true
+
+        local KingsportLocationNorthPointLighthouseid = BoardLocations.call('getKingsportLocationNorthPointLighthouseid')
+        local KingsportLocationNorthPointLighthouse = getObjectFromGUID(KingsportLocationNorthPointLighthouseid)
+        KingsportLocationNorthPointLighthouse.locked = true
+
+        local KingsportLocationTheCausewayid = BoardLocations.call('getKingsportLocationTheCausewayid')
+        local KingsportLocationTheCauseway = getObjectFromGUID(KingsportLocationTheCausewayid)
+        KingsportLocationTheCauseway.locked = true
+
+        local KingsportLocationStErasmusid = BoardLocations.call('getKingsportLocationStErasmusid')
+        local KingsportLocationStErasmus = getObjectFromGUID(KingsportLocationStErasmusid)
+        KingsportLocationStErasmus.locked = true
+
+        local KingsportLocationStrangeHighHouseid = BoardLocations.call('getKingsportLocationStrangeHighHouseid')
+        local KingsportLocationStrangeHighHouse = getObjectFromGUID(KingsportLocationStrangeHighHouseid)
+        KingsportLocationStrangeHighHouse.locked = true
+
+        local KingsportLocationSouthShoreid = BoardLocations.call('getKingsportLocationSouthShoreid')
+        local KingsportLocationSouthShore = getObjectFromGUID(KingsportLocationSouthShoreid)
+        KingsportLocationSouthShore.locked = true
+
+        local KingsportLocationTheUnderworldid = BoardLocations.call('getKingsportLocationTheUnderworldid')
+        local KingsportLocationTheUnderworld = getObjectFromGUID(KingsportLocationTheUnderworldid)
+        KingsportLocationTheUnderworld.locked = true
+
+        local KingsportLocationUnknownKadathid = BoardLocations.call('getKingsportLocationUnknownKadathid')
+        local KingsportLocationUnknownKadath = getObjectFromGUID(KingsportLocationUnknownKadathid)
+        KingsportLocationUnknownKadath.locked = true
+    end
+end
+
+-- shuffles All the board's Decks -
+function boardDeckRandomizer()
+
+    local SetupVariables = getObjectFromGUID('f9d0b7')
+
+    local decks = SetupVariables.call('getBoardDecksShuffle')
+
+    for _, obj in pairs(decks) do
+        ShuffleDeck = getObjectFromGUID(obj)
+        ShuffleDeck.randomize()
+    end
+end
+
+function boardBagsRandomizer()
+
+    local LurkerVariables = getObjectFromGUID('edd1ef')
+    LurkerGateSet = ControlPanelVariables.call('isLurkerGateSet')
+    KingsportMonsterOnly = ControlPanelVariables.call('isKingsportMonsterOnly')
+    local KingsportVariables = getObjectFromGUID('00ac75')
+
+    if LurkerGateSet == false then
+        local Board_Gate_Bag_id = SetupVariables.call('getBoardGateBagId')
+        local Board_Gate_Bag = getObjectFromGUID(Board_Gate_Bag_id)
+        Board_Gate_Bag.randomize()
+    else
+        local Board_Gate_Bag_id = LurkerVariables.call('getLurkerGateMarkerBagId')
+        local Board_Gate_Bag = getObjectFromGUID(Board_Gate_Bag_id)
+        Board_Gate_Bag.randomize()
+    end
+
+    local Board_Monster_Bag_Id = SetupVariables.call('getBoardMonsterBagId')
+    local Board_Monster_Bag = getObjectFromGUID(Board_Monster_Bag_Id)
+    Board_Monster_Bag.randomize()
+
+    if KingsportSet == true then
+        local KingsportRiftProgressBagId = KingsportVariables.call('getKingsportRiftProgressBagId')
+        local KingsportRiftProgressBag = getObjectFromGUID(KingsportRiftProgressBagId)
+        KingsportRiftProgressBag.randomize()
+
+        local KingsportRiftMarkerBagId = KingsportVariables.call('getKingsportRiftMarkerBagId')
+        local KingsportRiftMarkerBag = getObjectFromGUID(KingsportRiftMarkerBagId)
+        KingsportRiftMarkerBag.randomize()
+    end
+
+end
+
+function Finisher()
+
+    InnsmouthSet = ControlPanelVariables.call('isInnsmouthSet')
+    KingsportSet = ControlPanelVariables.call('isKingsportSet')
+    DunwichSet = ControlPanelVariables.call('isDunwichSet')
+    GoatSet = ControlPanelVariables.call('isGoatSet')
+    PharaohSet = ControlPanelVariables.call('isPharaohSet')
+    SetupVariables = getObjectFromGUID('f9d0b7')
+    GoatVariables = getObjectFromGUID('293f5a')
+
+    GlobalVariables = getObjectFromGUID('7fc89f')
+    InnsmouthSolo = GlobalVariables.call('getInnsmouthSolo')
+    KingsportSolo = GlobalVariables.call('getKingsportSolo')
+    DunwichSolo = GlobalVariables.call('getDunwichSolo')
+    KingsportDunwich = GlobalVariables.call('getKingsportDunwich')
+    InnsmouthKingsport = GlobalVariables.call('getInnsmouthKingsport')
+    InnsmouthDunwich = GlobalVariables.call('getInnsmouthDunwich')
+    AllThreeBoards = GlobalVariables.call('getAllThreeBoards')
+
+    local Board_Green_Epic_Battle_deck_id = SetupVariables.call('getBoardGreenEpicBattledeckid')
+    local Board_Green_Epic_Battle_deck = getObjectFromGUID(Board_Green_Epic_Battle_deck_id)
+    Board_Green_Epic_Battle_deck.setPosition({-16.01, 5, 14.1})
+
+    local Board_Red_Epic_Battle_deck_id = SetupVariables.call('getBoardRedEpicBattledeckid')
+    local Board_Red_Epic_Battle_deck = getObjectFromGUID(Board_Red_Epic_Battle_deck_id)
+    Board_Red_Epic_Battle_deck.setName("Epic Battle Deck")
+
+    if GoatSet == true then
+
+        -- Set GreenCorruption Deck on top of the Red Deck
+        local Goat_Green_Corruption_Deck_Id = GoatVariables.call("getGoatGreenCorruptionDeckId")
+        local Goat_Green_Corruption_Deck = getObjectFromGUID(Goat_Green_Corruption_Deck_Id)
+        Goat_Green_Corruption_Deck.setName("Corruption Deck")
+        Goat_Green_Corruption_Deck.setPosition({47.86, 5, 19.28})
+
+
+        local Goat_Red_Corruption_Deck_id = GoatVariables.call("getGoatRedCorruptionDeckId")
+        local Goat_Red_Corruption_Deck = getObjectFromGUID(Goat_Red_Corruption_Deck_id)
+        Goat_Red_Corruption_Deck.setName("Corruption Deck")
+    end
+
+    if KingsportSet == true then
+
+        local KingsportVariables = getObjectFromGUID('00ac75')
+
+        if KingsportSolo == true or KingsportDunwich == true then
+            local KingsportRiftMarkerBagId = KingsportVariables.call('getKingsportRiftMarkerBagId')
+            local KingsportRiftMarkerBag = getObjectFromGUID(KingsportRiftMarkerBagId)
+            local SetupVariables = getObjectFromGUID('f9d0b7')
+
+            local rift1 = KingsportVariables.call('getKingsportRift1')
+            local rift2 = KingsportVariables.call('getKingsportRift2')
+            local rift3 = KingsportVariables.call('getKingsportRift3')
+            local RiftPosition1 = SetupVariables.call('getBoardPositionsKingsportSoloById', {rift1})
+            local RiftPosition2 = SetupVariables.call('getBoardPositionsKingsportSoloById', {rift2})
+            local RiftPosition3 = SetupVariables.call('getBoardPositionsKingsportSoloById', {rift3})
+
+            locationToSet = {}
+            locationToSet.position = {RiftPosition1[1],RiftPosition1[2]+0.2,RiftPosition1[3]}
+            locationToSet.rotation = {0, 90, 180}
+            KingsportRiftMarkerBag.takeObject(locationToSet)
+
+            locationToSet = {}
+            locationToSet.position = {RiftPosition2[1],RiftPosition2[2]+0.2,RiftPosition2[3]}
+            locationToSet.rotation = {0, 90, 180}
+            KingsportRiftMarkerBag.takeObject(locationToSet)
+
+            locationToSet = {}
+            locationToSet.position = {RiftPosition3[1],RiftPosition3[2]+0.2,RiftPosition3[3]}
+            locationToSet.rotation = {0, 90, 180}
+            KingsportRiftMarkerBag.takeObject(locationToSet)
+        end
+        if InnsmouthKingsport == true then
+            local KingsportRiftMarkerBagId = KingsportVariables.call('getKingsportRiftMarkerBagId')
+            local KingsportRiftMarkerBag = getObjectFromGUID(KingsportRiftMarkerBagId)
+            local SetupVariables = getObjectFromGUID('f9d0b7')
+
+            local rift1 = KingsportVariables.call('getKingsportRift1')
+            local rift2 = KingsportVariables.call('getKingsportRift2')
+            local rift3 = KingsportVariables.call('getKingsportRift3')
+            local RiftPosition1 = SetupVariables.call('getBoardPositionsInnsmouthKingsportById', {rift1})
+            local RiftPosition2 = SetupVariables.call('getBoardPositionsInnsmouthKingsportById', {rift2})
+            local RiftPosition3 = SetupVariables.call('getBoardPositionsInnsmouthKingsportById', {rift3})
+
+            locationToSet = {}
+            locationToSet.position = {RiftPosition1[1],RiftPosition1[2]+0.2,RiftPosition1[3]}
+            locationToSet.rotation = {0, 90, 180}
+            KingsportRiftMarkerBag.takeObject(locationToSet)
+
+            locationToSet = {}
+            locationToSet.position = {RiftPosition2[1],RiftPosition2[2]+0.2,RiftPosition2[3]}
+            locationToSet.rotation = {0, 90, 180}
+            KingsportRiftMarkerBag.takeObject(locationToSet)
+
+            locationToSet = {}
+            locationToSet.position = {RiftPosition3[1],RiftPosition3[2]+0.2,RiftPosition3[3]}
+            locationToSet.rotation = {0, 90, 180}
+            KingsportRiftMarkerBag.takeObject(locationToSet)
+        end
+        if AllThreeBoards == true then
+            local KingsportRiftMarkerBagId = KingsportVariables.call('getKingsportRiftMarkerBagId')
+            local KingsportRiftMarkerBag = getObjectFromGUID(KingsportRiftMarkerBagId)
+            local SetupVariables = getObjectFromGUID('f9d0b7')
+
+            local rift1 = KingsportVariables.call('getKingsportRift1')
+            local rift2 = KingsportVariables.call('getKingsportRift2')
+            local rift3 = KingsportVariables.call('getKingsportRift3')
+            local RiftPosition1 = SetupVariables.call('getBoardPositions3BoardsById', {rift1})
+            local RiftPosition2 = SetupVariables.call('getBoardPositions3BoardsById', {rift2})
+            local RiftPosition3 = SetupVariables.call('getBoardPositions3BoardsById', {rift3})
+
+            locationToSet = {}
+            locationToSet.position = {RiftPosition1[1],RiftPosition1[2]+0.2,RiftPosition1[3]}
+            locationToSet.rotation = {0, 90, 180}
+            KingsportRiftMarkerBag.takeObject(locationToSet)
+
+            locationToSet = {}
+            locationToSet.position = {RiftPosition2[1],RiftPosition2[2]+0.2,RiftPosition2[3]}
+            locationToSet.rotation = {0, 90, 180}
+            KingsportRiftMarkerBag.takeObject(locationToSet)
+
+            locationToSet = {}
+            locationToSet.position = {RiftPosition3[1],RiftPosition3[2]+0.2,RiftPosition3[3]}
+            locationToSet.rotation = {0, 90, 180}
+            KingsportRiftMarkerBag.takeObject(locationToSet)
+        end
+    end
+
+    function coinsideUnstableLocations()
+        waitFrames(100)
+        --Placing Clue Tokens
+        UnstableLocations()
+        return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+    end
+    startLuaCoroutine(self, "coinsideUnstableLocations") --must use this way to make coroutine in order to wait frames
+
+    --Declaring and creating shuffler Buttons
+    DeclareButtonsShufflers()
+
+    -- Create the 3dText for the expansions
+    Create3DTextExpansions()
+
+    -- Created the Scripting Zones for the board expansions
+    CreateScriptZonesExpansions()
+
+end
+
+function findClueBag()
+    found = false
+    for _, obj in ipairs(getAllObjects()) do
+        if obj.getName() == 'Clue Token' and obj.tag == 'Infinite' then
+            clueBag = obj
+            found = true
+        end
+    end
+    if found == false then print('No Clue Bag found') end
+    return found
+end
+
+function UnstableLocations()
+
+    --Placing Arkham unstable Locations
+    local SetupVariables = getObjectFromGUID('f9d0b7')
+
+    local unstable_Arkham = SetupVariables.call('getArkhamUnstable')
+
+    if findClueBag() == true then
+        for _, obj in pairs(unstable_Arkham) do
+            locationToSet = {}
+            locationToSet.position = {obj[1],obj[2]+0.2,obj[3]}
+            locationToSet.rotation = {0.00, 60.00, 0.00}
+            clueBag.takeObject(locationToSet)
+        end
+
+        if InnsmouthSet == true then
+            local unstable_Innsmouth = SetupVariables.call('getInnsmouthUnstable')
+            for _, obj in pairs(unstable_Innsmouth) do
+                locationToSet = {}
+                locationToSet.position = {obj[1],obj[2]+0.2,obj[3]}
+                locationToSet.rotation = {0.00, 60.00, 0.00}
+                clueBag.takeObject(locationToSet)
+            end
+        end
+
+        if DunwichSet == true then
+
+            local unstable_Dunwich = {}
+            if DunwichSolo == true then
+                unstable_Dunwich = SetupVariables.call('getDunwichUnstableSolo')
+            else
+                -- In all other cases, Dunwich is second
+                unstable_Dunwich = SetupVariables.call('getDunwichUnstableSecond')
+            end
+
+            for _, obj in pairs(unstable_Dunwich) do
+                locationToSet = {}
+                locationToSet.position = {obj[1],obj[2]+0.2,obj[3]}
+                locationToSet.rotation = {0.00, 60.00, 0.00}
+                clueBag.takeObject(locationToSet)
+            end
+        end
+    end
+end
+
+function DeclareButtonsShufflers()
+
+    if InnsmouthSet == true then
+        local ExpansionDeckShuffler8 = getObjectFromGUID(ExpansionDeckShuffler8Id)
+        local ExpansionDeckShuffler9 = getObjectFromGUID(ExpansionDeckShuffler9Id)
+        local ExpansionDeckShuffler10 = getObjectFromGUID(ExpansionDeckShuffler10Id)
+        local ExpansionDeckShuffler12 = getObjectFromGUID(ExpansionDeckShuffler12Id)
+
+        ExpansionDeckShuffler8.call('declareButton')
+        ExpansionDeckShuffler8.call('createButton')
+
+        ExpansionDeckShuffler9.call('declareButton')
+        ExpansionDeckShuffler9.call('createButton')
+
+        ExpansionDeckShuffler10.call('declareButton')
+        ExpansionDeckShuffler10.call('createButton')
+
+        ExpansionDeckShuffler12.call('declareButton')
+        ExpansionDeckShuffler12.call('createButton')
+
+    end
+
+    if DunwichSet == true then
+        local ExpansionDeckShuffler1 = getObjectFromGUID(ExpansionDeckShuffler1Id)
+        local ExpansionDeckShuffler2 = getObjectFromGUID(ExpansionDeckShuffler2Id)
+        local ExpansionDeckShuffler3 = getObjectFromGUID(ExpansionDeckShuffler3Id)
+
+        ExpansionDeckShuffler1.call('declareButton')
+        ExpansionDeckShuffler1.call('createButton')
+
+        ExpansionDeckShuffler2.call('declareButton')
+        ExpansionDeckShuffler2.call('createButton')
+
+        ExpansionDeckShuffler3.call('declareButton')
+        ExpansionDeckShuffler3.call('createButton')
+
+    end
+
+    if KingsportSet == true then
+        local ExpansionDeckShuffler4 = getObjectFromGUID(ExpansionDeckShuffler4Id)
+        local ExpansionDeckShuffler5 = getObjectFromGUID(ExpansionDeckShuffler5Id)
+        local ExpansionDeckShuffler6 = getObjectFromGUID(ExpansionDeckShuffler6Id)
+        local ExpansionDeckShuffler7 = getObjectFromGUID(ExpansionDeckShuffler7Id)
+
+        ExpansionDeckShuffler4.call('declareButton')
+        ExpansionDeckShuffler4.call('createButton')
+
+        ExpansionDeckShuffler5.call('declareButton')
+        ExpansionDeckShuffler5.call('createButton')
+
+        ExpansionDeckShuffler6.call('declareButton')
+        ExpansionDeckShuffler6.call('createButton')
+
+        ExpansionDeckShuffler7.call('declareButton')
+        ExpansionDeckShuffler7.call('createButton')
+
+    end
+
+    if PharaohSet == true then
+        local ExpansionDeckShuffler11 = getObjectFromGUID(ExpansionDeckShuffler11Id)
+
+        ExpansionDeckShuffler11.call('declareButton')
+        ExpansionDeckShuffler11.call('createButton')
+
+    end
+
+    if GoatSet == true then
+        local ExpansionDeckShuffler13 = getObjectFromGUID(ExpansionDeckShuffler13Id)
+
+        ExpansionDeckShuffler13.call('declareButton')
+        ExpansionDeckShuffler13.call('createButton')
+
+    end
+
+end
+
+function Create3DTextExpansions()
+
+    if DunwichSet == true then
+        local SpawnableText = getObjectFromGUID(SpawnableTextId)
+        SpawnableText.call('SpawnDunwichLabels')
+    end
+
+    if KingsportSet == true then
+        local SpawnableText = getObjectFromGUID(SpawnableTextId)
+        SpawnableText.call('SpawnKingsportLabels')
+    end
+
+
+    if InnsmouthSet == true then
+        local SpawnableText = getObjectFromGUID(SpawnableTextId)
+        SpawnableText.call('SpawnInnsmouthLabels')
+    end
+
+    if GoatSet == true then
+        local SpawnableText = getObjectFromGUID(SpawnableTextId)
+        SpawnableText.call('SpawnGoatLabels')
+    end
+
+    if PharaohSet == true then
+        local SpawnableText = getObjectFromGUID(SpawnableTextId)
+        SpawnableText.call('SpawnPharaohLabels')
+    end
+end
+
+function CreateScriptZonesExpansions()
+
+    if DunwichSet == true then
+        ScrZoneExpansionsPlacement.call('PlaceDunwichScrZones')
+    end
+
+    if KingsportSet == true then
+        ScrZoneExpansionsPlacement.call('PlaceKingsportScrZones')
+    end
+
+    if InnsmouthSet == true then
+        ScrZoneExpansionsPlacement.call('PlaceInnsmouthScrZones')
+    end
+
+end
+
+-- For Coroutines, waits X frames
+function waitFrames(frames)
+    while frames > 0 do
+        coroutine.yield(0)
+        frames = frames - 1
+    end
+end

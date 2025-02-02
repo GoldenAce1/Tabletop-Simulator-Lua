@@ -11,12 +11,16 @@ local specialRotation = {0, 0, 180}
 -- Used as a switch to check if the figurine is in a location
 local switch_Discardable = {
     ["Special"] = function (x)  end,
+    ["Condition"] = function (x)  end,  
+    ["Dunwich Horror"] = function (x)  end, 
+    ["Cult Encounter"] = function (x)  end,
     ["Relationship"] = function (x)  end,
     ["Magical Effect"] = function (x)  end,
     ["Detriments"] = function (x)  end,
     ["Benefits"] = function (x)  end,
     ["Corruption"] = function (x)  end,
     ["Exhibit Items"] = function (x)  end,
+    ["Exhibit Encounter"] = function (x)  end,
     ["Common Item"] = function (x)  end,
     ["Unique Item"] = function (x)  end,
     ["Spell"] = function (x)  end,
@@ -72,11 +76,12 @@ function PerformSpecialDiscard(obj)
     local GlobalVariables = getObjectFromGUID(GlobalVariablesId)
     
     local ObjName = obj.getName()
+    local ObjDescription = obj.getDescription()
     
     if ObjName == "Rail Pass" then
         local railPassPosition = GlobalVariables.call('getBoardRailPassDiscard')
         obj.setPosition({railPassPosition[1], railPassPosition[2] + 3, railPassPosition[3]})
-        obj.setRotation(specialRotation)
+        obj.setRotation({0,90,0})
         
         ScrZoneExpansions = getObjectFromGUID('70a568')
         local BoardRailPassScriptingZoneId = ScrZoneExpansions.call('getDunwichScrzoneRailid')
@@ -130,7 +135,7 @@ function PerformSpecialDiscard(obj)
         startLuaCoroutine(self, "SheldonDiscardcoinside") --must use this way to make coroutine in order to wait frames          
     end
     
-    if ObjName == "Condition" then
+    if ObjDescription == "Condition" then
         local DunwichConditionPosition = GlobalVariables.call('getDunwichConditionDeckPos')
         local DunwichConditionRotation = GlobalVariables.call('getDunwichConditionDeckRot')
         obj.setPosition({DunwichConditionPosition[1], DunwichConditionPosition[2] + 3, DunwichConditionPosition[3]})
@@ -223,7 +228,7 @@ function PerformSpecialDiscard(obj)
     if ObjName == "Patrol Wagon" or ObjName == "Deputy of Arkham" or ObjName == "Deputy's Revolver" then
         local DeputyDiscardPosition = GlobalVariables.call('getBoardDeputyDiscard')
         obj.setPosition({DeputyDiscardPosition[1], DeputyDiscardPosition[2], DeputyDiscardPosition[3]})
-        obj.setRotation({0,90,180})
+        obj.setRotation({0,90,0})
         
         local BoardDeputyScriptingZoneId = GlobalVariables.call('getBoardDeputyScriptingZoneId')
         local BoardDeputyScriptingZone = getObjectFromGUID(BoardDeputyScriptingZoneId)
@@ -250,12 +255,12 @@ function PerformSpecialDiscard(obj)
     if ObjName == "Bank Loan" then
         local BankLoanDiscardPosition = GlobalVariables.call('getBoardBankLoanDiscard')
         obj.setPosition({BankLoanDiscardPosition[1], BankLoanDiscardPosition[2] + 3, BankLoanDiscardPosition[3]})
-        obj.setRotation(specialRotation)
+        obj.setRotation({0,90,180})
     end
     if ObjName == "Silver Twilight Lodge Membership" then
         local SilverTwilightLodgeDiscardPosition = GlobalVariables.call('getBoardSilverTwilightLodgeDiscard')
         obj.setPosition({SilverTwilightLodgeDiscardPosition[1], SilverTwilightLodgeDiscardPosition[2] + 3, SilverTwilightLodgeDiscardPosition[3]})
-        obj.setRotation(specialRotation)
+        obj.setRotation({0,90,0})
     end
     if ObjName == "Retainer" then
         local RetainerDiscardPosition = GlobalVariables.call('getBoardRetainerDiscard')
@@ -266,7 +271,7 @@ function PerformSpecialDiscard(obj)
     if ObjName == "\"One of the Thousand\" Cult Membership" then
         local GoatMembershipDiscardPosition = GlobalVariables.call('getGoatMembershipDiscard')
         obj.setPosition({GoatMembershipDiscardPosition[1], GoatMembershipDiscardPosition[2] + 3, GoatMembershipDiscardPosition[3]})
-        obj.setRotation({0,90,0})
+        obj.setRotation({0,90,180})
     end
     
     if ObjName == "Dunwich Horror" then
@@ -276,6 +281,74 @@ function PerformSpecialDiscard(obj)
     end
     
 end
+
+function PerformConditionDiscard(obj)
+    
+    local GlobalVariables = getObjectFromGUID(GlobalVariablesId)
+    
+    local ObjName = obj.getName()
+    local ObjDescription = obj.getDescription()
+    
+    
+    if ObjDescription == "Condition" then
+        local DunwichConditionPosition = GlobalVariables.call('getDunwichConditionDeckPos')
+        local DunwichConditionRotation = GlobalVariables.call('getDunwichConditionDeckRot')
+        obj.setPosition({DunwichConditionPosition[1], DunwichConditionPosition[2] + 3, DunwichConditionPosition[3]})
+        obj.setRotation({DunwichConditionRotation[1], DunwichConditionRotation[2], DunwichConditionRotation[3]})
+        
+        ScrZoneExpansions = getObjectFromGUID('70a568')
+        local DunwichConditionScriptingZoneId = ScrZoneExpansions.call('getDunwichScrzoneConditionid')
+        local DunwichConditionScriptingZone = getObjectFromGUID(DunwichConditionScriptingZoneId)
+        
+        function ConditionDiscardcoinside()
+            waitFrames(30)
+            local scriptingZoneObjects = DunwichConditionScriptingZone.getObjects()
+            
+            if scriptingZoneObjects ~= nil then
+                
+                for _, obj in ipairs(scriptingZoneObjects) do
+                    if obj.type == "Deck" then
+                        obj.setName("Condition")
+                        obj.setDescription("Special")
+                        GlobalVariables.call('setDunwichConditionDeckId', obj.guid)
+                    end
+                end
+            end
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        startLuaCoroutine(self, "ConditionDiscardcoinside") --must use this way to make coroutine in order to wait frames           
+    end    
+end
+
+
+function PerformDunwichHorrorCardDiscard(obj)
+    
+    local GlobalVariables = getObjectFromGUID(GlobalVariablesId)
+    
+    local ObjName = obj.getName()
+    local ObjDescription = obj.getDescription()
+    
+    local DunwichConditionPosition = GlobalVariables.call('getDunwichHorrorDeckDiscard')
+    
+    obj.setPosition({DunwichConditionPosition[1], DunwichConditionPosition[2] + 3, DunwichConditionPosition[3]})
+    obj.setRotation({0,270,0}) 
+end
+
+
+function PerformCultEncounterDiscard(obj)
+    
+    local GlobalVariables = getObjectFromGUID(GlobalVariablesId)
+    
+    local ObjName = obj.getName()
+    local ObjDescription = obj.getDescription()
+    
+    local CultEncounterPosition = GlobalVariables.call('getGoatEncountersDeckpos')
+    local CultEncounterRotation = GlobalVariables.call('getGoatEncountersDeckrot')
+    
+    obj.setPosition({CultEncounterPosition[1], CultEncounterPosition[2] + 3, CultEncounterPosition[3]})
+    obj.setRotation({CultEncounterRotation[1], CultEncounterRotation[2], CultEncounterRotation[3]})
+end
+
 
 -- Tee hee... They Broke up!
 function PerformRelationshipDiscard(obj)
@@ -290,28 +363,28 @@ function PerformMagicalEffectDiscard(obj)
     local MagicalEffectDiscardPosition = GlobalVariables.call('getBoardMagicalEffectDiscard')
     obj.setPosition({MagicalEffectDiscardPosition[1], MagicalEffectDiscardPosition[2] + 3, MagicalEffectDiscardPosition[3]})
     obj.setRotation(specialRotation)
-    obj.setRotation({0,0,0})
+    obj.setRotation({0,90,0})
 end
 
 function PerformDetrimentsDiscard(obj)
     local GlobalVariables = getObjectFromGUID(GlobalVariablesId)
     local DetrimentsDiscardPosition = GlobalVariables.call('getBoardDetrimentsDiscard')
     obj.setPosition({DetrimentsDiscardPosition[1], DetrimentsDiscardPosition[2] + 3, DetrimentsDiscardPosition[3]})
-    obj.setRotation({0,90,0})
+    obj.setRotation({0,90,180})
 end
 
 function PerformBenefitsDiscard(obj)
     local GlobalVariables = getObjectFromGUID(GlobalVariablesId)
     local BenefitsDiscardPosition = GlobalVariables.call('getBoardBenefitsDiscard')
     obj.setPosition({BenefitsDiscardPosition[1], BenefitsDiscardPosition[2] + 3, BenefitsDiscardPosition[3]})
-    obj.setRotation({0,90,0})
+    obj.setRotation({0,90,180})
 end
 
 function PerformCorruptionDiscard(obj)
     local GlobalVariables = getObjectFromGUID(GlobalVariablesId)
     local CorruptionDiscardPosition = GlobalVariables.call('getBoardCorruptionDiscard')
     obj.setPosition({CorruptionDiscardPosition[1], CorruptionDiscardPosition[2] + 3, CorruptionDiscardPosition[3]})
-    obj.setRotation({0,90,180})
+    obj.setRotation({0,90,0})
 end
 
 function PerformExhibitItemsDiscard(obj)
@@ -328,6 +401,19 @@ function PerformExhibitItemsDiscard(obj)
         return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
     end
     startLuaCoroutine(self, "ExhibitItemsDiscardcoinside") --must use this way to make coroutine in order to wait frames  
+end
+
+function PerformExhibitEncounterDiscard(obj)
+    local GlobalVariables = getObjectFromGUID(GlobalVariablesId)
+    local ExhibitEncounterDiscardPosition = GlobalVariables.call('getPharaohExhibitEncounterDeckPos')
+    local ExhibitEncounterDiscardRotation = GlobalVariables.call('getPharaohExhibitEncounterDeckRot')
+    obj.setPosition({ExhibitEncounterDiscardPosition[1], ExhibitEncounterDiscardPosition[2] + 0.1, ExhibitEncounterDiscardPosition[3]})
+    obj.setRotation({ExhibitEncounterDiscardRotation[1], ExhibitEncounterDiscardRotation[2] + 1, ExhibitEncounterDiscardRotation[3]})
+
+    obj.setRotation({0,90,180})
+    local Pharaoh_Exhibit_Encounter_Deck_id = GlobalVariables.call("getPharaohExhibitEncounterDeckId")
+    local Pharaoh_Exhibit_Encounter_Deck = getObjectFromGUID(Pharaoh_Exhibit_Encounter_Deck_id)
+    Pharaoh_Exhibit_Encounter_Deck.randomize()
 end
 
 function PerformCommonItemsDiscard(obj)
@@ -765,6 +851,15 @@ function DiscardableByDescription(obj)
         if description == "Special" then
             PerformSpecialDiscard(obj)
         end
+        if description == "Condition" then
+            PerformConditionDiscard(obj)
+        end
+        if objname == "Dunwich Horror" then
+            PerformDunwichHorrorCardDiscard(obj)
+        end        
+        if description == "Cult Encounter" then
+            PerformCultEncounterDiscard(obj)
+        end
         if description == "Relationship" then
             PerformRelationshipDiscard(obj)
         end
@@ -783,6 +878,9 @@ function DiscardableByDescription(obj)
         end
         if description == "Exhibit Items" then
             PerformExhibitItemsDiscard(obj)
+        end
+        if description == "Exhibit Encounter" then
+            PerformExhibitEncounterDiscard(obj)
         end
         if description == "Common Item" then
             PerformCommonItemsDiscard(obj)

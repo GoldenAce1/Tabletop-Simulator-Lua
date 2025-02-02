@@ -1,0 +1,331 @@
+William_Yorick_Sheet = '2d5144'
+Sister_Mary_Sheet = '220377'
+Norman_Withers_Sheet = '1ceb30'
+Ashcan_Pete_Sheet = '6b4474'
+Lily_Chen_Sheet = '211570'
+Mark_Harrigan_Sheet = '3e15d2'
+Carolyn_Fern_Sheet = 'd03edc'
+Ursula_Downs_Sheet = '617510'
+Monterey_Jack_Sheet = '8c4caa'
+Jenny_Barnes_Sheet = '5ec562'
+Vincent_Lee_Sheet = '63ad42'
+Minh_Thi_Phan_Sheet = 'bdb1d6'
+Harvey_Walters_Sheet = 'a51ef2'
+Wilson_Richards_Sheet = '385eb7'
+Skids_OToole_Sheet = 'c8e8c0'
+Silas_Marsh_Sheet = '0950e9'
+Roland_Banks_Sheet = 'f99a96'
+Rita_Young_Sheet = 'ec5964'
+Amanda_Sharpe_Sheet = '208aa6'
+Akachi_Onyele_Sheet = '5fda8c'
+Wendy_Adams_Sheet = '4ef515'
+Agnes_Baker_Sheet = '63abbc'
+Zoey_Samaras_Sheet = 'f4dbc9'
+Darrell_Simmons_Sheet = 'd1c338'
+Jim_Culver_Sheet = 'ecb924'
+Joe_Diamond_Sheet = 'c84c59'
+George_Barnaby_Sheet = '9bd489'
+Hank_Samson_Sheet = '18ad0f'
+Gloria_Goldberg_Sheet = 'a9edf2'
+Daisy_Walker_Sheet = 'b49ceb'
+Finn_Edwards_Sheet = 'edd18e'
+Charlie_Kane_Sheet = '3d8c72'
+Mandy_Thompson_Sheet = '5e9776'
+Leo_Anderson_Sheet = '5e687c'
+Trish_Scarborough_Sheet = '61b0d9'
+Kate_Winthrop_Sheet = '314541'
+Dexter_Drake_Sheet = 'bea150'
+Lola_Hayes_Sheet = '4a82dd'
+Jacqueline_Fine_Sheet = 'fd6c99'
+Tommy_Muldoon_Sheet = 'f1a0a5'
+Luke_Robinson_Sheet = 'd8059d'
+Patrice_Hathaway_Sheet = '1def6d'
+Tony_Morgan_Sheet = '62ee0d'
+Rex_Murphy_Sheet = '817d90'
+Michael_McGlen_Sheet = '3e5dbf'
+Marie_Lambeau_Sheet = '56e5b4'
+Diana_Stanley_Sheet = 'de9a79'
+Bob_Jenkins_Sheet = 'ee1027'
+
+-- Used as a switch to check if the Object is a player sheet
+-- Mandatory
+local switch_sheets = {
+	[William_Yorick_Sheet] = 'South Church',
+	[Sister_Mary_Sheet] = 'South Church',
+    [Norman_Withers_Sheet] = 'Administration',
+    [Ashcan_Pete_Sheet] = 'River Docks',
+    [Lily_Chen_Sheet] = 'Ye Olde Magick Shoppe',
+    [Mark_Harrigan_Sheet] = 'South Church',
+    [Carolyn_Fern_Sheet] = 'Arkham Asylum',
+    [Ursula_Downs_Sheet] = 'Player\'s Choice',
+    [Monterey_Jack_Sheet] = 'Curiositie Shoppe',
+    [Jenny_Barnes_Sheet] = 'Train Station',
+    [Vincent_Lee_Sheet] = 'St. Mary\'s Hospital',
+    [Minh_Thi_Phan_Sheet] = 'St. Mary\'s Hospital',
+    [Harvey_Walters_Sheet] = 'Administration',
+	[Wilson_Richards_Sheet] = 'Train Station',
+	[Skids_OToole_Sheet] = 'Ma\'s Boarding House',
+	[Silas_Marsh_Sheet] = 'River Docks',
+	[Roland_Banks_Sheet] = 'Arkham Asylum',
+	[Rita_Young_Sheet] = 'Police Station',
+	[Amanda_Sharpe_Sheet] = 'Bank of Arkham',
+	[Akachi_Onyele_Sheet] = 'Ye Olde Magick Shoppe',
+	[Wendy_Adams_Sheet] = 'Bank of Arkham',
+	[Agnes_Baker_Sheet] = 'Velma\'s Diner',
+	[Zoey_Samaras_Sheet] = 'Train Station',
+	[Darrell_Simmons_Sheet] = 'Newspaper',
+	[Jim_Culver_Sheet] = 'Velma\'s Diner',
+	[Joe_Diamond_Sheet] = 'Police Station',
+	[George_Barnaby_Sheet] = 'Library',
+	[Hank_Samson_Sheet] = 'General Store',
+	[Gloria_Goldberg_Sheet] = 'Velma\'s Diner',
+	[Daisy_Walker_Sheet] = 'Library',
+	[Finn_Edwards_Sheet] = 'Bank of Arkham',
+	[Charlie_Kane_Sheet] = 'Administration',
+	[Mandy_Thompson_Sheet] = 'Library',
+	[Leo_Anderson_Sheet] = 'River Docks',
+	[Trish_Scarborough_Sheet] = 'Newspaper',
+	[Kate_Winthrop_Sheet] = 'Science Building',
+	[Dexter_Drake_Sheet] = 'Ye Olde Magick Shoppe',
+	[Lola_Hayes_Sheet] = 'Arkham Asylum',
+	[Jacqueline_Fine_Sheet] = 'Curiositie Shoppe',
+	[Tommy_Muldoon_Sheet] = 'Police Station',
+	[Luke_Robinson_Sheet] = 'The Dreamlands',
+	[Patrice_Hathaway_Sheet] = 'Curiositie Shoppe',
+	[Tony_Morgan_Sheet] = 'St. Mary\'s Hospital',
+	[Rex_Murphy_Sheet] = 'Newspaper',
+	[Michael_McGlen_Sheet] = 'Ma\'s Boarding House',
+	[Marie_Lambeau_Sheet] = 'Ma\'s Boarding House',
+	[Diana_Stanley_Sheet] = 'General Store',
+	[Bob_Jenkins_Sheet] = 'General Store'
+}
+
+--{MONEY, Clues}
+-- Mandatory
+InvestigatorStartTokens = {
+  [William_Yorick_Sheet] = {4, 6, 4, 0},
+  [Sister_Mary_Sheet] = {7, 3, 0, 0},
+  [Norman_Withers_Sheet] = {6, 4, 3,3},
+  [Ashcan_Pete_Sheet] = {4, 6, 1,3},
+  [Lily_Chen_Sheet] = {4, 7, 4,2},
+  [Mark_Harrigan_Sheet] = {3, 7, 4,3},
+  [Carolyn_Fern_Sheet] = {6, 4, 7,1},
+  [Ursula_Downs_Sheet] = {5, 5, 1,4},
+  [Monterey_Jack_Sheet] = {3, 7, 7,1},
+  [Jenny_Barnes_Sheet] = {6, 4, 10,0},
+  [Vincent_Lee_Sheet] = {5, 5, 9,1},
+  [Minh_Thi_Phan_Sheet] = {6, 4, 4,2},
+  [Harvey_Walters_Sheet] = {7, 3, 5,1},
+  [Wilson_Richards_Sheet] = {5, 5, 4,0},
+  [Skids_OToole_Sheet] = {3, 7, 5,3},
+  [Silas_Marsh_Sheet] = {4, 6, 7,2},
+  [Roland_Banks_Sheet] = {4, 6, 3,2},
+  [Rita_Young_Sheet] = {4, 6, 4,2},
+  [Amanda_Sharpe_Sheet] = {5, 5, 1,1},
+  [Akachi_Onyele_Sheet] = {7, 3, 3,1},
+  [Wendy_Adams_Sheet] = {4, 4, 3,3},
+  [Agnes_Baker_Sheet] = {5, 5, 5,3},
+  [Zoey_Samaras_Sheet] = {3, 7, 2,4},
+  [Darrell_Simmons_Sheet] = {4, 6, 4,1},
+  [Jim_Culver_Sheet] = {6, 4, 3,3},
+  [Joe_Diamond_Sheet] = {4, 6, 8,3},
+  [George_Barnaby_Sheet] = {7, 3, 7,0},
+  [Hank_Samson_Sheet] = {5, 6, 3,1},
+  [Gloria_Goldberg_Sheet] = {6, 4, 7,2},
+  [Daisy_Walker_Sheet] = {5, 5, 5,1},
+  [Finn_Edwards_Sheet] = {4, 6, 8,0},
+  [Charlie_Kane_Sheet] = {4, 6, 9,0},
+  [Mandy_Thompson_Sheet] = {5, 5, 6,4},
+  [Leo_Anderson_Sheet] = {5, 5, 5,2},
+  [Trish_Scarborough_Sheet] = {6, 4, 4,2},
+  [Kate_Winthrop_Sheet] = {6, 4, 7,2},
+  [Dexter_Drake_Sheet] = {5, 5, 5,0},
+  [Lola_Hayes_Sheet] = {6, 4, 6,2},
+  [Jacqueline_Fine_Sheet] = {7, 3, 7,2},
+  [Tommy_Muldoon_Sheet] = {6, 4, 2,2},
+  [Luke_Robinson_Sheet] = {7, 3, 6,1},
+  [Patrice_Hathaway_Sheet] = {5, 5, 2,3},
+  [Tony_Morgan_Sheet] = {3, 7, 6,3},
+  [Rex_Murphy_Sheet] = {5, 5, 3,3},
+  [Michael_McGlen_Sheet] = {3, 7, 8,0},
+  [Marie_Lambeau_Sheet] = {6, 4, 4,2},
+  [Diana_Stanley_Sheet] = {4, 6, 4,2},
+  [Bob_Jenkins_Sheet] = {4, 6, 9,0}
+}
+
+-- Nr items, name
+InvestigatorStartCommon = {
+  [Sister_Mary_Sheet] = {1, 'Cross' },
+  [Mark_Harrigan_Sheet] = {2, 'Flamethrower', 'Molotov Cocktail'},
+  [Monterey_Jack_Sheet] = {2, '.38 Revolver', 'Bullwhip'},
+  [Wilson_Richards_Sheet] = {3, 'Motorcycle', 'Shotgun', 'Whiskey'},
+  [Skids_OToole_Sheet] = {1, 'Axe'},
+  [Silas_Marsh_Sheet] = {1, 'Cavalry Saber'},
+  [Zoey_Samaras_Sheet] = {2, 'Cross', 'Knife'},
+  [Joe_Diamond_Sheet] = {1, '.45 Automatic'},
+  [Hank_Samson_Sheet] = {1, 'Food'},
+  [Finn_Edwards_Sheet] = {1, 'Whiskey'},
+  [Trish_Scarborough_Sheet] = {1, 'Lucky Cigarette Case'},
+  [Lola_Hayes_Sheet] = {1, '.18 Derringer'},
+  [Tommy_Muldoon_Sheet] = {2, 'Map of Arkham', 'Rifle'},
+  [Tony_Morgan_Sheet] = {1, 'Handcuffs'},
+  [Michael_McGlen_Sheet] = {2, 'Dynamite', 'Tommy Gun'}
+}
+
+-- Nr items, name
+InvestigatorStartUnique = {
+  [Sister_Mary_Sheet] = {1, 'Holy Water'},
+  [Minh_Thi_Phan_Sheet] = {1, 'The King in Yellow'},
+  [Wendy_Adams_Sheet] = {1, 'Elder Sign'},
+  [Jim_Culver_Sheet] = {1, 'Golden Trumpet'},
+  [Daisy_Walker_Sheet] = {1,'Livre d\'Ivon'},
+  [Jacqueline_Fine_Sheet] = {1,'Enchanted Jewelry'},
+  [Luke_Robinson_Sheet] = {1,'Gate Box'},
+  [Marie_Lambeau_Sheet] = {1,'Enchanted Knife'}
+}
+
+-- Nr items, name
+InvestigatorStartSpell = {
+  [Norman_Withers_Sheet] = {1, 'Find Gate'},
+  [Agnes_Baker_Sheet] = {1, 'Wither'},
+  [Dexter_Drake_Sheet] = {1, 'Shrivelling'},
+  [Marie_Lambeau_Sheet] = {1,'Voice of Ra'}
+}
+
+-- Nr Skills, name
+InvestigatorStartSkill = {
+  [Lily_Chen_Sheet] = {1, 'Martial Arts'}
+}
+
+-- Nr Allies, name
+InvestigatorStartAlly = {
+   [Ashcan_Pete_Sheet] = {1,'Duke'}
+}
+
+-- Retainer, Curse, Bless
+InvestigatorStartFixedSpecial = {
+  [Sister_Mary_Sheet] = {1, 'Blessing' },
+  [Rita_Young_Sheet] = {1, 'Retainer' },
+  [Darrell_Simmons_Sheet] = {1, 'Retainer' },
+  [George_Barnaby_Sheet] = {1, 'Retainer' },
+  [Finn_Edwards_Sheet] = {1, 'Bank Loan'},
+  [Rex_Murphy_Sheet] = {1, 'Curse'},
+  [Diana_Stanley_Sheet] = {1, 'Silver Twilight Lodge Membership'}
+}
+
+-- RandomCommon, RandomUnique, RandomSpell, RandomSkill, RandomAlly
+-- Mandatory
+InvestigatorStartRandomDeck = {
+  [William_Yorick_Sheet] = {2,2,0,1,0},
+  [Sister_Mary_Sheet] = {0,0,2,1,0},
+  [Norman_Withers_Sheet] = {1,1,1,1,0},
+  [Ashcan_Pete_Sheet] = {1,1,0,1,0},
+  [Lily_Chen_Sheet] = {1,0,1,0,0},
+  [Mark_Harrigan_Sheet] = {0,1,0,1,0},
+  [Carolyn_Fern_Sheet] = {2,2,0,1,0},
+  [Ursula_Downs_Sheet] = {2,2,0,1,0},
+  [Monterey_Jack_Sheet] = {0,2,0,1,0},
+  [Jenny_Barnes_Sheet] = {2,1,1,1,0},
+  [Vincent_Lee_Sheet] = {2,0,2,1,0},
+  [Minh_Thi_Phan_Sheet] = {2,1,1,1,0},
+  [Harvey_Walters_Sheet] = {0,2,2,1,0},
+  [Wilson_Richards_Sheet] = {0,2,0,1,0},
+  [Skids_OToole_Sheet] = {2,1,0,1,0},
+  [Silas_Marsh_Sheet] = {2,1,0,1,0},
+  [Roland_Banks_Sheet] = {1,1,0,1,1},
+  [Rita_Young_Sheet] = {2,1,0,1,0},
+  [Amanda_Sharpe_Sheet] = {1,1,1,2,0},
+  [Akachi_Onyele_Sheet] = {0,1,2,1,0},
+  [Wendy_Adams_Sheet] = {1,0,0,1,0},
+  [Agnes_Baker_Sheet] = {1,1,1,1,0},
+  [Zoey_Samaras_Sheet] = {0,2,0,1,0},
+  [Darrell_Simmons_Sheet] = {1,2,0,1,0},
+  [Jim_Culver_Sheet] = {1,0,2,1,0},
+  [Joe_Diamond_Sheet]  = {2,0,0,1,0},
+  [George_Barnaby_Sheet] = {1,1,1,1,0},
+  [Hank_Samson_Sheet] = {2,1,0,1,0},
+  [Gloria_Goldberg_Sheet] = {2,0,2,1,0},
+  [Daisy_Walker_Sheet] = {1,1,1,1,0},
+  [Finn_Edwards_Sheet] = {2,2,0,2,0},
+  [Charlie_Kane_Sheet] = {2,0,0,1,1},
+  [Mandy_Thompson_Sheet] = {2,1,0,1,0},
+  [Leo_Anderson_Sheet] = {2,0,0,1,1},
+  [Trish_Scarborough_Sheet] = {2,2,0,1,0},
+  [Kate_Winthrop_Sheet] = {1,1,2,1,0},
+  [Dexter_Drake_Sheet] = {1,1,2,1,0},
+  [Lola_Hayes_Sheet] = {1,1,1,1,0},
+  [Jacqueline_Fine_Sheet] = {1,0,2,1,0},
+  [Tommy_Muldoon_Sheet] = {2,1,0,1,0},
+  [Luke_Robinson_Sheet] = {0,1,2,1,0},
+  [Patrice_Hathaway_Sheet] = {1,2,1,1,0},
+  [Tony_Morgan_Sheet] = {1,1,0,1,0},
+  [Rex_Murphy_Sheet] = {1,2,2,1,0},
+  [Michael_McGlen_Sheet] = {0,1,0,1,0},
+  [Marie_Lambeau_Sheet] = {0,0,2,1,0},
+  [Diana_Stanley_Sheet] = {1,0,1,1,0},
+  [Bob_Jenkins_Sheet] = {2,2,0,1,0}
+}
+
+-- Quantity, type
+InvestigatorStartSpecial = {
+  [William_Yorick_Sheet] = {3, 'Monster'},
+  [Akachi_Onyele_Sheet] = {1, 'Gate'}
+}
+
+function isInvestigatorSheet(id)
+
+    if switch_sheets[id] ~= nil then
+        return true
+    else
+        return false
+    end
+end
+
+function InvestigatorStart(id)
+    return switch_sheets[id]
+end
+
+--Returns a vector with the placing positions for the object id given
+function getInvestigatorStartTokensById(id)
+    return InvestigatorStartTokens[id]
+end
+
+--Returns a vector with the placing positions for the object id given
+function getInvestigatorStartCommonById(id)
+    return InvestigatorStartCommon[id]
+end
+
+--Returns a vector with the placing positions for the object id given
+function getInvestigatorStartUniqueById(id)
+    return InvestigatorStartUnique[id]
+end
+
+--Returns a vector with the placing positions for the object id given
+function getInvestigatorStartSpellById(id)
+    return InvestigatorStartSpell[id]
+end
+
+--Returns a vector with the placing positions for the object id given
+function getInvestigatorStartSkillById(id)
+    return InvestigatorStartSkill[id]
+end
+
+--Returns a vector with the placing positions for the object id given
+function getInvestigatorStartAllyById(id)
+    return InvestigatorStartAlly[id]
+end
+
+--Returns a vector with the placing positions for the object id given
+function getInvestigatorStartFixedSpecialById(id)
+    return InvestigatorStartFixedSpecial[id]
+end
+
+--Returns a vector with the placing positions for the object id given
+function getInvestigatorStartRandomDeckById(id)
+    return InvestigatorStartRandomDeck[id]
+end
+
+--Returns a vector with the placing positions for the object id given
+function getInvestigatorStartSpecialById(id)
+    return InvestigatorStartSpecial[id]
+end

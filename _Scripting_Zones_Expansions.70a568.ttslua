@@ -1,0 +1,1258 @@
+local Innsmouth_ScrZone_Devil_Reef_id = ''
+local Innsmouth_ScrZone_Deep_Rising_id = ''
+local Innsmouth_ScrZone_Jail_id = ''
+local Innsmouth_ScrZone_Sawbone_Alley_id =''
+local Innsmouth_ScrZone_Esoteric_Dagon_id = ''
+local Innsmouth_ScrZone_Church_Green_id = ''
+local Innsmouth_ScrZone_Factory_District_id = ''
+local Innsmouth_ScrZone_First_National_Grocery_id = ''
+local Innsmouth_ScrZone_Gilman_House_Hotel_id = ''
+local Innsmouth_ScrZone_Marsh_Refinery_id = ''
+local Innsmouth_ScrZone_Innsmouth_Shore_id = ''
+local Innsmouth_ScrZone_Joe_Sargents_id = ''
+local Innsmouth_ScrZone_Falcon_Point_id = ''
+local Innsmouth_ScrZone_Yha_Nthlei_id = ''
+
+local Kingsport_ScrZone_Hall_School_id = ''
+local Kingsport_ScrZone_607_Water_Street_id = ''
+local Kingsport_ScrZone_Central_Hill_id = ''
+local Kingsport_ScrZone_Congregational_Hospital_id =''
+local Kingsport_ScrZone_Harborside_id = ''
+local Kingsport_ScrZone_Rope_And_Anchor_Commons_id = ''
+local Kingsport_ScrZone_Wireless_Station_id = ''
+local Kingsport_ScrZone_Artists_Colony_id = ''
+local Kingsport_ScrZone_7th_House_id = ''
+local Kingsport_ScrZone_Neils_Curiosity_id = ''
+local Kingsport_ScrZone_North_Point_Lighthouse_id = ''
+local Kingsport_ScrZone_The_Causeway_id = ''
+local Kingsport_ScrZone_St_Erasmus_id = ''
+local Kingsport_ScrZone_Strange_High_House_id = ''
+local Kingsport_ScrZone_South_Shore_id = ''
+local Kingsport_ScrZone_The_Underworld_id = ''
+local Kingsport_ScrZone_Unknown_Kadath_id = ''
+local Kingsport_Scrzone_RiftProgress1_id = ''
+local Kingsport_Scrzone_RiftProgress2_id = ''
+local Kingsport_Scrzone_RiftProgress3_id = ''
+
+local Dunwich_ScrZone_Whateley_Farm_id = ''
+local Dunwich_ScrZone_Wizards_Hill_id = ''
+local Dunwich_ScrZone_Cold_Spring_id = ''
+local Dunwich_ScrZone_Backwoods_id =''
+local Dunwich_ScrZone_Sentinel_Hill_id = ''
+local Dunwich_ScrZone_Village_Commons_id = ''
+local Dunwich_ScrZone_Darkes_Carnival_id = ''
+local Dunwich_ScrZone_Bishop_Brooke_id = ''
+local Dunwich_ScrZone_Dunwich_Village_id = ''
+local Dunwich_ScrZone_Blasted_Heath_id = ''
+local Dunwich_ScrZone_Gardners_Place_id = ''
+local Dunwich_ScrZone_Devils_Hopyard_id = ''
+local Dunwich_ScrZone_Harney_Jones_Shack_id = ''
+local Dunwich_ScrZone_Another_Time_id = ''
+local Dunwich_ScrZone_Lost_Carcosa_id = ''
+local Dunwich_ScrZone_D_Horror_id = ''
+
+-------------------------------- ONlOAD/SAVE -----------------------------------
+function onSave()
+    local state = {}
+
+    state.Innsmouth_ScrZone_Devil_Reef_id = Innsmouth_ScrZone_Devil_Reef_id
+    state.Innsmouth_ScrZone_Deep_Rising_id = Innsmouth_ScrZone_Deep_Rising_id
+    state.Innsmouth_ScrZone_Jail_id = Innsmouth_ScrZone_Jail_id
+    state.Innsmouth_ScrZone_Sawbone_Alley_id = Innsmouth_ScrZone_Sawbone_Alley_id
+    state.Innsmouth_ScrZone_Esoteric_Dagon_id = Innsmouth_ScrZone_Esoteric_Dagon_id
+    state.Innsmouth_ScrZone_Church_Green_id = Innsmouth_ScrZone_Church_Green_id
+    state.Innsmouth_ScrZone_Factory_District_id = Innsmouth_ScrZone_Factory_District_id
+    state.Innsmouth_ScrZone_First_National_Grocery_id = Innsmouth_ScrZone_First_National_Grocery_id
+    state.Innsmouth_ScrZone_Gilman_House_Hotel_id = Innsmouth_ScrZone_Gilman_House_Hotel_id
+    state.Innsmouth_ScrZone_Marsh_Refinery_id = Innsmouth_ScrZone_Marsh_Refinery_id
+    state.Innsmouth_ScrZone_Innsmouth_Shore_id = Innsmouth_ScrZone_Innsmouth_Shore_id
+    state.Innsmouth_ScrZone_Joe_Sargents_id = Innsmouth_ScrZone_Joe_Sargents_id
+    state.Innsmouth_ScrZone_Falcon_Point_id = Innsmouth_ScrZone_Falcon_Point_id
+    state.Innsmouth_ScrZone_Yha_Nthlei_id = Innsmouth_ScrZone_Yha_Nthlei_id
+    state.Kingsport_ScrZone_Hall_School_id = Kingsport_ScrZone_Hall_School_id
+    state.Kingsport_ScrZone_607_Water_Street_id = Kingsport_ScrZone_607_Water_Street_id
+    state.Kingsport_ScrZone_Central_Hill_id = Kingsport_ScrZone_Central_Hill_id
+    state.Kingsport_ScrZone_Congregational_Hospital_id = Kingsport_ScrZone_Congregational_Hospital_id
+    state.Kingsport_ScrZone_Harborside_id = Kingsport_ScrZone_Harborside_id
+    state.Kingsport_ScrZone_Rope_And_Anchor_Commons_id = Kingsport_ScrZone_Rope_And_Anchor_Commons_id
+    state.Kingsport_ScrZone_Wireless_Station_id = Kingsport_ScrZone_Wireless_Station_id
+    state.Kingsport_ScrZone_Artists_Colony_id = Kingsport_ScrZone_Artists_Colony_id
+    state.Kingsport_ScrZone_7th_House_id = Kingsport_ScrZone_7th_House_id
+    state.Kingsport_ScrZone_Neils_Curiosity_id = Kingsport_ScrZone_Neils_Curiosity_id
+    state.Kingsport_ScrZone_North_Point_Lighthouse_id = Kingsport_ScrZone_North_Point_Lighthouse_id
+    state.Kingsport_ScrZone_The_Causeway_id = Kingsport_ScrZone_The_Causeway_id
+    state.Kingsport_ScrZone_St_Erasmus_id = Kingsport_ScrZone_St_Erasmus_id
+    state.Kingsport_ScrZone_Strange_High_House_id = Kingsport_ScrZone_Strange_High_House_id
+    state.Kingsport_ScrZone_South_Shore_id = Kingsport_ScrZone_South_Shore_id
+    state.Kingsport_ScrZone_The_Underworld_id = Kingsport_ScrZone_The_Underworld_id
+    state.Kingsport_ScrZone_Unknown_Kadath_id = Kingsport_ScrZone_Unknown_Kadath_id
+    state.Kingsport_Scrzone_RiftProgress1_id = Kingsport_Scrzone_RiftProgress1_id
+    state.Kingsport_Scrzone_RiftProgress2_id = Kingsport_Scrzone_RiftProgress2_id
+    state.Kingsport_Scrzone_RiftProgress3_id = Kingsport_Scrzone_RiftProgress3_id
+    state.Dunwich_ScrZone_Whateley_Farm_id = Dunwich_ScrZone_Whateley_Farm_id
+    state.Dunwich_ScrZone_Wizards_Hill_id = Dunwich_ScrZone_Wizards_Hill_id
+    state.Dunwich_ScrZone_Cold_Spring_id = Dunwich_ScrZone_Cold_Spring_id
+    state.Dunwich_ScrZone_Backwoods_id = Dunwich_ScrZone_Backwoods_id
+    state.Dunwich_ScrZone_Sentinel_Hill_id = Dunwich_ScrZone_Sentinel_Hill_id
+    state.Dunwich_ScrZone_Village_Commons_id = Dunwich_ScrZone_Village_Commons_id
+    state.Dunwich_ScrZone_Darkes_Carnival_id = Dunwich_ScrZone_Darkes_Carnival_id
+    state.Dunwich_ScrZone_Bishop_Brooke_id = Dunwich_ScrZone_Bishop_Brooke_id
+    state.Dunwich_ScrZone_Dunwich_Village_id = Dunwich_ScrZone_Dunwich_Village_id
+    state.Dunwich_ScrZone_Blasted_Heath_id = Dunwich_ScrZone_Blasted_Heath_id
+    state.Dunwich_ScrZone_Gardners_Place_id = Dunwich_ScrZone_Gardners_Place_id
+    state.Dunwich_ScrZone_Devils_Hopyard_id = Dunwich_ScrZone_Devils_Hopyard_id
+    state.Dunwich_ScrZone_Harney_Jones_Shack_id = Dunwich_ScrZone_Harney_Jones_Shack_id
+    state.Dunwich_ScrZone_Another_Time_id = Dunwich_ScrZone_Another_Time_id
+    state.Dunwich_ScrZone_Lost_Carcosa_id = Dunwich_ScrZone_Lost_Carcosa_id
+    state.Dunwich_ScrZone_D_Horror_id = Dunwich_ScrZone_D_Horror_id
+
+     return JSON.encode_pretty(state)
+end
+
+--[[ The onLoad event is called after the game save finishes loading. --]]
+function onLoad(saveState)
+
+    if saveState ~= "" then
+        local data = JSON.decode(saveState)
+
+        Innsmouth_ScrZone_Devil_Reef_id = data.Innsmouth_ScrZone_Devil_Reef_id
+        Innsmouth_ScrZone_Deep_Rising_id = data.Innsmouth_ScrZone_Deep_Rising_id
+        Innsmouth_ScrZone_Jail_id = data.Innsmouth_ScrZone_Jail_id
+        Innsmouth_ScrZone_Sawbone_Alley_id = data.Innsmouth_ScrZone_Sawbone_Alley_id
+        Innsmouth_ScrZone_Esoteric_Dagon_id = data.Innsmouth_ScrZone_Esoteric_Dagon_id
+        Innsmouth_ScrZone_Church_Green_id = data.Innsmouth_ScrZone_Church_Green_id
+        Innsmouth_ScrZone_Factory_District_id = data.Innsmouth_ScrZone_Factory_District_id
+        Innsmouth_ScrZone_First_National_Grocery_id = data.Innsmouth_ScrZone_First_National_Grocery_id
+        Innsmouth_ScrZone_Gilman_House_Hotel_id = data.Innsmouth_ScrZone_Gilman_House_Hotel_id
+        Innsmouth_ScrZone_Marsh_Refinery_id = data.Innsmouth_ScrZone_Marsh_Refinery_id
+        Innsmouth_ScrZone_Innsmouth_Shore_id = data.Innsmouth_ScrZone_Innsmouth_Shore_id
+        Innsmouth_ScrZone_Joe_Sargents_id = data.Innsmouth_ScrZone_Joe_Sargents_id
+        Innsmouth_ScrZone_Falcon_Point_id = data.Innsmouth_ScrZone_Falcon_Point_id
+        Innsmouth_ScrZone_Yha_Nthlei_id = data.Innsmouth_ScrZone_Yha_Nthlei_id
+        Kingsport_ScrZone_Hall_School_id = data.Kingsport_ScrZone_Hall_School_id
+        Kingsport_ScrZone_607_Water_Street_id = data.Kingsport_ScrZone_607_Water_Street_id
+        Kingsport_ScrZone_Central_Hill_id = data.Kingsport_ScrZone_Central_Hill_id
+        Kingsport_ScrZone_Congregational_Hospital_id = data.Kingsport_ScrZone_Congregational_Hospital_id
+        Kingsport_ScrZone_Harborside_id = data.Kingsport_ScrZone_Harborside_id
+        Kingsport_ScrZone_Rope_And_Anchor_Commons_id = data.Kingsport_ScrZone_Rope_And_Anchor_Commons_id
+        Kingsport_ScrZone_Wireless_Station_id = data.Kingsport_ScrZone_Wireless_Station_id
+        Kingsport_ScrZone_Artists_Colony_id = data.Kingsport_ScrZone_Artists_Colony_id
+        Kingsport_ScrZone_7th_House_id = data.Kingsport_ScrZone_7th_House_id
+        Kingsport_ScrZone_Neils_Curiosity_id = data.Kingsport_ScrZone_Neils_Curiosity_id
+        Kingsport_ScrZone_North_Point_Lighthouse_id = data.Kingsport_ScrZone_North_Point_Lighthouse_id
+        Kingsport_ScrZone_The_Causeway_id = data.Kingsport_ScrZone_The_Causeway_id
+        Kingsport_ScrZone_St_Erasmus_id = data.Kingsport_ScrZone_St_Erasmus_id
+        Kingsport_ScrZone_Strange_High_House_id = data.Kingsport_ScrZone_Strange_High_House_id
+        Kingsport_ScrZone_South_Shore_id = data.Kingsport_ScrZone_South_Shore_id
+        Kingsport_ScrZone_The_Underworld_id = data.Kingsport_ScrZone_The_Underworld_id
+        Kingsport_ScrZone_Unknown_Kadath_id = data.Kingsport_ScrZone_Unknown_Kadath_id
+        Kingsport_Scrzone_RiftProgress1_id = data.Kingsport_Scrzone_RiftProgress1_id
+        Kingsport_Scrzone_RiftProgress2_id = data.Kingsport_Scrzone_RiftProgress2_id
+        Kingsport_Scrzone_RiftProgress3_id = data.Kingsport_Scrzone_RiftProgress3_id
+        Dunwich_ScrZone_Whateley_Farm_id = data.Dunwich_ScrZone_Whateley_Farm_id
+        Dunwich_ScrZone_Wizards_Hill_id = data.Dunwich_ScrZone_Wizards_Hill_id
+        Dunwich_ScrZone_Cold_Spring_id = data.Dunwich_ScrZone_Cold_Spring_id
+        Dunwich_ScrZone_Backwoods_id = data.Dunwich_ScrZone_Backwoods_id
+        Dunwich_ScrZone_Sentinel_Hill_id = data.Dunwich_ScrZone_Sentinel_Hill_id
+        Dunwich_ScrZone_Village_Commons_id = data.Dunwich_ScrZone_Village_Commons_id
+        Dunwich_ScrZone_Darkes_Carnival_id = data.Dunwich_ScrZone_Darkes_Carnival_id
+        Dunwich_ScrZone_Bishop_Brooke_id = data.Dunwich_ScrZone_Bishop_Brooke_id
+        Dunwich_ScrZone_Dunwich_Village_id = data.Dunwich_ScrZone_Dunwich_Village_id
+        Dunwich_ScrZone_Blasted_Heath_id = data.Dunwich_ScrZone_Blasted_Heath_id
+        Dunwich_ScrZone_Gardners_Place_id = data.Dunwich_ScrZone_Gardners_Place_id
+        Dunwich_ScrZone_Devils_Hopyard_id = data.Dunwich_ScrZone_Devils_Hopyard_id
+        Dunwich_ScrZone_Harney_Jones_Shack_id = data.Dunwich_ScrZone_Harney_Jones_Shack_id
+        Dunwich_ScrZone_Another_Time_id = data.Dunwich_ScrZone_Another_Time_id
+        Dunwich_ScrZone_Lost_Carcosa_id = data.Dunwich_ScrZone_Lost_Carcosa_id
+        Dunwich_ScrZone_D_Horror_id = data.Dunwich_ScrZone_D_Horror_id
+    end
+end
+-------------------------------- ONlOAD/SAVE -----------------------------------
+  -- x, y, z for each die.
+  -- y is the height over the table and setting it to
+  -- a number higher than zero will make it fall down
+  -- to the board
+  local BoardPositionsScrZones3Boards = {
+ -- x, y, z for each die.
+ -- y is the height over the table and setting it to
+ -- a number higher than zero will make it fall down
+ -- to the board
+ ["Innsmouth_ScrZone_Devil_Reef"] = {-24.69, 2.61, 3.41},
+ ["Innsmouth_ScrZone_Jail"] = {-24.25, 2.61, -15.15},
+ ["Innsmouth_ScrZone_Deep_Rising"] = {-20.20, 1.02, 7.89},
+ ["Innsmouth_ScrZone_Sawbone_Alley"] = {-25.59, 2.61, -10.23},
+ ["Innsmouth_ScrZone_Esoteric_Dagon"] = {-25.02, 2.61, -6.51},
+ ["Innsmouth_ScrZone_Church_Green"] = {-21.10, 2.61, -8.62},
+ ["Innsmouth_ScrZone_Factory_District"] = {-19.77, 2.61, -13.81},
+ ["Innsmouth_ScrZone_First_National_Grocery"] = {-15.98, 2.61, -15.74},
+ ["Innsmouth_ScrZone_Gilman_House_Hotel"] = {-15.87, 2.61, -12.17},
+ ["Innsmouth_ScrZone_Marsh_Refinery"] = {-16.08, 2.61, -8.51},
+ ["Innsmouth_ScrZone_Innsmouth_Shore"] = {-17.86, 2.61, -4.60},
+ ["Innsmouth_ScrZone_Joe_Sargents"] = {-21.73, 2.61, -1.18},
+ ["Innsmouth_ScrZone_Falcon_Point"] = {-16.49, 2.61, -0.30},
+ ["Innsmouth_ScrZone_Yha_Nthlei"] = {-18.96, 2.61, 3.39},
+ ["Dunwich_ScrZone_Whateley_Farm"] = {-39.10, 2.61, -15.12},
+ ["Dunwich_ScrZone_Wizards_Hill"] = {-35.42, 2.61, -15.24},
+ ["Dunwich_ScrZone_Cold_Spring"] = {-31.75, 2.61, -15.08},
+ ["Dunwich_ScrZone_Backwoods"] = {-36.58, 2.61, -10.64},
+ ["Dunwich_ScrZone_Sentinel_Hill"] = {-35.53, 2.61, -6.29},
+ ["Dunwich_ScrZone_Village_Commons"] = {-32.71, 2.61, -6.30},
+ ["Dunwich_ScrZone_Darkes_Carnival"] = {-29.59, 2.61, -11.09},
+ ["Dunwich_ScrZone_Bishop_Brooke"] = {-29.09, 2.61, -6.35},
+ ["Dunwich_ScrZone_Dunwich_Village"] = {-29.58, 2.61, -1.91},
+ ["Dunwich_ScrZone_Blasted_Heath"] = {-36.57, 2.61, -1.95},
+ ["Dunwich_ScrZone_Gardners_Place"] = {-39.12, 2.61, 2.59},
+ ["Dunwich_ScrZone_Devils_Hopyard"] = {-35.19, 2.61, 2.50},
+ ["Dunwich_ScrZone_Harney_Jones_Shack"] = {-30.69, 2.61, 1.94},
+ ["Dunwich_ScrZone_Another_Time"] = {-31.52, 2.61, 7.56},
+ ["Dunwich_ScrZone_Lost_Carcosa"] = {-37.87, 2.61, 7.78},
+ ["Dunwich_ScrZone_D_Horror"] = {-40.37, 1.35, -6.30},
+ ["Kingsport_ScrZone_Hall_School"] = {-42.79, 1.25, -6.18},
+ ["Kingsport_ScrZone_607_Water_Street"] = {-51.34, 1.25, -11.67},
+ ["Kingsport_ScrZone_Central_Hill"] = {-47.45, 1.25, -11.26},
+ ["Kingsport_ScrZone_Congregational_Hospital"] = {-47.73, 1.25, -15.64},
+ ["Kingsport_ScrZone_Harborside"] = {-48.58, 1.25, -6.15},
+ ["Kingsport_ScrZone_Rope_And_Anchor_Commons"] = {-52.88, 1.25, -8.39},
+ ["Kingsport_ScrZone_Wireless_Station"] = {-52.07, 1.25, -0.04},
+ ["Kingsport_ScrZone_Artists_Colony"] = {-42.99, 1.25, -10.72},
+ ["Kingsport_ScrZone_7th_House"] = {-43.33, 1.25, -15.04},
+ ["Kingsport_ScrZone_Neils_Curiosity"] = {-43.26, 1.25, -1.79},
+ ["Kingsport_ScrZone_North_Point_Lighthouse"] = {-52.77, 1.25, -4.93},
+ ["Kingsport_ScrZone_The_Causeway"] = {-47.86, 1.25, -1.78},
+ ["Kingsport_ScrZone_St_Erasmus"] = {-52.46, 1.25, -15.64},
+ ["Kingsport_ScrZone_Strange_High_House"] = {-52.75, 1.25, 3.49},
+ ["Kingsport_ScrZone_South_Shore"] = {-46.19, 1.25, -6.16},
+ ["Kingsport_ScrZone_The_Underworld"] = {-45.55, 1.25, 7.93},
+ ["Kingsport_ScrZone_Unknown_Kadath"] = {-51.63, 1.25, 7.90},
+ ["Kingsport_Scrzone_RiftProgress1"] = {-48.15, 1.25, 1.12},
+ ["Kingsport_Scrzone_RiftProgress2"] = {-45.45, 1.25, 1.10},
+ ["Kingsport_Scrzone_RiftProgress3"] = {-42.68, 1.25, 1.11}
+  }
+
+  local BoardPositionsScrZonesInnsmouthSolo = {
+ -- x, y, z for each die.
+ -- y is the height over the table and setting it to
+ -- a number higher than zero will make it fall down
+ -- to the board
+ ["Innsmouth_ScrZone_Devil_Reef"] = {-24.69, 2.61, 3.41},
+ ["Innsmouth_ScrZone_Jail"] = {-24.25, 2.61, -15.15},
+ ["Innsmouth_ScrZone_Deep_Rising"] = {-20.20, 1.02, 7.89},
+ ["Innsmouth_ScrZone_Sawbone_Alley"] = {-25.59, 2.61, -10.23},
+ ["Innsmouth_ScrZone_Esoteric_Dagon"] = {-25.02, 2.61, -6.51},
+ ["Innsmouth_ScrZone_Church_Green"] = {-21.10, 2.61, -8.62},
+ ["Innsmouth_ScrZone_Factory_District"] = {-19.77, 2.61, -13.81},
+ ["Innsmouth_ScrZone_First_National_Grocery"] = {-15.98, 2.61, -15.74},
+ ["Innsmouth_ScrZone_Gilman_House_Hotel"] =  {-15.87, 2.61, -12.17},
+ ["Innsmouth_ScrZone_Marsh_Refinery"] = {-16.08, 2.61, -8.51},
+ ["Innsmouth_ScrZone_Innsmouth_Shore"] = {-17.86, 2.61, -4.60},
+ ["Innsmouth_ScrZone_Joe_Sargents"] = {-21.73, 2.61, -1.18},
+ ["Innsmouth_ScrZone_Falcon_Point"] = {-16.49, 2.61, -0.30},
+ ["Innsmouth_ScrZone_Yha_Nthlei"] = {-18.96, 2.61, 3.39}
+  }
+
+  local BoardPositionsScrZonesDunwichSolo = {
+ -- x, y, z for each die.
+ -- y is the height over the table and setting it to
+ -- a number higher than zero will make it fall down
+ -- to the board
+ ["Dunwich_ScrZone_Whateley_Farm"] = {-24.95, 1.11, -14.99},
+ ["Dunwich_ScrZone_Wizards_Hill"] = {-21.26, 2.61, -15.15},
+ ["Dunwich_ScrZone_Cold_Spring"] = {-17.56, 1.11, -14.92},
+ ["Dunwich_ScrZone_Backwoods"] = {-22.40, 1.11, -10.47},
+ ["Dunwich_ScrZone_Sentinel_Hill"] = {-21.37, 1.11, -6.12},
+ ["Dunwich_ScrZone_Village_Commons"] = {-18.53, 1.11, -6.10},
+ ["Dunwich_ScrZone_Darkes_Carnival"] = {-15.40, 1.11, -10.91},
+ ["Dunwich_ScrZone_Bishop_Brooke"] = {-14.89, 1.11, -6.21},
+ ["Dunwich_ScrZone_Dunwich_Village"] = {-15.38, 1.11, -1.74},
+ ["Dunwich_ScrZone_Blasted_Heath"] = {-22.39, 1.11, -1.76},
+ ["Dunwich_ScrZone_Gardners_Place"] = {-24.96, 1.11, 2.79},
+ ["Dunwich_ScrZone_Devils_Hopyard"] = {-21.02, 1.11, 2.72},
+ ["Dunwich_ScrZone_Harney_Jones_Shack"] = {-16.54, 1.11, 2.12},
+ ["Dunwich_ScrZone_Another_Time"] = {-17.35, 1.11, 7.71},
+ ["Dunwich_ScrZone_Lost_Carcosa"] = {-23.66, 1.11, 7.94},
+ ["Dunwich_ScrZone_D_Horror"] = {-26.07, 1.35, -6.30}
+  }
+
+  local BoardPositionsScrZonesKingsportSolo = {
+ -- x, y, z for each die.
+ -- y is the height over the table and setting it to
+ -- a number higher than zero will make it fall down
+ -- to the board
+ ["Kingsport_ScrZone_Hall_School"] = {-14.90, 1.25, -6.36},
+ ["Kingsport_ScrZone_607_Water_Street"] = {-23.40, 1.25, -11.86},
+ ["Kingsport_ScrZone_Central_Hill"] = {-19.55, 1.25, -11.42},
+ ["Kingsport_ScrZone_Congregational_Hospital"] = {-19.85, 1.25, -15.81},
+ ["Kingsport_ScrZone_Harborside"] = {-20.69, 1.25, -6.34},
+ ["Kingsport_ScrZone_Rope_And_Anchor_Commons"] = {-25.02, 1.25, -8.56},
+ ["Kingsport_ScrZone_Wireless_Station"] = {-24.18, 1.25, -0.19},
+ ["Kingsport_ScrZone_Artists_Colony"] = {-15.15, 1.25, -10.87},
+ ["Kingsport_ScrZone_7th_House"] = {-15.50, 1.25, -15.19},
+ ["Kingsport_ScrZone_Neils_Curiosity"] = {-15.46, 1.25,-1.95},
+ ["Kingsport_ScrZone_North_Point_Lighthouse"] = {-24.91, 1.25, -5.08},
+ ["Kingsport_ScrZone_The_Causeway"] = {-20.07, 1.25, -1.98},
+ ["Kingsport_ScrZone_St_Erasmus"] = {-24.62, 1.25, -15.81},
+ ["Kingsport_ScrZone_Strange_High_House"] = {-24.83, 1.25, 3.32},
+ ["Kingsport_ScrZone_South_Shore"] = {-18.31, 1.25, -6.30},
+ ["Kingsport_ScrZone_The_Underworld"] = {-17.66, 1.25, 7.72},
+ ["Kingsport_ScrZone_Unknown_Kadath"] = {-23.73, 1.25, 7.74},
+ ["Kingsport_Scrzone_RiftProgress1"] = {-20.31, 1.25, 0.95},
+ ["Kingsport_Scrzone_RiftProgress2"] = {-17.51, 1.25, 0.96},
+ ["Kingsport_Scrzone_RiftProgress3"] = {-14.77, 1.25, 0.98}
+  }
+
+  local BoardPositionsScrZonesKingsportDunwich = {
+ -- x, y, z for each die.
+ -- y is the height over the table and setting it to
+ -- a number higher than zero will make it fall down
+ -- to the board
+ ["Kingsport_ScrZone_Hall_School"] = {-14.90, 1.25, -6.36},
+ ["Kingsport_ScrZone_607_Water_Street"] = {-23.40, 1.25, -11.86},
+ ["Kingsport_ScrZone_Central_Hill"] = {-19.55, 1.25, -11.42},
+ ["Kingsport_ScrZone_Congregational_Hospital"] = {-19.85, 1.25, -15.81},
+ ["Kingsport_ScrZone_Harborside"] = {-20.69, 1.25, -6.34},
+ ["Kingsport_ScrZone_Rope_And_Anchor_Commons"] = {-25.02, 1.25, -8.56},
+ ["Kingsport_ScrZone_Wireless_Station"] = {-24.18, 1.25, -0.19},
+ ["Kingsport_ScrZone_Artists_Colony"] = {-15.15, 1.25, -10.87},
+ ["Kingsport_ScrZone_7th_House"] = {-15.50, 1.25, -15.19},
+ ["Kingsport_ScrZone_Neils_Curiosity"] = {-15.46, 1.25, -1.95},
+ ["Kingsport_ScrZone_North_Point_Lighthouse"] = {-24.91, 1.25, -5.08},
+ ["Kingsport_ScrZone_The_Causeway"] = {-20.07, 1.25, -1.98},
+ ["Kingsport_ScrZone_St_Erasmus"] = {-24.62, 1.25, -15.81},
+ ["Kingsport_ScrZone_Strange_High_House"] = {-24.83, 1.25, 3.32},
+ ["Kingsport_ScrZone_South_Shore"] = {-18.31, 1.25, -6.30},
+ ["Kingsport_ScrZone_The_Underworld"] = {-17.66, 1.25, 7.72},
+ ["Kingsport_ScrZone_Unknown_Kadath"] = {-23.73, 1.25, 7.74},
+ ["Kingsport_Scrzone_RiftProgress1"] = {-20.31, 1.25, 0.95},
+ ["Kingsport_Scrzone_RiftProgress2"] = {-17.51, 1.25, 0.96},
+ ["Kingsport_Scrzone_RiftProgress3"] = {-14.77, 1.25, 0.98},
+ ["Dunwich_ScrZone_Whateley_Farm"] = {-39.10, 2.61, -15.12},
+ ["Dunwich_ScrZone_Wizards_Hill"] = {-35.42, 2.61, -15.24},
+ ["Dunwich_ScrZone_Cold_Spring"] = {-31.75, 1.23, -15.08},
+ ["Dunwich_ScrZone_Backwoods"] = {-36.58, 2.61, -10.64},
+ ["Dunwich_ScrZone_Sentinel_Hill"] = {-35.53, 2.61, -6.29},
+ ["Dunwich_ScrZone_Village_Commons"] = {-32.71, 2.61, -6.30},
+ ["Dunwich_ScrZone_Darkes_Carnival"] = {-29.59, 2.61, -11.09},
+ ["Dunwich_ScrZone_Bishop_Brooke"] = {-29.09, 2.61, -6.35},
+ ["Dunwich_ScrZone_Dunwich_Village"] = {-29.58, 2.61, -1.91},
+ ["Dunwich_ScrZone_Blasted_Heath"] = {-36.57, 2.61, -1.95},
+ ["Dunwich_ScrZone_Gardners_Place"] = {-39.12, 2.61, 2.59},
+ ["Dunwich_ScrZone_Devils_Hopyard"] = {-35.19, 2.61, 2.50},
+ ["Dunwich_ScrZone_Harney_Jones_Shack"] = {-30.69, 2.61, 1.94},
+ ["Dunwich_ScrZone_Another_Time"] = {-31.52, 2.61, 7.56},
+ ["Dunwich_ScrZone_Lost_Carcosa"] = {-37.87, 2.61, 7.78},
+ ["Dunwich_ScrZone_D_Horror"] = {-40.37, 1.35, -6.30}
+  }
+
+  local BoardPositionsScrZonesInnsmouthKingsport = {
+ -- x, y, z for each die.
+ -- y is the height over the table and setting it to
+ -- a number higher than zero will make it fall down
+ -- to the board
+ ["Innsmouth_ScrZone_Devil_Reef"] = {-24.69, 2.61, 3.41},
+ ["Innsmouth_ScrZone_Jail"] = {-24.25, 2.61, -15.15},
+ ["Innsmouth_ScrZone_Deep_Rising"] = {-20.20, 1.02, 7.89},
+ ["Innsmouth_ScrZone_Sawbone_Alley"] = {-25.59, 2.61, -10.23},
+ ["Innsmouth_ScrZone_Esoteric_Dagon"] = {-25.02, 2.61, -6.51},
+ ["Innsmouth_ScrZone_Church_Green"] = {-21.10, 2.61, -8.62},
+ ["Innsmouth_ScrZone_Factory_District"] = {-19.77, 2.61, -13.81},
+ ["Innsmouth_ScrZone_First_National_Grocery"] = {-15.98, 2.61, -15.74},
+ ["Innsmouth_ScrZone_Gilman_House_Hotel"] =  {-15.87, 2.61, -12.17},
+ ["Innsmouth_ScrZone_Marsh_Refinery"] = {-16.08, 2.61, -8.51},
+ ["Innsmouth_ScrZone_Innsmouth_Shore"] = {-17.86, 2.61, -4.60},
+ ["Innsmouth_ScrZone_Joe_Sargents"] = {-21.73, 2.61, -1.18},
+ ["Innsmouth_ScrZone_Falcon_Point"] = {-16.49, 2.61, -0.30},
+ ["Innsmouth_ScrZone_Yha_Nthlei"] = {-18.96, 2.61, 3.39},
+ ["Kingsport_ScrZone_Hall_School"] = {-28.84, 0.82, -6.31},
+ ["Kingsport_ScrZone_607_Water_Street"] = {-37.40, 0.83, -11.83},
+ ["Kingsport_ScrZone_Central_Hill"] = {-33.55, 0.83, -11.42},
+ ["Kingsport_ScrZone_Congregational_Hospital"] = {-33.82, 0.82, -15.76},
+ ["Kingsport_ScrZone_Harborside"] = {-34.60, 0.83, -6.28},
+ ["Kingsport_ScrZone_Rope_And_Anchor_Commons"] = {-38.92, 0.83, -8.57},
+ ["Kingsport_ScrZone_Wireless_Station"] = {-38.09, 0.84, -0.17},
+ ["Kingsport_ScrZone_Artists_Colony"] = {-29.11, 0.82, -10.83},
+ ["Kingsport_ScrZone_7th_House"] = {-29.44, 0.82, -15.19},
+ ["Kingsport_ScrZone_Neils_Curiosity"] = {-29.33, 0.82, -1.91},
+ ["Kingsport_ScrZone_North_Point_Lighthouse"] = {-38.88, 0.83, -5.05},
+ ["Kingsport_ScrZone_The_Causeway"] = {-33.92, 0.83, -1.94},
+ ["Kingsport_ScrZone_St_Erasmus"] = {-38.56, 0.83, -15.77},
+ ["Kingsport_ScrZone_Strange_High_House"] = {-38.80, 0.84, 3.35},
+ ["Kingsport_ScrZone_South_Shore"] = {-32.23, 0.83, -6.27},
+ ["Kingsport_ScrZone_The_Underworld"] = {-31.62, 0.83, 7.73},
+ ["Kingsport_ScrZone_Unknown_Kadath"] = {-37.69, 0.84, 7.74},
+ ["Kingsport_Scrzone_RiftProgress1"] = {-34.29, 1.25, 0.97},
+ ["Kingsport_Scrzone_RiftProgress2"] = {-31.50, 1.25, 0.97},
+ ["Kingsport_Scrzone_RiftProgress3"] = {-28.77, 1.25, 0.98}
+  }
+
+  local BoardPositionsScrZonesInnsmouthDunwich = {
+ -- x, y, z for each die.
+ -- y is the height over the table and setting it to
+ -- a number higher than zero will make it fall down
+ -- to the board
+ ["Innsmouth_ScrZone_Devil_Reef"] = {-24.69, 2.61, 3.41},
+ ["Innsmouth_ScrZone_Jail"] = {-24.25, 2.61, -15.15},
+ ["Innsmouth_ScrZone_Deep_Rising"] = {-20.20, 1.02, 7.89},
+ ["Innsmouth_ScrZone_Sawbone_Alley"] = {-25.59, 2.61, -10.23},
+ ["Innsmouth_ScrZone_Esoteric_Dagon"] = {-25.02, 2.61, -6.51},
+ ["Innsmouth_ScrZone_Church_Green"] = {-21.10, 2.61, -8.62},
+ ["Innsmouth_ScrZone_Factory_District"] = {-19.77, 2.61, -13.81},
+ ["Innsmouth_ScrZone_First_National_Grocery"] = {-15.98, 2.61, -15.74},
+ ["Innsmouth_ScrZone_Gilman_House_Hotel"] =  {-15.87, 2.61, -12.17},
+ ["Innsmouth_ScrZone_Marsh_Refinery"] = {-16.08, 2.61, -8.51},
+ ["Innsmouth_ScrZone_Innsmouth_Shore"] = {-17.86, 2.61, -4.60},
+ ["Innsmouth_ScrZone_Joe_Sargents"] = {-21.73, 2.61, -1.18},
+ ["Innsmouth_ScrZone_Falcon_Point"] = {-16.49, 2.61, -0.30},
+ ["Innsmouth_ScrZone_Yha_Nthlei"] = {-18.96, 2.61, 3.39},
+ ["Dunwich_ScrZone_Whateley_Farm"] = {-39.10, 2.61, -15.12},
+ ["Dunwich_ScrZone_Wizards_Hill"] = {-35.42, 2.61, -15.24},
+ ["Dunwich_ScrZone_Cold_Spring"] = {-31.75, 2.61, -15.08},
+ ["Dunwich_ScrZone_Backwoods"] = {-36.58, 2.61, -10.64},
+ ["Dunwich_ScrZone_Sentinel_Hill"] = {-35.53, 2.61, -6.29},
+ ["Dunwich_ScrZone_Village_Commons"] = {-32.71, 2.61, -6.30},
+ ["Dunwich_ScrZone_Darkes_Carnival"] = {-29.59, 2.61, -11.09},
+ ["Dunwich_ScrZone_Bishop_Brooke"] = {-29.09, 2.61, -6.35},
+ ["Dunwich_ScrZone_Dunwich_Village"] = {-29.58, 2.61, -1.91},
+ ["Dunwich_ScrZone_Blasted_Heath"] = {-36.57, 2.61, -1.95},
+ ["Dunwich_ScrZone_Gardners_Place"] = {-39.12, 2.61, 2.59},
+ ["Dunwich_ScrZone_Devils_Hopyard"] = {-35.19, 2.61, 2.50},
+ ["Dunwich_ScrZone_Harney_Jones_Shack"] = {-30.69, 2.61, 1.94},
+ ["Dunwich_ScrZone_Another_Time"] = {-31.52, 2.61, 7.56},
+ ["Dunwich_ScrZone_Lost_Carcosa"] = {-37.87, 2.61, 7.78},
+ ["Dunwich_ScrZone_D_Horror"] = {-40.37, 1.35, -6.30}
+}
+
+-- Getters
+
+function getInnsmouthScrZoneDevilReefid()
+	return Innsmouth_ScrZone_Devil_Reef_id
+end
+
+function getInnsmouthScrZoneDeepRisingid()
+	return Innsmouth_ScrZone_Deep_Rising_id
+end
+
+function getInnsmouthScrZoneJailid()
+	return Innsmouth_ScrZone_Jail_id
+end
+
+function getInnsmouthScrZoneSawboneAlleyid()
+	return Innsmouth_ScrZone_Sawbone_Alley_id
+end
+
+function getInnsmouthScrZoneEsotericDagonid()
+	return Innsmouth_ScrZone_Esoteric_Dagon_id
+end
+
+function getInnsmouthScrZoneChurchGreenid()
+	return Innsmouth_ScrZone_Church_Green_id
+end
+
+function getInnsmouthScrZoneFactoryDistrictid()
+	return Innsmouth_ScrZone_Factory_District_id
+end
+
+function getInnsmouthScrZoneFirstNationalGroceryid()
+	return Innsmouth_ScrZone_First_National_Grocery_id
+end
+
+function getInnsmouthScrZoneGilmanHouseHotelid()
+	return Innsmouth_ScrZone_Gilman_House_Hotel_id
+end
+
+function getInnsmouthScrZoneMarshRefineryid()
+	return Innsmouth_ScrZone_Marsh_Refinery_id
+end
+
+function getInnsmouthScrZoneInnsmouthShoreid()
+	return Innsmouth_ScrZone_Innsmouth_Shore_id
+end
+
+function getInnsmouthScrZoneJoeSargentsid()
+	return Innsmouth_ScrZone_Joe_Sargents_id
+end
+
+function getInnsmouthScrZoneFalconPointid()
+	return Innsmouth_ScrZone_Falcon_Point_id
+end
+
+function getInnsmouthScrZoneYhaNthleiid()
+	return Innsmouth_ScrZone_Yha_Nthlei_id
+end
+
+function getKingsportScrZoneHallSchoolid()
+	return Kingsport_ScrZone_Hall_School_id
+end
+
+function getKingsportScrZone607WaterStreetid()
+	return Kingsport_ScrZone_607_Water_Street_id
+end
+
+function getKingsportScrZoneCentralHillid()
+	return Kingsport_ScrZone_Central_Hill_id
+end
+
+function getKingsportScrZoneCongregationalHospitalid()
+	return Kingsport_ScrZone_Congregational_Hospital_id
+end
+
+function getKingsportScrZoneHarborsideid()
+	return Kingsport_ScrZone_Harborside_id
+end
+
+function getKingsportScrZoneRopeAndAnchorCommonsid()
+	return Kingsport_ScrZone_Rope_And_Anchor_Commons_id
+end
+
+function getKingsportScrZoneWirelessStationid()
+	return Kingsport_ScrZone_Wireless_Station_id
+end
+
+function getKingsportScrZoneArtistsColonyid()
+	return Kingsport_ScrZone_Artists_Colony_id
+end
+
+function getKingsportScrZone7thHouseid()
+	return Kingsport_ScrZone_7th_House_id
+end
+
+function getKingsportScrZoneNeilsCuriosityid()
+	return Kingsport_ScrZone_Neils_Curiosity_id
+end
+
+function getKingsportScrZoneNorthPointLighthouseid()
+	return Kingsport_ScrZone_North_Point_Lighthouse_id
+end
+
+function getKingsportScrZoneTheCausewayid()
+	return Kingsport_ScrZone_The_Causeway_id
+end
+
+function getKingsportScrZoneStErasmusid()
+	return Kingsport_ScrZone_St_Erasmus_id
+end
+
+function getKingsportScrZoneStrangeHighHouseid()
+	return Kingsport_ScrZone_Strange_High_House_id
+end
+
+function getKingsportScrZoneSouthShoreid()
+	return Kingsport_ScrZone_South_Shore_id
+end
+
+function getKingsportScrZoneTheUnderworldid()
+	return Kingsport_ScrZone_The_Underworld_id
+end
+
+function getKingsportScrZoneUnknownKadathid()
+	return Kingsport_ScrZone_Unknown_Kadath_id
+end
+
+function getKingsportScrzoneRiftProgress1id()
+	return Kingsport_Scrzone_RiftProgress1_id
+end
+
+function getKingsportScrzoneRiftProgress2id()
+	return Kingsport_Scrzone_RiftProgress2_id
+end
+
+function getKingsportScrzoneRiftProgress3id()
+	return Kingsport_Scrzone_RiftProgress3_id
+end
+
+function getDunwichScrZoneWhateleyFarmid()
+	return Dunwich_ScrZone_Whateley_Farm_id
+end
+
+function getDunwichScrZoneWizardsHillid()
+	return Dunwich_ScrZone_Wizards_Hill_id
+end
+
+function getDunwichScrZoneColdSpringid()
+	return Dunwich_ScrZone_Cold_Spring_id
+end
+
+function getDunwichScrZoneBackwoodsid()
+	return Dunwich_ScrZone_Backwoods_id
+end
+
+function getDunwichScrZoneSentinelHillid()
+	return Dunwich_ScrZone_Sentinel_Hill_id
+end
+
+function getDunwichScrZoneVillageCommonsid()
+	return Dunwich_ScrZone_Village_Commons_id
+end
+
+function getDunwichScrZoneDarkesCarnivalid()
+	return Dunwich_ScrZone_Darkes_Carnival_id
+end
+
+function getDunwichScrZoneBishopBrookeid()
+	return Dunwich_ScrZone_Bishop_Brooke_id
+end
+
+function getDunwichScrZoneDunwichVillageid()
+	return Dunwich_ScrZone_Dunwich_Village_id
+end
+
+function getDunwichScrZoneBlastedHeathid()
+	return Dunwich_ScrZone_Blasted_Heath_id
+end
+
+function getDunwichScrZoneGardnersPlaceid()
+	return Dunwich_ScrZone_Gardners_Place_id
+end
+
+function getDunwichScrZoneDevilsHopyardid()
+	return Dunwich_ScrZone_Devils_Hopyard_id
+end
+
+function getDunwichScrZoneHarneyJonesShackid()
+	return Dunwich_ScrZone_Harney_Jones_Shack_id
+end
+
+function getDunwichScrZoneAnotherTimeid()
+	return Dunwich_ScrZone_Another_Time_id
+end
+
+function getDunwichScrZoneLostCarcosaid()
+	return Dunwich_ScrZone_Lost_Carcosa_id
+end
+
+function getDunwichScrZoneDHorrorid()
+	return Dunwich_ScrZone_D_Horror_id
+end
+
+-- Getters end
+-- Setters
+
+function setInnsmouthScrZoneDevilReefid(GUID)
+	 Innsmouth_ScrZone_Devil_Reef_id = GUID
+end
+
+function setInnsmouthScrZoneDeepRisingid(GUID)
+	 Innsmouth_ScrZone_Deep_Rising_id = GUID
+end
+
+function setInnsmouthScrZoneJailid(GUID)
+	 Innsmouth_ScrZone_Jail_id = GUID
+end
+
+function setInnsmouthScrZoneSawboneAlleyid(GUID)
+	 Innsmouth_ScrZone_Sawbone_Alley_id = GUID
+end
+
+function setInnsmouthScrZoneEsotericDagonid(GUID)
+	 Innsmouth_ScrZone_Esoteric_Dagon_id = GUID
+end
+
+function setInnsmouthScrZoneChurchGreenid(GUID)
+	 Innsmouth_ScrZone_Church_Green_id = GUID
+end
+
+function setInnsmouthScrZoneFactoryDistrictid(GUID)
+	 Innsmouth_ScrZone_Factory_District_id = GUID
+end
+
+function setInnsmouthScrZoneFirstNationalGroceryid(GUID)
+	 Innsmouth_ScrZone_First_National_Grocery_id = GUID
+end
+
+function setInnsmouthScrZoneGilmanHouseHotelid(GUID)
+	 Innsmouth_ScrZone_Gilman_House_Hotel_id = GUID
+end
+
+function setInnsmouthScrZoneMarshRefineryid(GUID)
+	 Innsmouth_ScrZone_Marsh_Refinery_id = GUID
+end
+
+function setInnsmouthScrZoneInnsmouthShoreid(GUID)
+	 Innsmouth_ScrZone_Innsmouth_Shore_id = GUID
+end
+
+function setInnsmouthScrZoneJoeSargentsid(GUID)
+	 Innsmouth_ScrZone_Joe_Sargents_id = GUID
+end
+
+function setInnsmouthScrZoneFalconPointid(GUID)
+	 Innsmouth_ScrZone_Falcon_Point_id = GUID
+end
+
+function setInnsmouthScrZoneYhaNthleiid(GUID)
+	 Innsmouth_ScrZone_Yha_Nthlei_id = GUID
+end
+
+function setKingsportScrZoneHallSchoolid(GUID)
+	 Kingsport_ScrZone_Hall_School_id = GUID
+end
+
+function setKingsportScrZone607WaterStreetid(GUID)
+	 Kingsport_ScrZone_607_Water_Street_id = GUID
+end
+
+function setKingsportScrZoneCentralHillid(GUID)
+	 Kingsport_ScrZone_Central_Hill_id = GUID
+end
+
+function setKingsportScrZoneCongregationalHospitalid(GUID)
+	 Kingsport_ScrZone_Congregational_Hospital_id = GUID
+end
+
+function setKingsportScrZoneHarborsideid(GUID)
+	 Kingsport_ScrZone_Harborside_id = GUID
+end
+
+function setKingsportScrZoneRopeAndAnchorCommonsid(GUID)
+	 Kingsport_ScrZone_Rope_And_Anchor_Commons_id = GUID
+end
+
+function setKingsportScrZoneWirelessStationid(GUID)
+	 Kingsport_ScrZone_Wireless_Station_id = GUID
+end
+
+function setKingsportScrZoneArtistsColonyid(GUID)
+	 Kingsport_ScrZone_Artists_Colony_id = GUID
+end
+
+function setKingsportScrZone7thHouseid(GUID)
+	 Kingsport_ScrZone_7th_House_id = GUID
+end
+
+function setKingsportScrZoneNeilsCuriosityid(GUID)
+	 Kingsport_ScrZone_Neils_Curiosity_id = GUID
+end
+
+function setKingsportScrZoneNorthPointLighthouseid(GUID)
+	 Kingsport_ScrZone_North_Point_Lighthouse_id = GUID
+end
+
+function setKingsportScrZoneTheCausewayid(GUID)
+	 Kingsport_ScrZone_The_Causeway_id = GUID
+end
+
+function setKingsportScrZoneStErasmusid(GUID)
+	 Kingsport_ScrZone_St_Erasmus_id = GUID
+end
+
+function setKingsportScrZoneStrangeHighHouseid(GUID)
+	 Kingsport_ScrZone_Strange_High_House_id = GUID
+end
+
+function setKingsportScrZoneSouthShoreid(GUID)
+	 Kingsport_ScrZone_South_Shore_id = GUID
+end
+
+function setKingsportScrZoneTheUnderworldid(GUID)
+	 Kingsport_ScrZone_The_Underworld_id = GUID
+end
+
+function setKingsportScrZoneUnknownKadathid(GUID)
+	 Kingsport_ScrZone_Unknown_Kadath_id = GUID
+end
+
+function setKingsportScrzoneRiftProgress1id(GUID)
+	 Kingsport_Scrzone_RiftProgress1_id = GUID
+end
+
+function setKingsportScrzoneRiftProgress2id(GUID)
+	 Kingsport_Scrzone_RiftProgress2_id = GUID
+end
+
+function setKingsportScrzoneRiftProgress3id(GUID)
+	 Kingsport_Scrzone_RiftProgress3_id = GUID
+end
+
+function setDunwichScrZoneWhateleyFarmid(GUID)
+	 Dunwich_ScrZone_Whateley_Farm_id = GUID
+end
+
+function setDunwichScrZoneWizardsHillid(GUID)
+	 Dunwich_ScrZone_Wizards_Hill_id = GUID
+end
+
+function setDunwichScrZoneColdSpringid(GUID)
+	 Dunwich_ScrZone_Cold_Spring_id = GUID
+end
+
+function setDunwichScrZoneBackwoodsid(GUID)
+	 Dunwich_ScrZone_Backwoods_id = GUID
+end
+
+function setDunwichScrZoneSentinelHillid(GUID)
+	 Dunwich_ScrZone_Sentinel_Hill_id = GUID
+end
+
+function setDunwichScrZoneVillageCommonsid(GUID)
+	 Dunwich_ScrZone_Village_Commons_id = GUID
+end
+
+function setDunwichScrZoneDarkesCarnivalid(GUID)
+	 Dunwich_ScrZone_Darkes_Carnival_id = GUID
+end
+
+function setDunwichScrZoneBishopBrookeid(GUID)
+	 Dunwich_ScrZone_Bishop_Brooke_id = GUID
+end
+
+function setDunwichScrZoneDunwichVillageid(GUID)
+	 Dunwich_ScrZone_Dunwich_Village_id = GUID
+end
+
+function setDunwichScrZoneBlastedHeathid(GUID)
+	 Dunwich_ScrZone_Blasted_Heath_id = GUID
+end
+
+function setDunwichScrZoneGardnersPlaceid(GUID)
+	 Dunwich_ScrZone_Gardners_Place_id = GUID
+end
+
+function setDunwichScrZoneDevilsHopyardid(GUID)
+	 Dunwich_ScrZone_Devils_Hopyard_id = GUID
+end
+
+function setDunwichScrZoneHarneyJonesShackid(GUID)
+	 Dunwich_ScrZone_Harney_Jones_Shack_id = GUID
+end
+
+function setDunwichScrZoneAnotherTimeid(GUID)
+	 Dunwich_ScrZone_Another_Time_id = GUID
+end
+
+function setDunwichScrZoneLostCarcosaid(GUID)
+	 Dunwich_ScrZone_Lost_Carcosa_id = GUID
+end
+
+function setDunwichScrZoneDHorrorid(GUID)
+	 Dunwich_ScrZone_D_Horror_id = GUID
+end
+
+-- Setters end
+
+function getInnsmouthScrZoneDevilReefRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getInnsmouthScrZoneJailRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getInnsmouthScrZoneDeepRisingRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getInnsmouthScrZoneSawboneAlleyRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getInnsmouthScrZoneEsotericDagonRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getInnsmouthScrZoneChurchGreenRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getInnsmouthScrZoneFactoryDistrictRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getInnsmouthScrZoneFirstNationalGroceryRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getInnsmouthScrZoneGilmanHouseHotelRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getInnsmouthScrZoneMarshRefineryRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getInnsmouthScrZoneInnsmouthShoreRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getInnsmouthScrZoneJoeSargentsRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getInnsmouthScrZoneFalconPointRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getInnsmouthScrZoneYhaNthleiRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getDunwichScrZoneWhateleyFarmRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getDunwichScrZoneWizardsHillRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getDunwichScrZoneColdSpringRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getDunwichScrZoneBackwoodsRotation()
+	 return  {0.00, 270, 0.00}
+end
+
+function getDunwichScrZoneSentinelHillRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getDunwichScrZoneVillageCommonsRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getDunwichScrZoneDarkesCarnivalRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getDunwichScrZoneBishopBrookeRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getDunwichScrZoneDunwichVillageRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getDunwichScrZoneBlastedHeathRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getDunwichScrZoneGardnersPlaceRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getDunwichScrZoneDevilsHopyardRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getDunwichScrZoneHarneyJonesShackRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getDunwichScrZoneAnotherTimeRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getDunwichScrZoneLostCarcosaRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getDunwichScrZoneDHorrorRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getKingsportScrZoneHallSchoolRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getKingsportScrZone607WaterStreetRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getKingsportScrZoneCentralHillRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getKingsportScrZoneCongregationalHospitalRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getKingsportScrZoneHarborsideRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getKingsportScrZoneRopeAndAnchorCommonsRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getKingsportScrZoneWirelessStationRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getKingsportScrZoneArtistsColonyRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getKingsportScrZone7thHouseRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getKingsportScrZoneNeilsCuriosityRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getKingsportScrZoneNorthPointLighthouseRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getKingsportScrZoneTheCausewayRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getKingsportScrZoneStErasmusRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getKingsportScrZoneStrangeHighHouseRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getKingsportScrZoneSouthShoreRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getKingsportScrZoneTheUnderworldRotation()
+	 return  {0.00, 270, 0.00}
+end
+
+function getKingsportScrZoneUnknownKadathRotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getKingsportScrzoneRiftProgress1Rotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getKingsportScrzoneRiftProgress2Rotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getKingsportScrzoneRiftProgress3Rotation()
+	 return {0.00, 270, 0.00}
+end
+
+function getInnsmouthScrZoneDevilReefScale()
+	 return {3.48, 4.00, 4.84}
+end
+
+function getInnsmouthScrZoneJailScale()
+	 return {4.14, 4.00, 5.65}
+end
+
+function getInnsmouthScrZoneDeepRisingScale()
+	 return {4.84, 0.96, 13.88}
+end
+
+function getInnsmouthScrZoneSawboneAlleyScale()
+	 return {3.91, 4.00, 2.89}
+end
+
+function getInnsmouthScrZoneEsotericDagonScale()
+	 return {3.07, 4.00, 3.73}
+end
+
+function getInnsmouthScrZoneChurchGreenScale()
+	 return {3.64, 4.00, 2.71}
+end
+
+function getInnsmouthScrZoneFactoryDistrictScale()
+	 return {3.80, 4.00, 2.56}
+end
+
+function getInnsmouthScrZoneFirstNationalGroceryScale()
+	 return {3.28, 4.00, 4.86}
+end
+
+function getInnsmouthScrZoneGilmanHouseHotelScale()
+	 return {3.17, 4.00, 4.67}
+end
+
+function getInnsmouthScrZoneMarshRefineryScale()
+	 return {3.56, 4.00, 3.76}
+end
+
+function getInnsmouthScrZoneInnsmouthShoreScale()
+	 return {3.82, 4.00, 2.49}
+end
+
+function getInnsmouthScrZoneJoeSargentsScale()
+	 return {3.36, 4.00, 2.16}
+end
+
+function getInnsmouthScrZoneFalconPointScale()
+	 return {3.48, 4.00, 5.82}
+end
+
+function getInnsmouthScrZoneYhaNthleiScale()
+	 return {3.48, 4.00, 5.13}
+end
+
+function getDunwichScrZoneWhateleyFarmScale()
+	 return {4.39, 4.00, 3.50}
+end
+
+function getDunwichScrZoneWizardsHillScale()
+	 return {3.40, 4.00, 3.72}
+end
+
+function getDunwichScrZoneColdSpringScale()
+	 return {3.81, 4.00, 3.56}
+end
+
+function getDunwichScrZoneBackwoodsScale()
+	 return  {4.02, 4.00, 2.20}
+end
+
+function getDunwichScrZoneSentinelHillScale()
+	 return {3.39, 4.00, 1.74}
+end
+
+function getDunwichScrZoneVillageCommonsScale()
+	 return {4.15, 4.00, 2.46}
+end
+
+function getDunwichScrZoneDarkesCarnivalScale()
+	 return {3.68, 4.00, 4.48}
+end
+
+function getDunwichScrZoneBishopBrookeScale()
+	 return {3.73, 4.00, 3.73}
+end
+
+function getDunwichScrZoneDunwichVillageScale()
+	 return {3.62, 4.00, 4.76}
+end
+
+function getDunwichScrZoneBlastedHeathScale()
+	 return {4.07, 4.00, 2.20}
+end
+
+function getDunwichScrZoneGardnersPlaceScale()
+	 return {3.58, 4.00, 3.45}
+end
+
+function getDunwichScrZoneDevilsHopyardScale()
+	 return {3.47, 4.00, 4.32}
+end
+
+function getDunwichScrZoneHarneyJonesShackScale()
+	 return {3.47, 4.00, 4.32}
+end
+
+function getDunwichScrZoneAnotherTimeScale()
+	 return {4.91, 4.00, 4.92}
+end
+
+function getDunwichScrZoneLostCarcosaScale()
+	 return {4.95, 4.00, 4.44}
+end
+
+function getDunwichScrZoneDHorrorScale()
+	 return {4.68, 1.00, 1.27}
+end
+
+function getKingsportScrZoneHallSchoolScale()
+	 return {3.26, 4.00, 3.48}
+end
+
+function getKingsportScrZone607WaterStreetScale()
+	 return {3.19, 4.00, 3.28}
+end
+
+function getKingsportScrZoneCentralHillScale()
+	 return {3.83, 4.00, 2.13}
+end
+
+function getKingsportScrZoneCongregationalHospitalScale()
+	 return {3.03, 4.00, 4.20}
+end
+
+function getKingsportScrZoneHarborsideScale()
+	 return {3.93, 4.00, 2.24}
+end
+
+function getKingsportScrZoneRopeAndAnchorCommonsScale()
+	 return {3.19, 4.00, 4.27}
+end
+
+function getKingsportScrZoneWirelessStationScale()
+	 return {3.31, 4.00, 4.20}
+end
+
+function getKingsportScrZoneArtistsColonyScale()
+	 return {3.35, 4.00, 3.70}
+end
+
+function getKingsportScrZone7thHouseScale()
+	 return {3.52, 4.00, 3.42}
+end
+
+function getKingsportScrZoneNeilsCuriosityScale()
+	 return {3.44, 4.00, 4.50}
+end
+
+function getKingsportScrZoneNorthPointLighthouseScale()
+	 return {3.27, 4.00, 4.36}
+end
+
+function getKingsportScrZoneTheCausewayScale()
+	 return {3.42, 4.00, 4.00}
+end
+
+function getKingsportScrZoneStErasmusScale()
+	 return {3.07, 4.00, 3.35}
+end
+
+function getKingsportScrZoneStrangeHighHouseScale()
+	 return {3.41, 4.00, 4.57}
+end
+
+function getKingsportScrZoneSouthShoreScale()
+	 return {4.14, 4.00, 2.20}
+end
+
+function getKingsportScrZoneTheUnderworldScale()
+	 return  {4.99, 4.00, 4.70}
+end
+
+function getKingsportScrZoneUnknownKadathScale()
+	 return {5.31, 4.00, 4.79}
+end
+
+function getKingsportScrzoneRiftProgress1Scale()
+	 return {2.07, 3.00, 2.23}
+end
+
+function getKingsportScrzoneRiftProgress2Scale()
+	 return {2.03, 3.00, 2.27}
+end
+
+function getKingsportScrzoneRiftProgress3Scale()
+	 return {2.02, 3.00, 2.29}
+end
+
+--Returns a vector with the placing positions for the object id given
+function getBoardPositionsScrZones3Boards(id)
+    return BoardPositionsScrZones3Boards[id[1]]
+end
+
+function getBoardPositionsScrZonesInnsmouthSolo(id)
+    return BoardPositionsScrZonesInnsmouthSolo[id[1]]
+end
+
+function getBoardPositionsScrZonesDunwichSolo(id)
+    return BoardPositionsScrZonesDunwichSolo[id[1]]
+end
+
+function getBoardPositionsScrZonesKingsportSolo(id)
+    return BoardPositionsScrZonesKingsportSolo[id[1]]
+end
+
+function getBoardPositionsScrZonesKingsportDunwich(id)
+    return BoardPositionsScrZonesKingsportDunwich[id[1]]
+end
+
+function getBoardPositionsScrZonesInnsmouthKingsport(id)
+    return BoardPositionsScrZonesInnsmouthKingsport[id[1]]
+end
+
+function getBoardPositionsScrZonesInnsmouthDunwich(id)
+    return BoardPositionsScrZonesInnsmouthDunwich[id[1]]
+end

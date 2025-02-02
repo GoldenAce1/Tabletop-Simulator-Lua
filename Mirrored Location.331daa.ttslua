@@ -1,0 +1,7 @@
+
+local objectPosition = {-27.07, 0.74, -43.77}
+-- local objectPosition = {-1.3, 0.63, 0}
+local objectRotation = {0, 180.00, 0}
+local Mirrored_Location_Scripting_Zone = 'feddec'
+
+require("Mirrored_Location_Left")

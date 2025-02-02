@@ -1,0 +1,500 @@
+local Innsmouth_Bag_id = 'ec313d'
+local Innsmouth_Northside_deck_id = '1bf39c'
+local Innsmouth_Downtown_deck_id = 'ffbfa5'
+local Innsmouth_Easttown_deck_id = 'a261de'
+local Innsmouth_Merchant_deck_id = 'c7724a'
+local Innsmouth_Rivertown_deck_id = 'eb487b'
+local Innsmouth_Miskatonic_deck_id = 'd541d8'
+local Innsmouth_French_deck_id = 'fd0ab0'
+local Innsmouth_Uptown_deck_id = '712ddf'
+local Innsmouth_Southside_deck_id = 'a3c98a'
+
+--local Innsmouth_Common_deck_id = '04cff9'
+--local Innsmouth_Unique_deck_id = 'e3e44d'
+--local Innsmouth_Spells_deck_id = 'cc7be5'
+--local Innsmouth_Skills_deck_id = '0db4f2'
+--local Innsmouth_Skills_deck_id = '679932'
+local Innsmouth_Skills_deck_id = 'e87db8'
+--Innsmouth has no Allies... No one likes the fish-like dudes! :(
+--local Innsmouth_Allies_deck_id = '5de360'
+
+local Innsmouth_Mythos_deck_id = 'fe4b0f'
+local Innsmouth_Gate_deck_id = '462d23'
+ 
+
+-- Innsmouth Specific Items
+local Innsmouth_Look_Deck_id = '38d9f4'
+local Innsmouth_Factory_Deck_id = '64a8bb'
+local Innsmouth_Shore_Deck_id = 'f6b4c1'
+local Innsmouth_Church_Deck_id = '9b96e6'
+local Innsmouth_Deep_one_Uprising_Token_id = '62be7e'
+-- local Innsmouth_Clue_Deck_id = '60cc0f'
+local Innsmouth_Monster_bag_id = '24da8b'
+local Innsmouth_Clue_Tokens_id = '51aa25'
+local Innsmouth_Mask_Bag_id = '6fd3a4'
+
+-- Position: {-20.10, 1.16,-3.38}
+-- Rotation: {0,89.99,0}
+-- Scale: {6.85, 1.00, 6.85}
+local Innsmouth_Board_Id = 'bd605e'
+
+
+local Innsmouth_Scripting_Zone = 'ddd66e'
+
+-- Which of these are decks
+InnsmouthDecks={ '38d9f4','64a8bb','f6b4c1','9b96e6'
+       }
+-- -- Which of these are decks
+-- InnsmouthDecks={'1bf39c','ffbfa5','a261de', 'c7724a','eb487b','d541d8','fd0ab0',
+--               '712ddf','a3c98a','679932','fe4b0f','462d23',
+--               '38d9f4','64a8bb','f6b4c1','9b96e6'
+       -- }
+       -- ,'60cc0f'
+-- '04cff9','e3e44d','5de360','cc7be5',
+
+       -- x, y, z for each die.
+       -- y is the height over the table and setting it to
+       -- a number higher than zero will make it fall down
+       -- to the board
+local InnsmouthPositions = {
+  [Innsmouth_Bag_id] = {-78.13, 1.5, -30.12},
+  --[Innsmouth_Mythos_deck_id] = {-78.13, 1.5, -23.55},
+  --[Innsmouth_Gate_deck_id] = {-78.13, 1.5, -21.14},
+  --[Innsmouth_Northside_deck_id] = {-78.13, 1.5, -18.98},
+  --[Innsmouth_Downtown_deck_id] = {-78.13, 1.5, -16.57},
+  --[Innsmouth_Easttown_deck_id] = {-78.13, 1.5, -14.25},
+  --[Innsmouth_Merchant_deck_id] = {-78.13, 1.5, -11.85},
+  --[Innsmouth_Rivertown_deck_id] = {-78.13, 1.5, -9.32},
+  --[Innsmouth_Miskatonic_deck_id] = {-78.13, 1.5, -6.91},
+  --[Innsmouth_French_deck_id] = {-78.13, 1.5, -4.34},
+  --[Innsmouth_Uptown_deck_id] = {-78.13, 1.5, -1.87},
+  --[Innsmouth_Southside_deck_id] = {-78.13, 1.5, 0.61},
+  --[Innsmouth_Skills_deck_id] = {-78.13, 1.5, 2.99},
+
+  --[Innsmouth_Look_Deck_id] = {-78.13, 1.5, 14},
+  --[Innsmouth_Factory_Deck_id] = {-78.13, 1.5, 16.15},
+  --[Innsmouth_Shore_Deck_id] = {-78.13, 1.5, 19.09},
+  --[Innsmouth_Church_Deck_id] = {-78.13, 1.5, 22.21},
+  [Innsmouth_Deep_one_Uprising_Token_id] = {-78.13, 1.5, 25.67},
+  [Innsmouth_Monster_bag_id] = {-78.13, 1.5, 27.62},
+  [Innsmouth_Clue_Tokens_id] = {-78.13, 1.5, 29.62},
+  [Innsmouth_Board_Id] = {-78.13, 1.5, 33.62}
+
+
+--  [Innsmouth_Clue_Deck_id] = {-78.13, 1.5, 24.62},
+-- -- No allies, skills, common unique or spells
+-- Man... Innsmouth is a really poor port!
+ --[Innsmouth_Allies_deck_id] = {-78.13, 1.5, 6.08},
+ --[Innsmouth_Common_deck_id] = {-78.13, 1.5, 7.8},
+ --[Innsmouth_Unique_deck_id] = {-78.13, 1.5, 10.21},
+ --[Innsmouth_Spells_deck_id] = {-78.13, 1.5, 12.39},
+}
+
+function onload()
+
+end
+
+------------Generating getters and setters for all the junk
+
+---------------------------------- BAG ----------------------------------------
+
+--returns the bag id to whoever calls it
+function getInnsmouthBagId()
+    return Innsmouth_Bag_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthBagId(id)
+    Innsmouth_Bag_id = id.getGUID()
+end
+
+---------------------------------- BAG ----------------------------------------
+-------------------------------Northside --------------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthNorthsideDeckId()
+    return Innsmouth_Northside_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthNorthsideDeckId(id)
+    Innsmouth_Northside_deck_id = id.getGUID()
+end
+
+-------------------------------Northside --------------------------------------
+------------------------------- Downtown --------------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthDowntownDeckId()
+    return Innsmouth_Downtown_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthDowntownDeckId(id)
+    Innsmouth_Downtown_deck_id = id.getGUID()
+end
+
+------------------------------- Downtown --------------------------------------
+------------------------------- Easttown --------------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthEasttownDeckId()
+    return Innsmouth_Easttown_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthEasttownDeckId(id)
+    Innsmouth_Easttown_deck_id = id.getGUID()
+end
+
+------------------------------- Easttown --------------------------------------
+------------------------------- Merchant --------------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthMerchantDeckId()
+    return Innsmouth_Merchant_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthMerchantDeckId(id)
+    Innsmouth_Merchant_deck_id = id.getGUID()
+end
+
+------------------------------- Merchant --------------------------------------
+------------------------------- Rivertown --------------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthRivertownDeckId()
+    return Innsmouth_Rivertown_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthRivertownDeckId(id)
+    Innsmouth_Rivertown_deck_id = id.getGUID()
+end
+
+------------------------------- Rivertown --------------------------------------
+------------------------------- Miskatonic --------------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthMiskatonicDeckId()
+    return Innsmouth_Miskatonic_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthMiskatonicDeckId(id)
+    Innsmouth_Miskatonic_deck_id = id.getGUID()
+end
+
+------------------------------- Miskatonic -------------------------------------
+------------------------------- French Hill ------------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthFrenchDeckId()
+    return Innsmouth_French_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthFrenchDeckId(id)
+    Innsmouth_French_deck_id = id.getGUID()
+end
+
+------------------------------- French Hill ------------------------------------
+--------------------------------- Uptown --------------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthUptownDeckId()
+    return Innsmouth_Uptown_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthUptownDeckId(id)
+    Innsmouth_Uptown_deck_id = id.getGUID()
+end
+
+--------------------------------- Uptown --------------------------------------
+-------------------------------- Southside -------------------------------------
+--returns the id to whoever calls it
+function getInnsmouthSouthsideDeckId()
+    return Innsmouth_Southside_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthSouthsideDeckId(id)
+    Innsmouth_Southside_deck_id = id.getGUID()
+end
+
+-------------------------------- Southside -------------------------------------
+-- --------------------------------- Common --------------------------------------
+--
+-- --returns the id to whoever calls it
+-- function getInnsmouthCommonDeckId()
+--     return Innsmouth_Common_deck_id
+-- end
+--
+-- --Probably not used, but just in case
+-- --sets the id as given object
+-- function setInnsmouthCommonDeckId(id)
+--     Innsmouth_Common_deck_id = id.getGUID()
+-- end
+--
+-- --------------------------------- Common --------------------------------------
+-- --------------------------------- Unique --------------------------------------
+--
+-- --returns the id to whoever calls it
+-- function getInnsmouthUniqueDeckId()
+--     return Innsmouth_Unique_deck_id
+-- end
+--
+-- --Probably not used, but just in case
+-- --sets the id as given object
+-- function setInnsmouthUniqueDeckId(id)
+--     Innsmouth_Unique_deck_id = id.getGUID()
+-- end
+--
+-- --------------------------------- Unique --------------------------------------
+-- --------------------------------- Spells --------------------------------------
+--
+--
+-- --returns the id to whoever calls it
+-- function getInnsmouthSpellsDeckId()
+--     return Innsmouth_Spells_deck_id
+-- end
+--
+-- --Probably not used, but just in case
+-- --sets the id as given object
+-- function setInnsmouthSpellsDeckId(id)
+--     Innsmouth_Spells_deck_id = id.getGUID()
+-- end
+--
+-- --------------------------------- Spells --------------------------------------
+--------------------------------- Skills --------------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthSkillsDeckId()
+    return Innsmouth_Skills_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthSkillsDeckId(id)
+    Innsmouth_Skills_deck_id = id.getGUID()
+end
+
+--------------------------------- Skills --------------------------------------
+--------------------------------- Allies --------------------------------------
+-- --returns the id to whoever calls it
+-- function getInnsmouthAlliesDeckId()
+--     return Innsmouth_Allies_deck_id
+-- end
+--
+-- --Probably not used, but just in case
+-- --sets the id as given object
+-- function setInnsmouthAlliesDeckId(id)
+--     Innsmouth_Allies_deck_id = id.getGUID()
+-- end
+--------------------------------- Allies --------------------------------------
+--------------------------------- Mythos --------------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthMythosDeckId()
+    return Innsmouth_Mythos_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthMythosDeckId(id)
+    Innsmouth_Mythos_deck_id = id.getGUID()
+end
+--------------------------------- Mythos --------------------------------------
+---------------------------------- Gate ---------------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthGateDeckId()
+    return Innsmouth_Gate_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthGateDeckId(id)
+    Innsmouth_Gate_deck_id = id.getGUID()
+end
+
+---------------------------------- Gate ---------------------------------------
+
+--Expansion-specific
+-- Innsmouth Specific Items
+--------------------------------- Look ---------------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthLookDeckId()
+    return Innsmouth_Look_Deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthLookDeckId(id)
+    Innsmouth_Look_Deck_id = id.getGUID()
+end
+--------------------------------- Look ---------------------------------------
+--------------------------------- Factory ---------------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthFactoryDeckId()
+    return Innsmouth_Factory_Deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthFactoryDeckId(id)
+    Innsmouth_Factory_Deck_id = id.getGUID()
+end
+--------------------------------- Factory ---------------------------------------
+--------------------------------- Shore ---------------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthShoreDeckId()
+    return Innsmouth_Shore_Deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthShoreDeckId(id)
+    Innsmouth_Shore_Deck_id = id.getGUID()
+end
+--------------------------------- Shore ---------------------------------------
+--------------------------------- Church ---------------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthChurchDeckId()
+    return Innsmouth_Church_Deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthChurchDeckId(id)
+    Innsmouth_Church_Deck_id = id.getGUID()
+end
+--------------------------------- Church ---------------------------------------
+--------------------------------- Deep ---------------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthDeepTokenId()
+    return Innsmouth_Deep_one_Uprising_Token_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthDeepTokenId(id)
+    Innsmouth_Deep_one_Uprising_Token_id = id.getGUID()
+end
+--------------------------------- Deep ---------------------------------------
+--------------------------------- Clue ---------------------------------------
+--
+-- --returns the id to whoever calls it
+-- function getInnsmouthClueDeckId()
+--     return Innsmouth_Clue_Deck_id
+-- end
+--
+-- --Probably not used, but just in case
+-- --sets the id as given object
+-- function setInnsmouthClueDeckId(id)
+--     Innsmouth_Clue_Deck_id = id.getGUID()
+-- end
+--------------------------------- Clue ---------------------------------------
+--------------------------------- Monster ---------------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthMonsterBagId()
+    return Innsmouth_Monster_bag_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthMonsterBagId(id)
+    Innsmouth_Monster_bag_id = id.getGUID()
+end
+
+
+--returns the id to whoever calls it
+function getInnsmouthMaskMonsterBagId()
+    return Innsmouth_Mask_Bag_id
+end
+
+--------------------------------- Monster ---------------------------------------
+
+--------------------------------- Board ---------------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthBoardId()
+    return Innsmouth_Board_Id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthBoardId(id)
+    Innsmouth_Board_Id = id.getGUID()
+end
+
+--Scales the board to be set on the table (Tiny)
+function scaleDownInnsmouthBoard()
+    innsmouthBoard = getObjectFromGUID(Innsmouth_Board_Id)
+    innsmouthBoard.scale({1,1,1})
+end
+
+--Scales the board to its original dimensions
+-- Scale: {6.85, 1.00, 6.85}
+function scaleUpInnsmouthBoard()
+    innsmouthBoard = getObjectFromGUID(Innsmouth_Board_Id)
+    innsmouthBoard.scale({6.85, 1.00, 6.85})
+end
+--------------------------------- Board ---------------------------------------
+
+------------------------------- ClueTokens -------------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthClueTokensId()
+    return Innsmouth_Clue_Tokens_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthClueTokensId(id)
+    Innsmouth_Clue_Tokens_id = id.getGUID()
+end
+------------------------------- ClueTokens -------------------------------------
+-------------------------- Innsmouth Scripting Zone -------------------------------
+
+--returns the id to whoever calls it
+function getInnsmouthScriptingZone()
+    return Innsmouth_Scripting_Zone
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setInnsmouthScriptingZone(id)
+    Innsmouth_Scripting_Zone = id.getGUID()
+end
+-------------------------- Innsmouth Scripting Zone -------------------------------
+
+
+
+--Returns a vector with the placing positions for the object id given
+function getInnsmouthPositionById(id)
+    return InnsmouthPositions[id[1]]
+end
+
+--Returns a vector with the placing positions for the object id given
+function getInnsmouthDecks()
+    return InnsmouthDecks
+end

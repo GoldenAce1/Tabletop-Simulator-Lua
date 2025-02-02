@@ -1,0 +1,39 @@
+local PharaohVariablesId = '43e2a0'
+local ControlPanelVariablesId = 'bf1ea5'
+
+function declareButton()
+    ShuffleExhibitEncounterButton = {
+        click_function = 'ShuffleExhibitEncounterButtonClicked',
+        function_owner = self,
+        label = 'Shuffle Exhibit Encounters',
+        tooltip = "Shuffles the Exhibit Encounter Deck",
+        position = {0,0,0},
+        rotation = {0,270,0},
+        width = 1380,
+        height = 240,
+        font_size = 100
+    }
+end
+
+function createButton()
+    self.createButton(ShuffleExhibitEncounterButton)
+end
+
+function onload()
+    declareButton()
+
+    local ControlPanelVariables = getObjectFromGUID(ControlPanelVariablesId)
+    local isPharaohSet = ControlPanelVariables.call('isPharaohSet')
+
+    if isPharaohSet == true then
+        createButton()
+    end
+end
+
+function ShuffleExhibitEncounterButtonClicked()
+    local PharaohVariables = getObjectFromGUID(PharaohVariablesId)
+    local Board_Exhibit_Encounter_Deck_Id = PharaohVariables.call('getPharaohExhibitEncounterDeckId')
+
+    local Board_Exhibit_Encounter_Deck = getObjectFromGUID(Board_Exhibit_Encounter_Deck_Id)
+    Board_Exhibit_Encounter_Deck.randomize()
+end

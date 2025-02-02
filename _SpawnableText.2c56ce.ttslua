@@ -1,0 +1,260 @@
+function SpawnDunwichLabels()
+
+    -- Backwoods Country
+
+    local text = spawnObject({
+    	position = {48.99, 0.67, -22.94},
+    	rotation = {90.00, 270.27, 0.00},
+    	type = '3DText'
+    })
+    text.TextTool.setValue("Backwoods\nCountry")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({0.290, 0.0005, 0.0523, 1})
+
+    -- Village Commons
+
+    local text = spawnObject({
+        position = {48.94, 0.67, -19.27},
+        rotation = {90.00, 270.27, 0.00},
+        type = '3DText'
+    })
+    text.TextTool.setValue("Village\nCommons")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({0.071, 0.479, 0.007, 1})
+
+    -- Blasted Heath
+
+    local text = spawnObject({
+        position = {48.93, 0.67, -16.03},
+        rotation = {90.00, 270.27, 0.00},
+        type = '3DText'
+    })
+    text.TextTool.setValue("Blasted\nHeath")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({0.028, 0.332, 0.517, 1})
+
+    -- Dunwich Horror Deck
+
+    local text = spawnObject({
+        position = {44.93, 0.67, 14.37},
+        rotation = {90.00, 269.91, 0.00},
+        type = '3DText'
+    })
+    text.TextTool.setValue("Dunwich Horror\nDeck")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({0.768, 0.365, 0.1, 1})
+
+    -- Discard
+
+    local text = spawnObject({
+        position = {44.93, 0.67, 19.48},
+        rotation = {90.00, 270.10, 0.00},
+        type = '3DText'
+    })
+    text.TextTool.setValue("Discard")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({1, 1, 1, 1})
+
+end
+
+function SpawnKingsportLabels()
+
+    -- Central Hill
+
+    local text = spawnObject({
+    	position = {48.98, 0.67, -13.01},
+    	rotation = {90.00, 270.10, 0.00},
+    	type = '3DText'
+    })
+    text.TextTool.setValue("Central\nHill")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({0.004, 0.310, 0.678, 1})
+
+    -- South Shore
+
+    local text = spawnObject({
+        position = {48.96, 0.67, -9.83},
+        rotation = {90.00, 270.27, 0.00},
+        type = '3DText'
+    })
+    text.TextTool.setValue("South\nShore")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({0.793, 0.020, 0.202, 1})
+
+    -- Harborside
+
+    local text = spawnObject({
+        position = {49.02, 0.67, -6.98},
+        rotation = {90.00, 270.10, 0.00},
+        type = '3DText'
+    })
+    text.TextTool.setValue("Harborside")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({0.981, 0.709, 0.0666, 1})
+
+    -- Kingsport Head
+
+    local text = spawnObject({
+        position = {49.00, 0.67, -4.02},
+        rotation = {90.00, 270.10, 0.00},
+        type = '3DText'
+    })
+    text.TextTool.setValue("Kingsport\nHead")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({1, 1, 1, 1})
+
+end
+
+function SpawnInnsmouthLabels()
+
+    -- Factory District
+
+    local text = spawnObject({
+    	position = {49.03, 0.67, -1.04},
+    	rotation = {90.00, 270.10, 0.00},
+    	type = '3DText'
+    })
+    text.TextTool.setValue("Factory\nDistrict")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({0.264, 0.293, 0.991, 1})
+
+    -- Church Green
+
+    local text = spawnObject({
+        position = {49.11, 0.67, 2.07},
+        rotation = {90.00, 270.10, 0.00},
+        type = '3DText'
+    })
+    text.TextTool.setValue("Church\nGreen")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({1, 0.852, 0.5, 1})
+
+    -- Innsmouth Shore
+
+    local text = spawnObject({
+        position = {49.08, 0.67, 4.88},
+        rotation = {90.00, 270.10, 0.00},
+        type = '3DText'
+    })
+    text.TextTool.setValue("Innsmouth\nShore")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({0.026, 0.643, 0.026, 1})
+
+    -- Innsmouth Look
+
+    local text = spawnObject({
+        position = {40.06, 0.67, 14.04},
+        rotation = {90.00, 270.00, 0.00},
+        type = '3DText'
+    })
+    text.TextTool.setValue("Innsmouth\nLook")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({0.153, 0.573, 0.301, 1})
+
+    -- Innsmouth Look Discard
+
+    local text = spawnObject({
+        position = {40.25, 0.67, 16.62},
+        rotation = {90.00, 270.10, 0.00},
+        type = '3DText'
+    })
+    text.TextTool.setValue("Discard")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({1, 1, 1, 1})
+
+end
+
+function SpawnGoatLabels()
+
+    -- Corruption
+
+    local text = spawnObject({
+    	position = {49.84, 0.67, 19.30},
+    	rotation = {90.00, 270.10, 0.00},
+    	type = '3DText'
+    })
+    text.TextTool.setValue("Corruption")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({1, 1, 1, 1})
+
+    -- "One of the Thousand"
+    --  Cult Membership
+
+    local text = spawnObject({
+        position = {40.29, 0.67, 19.88},
+        rotation = {90.00, 270.10, 0.00},
+        type = '3DText'
+    })
+    text.TextTool.setValue("\"One of the Thousand\"\nCult Membership")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({1, 1, 1, 1})
+
+    -- Cult Encounters
+
+    local text = spawnObject({
+        position = {40.32, 0.67, 24.38},
+        rotation = {90.00, 270.10, 0.00},
+        type = '3DText'
+    })
+    text.TextTool.setValue("Cult Encounters")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({1, 1, 1, 1})
+end
+
+function SpawnPharaohLabels()
+
+    -- Patrol
+
+    local text = spawnObject({
+    	position = {38.55, 0.67, 4.99},
+    	rotation = {90.00, 270.10, 0.00},
+    	type = '3DText'
+    })
+    text.TextTool.setValue("Patrol")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({1, 1, 1, 1})
+
+    -- Exhibit Encounter
+
+    local text = spawnObject({
+        position = {40.19, 0.67, 7.68},
+        rotation = {90.00, 270.10, 0.00},
+        type = '3DText'
+    })
+    text.TextTool.setValue("Exhibit Encounter")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({1, 1, 1, 1})
+
+    -- Exhibit Item
+
+    local text = spawnObject({
+        position = {40.21, 0.67, 10.99},
+        rotation = {90.00, 270.10, 0.00},
+        type = '3DText'
+    })
+    text.TextTool.setValue("Exhibit Item")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({1, 1, 1, 1})
+
+    -- Benefits
+
+    local text = spawnObject({
+        position = {45.74, 0.67, 7.81},
+        rotation = {90.00, 270.10, 0.00},
+        type = '3DText'
+    })
+    text.TextTool.setValue("Benefits")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({1, 1, 1, 1})
+
+    -- Detriments
+
+    local text = spawnObject({
+        position = {45.78, 0.67, 10.72},
+        rotation = {90.00, 270.10, 0.00},
+        type = '3DText'
+    })
+    text.TextTool.setValue("Detriments")
+    text.TextTool.setFontSize(28)
+    text.TextTool.setFontColor({1, 1, 1, 1})
+end

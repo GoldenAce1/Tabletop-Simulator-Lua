@@ -1,0 +1,1728 @@
+local MiskatonicVariables = getObjectFromGUID('b76591')
+local  ControlPanelVariables = getObjectFromGUID('bf1ea5')
+
+function SetMiskatonicComponents1OnTable()
+
+    local placed = false
+
+    local LurkerSet = ControlPanelVariables.call('isLurkerSet')
+
+    local PharaohSet = ControlPanelVariables.call('isPharaohSet')
+    local GoatSet = ControlPanelVariables.call('isGoatSet')
+    local YellowSet = ControlPanelVariables.call('isYellowSet')
+    local InnsmouthSet = ControlPanelVariables.call('isInnsmouthSet')
+    local KingsportSet = ControlPanelVariables.call('isKingsportSet')
+    local DunwichSet = ControlPanelVariables.call('isDunwichSet')
+
+    if DunwichSet == true and LurkerSet == true then
+        placeDunwichLurkerGateDeck()
+        placeDunwichLurkerBlastedDeck()
+        placeDunwichLurkerVillageDeck()
+        placeDunwichLurkerBackwoodsDeck()
+        placed = true
+    end
+
+    if DunwichSet == true and PharaohSet == true then
+        placeDunwichPharaohGateDeck()
+        placeDunwichPharaohBlastedDeck()
+        placeDunwichPharaohVillageDeck()
+        placeDunwichPharaohBackwoodsDeck()
+        placed = true
+    end
+
+    if DunwichSet == true and GoatSet == true then
+        placeDunwichGoatGateDeck()
+        placeDunwichGoatBlastedDeck()
+        placeDunwichGoatVillageDeck()
+        placeDunwichGoatBackwoodsDeck()
+        placed = true
+    end
+
+    if DunwichSet == true and YellowSet == true then
+        placeDunwichYellowGateDeck()
+        placeDunwichYellowBlastedDeck()
+        placeDunwichYellowVillageDeck()
+        placeDunwichYellowBackwoodsDeck()
+        placed = true
+    end
+
+    if DunwichSet == true and InnsmouthSet == true then
+        placeDunwichInnsmouthBlastedDeck()
+        placeDunwichInnsmouthVillageDeck()
+        placeDunwichInnsmouthBackwoodsDeck()
+        placed = true
+    end
+
+    if DunwichSet == true and KingsportSet == true then
+-- No gate
+        -- placeDunwichKingsportGateDeck()
+        placeDunwichKingsportBlastedDeck()
+        placeDunwichKingsportVillageDeck()
+        placeDunwichKingsportBackwoodsDeck()
+        placed = true
+    end
+
+    if KingsportSet == true and LurkerSet == true then
+        placeKingsportLurkerGateDeck()
+        placeKingsportLurkerCentralDeck()
+        placeKingsportLurkerHarborsideDeck()
+        placeKingsportLurkerSouthShoreDeck()
+        placeKingsportLurkerKingsportHeadDeck()
+        placed = true
+    end
+
+    if KingsportSet == true and PharaohSet == true then
+        placeKingsportPharaohGateDeck()
+        placeKingsportPharaohCentralDeck()
+        placeKingsportPharaohHarborsideDeck()
+        placeKingsportPharaohSouthShoreDeck()
+        placeKingsportPharaohKingsportHeadDeck()
+        placed = true
+    end
+
+    if KingsportSet == true and GoatSet == true then
+        placeKingsportGoatGateDeck()
+        placeKingsportGoatCentralDeck()
+        placeKingsportGoatHarborsideDeck()
+        placeKingsportGoatSouthShoreDeck()
+        placeKingsportGoatKingsportHeadDeck()
+        placed = true
+    end
+
+    if placed == true then
+        Wait.time(deck1Flipper, 1)
+    end
+
+end
+
+function SetMiskatonicComponents2OnTable()
+    local placed = false
+
+    local LurkerSet = ControlPanelVariables.call('isLurkerSet')
+    local PharaohSet = ControlPanelVariables.call('isPharaohSet')
+    local GoatSet = ControlPanelVariables.call('isGoatSet')
+    local YellowSet = ControlPanelVariables.call('isYellowSet')
+    local InnsmouthSet = ControlPanelVariables.call('isInnsmouthSet')
+    local KingsportSet = ControlPanelVariables.call('isKingsportSet')
+    local DunwichSet = ControlPanelVariables.call('isDunwichSet')
+
+    if KingsportSet == true and YellowSet == true then
+        placeKingsportYellowGateDeck()
+        placeKingsportYellowCentralDeck()
+        placeKingsportYellowHarborsideDeck()
+        placeKingsportYellowSouthShoreDeck()
+        placeKingsportYellowKingsportHeadDeck()
+        placed = true
+    end
+
+    if KingsportSet == true and InnsmouthSet == true then
+        placeKingsportInnsmouthCentralDeck()
+        placeKingsportInnsmouthHarborsideDeck()
+        placeKingsportInnsmouthSouthShoreDeck()
+        placeKingsportInnsmouthKingsportHeadDeck()
+        placed = true
+    end
+
+    if KingsportSet == true and DunwichSet == true then
+        placeKingsportDunwichGateDeck()
+        placeKingsportDunwichCentralDeck()
+        placeKingsportDunwichHarborsideDeck()
+        placeKingsportDunwichSouthShoreDeck()
+        placeKingsportDunwichKingsportHeadDeck()
+        placed = true
+    end
+
+    if InnsmouthSet == true and LurkerSet == true then
+        placeInnsmouthLurkerFactoryDeck()
+        placeInnsmouthLurkerChurchDeck()
+        placeInnsmouthLurkerInnsmouthShoreDeck()
+        placed = true
+    end
+
+    if InnsmouthSet == true and GoatSet == true then
+        placeInnsmouthGoatFactoryDeck()
+        placeInnsmouthGoatChurchDeck()
+        placeInnsmouthGoatInnsmouthShoreDeck()
+        placed = true
+    end
+
+    if InnsmouthSet == true and YellowSet == true then
+        placeInnsmouthYellowFactoryDeck()
+        placeInnsmouthYellowChurchDeck()
+        placeInnsmouthYellowInnsmouthShoreDeck()
+        placed = true
+    end
+
+    if InnsmouthSet == true and KingsportSet == true then
+        placeInnsmouthKingsportFactoryDeck()
+        placeInnsmouthKingsportChurchDeck()
+        placeInnsmouthKingsportInnsmouthShoreDeck()
+        placed = true
+    end
+
+    if InnsmouthSet == true and DunwichSet == true then
+        placeInnsmouthDunwichFactoryDeck()
+        placeInnsmouthDunwichChurchDeck()
+        placeInnsmouthDunwichInnsmouthShoreDeck()
+        placed = true
+    end
+
+    if InnsmouthSet == true and PharaohSet == true then
+        placeInnsmouthPharaohFactoryDeck()
+        placeInnsmouthPharaohChurchDeck()
+        placeInnsmouthPharaohInnsmouthShoreDeck()
+        placed = true
+    end
+
+    if placed == true then
+        Wait.time(deck2Flipper, 1)
+    end
+
+end
+
+function placeDunwichLurkerGateDeck()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichLurkerGateDeckId = MiskatonicVariables.call('getDunwichLurkerGateDeckId')
+
+	local params = {}
+
+	params.guid = DunwichLurkerGateDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichLurkerGateDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichLurkerBlastedDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichLurkerBlastedDeckId = MiskatonicVariables.call('getDunwichLurkerBlastedDeckId')
+
+	local params = {}
+
+	params.guid = DunwichLurkerBlastedDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichLurkerBlastedDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichLurkerVillageDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichLurkerVillageDeckId = MiskatonicVariables.call('getDunwichLurkerVillageDeckId')
+
+	local params = {}
+
+	params.guid = DunwichLurkerVillageDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichLurkerVillageDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichLurkerBackwoodsDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichLurkerBackwoodsDeckId = MiskatonicVariables.call('getDunwichLurkerBackwoodsDeckId')
+
+	local params = {}
+
+	params.guid = DunwichLurkerBackwoodsDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichLurkerBackwoodsDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichPharaohGateDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichPharaohGateDeckId = MiskatonicVariables.call('getDunwichPharaohGateDeckId')
+
+	local params = {}
+
+	params.guid = DunwichPharaohGateDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichPharaohGateDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichPharaohBlastedDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichPharaohBlastedDeckId = MiskatonicVariables.call('getDunwichPharaohBlastedDeckId')
+
+	local params = {}
+
+	params.guid = DunwichPharaohBlastedDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichPharaohBlastedDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichPharaohVillageDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichPharaohVillageDeckId = MiskatonicVariables.call('getDunwichPharaohVillageDeckId')
+
+	local params = {}
+
+	params.guid = DunwichPharaohVillageDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichPharaohVillageDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichPharaohBackwoodsDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichPharaohBackwoodsDeckId = MiskatonicVariables.call('getDunwichPharaohBackwoodsDeckId')
+
+	local params = {}
+
+	params.guid = DunwichPharaohBackwoodsDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichPharaohBackwoodsDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichGoatGateDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichGoatGateDeckId = MiskatonicVariables.call('getDunwichGoatGateDeckId')
+
+	local params = {}
+
+	params.guid = DunwichGoatGateDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichGoatGateDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichGoatBlastedDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichGoatBlastedDeckId = MiskatonicVariables.call('getDunwichGoatBlastedDeckId')
+
+	local params = {}
+
+	params.guid = DunwichGoatBlastedDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichGoatBlastedDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichGoatVillageDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichGoatVillageDeckId = MiskatonicVariables.call('getDunwichGoatVillageDeckId')
+
+	local params = {}
+
+	params.guid = DunwichGoatVillageDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichGoatVillageDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichGoatBackwoodsDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichGoatBackwoodsDeckId = MiskatonicVariables.call('getDunwichGoatBackwoodsDeckId')
+
+	local params = {}
+
+	params.guid = DunwichGoatBackwoodsDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichGoatBackwoodsDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichYellowGateDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichYellowGateDeckId = MiskatonicVariables.call('getDunwichYellowGateDeckId')
+
+	local params = {}
+
+	params.guid = DunwichYellowGateDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichYellowGateDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichYellowBlastedDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichYellowBlastedDeckId = MiskatonicVariables.call('getDunwichYellowBlastedDeckId')
+
+	local params = {}
+
+	params.guid = DunwichYellowBlastedDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichYellowBlastedDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichYellowVillageDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichYellowVillageDeckId = MiskatonicVariables.call('getDunwichYellowVillageDeckId')
+
+	local params = {}
+
+	params.guid = DunwichYellowVillageDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichYellowVillageDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichYellowBackwoodsDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichYellowBackwoodsDeckId = MiskatonicVariables.call('getDunwichYellowBackwoodsDeckId')
+
+	local params = {}
+
+	params.guid = DunwichYellowBackwoodsDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichYellowBackwoodsDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichInnsmouthBlastedDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichInnsmouthBlastedDeckId = MiskatonicVariables.call('getDunwichInnsmouthBlastedDeckId')
+
+	local params = {}
+
+	params.guid = DunwichInnsmouthBlastedDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichInnsmouthBlastedDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichInnsmouthVillageDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichInnsmouthVillageDeckId = MiskatonicVariables.call('getDunwichInnsmouthVillageDeckId')
+
+	local params = {}
+
+	params.guid = DunwichInnsmouthVillageDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichInnsmouthVillageDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichInnsmouthBackwoodsDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichInnsmouthBackwoodsDeckId = MiskatonicVariables.call('getDunwichInnsmouthBackwoodsDeckId')
+
+	local params = {}
+
+	params.guid = DunwichInnsmouthBackwoodsDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichInnsmouthBackwoodsDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichKingsportBlastedDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichKingsportBlastedDeckId = MiskatonicVariables.call('getDunwichKingsportBlastedDeckId')
+
+	local params = {}
+
+	params.guid = DunwichKingsportBlastedDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichKingsportBlastedDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichKingsportVillageDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichKingsportVillageDeckId = MiskatonicVariables.call('getDunwichKingsportVillageDeckId')
+
+	local params = {}
+
+	params.guid = DunwichKingsportVillageDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichKingsportVillageDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeDunwichKingsportBackwoodsDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local DunwichKingsportBackwoodsDeckId = MiskatonicVariables.call('getDunwichKingsportBackwoodsDeckId')
+
+	local params = {}
+
+	params.guid = DunwichKingsportBackwoodsDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{DunwichKingsportBackwoodsDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportLurkerGateDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportLurkerGateDeckId = MiskatonicVariables.call('getKingsportLurkerGateDeckId')
+
+	local params = {}
+
+	params.guid = KingsportLurkerGateDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportLurkerGateDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportLurkerCentralDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportLurkerCentralDeckId = MiskatonicVariables.call('getKingsportLurkerCentralDeckId')
+
+	local params = {}
+
+	params.guid = KingsportLurkerCentralDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportLurkerCentralDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportLurkerHarborsideDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportLurkerHarborsideDeckId = MiskatonicVariables.call('getKingsportLurkerHarborsideDeckId')
+
+	local params = {}
+
+	params.guid = KingsportLurkerHarborsideDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportLurkerHarborsideDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportLurkerSouthShoreDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportLurkerSouthShoreDeckId = MiskatonicVariables.call('getKingsportLurkerSouthShoreDeckId')
+
+	local params = {}
+
+	params.guid = KingsportLurkerSouthShoreDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportLurkerSouthShoreDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportLurkerKingsportHeadDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportLurkerKingsportHeadDeckId = MiskatonicVariables.call('getKingsportLurkerKingsportHeadDeckId')
+
+	local params = {}
+
+	params.guid = KingsportLurkerKingsportHeadDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportLurkerKingsportHeadDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportPharaohGateDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportPharaohGateDeckId = MiskatonicVariables.call('getKingsportPharaohGateDeckId')
+
+	local params = {}
+
+	params.guid = KingsportPharaohGateDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportPharaohGateDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportPharaohCentralDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportPharaohCentralDeckId = MiskatonicVariables.call('getKingsportPharaohCentralDeckId')
+
+	local params = {}
+
+	params.guid = KingsportPharaohCentralDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportPharaohCentralDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportPharaohHarborsideDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportPharaohHarborsideDeckId = MiskatonicVariables.call('getKingsportPharaohHarborsideDeckId')
+
+	local params = {}
+
+	params.guid = KingsportPharaohHarborsideDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportPharaohHarborsideDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportPharaohSouthShoreDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportPharaohSouthShoreDeckId = MiskatonicVariables.call('getKingsportPharaohSouthShoreDeckId')
+
+	local params = {}
+
+	params.guid = KingsportPharaohSouthShoreDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportPharaohSouthShoreDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportPharaohKingsportHeadDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportPharaohKingsportHeadDeckId = MiskatonicVariables.call('getKingsportPharaohKingsportHeadDeckId')
+
+	local params = {}
+
+	params.guid = KingsportPharaohKingsportHeadDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportPharaohKingsportHeadDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportGoatGateDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportGoatGateDeckId = MiskatonicVariables.call('getKingsportGoatGateDeckId')
+
+	local params = {}
+
+	params.guid = KingsportGoatGateDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportGoatGateDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportGoatCentralDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportGoatCentralDeckId = MiskatonicVariables.call('getKingsportGoatCentralDeckId')
+
+	local params = {}
+
+	params.guid = KingsportGoatCentralDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportGoatCentralDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportGoatHarborsideDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportGoatHarborsideDeckId = MiskatonicVariables.call('getKingsportGoatHarborsideDeckId')
+
+	local params = {}
+
+	params.guid = KingsportGoatHarborsideDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportGoatHarborsideDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportGoatSouthShoreDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportGoatSouthShoreDeckId = MiskatonicVariables.call('getKingsportGoatSouthShoreDeckId')
+
+	local params = {}
+
+	params.guid = KingsportGoatSouthShoreDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportGoatSouthShoreDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportGoatKingsportHeadDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportGoatKingsportHeadDeckId = MiskatonicVariables.call('getKingsportGoatKingsportHeadDeckId')
+
+	local params = {}
+
+	params.guid = KingsportGoatKingsportHeadDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportGoatKingsportHeadDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportYellowGateDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportYellowGateDeckId = MiskatonicVariables.call('getKingsportYellowGateDeckId')
+
+	local params = {}
+
+	params.guid = KingsportYellowGateDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportYellowGateDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportYellowCentralDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportYellowCentralDeckId = MiskatonicVariables.call('getKingsportYellowCentralDeckId')
+
+	local params = {}
+
+	params.guid = KingsportYellowCentralDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportYellowCentralDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportYellowHarborsideDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportYellowHarborsideDeckId = MiskatonicVariables.call('getKingsportYellowHarborsideDeckId')
+
+	local params = {}
+
+	params.guid = KingsportYellowHarborsideDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportYellowHarborsideDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportYellowSouthShoreDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportYellowSouthShoreDeckId = MiskatonicVariables.call('getKingsportYellowSouthShoreDeckId')
+
+	local params = {}
+
+	params.guid = KingsportYellowSouthShoreDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportYellowSouthShoreDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportYellowKingsportHeadDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportYellowKingsportHeadDeckId = MiskatonicVariables.call('getKingsportYellowKingsportHeadDeckId')
+
+	local params = {}
+
+	params.guid = KingsportYellowKingsportHeadDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportYellowKingsportHeadDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportInnsmouthCentralDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportInnsmouthCentralDeckId = MiskatonicVariables.call('getKingsportInnsmouthCentralDeckId')
+
+	local params = {}
+
+	params.guid = KingsportInnsmouthCentralDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportInnsmouthCentralDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportInnsmouthHarborsideDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportInnsmouthHarborsideDeckId = MiskatonicVariables.call('getKingsportInnsmouthHarborsideDeckId')
+
+	local params = {}
+
+	params.guid = KingsportInnsmouthHarborsideDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportInnsmouthHarborsideDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportInnsmouthSouthShoreDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportInnsmouthSouthShoreDeckId = MiskatonicVariables.call('getKingsportInnsmouthSouthShoreDeckId')
+
+	local params = {}
+
+	params.guid = KingsportInnsmouthSouthShoreDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportInnsmouthSouthShoreDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportInnsmouthKingsportHeadDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportInnsmouthKingsportHeadDeckId = MiskatonicVariables.call('getKingsportInnsmouthKingsportHeadDeckId')
+
+	local params = {}
+
+	params.guid = KingsportInnsmouthKingsportHeadDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportInnsmouthKingsportHeadDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportDunwichGateDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportDunwichGateDeckId = MiskatonicVariables.call('getKingsportDunwichGateDeckId')
+
+	local params = {}
+
+	params.guid = KingsportDunwichGateDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportDunwichGateDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportDunwichCentralDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportDunwichCentralDeckId = MiskatonicVariables.call('getKingsportDunwichCentralDeckId')
+
+	local params = {}
+
+	params.guid = KingsportDunwichCentralDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportDunwichCentralDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportDunwichHarborsideDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportDunwichHarborsideDeckId = MiskatonicVariables.call('getKingsportDunwichHarborsideDeckId')
+
+	local params = {}
+
+	params.guid = KingsportDunwichHarborsideDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportDunwichHarborsideDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportDunwichSouthShoreDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportDunwichSouthShoreDeckId = MiskatonicVariables.call('getKingsportDunwichSouthShoreDeckId')
+
+	local params = {}
+
+	params.guid = KingsportDunwichSouthShoreDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportDunwichSouthShoreDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeKingsportDunwichKingsportHeadDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local KingsportDunwichKingsportHeadDeckId = MiskatonicVariables.call('getKingsportDunwichKingsportHeadDeckId')
+
+	local params = {}
+
+	params.guid = KingsportDunwichKingsportHeadDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{KingsportDunwichKingsportHeadDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeInnsmouthLurkerFactoryDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local InnsmouthLurkerFactoryDeckId = MiskatonicVariables.call('getInnsmouthLurkerFactoryDeckId')
+
+	local params = {}
+
+	params.guid = InnsmouthLurkerFactoryDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{InnsmouthLurkerFactoryDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeInnsmouthLurkerChurchDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local InnsmouthLurkerChurchDeckId = MiskatonicVariables.call('getInnsmouthLurkerChurchDeckId')
+
+	local params = {}
+
+	params.guid = InnsmouthLurkerChurchDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{InnsmouthLurkerChurchDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeInnsmouthLurkerInnsmouthShoreDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local InnsmouthLurkerInnsmouthShoreDeckId = MiskatonicVariables.call('getInnsmouthLurkerInnsmouthShoreDeckId')
+
+	local params = {}
+
+	params.guid = InnsmouthLurkerInnsmouthShoreDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{InnsmouthLurkerInnsmouthShoreDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeInnsmouthGoatFactoryDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local InnsmouthGoatFactoryDeckId = MiskatonicVariables.call('getInnsmouthGoatFactoryDeckId')
+
+	local params = {}
+
+	params.guid = InnsmouthGoatFactoryDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{InnsmouthGoatFactoryDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeInnsmouthGoatChurchDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local InnsmouthGoatChurchDeckId = MiskatonicVariables.call('getInnsmouthGoatChurchDeckId')
+
+	local params = {}
+
+	params.guid = InnsmouthGoatChurchDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{InnsmouthGoatChurchDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeInnsmouthGoatInnsmouthShoreDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local InnsmouthGoatInnsmouthShoreDeckId = MiskatonicVariables.call('getInnsmouthGoatInnsmouthShoreDeckId')
+
+	local params = {}
+
+	params.guid = InnsmouthGoatInnsmouthShoreDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{InnsmouthGoatInnsmouthShoreDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeInnsmouthYellowFactoryDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local InnsmouthYellowFactoryDeckId = MiskatonicVariables.call('getInnsmouthYellowFactoryDeckId')
+
+	local params = {}
+
+	params.guid = InnsmouthYellowFactoryDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{InnsmouthYellowFactoryDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeInnsmouthYellowChurchDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local InnsmouthYellowChurchDeckId = MiskatonicVariables.call('getInnsmouthYellowChurchDeckId')
+
+	local params = {}
+
+	params.guid = InnsmouthYellowChurchDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{InnsmouthYellowChurchDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeInnsmouthYellowInnsmouthShoreDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local InnsmouthYellowInnsmouthShoreDeckId = MiskatonicVariables.call('getInnsmouthYellowInnsmouthShoreDeckId')
+
+	local params = {}
+
+	params.guid = InnsmouthYellowInnsmouthShoreDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{InnsmouthYellowInnsmouthShoreDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeInnsmouthKingsportFactoryDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local InnsmouthKingsportFactoryDeckId = MiskatonicVariables.call('getInnsmouthKingsportFactoryDeckId')
+
+	local params = {}
+
+	params.guid = InnsmouthKingsportFactoryDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{InnsmouthKingsportFactoryDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeInnsmouthKingsportChurchDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local InnsmouthKingsportChurchDeckId = MiskatonicVariables.call('getInnsmouthKingsportChurchDeckId')
+
+	local params = {}
+
+	params.guid = InnsmouthKingsportChurchDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{InnsmouthKingsportChurchDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeInnsmouthKingsportInnsmouthShoreDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local InnsmouthKingsportInnsmouthShoreDeckId = MiskatonicVariables.call('getInnsmouthKingsportInnsmouthShoreDeckId')
+
+	local params = {}
+
+	params.guid = InnsmouthKingsportInnsmouthShoreDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{InnsmouthKingsportInnsmouthShoreDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeInnsmouthDunwichFactoryDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local InnsmouthDunwichFactoryDeckId = MiskatonicVariables.call('getInnsmouthDunwichFactoryDeckId')
+
+	local params = {}
+
+	params.guid = InnsmouthDunwichFactoryDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{InnsmouthDunwichFactoryDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeInnsmouthDunwichChurchDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local InnsmouthDunwichChurchDeckId = MiskatonicVariables.call('getInnsmouthDunwichChurchDeckId')
+
+	local params = {}
+
+	params.guid = InnsmouthDunwichChurchDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{InnsmouthDunwichChurchDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeInnsmouthDunwichInnsmouthShoreDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local InnsmouthDunwichInnsmouthShoreDeckId = MiskatonicVariables.call('getInnsmouthDunwichInnsmouthShoreDeckId')
+
+	local params = {}
+
+	params.guid = InnsmouthDunwichInnsmouthShoreDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{InnsmouthDunwichInnsmouthShoreDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeInnsmouthPharaohFactoryDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local InnsmouthPharaohFactoryDeckId = MiskatonicVariables.call('getInnsmouthPharaohFactoryDeckId')
+
+	local params = {}
+
+	params.guid = InnsmouthPharaohFactoryDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{InnsmouthPharaohFactoryDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeInnsmouthPharaohChurchDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local InnsmouthPharaohChurchDeckId = MiskatonicVariables.call('getInnsmouthPharaohChurchDeckId')
+
+	local params = {}
+
+	params.guid = InnsmouthPharaohChurchDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{InnsmouthPharaohChurchDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+function placeInnsmouthPharaohInnsmouthShoreDeck ()
+
+	local MiskatonicBagId = MiskatonicVariables.call('getMiskatonicBagId')
+
+	local MiskatonicBag = getObjectFromGUID(MiskatonicBagId)
+
+	local InnsmouthPharaohInnsmouthShoreDeckId = MiskatonicVariables.call('getInnsmouthPharaohInnsmouthShoreDeckId')
+
+	local params = {}
+
+	params.guid = InnsmouthPharaohInnsmouthShoreDeckId
+
+	params.rotation = {0, 90, 0}
+
+	params.position = MiskatonicVariables.call('getMiskatonicPositionById',{InnsmouthPharaohInnsmouthShoreDeckId})
+
+	params.smooth = true
+
+	local item = MiskatonicBag.takeObject(params)
+
+end
+
+-- Flip it (Because if rotation is used, flip is ignored)
+-- Also, must wait before flipping
+--Since not all objects can be on the table, we have to test if object different
+-- from nil
+function deck1Flipper()
+
+    local MiskatonicDecks = MiskatonicVariables.call('getMiskatonicDecks1')
+
+    for i, obj in ipairs(MiskatonicDecks) do
+        if getObjectFromGUID(obj) ~= nil then
+            getObjectFromGUID(obj).flip()
+        end
+    end
+end
+
+-- Flip it (Because if rotation is used, flip is ignored)
+-- Also, must wait before flipping
+--Since not all objects can be on the table, we have to test if object different
+-- from nil
+function deck2Flipper()
+
+    local MiskatonicDecks = MiskatonicVariables.call('getMiskatonicDecks2')
+    for i, obj in ipairs(MiskatonicDecks) do
+        if getObjectFromGUID(obj) ~= nil then
+            getObjectFromGUID(obj).flip()
+        end
+    end
+end

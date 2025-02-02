@@ -1,0 +1,627 @@
+--Places Goat items on table in a single line
+
+local GoatVariables = getObjectFromGUID('293f5a')
+
+function SetGoatMonstersOnTable()
+    placeGoatMonsterBag()
+end
+
+function SetGoatComponentsOnTable()
+    --setup
+
+    placeMythos()
+    placeGate()
+    placeNorthside()
+    placeDowntown()
+    placeEasttown()
+    placeMerchant()
+    placeRivertown()
+    placeMiskatonic()
+    placeFrench()
+    placeUptown()
+    placeSouthside()
+    placeSkills()
+    placeCommon()
+    placeUnique()
+    placeSpells()
+
+    -- Expansion-Specific
+    placeGoatEncountersDeck()
+    placeGoatMembershipDeck()
+    placeGoatRedCorruptionDeck()
+    placeGoatGreenCorruptionDeck()
+    -- placeGoatMonsterBag()
+    Wait.time(deckFlipper, 1)
+
+end
+
+function placeMythos()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatMythosDeckId = GoatVariables.call('getGoatMythosDeckId')
+
+    local params = {}
+    params.guid = GoatMythosDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    local BoardMythosDeckId = SetupVariablesNew.call('getBoardMythosdeckId')
+    local BoardMythosDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardMythosDeckId})
+    params.position = {BoardMythosDeckPos[1], BoardMythosDeckPos[2],BoardMythosDeckPos[3]}
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+    local scale = SetupVariablesNew.call('getBoardMythosScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardMythosDeck = getObjectFromGUID(BoardMythosDeckId)
+    BoardMythosDeck.putObject(item)
+
+end
+
+function placeGate()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatGateDeckId = GoatVariables.call('getGoatGateDeckId')
+
+    local params = {}
+    params.guid = GoatGateDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = GoatVariables.call('getGoatPositionById',{GoatGateDeckId})
+    local BoardGateDeckId = SetupVariablesNew.call('getBoardGatedeckId')
+    local BoardGateDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardGateDeckId})
+    params.position = {BoardGateDeckPos[1], BoardGateDeckPos[2],BoardGateDeckPos[3]}
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+    local scale = SetupVariablesNew.call('getBoardGateScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- I don't know why, if I leave it as it is, the boardGateDeck gets the
+    -- GUID of the Pharaoh's Deck. So, I put the deck on the other.
+    local BoardGateDeck = getObjectFromGUID(BoardGateDeckId)
+    BoardGateDeck.putObject(item)
+
+end
+
+function placeNorthside()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatNorthsideDeckId = GoatVariables.call('getGoatNorthsideDeckId')
+
+    local params = {}
+    params.guid = GoatNorthsideDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    -- params.position = GoatVariables.call('getGoatPositionById',{GoatNorthsideDeckId})
+    local BoardNorthsideDeckId = SetupVariablesNew.call('getBoardNorthsidedeckId')
+    local BoardNorthsideDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardNorthsideDeckId})
+    params.position = {BoardNorthsideDeckPos[1], BoardNorthsideDeckPos[2],BoardNorthsideDeckPos[3]}
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardNorthsideScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardNorthsideDeck = getObjectFromGUID(BoardNorthsideDeckId)
+    BoardNorthsideDeck.putObject(item)
+
+end
+
+function placeDowntown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatDowntownDeckId = GoatVariables.call('getGoatDowntownDeckId')
+
+    local params = {}
+    params.guid = GoatDowntownDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    -- params.position = GoatVariables.call('getGoatPositionById',{GoatDowntownDeckId})
+    local BoardDowntownDeckId = SetupVariablesNew.call('getBoardDowntowndeckId')
+    local BoardDowntownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardDowntownDeckId})
+    params.position = {BoardDowntownDeckPos[1], BoardDowntownDeckPos[2],BoardDowntownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardDowntownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardDowntownDeck = getObjectFromGUID(BoardDowntownDeckId)
+    BoardDowntownDeck.putObject(item)
+
+end
+
+function placeEasttown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatEasttownDeckId = GoatVariables.call('getGoatEasttownDeckId')
+
+    local params = {}
+    params.guid = GoatEasttownDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    -- params.position = GoatVariables.call('getGoatPositionById',{GoatEasttownDeckId})
+    local BoardEasttownDeckId = SetupVariablesNew.call('getBoardEasttowndeckId')
+    local BoardEasttownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardEasttownDeckId})
+    params.position = {BoardEasttownDeckPos[1], BoardEasttownDeckPos[2],BoardEasttownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardEasttownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardEasttownDeck = getObjectFromGUID(BoardEasttownDeckId)
+    BoardEasttownDeck.putObject(item)
+
+end
+
+function placeMerchant()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatMerchantDeckId = GoatVariables.call('getGoatMerchantDeckId')
+
+    local params = {}
+    params.guid = GoatMerchantDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    -- params.position = GoatVariables.call('getGoatPositionById',{GoatMerchantDeckId})
+    local BoardMerchantDeckId = SetupVariablesNew.call('getBoardMerchantdeckId')
+    local BoardMerchantDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardMerchantDeckId})
+    params.position = {BoardMerchantDeckPos[1], BoardMerchantDeckPos[2],BoardMerchantDeckPos[3]}
+
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardMerchantScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardMerchantDeck = getObjectFromGUID(BoardMerchantDeckId)
+    BoardMerchantDeck.putObject(item)
+
+end
+
+function placeRivertown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatRivertownDeckId = GoatVariables.call('getGoatRivertownDeckId')
+
+    local params = {}
+    params.guid = GoatRivertownDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    -- params.position = GoatVariables.call('getGoatPositionById',{GoatRivertownDeckId})
+    local BoardRivertownDeckId = SetupVariablesNew.call('getBoardRivertowndeckId')
+    local BoardRivertownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardRivertownDeckId})
+    params.position = {BoardRivertownDeckPos[1], BoardRivertownDeckPos[2],BoardRivertownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardRivertownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardRivertownDeck = getObjectFromGUID(BoardRivertownDeckId)
+    BoardRivertownDeck.putObject(item)
+
+end
+
+function placeMiskatonic()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatMiskatonicDeckId = GoatVariables.call('getGoatMiskatonicDeckId')
+
+    local params = {}
+    params.guid = GoatMiskatonicDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    -- params.position = GoatVariables.call('getGoatPositionById',{GoatMiskatonicDeckId})
+    local BoardMiskatonicDeckId = SetupVariablesNew.call('getBoardMiskatonicdeckId')
+    local BoardMiskatonicDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardMiskatonicDeckId})
+    params.position = {BoardMiskatonicDeckPos[1], BoardMiskatonicDeckPos[2],BoardMiskatonicDeckPos[3]}
+
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardMiskatonicScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardMiskatonicDeck = getObjectFromGUID(BoardMiskatonicDeckId)
+    BoardMiskatonicDeck.putObject(item)
+
+end
+
+function placeFrench()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatFrenchDeckId = GoatVariables.call('getGoatFrenchDeckId')
+
+    local params = {}
+    params.guid = GoatFrenchDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    -- params.position = GoatVariables.call('getGoatPositionById',{GoatFrenchDeckId})
+    local BoardFrenchDeckId = SetupVariablesNew.call('getBoardFrenchdeckId')
+    local BoardFrenchDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardFrenchDeckId})
+    params.position = {BoardFrenchDeckPos[1], BoardFrenchDeckPos[2],BoardFrenchDeckPos[3]}
+
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardFrenchScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardFrenchDeck = getObjectFromGUID(BoardFrenchDeckId)
+    BoardFrenchDeck.putObject(item)
+
+end
+
+function placeUptown()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatUptownDeckId = GoatVariables.call('getGoatUptownDeckId')
+
+    local params = {}
+    params.guid = GoatUptownDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    -- params.position = GoatVariables.call('getGoatPositionById',{GoatUptownDeckId})
+    local BoardUptownDeckId = SetupVariablesNew.call('getBoardUptowndeckId')
+    local BoardUptownDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardUptownDeckId})
+    params.position = {BoardUptownDeckPos[1], BoardUptownDeckPos[2],BoardUptownDeckPos[3]}
+
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardUptownScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardUptownDeck = getObjectFromGUID(BoardUptownDeckId)
+    BoardUptownDeck.putObject(item)
+
+end
+
+function placeSouthside()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatSouthsideDeckId = GoatVariables.call('getGoatSouthsideDeckId')
+
+    local params = {}
+    params.guid = GoatSouthsideDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    -- params.position = GoatVariables.call('getGoatPositionById',{GoatSouthsideDeckId})
+    local BoardSouthsideDeckId = SetupVariablesNew.call('getBoardSouthsidedeckId')
+    local BoardSouthsideDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardSouthsideDeckId})
+    params.position = {BoardSouthsideDeckPos[1], BoardSouthsideDeckPos[2],BoardSouthsideDeckPos[3]}
+
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardSouthsideScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardSouthsideDeck = getObjectFromGUID(BoardSouthsideDeckId)
+    BoardSouthsideDeck.putObject(item)
+
+end
+
+function placeSkills()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatSkillsDeckId = GoatVariables.call('getGoatSkillsDeckId')
+
+    local params = {}
+    params.guid = GoatSkillsDeckId
+    params.rotation = {0, 90, 180}
+    -- look up the position based on the guid
+    -- params.position = GoatVariables.call('getGoatPositionById',{GoatSkillsDeckId})
+    local BoardSkillsDeckId = SetupVariablesNew.call('getBoardSkillsdeckId')
+    local BoardSkillsDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardSkillsDeckId})
+    params.position = {BoardSkillsDeckPos[1], BoardSkillsDeckPos[2],BoardSkillsDeckPos[3]}
+
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardSkillsScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardSkillsDeck = getObjectFromGUID(BoardSkillsDeckId)
+    BoardSkillsDeck.putObject(item)
+
+end
+
+function placeCommon()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatCommonDeckId = GoatVariables.call('getGoatCommonDeckId')
+
+    local params = {}
+    params.guid = GoatCommonDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    -- params.position = GoatVariables.call('getGoatPositionById',{GoatCommonDeckId})
+    local BoardCommonDeckId = SetupVariablesNew.call('getBoardCommondeckId')
+    local BoardCommonDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardCommonDeckId})
+    params.position = {BoardCommonDeckPos[1], BoardCommonDeckPos[2],BoardCommonDeckPos[3]}
+
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardCommonScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardCommonDeck = getObjectFromGUID(BoardCommonDeckId)
+    BoardCommonDeck.putObject(item)
+
+end
+
+function placeUnique()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatUniqueDeckId = GoatVariables.call('getGoatUniqueDeckId')
+
+    local params = {}
+    params.guid = GoatUniqueDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    -- params.position = GoatVariables.call('getGoatPositionById',{GoatUniqueDeckId})
+    local BoardUniqueDeckId = SetupVariablesNew.call('getBoardUniquedeckId')
+    local BoardUniqueDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardUniqueDeckId})
+    params.position = {BoardUniqueDeckPos[1], BoardUniqueDeckPos[2],BoardUniqueDeckPos[3]}
+
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardUniqueScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardUniqueDeck = getObjectFromGUID(BoardUniqueDeckId)
+    BoardUniqueDeck.putObject(item)
+
+end
+
+function placeSpells()
+    local SetupVariablesNew = getObjectFromGUID('2a8dee')
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatSpellsDeckId = GoatVariables.call('getGoatSpellsDeckId')
+
+    local params = {}
+    params.guid = GoatSpellsDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    -- params.position = GoatVariables.call('getGoatPositionById',{GoatSpellsDeckId})
+    local BoardSpellsDeckId = SetupVariablesNew.call('getBoardSpellsdeckId')
+    local BoardSpellsDeckPos = SetupVariablesNew.call('getBoardPositionsDecksById',{BoardSpellsDeckId})
+    params.position = {BoardSpellsDeckPos[1], BoardSpellsDeckPos[2],BoardSpellsDeckPos[3]}
+
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+
+    local scale = SetupVariablesNew.call('getBoardSpellsScaledeckid')
+    item.setScale({scale[1], scale[2], scale[3]})
+
+    -- To be sure it, puts on the object so it retains its GUID
+    local BoardSpellsDeck = getObjectFromGUID(BoardSpellsDeckId)
+    BoardSpellsDeck.putObject(item)
+
+end
+
+
+-- Expansion-specific
+
+
+function placeGoatEncountersDeck()
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatEncountersDeckId = GoatVariables.call('getGoatEncountersDeckId')
+
+    local params = {}
+    params.guid = GoatEncountersDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    params.position = GoatVariables.call('getGoatPositionById',{GoatEncountersDeckId})
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+
+end
+
+-- It all started with the Big Bang. BANG!
+function placeGoatMembershipDeck()
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatMembershipDeckId = GoatVariables.call('getGoatMembershipDeckId')
+
+    local params = {}
+    params.guid = GoatMembershipDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    params.position = GoatVariables.call('getGoatPositionById',{GoatMembershipDeckId})
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+
+end
+
+function placeGoatRedCorruptionDeck()
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatRedCorruptionDeckId = GoatVariables.call('getGoatRedCorruptionDeckId')
+
+    local params = {}
+    params.guid = GoatRedCorruptionDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    params.position = GoatVariables.call('getGoatPositionById',{GoatRedCorruptionDeckId})
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+
+end
+
+function placeGoatGreenCorruptionDeck()
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatGreenCorruptionDeckId = GoatVariables.call('getGoatGreenCorruptionDeckId')
+
+    local params = {}
+    params.guid = GoatGreenCorruptionDeckId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    params.position = GoatVariables.call('getGoatPositionById',{GoatGreenCorruptionDeckId})
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+
+end
+
+function placeGoatMonsterBag()
+    --Get the bag ID
+    local GoatBagId = GoatVariables.call('getGoatBagId')
+
+    --Get the bag
+    local GoatBag = getObjectFromGUID(GoatBagId)
+
+    local GoatMonsterBagId = GoatVariables.call('getGoatMonsterBagId')
+
+    local params = {}
+    params.guid = GoatMonsterBagId
+    params.rotation = {0, 90, 0}
+    -- look up the position based on the guid
+    params.position = GoatVariables.call('getGoatPositionById',{GoatMonsterBagId})
+    params.smooth = true
+
+    local item = GoatBag.takeObject(params)
+
+end
+
+-- Flip it (Because if rotation is used, flip is ignored)
+-- Also, must wait before flipping
+function deckFlipper()
+
+    local GoatDecks = GoatVariables.getTable('GoatDecks')
+
+    for i, obj in ipairs(GoatDecks) do
+        getObjectFromGUID(obj).flip()
+    end
+end

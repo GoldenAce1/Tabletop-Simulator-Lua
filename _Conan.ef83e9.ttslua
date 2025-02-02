@@ -1,0 +1,92 @@
+local ControlPanelVariables = getObjectFromGUID('bf1ea5')
+
+local PharaohVariables = getObjectFromGUID('43e2a0')
+local YellowVariables = getObjectFromGUID('2be879')
+
+local KingsportVariables = getObjectFromGUID('00ac75')
+local InnsmouthVariables = getObjectFromGUID('5c39a4')
+local GoatVariables = getObjectFromGUID('293f5a')
+local DunwichVariables = getObjectFromGUID('5932f9')
+
+
+function ConanDestroys()
+
+    broadcastToAll('Conan: By Crom!', Table)
+
+    LurkerSet = ControlPanelVariables.call('isLurkerSet')
+    PharaohSet = ControlPanelVariables.call('isPharaohSet')
+    GoatSet = ControlPanelVariables.call('isGoatSet')
+    YellowSet = ControlPanelVariables.call('isYellowSet')
+    InnsmouthSet = ControlPanelVariables.call('isInnsmouthSet')
+    KingsportSet = ControlPanelVariables.call('isKingsportSet')
+    DunwichSet = ControlPanelVariables.call('isDunwichSet')
+    MiskatonicSet = ControlPanelVariables.call('isMiskatonicSet')
+    LurkerGateSet = ControlPanelVariables.call('isLurkerGateSet')
+    DunwichMonsterOnly = ControlPanelVariables.call('isDunwichMonsterOnly')
+    InnsmouthMonsterOnly = ControlPanelVariables.call('isInnsmouthMonsterOnly')
+    KingsportMonsterOnly = ControlPanelVariables.call('isKingsportMonsterOnly')
+    GoatMonsterOnly = ControlPanelVariables.call('isGoatMonsterOnly')
+
+    local DunwichVariables = getObjectFromGUID('5932f9')
+    local LurkerVariables = getObjectFromGUID('edd1ef')
+    local GoatVariables = getObjectFromGUID('293f5a')
+
+    if InnsmouthSet == true  or InnsmouthMonsterOnly == true then
+        local MonsterBagId = InnsmouthVariables.call('getInnsmouthMonsterBagId')
+        local MonsterBag = getObjectFromGUID(MonsterBagId)
+        MonsterBag.destruct()
+        local MaskMonsterBagId = InnsmouthVariables.call('getInnsmouthMaskMonsterBagId')
+        local MaskMonsterBag = getObjectFromGUID(MaskMonsterBagId)
+        MaskMonsterBag.destruct()
+    end
+
+    if KingsportSet == true  or KingsportMonsterOnly == true then
+        local MonsterBagId = KingsportVariables.call('getKingsportMonsterBagId')
+        local MonsterBag = getObjectFromGUID(MonsterBagId)
+        MonsterBag.destruct()
+
+        local MaskMonsterBagId = KingsportVariables.call('getKingsportMaskMonsterBagId')
+        local MaskMonsterBag = getObjectFromGUID(MaskMonsterBagId)
+        MaskMonsterBag.destruct()
+
+        if LurkerGateSet == false and KingsportMonsterOnly == false then
+            local GateBagId = KingsportVariables.call('getKingsportGateMarkerBagId')
+            local GateBag = getObjectFromGUID(GateBagId)
+            GateBag.destruct()
+        end
+
+        if LurkerGateSet == true and KingsportSet == true then
+            local GateBag2Id = LurkerVariables.call('getLurkerKingGateMarkerBagId')
+            local GateBag2 = getObjectFromGUID(GateBag2Id)
+            GateBag2.destruct()
+        end
+    end
+
+    if DunwichSet == true  or DunwichMonsterOnly == true then
+        local MonsterBagId = DunwichVariables.call('getDunwichMonsterBagId')
+        local MonsterBag = getObjectFromGUID(MonsterBagId)
+        MonsterBag.destruct()
+
+        local MaskMonsterBagId = DunwichVariables.call('getDunwichMaskMonsterBagId')
+        local MaskMonsterBag = getObjectFromGUID(MaskMonsterBagId)
+        MaskMonsterBag.destruct()
+
+        if LurkerGateSet == false and DunwichMonsterOnly == false then
+            local GateBagId = DunwichVariables.call('getDunwichGateMarkerBagId')
+            local GateBag = getObjectFromGUID(GateBagId)
+            GateBag.destruct()
+        end
+        if LurkerGateSet == true and DunwichSet == true then
+            local GateBagId = LurkerVariables.call('getLurkerDunwGateMarkerBagId')
+            local GateBag = getObjectFromGUID(GateBagId)
+            GateBag.destruct()
+        end
+    end
+
+    if GoatSet == true or GoatMonsterOnly then
+        local MonsterBagId = GoatVariables.call('getGoatMonsterBagId')
+        local MonsterBag = getObjectFromGUID(MonsterBagId)
+        MonsterBag.destruct()
+    end
+
+end

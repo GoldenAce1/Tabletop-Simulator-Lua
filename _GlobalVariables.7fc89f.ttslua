@@ -1,0 +1,711 @@
+--Stores the variables, tables and all the variables. Keeps Global clean of this visual trash
+
+-- board types - If big expansion apply, only one will be lit
+local InnsmouthSolo = false
+local KingsportSolo = false
+local DunwichSolo = false
+local KingsportDunwich = false
+local InnsmouthKingsport = false
+local InnsmouthDunwich = false
+-- The bravest man of all - All boards!
+local AllThreeBoards = false
+
+local OutskirtsScriptingZoneId = 'cb6df9'
+
+function onSave()
+  local state = {}
+
+  state.InnsmouthSolo = InnsmouthSolo
+  state.KingsportSolo = KingsportSolo
+  state.DunwichSolo = DunwichSolo
+  state.KingsportDunwich = KingsportDunwich
+  state.InnsmouthKingsport = InnsmouthKingsport
+  state.InnsmouthDunwich = InnsmouthDunwich
+  state.AllThreeBoards = AllThreeBoards
+
+  return JSON.encode_pretty(state)
+end
+
+--[[ The onLoad event is called after the game save finishes loading. --]]
+function onLoad(saveState)
+
+    if saveState ~= "" then
+
+        local data = JSON.decode(saveState)
+
+        InnsmouthSolo = data.InnsmouthSolo
+        KingsportSolo = data.KingsportSolo
+		DunwichSolo = data.DunwichSolo
+        KingsportDunwich = data.KingsportDunwich
+		InnsmouthKingsport = data.InnsmouthKingsport
+        InnsmouthDunwich = data.InnsmouthDunwich
+		AllThreeBoards = data.AllThreeBoards
+
+        -- -- TEST
+        -- for i, player in ipairs(players) do
+        --     print("Player ", players[i])
+        -- end
+    end
+end
+--used to return the location color
+local locations_Color = {
+	["Ye Olde Magick Shoppe"] = '[DA1918]',
+	["Woods"] = '[DA1918]',
+	["Historical Society"] = '[8B5A13]',
+	["South Church"] = '[8B5A13]',
+	["Ma's Boarding House"] = '[8B5A13]',
+	["Southside Streets"] = '[8B5A13]',
+	["Uptown Streets"] = '[DA1918]',
+	["St. Mary's Hospital"] = '[DA1918]',
+	["Administration"] = '[B78817]',
+	["Library"] = '[B78817]',
+    ["Silver Twilight Lodge"] = '[0A8187]',
+	["The Witch House"] = '[0A8187]',
+	["French Hill Streets"] = '[0A8187]',
+	["Science Building"] = '[B78817]',
+	["Miskatonic University Streets"] = '[B78817]',
+	["River Docks"] = '[3B6C22]',
+	["The Unnamable"] = '[3B6C22]',
+	["General Store"] = '[724F88]',
+	["Black Cave"] = '[724F88]',
+	["Graveyard"] = '[724F88]',
+	["Rivertown Streets"] = '[724F88]',
+    ["Merchant District Streets"] = '[3B6C22]',
+	["Unvisited Isle"] = '[3B6C22]',
+	["Curiositie Shoppe"] = '[A94216]',
+	["Easttown Streets"] = '[684B32]',
+	["Police Station"] = '[684B32]',
+	["Velma's Diner"] = '[684B32]',
+	["Hibb's Roadhouse"] = '[684B32]',
+	["Downtown Streets"] = '[D2D2D2]',
+	["Northside Streets"] = '[A94216]',
+	["Newspaper"] = '[A94216]',
+    ["Train Station"] = '[A94216]',
+	["Bank of Arkham"] = '[D2D2D2]',
+	["Arkham Asylum"] = '[D2D2D2]',
+	["Independence Square"] = '[D2D2D2]',
+	["Another Dimention"] = '[484848]',
+	["Abyss"] = '[484848]',
+	["City of the Great Race"] = '[484848]',
+	["Yuggoth"] = '[484848]',
+	["Great Hall of Celeano"] = '[484848]',
+	["The Dreamlands"] = '[484848]',
+    ["Plateau of Leng"] = '[484848]',
+	["R'lyeh"] = '[484848]',
+	["Falcon Point"] = '[07A407]',
+	["Innsmouth Shore Streets"] = '[07A407]',
+	["Marsh Refinery"] = '[434BFD]',
+	["Gilman House Hotel"] = '[434BFD]',
+	["First National Grocery"] = '[434BFD]',
+	["Factory District Streets"] = '[434BFD]',
+	["Church Green Streets"] = '[FFD980]',
+	["Joe Sargent's Bus Service"] = '[484848]',
+    ["Y'ha-Nthlei"] = '[07A407]',
+	["Devil Reef"] = '[07A407]',
+	["Esoteric Order of Dagon"] = '[FFD980]',
+	["Sawbone Alley"] = '[FFD980]',
+	["Innsmouth Jail"] = '[FFD980]',
+	["Darke's Carnival"] = '[127A02]',
+	["Bishop's Brook Bridge"] = '[127A02]',
+	["Dunwich Village"] = '[127A02]',
+	["Harney Jones' Shack"] = '[075584]',
+	["Cold Spring Glen"] = '[4A000D]',
+    ["Village Commons Streets"] = '[127A02]',
+	["Devil's Hopyard"] = '[075584]',
+	["Blasted Heath Streets"] = '[075584]',
+	["Sentinel Hill"] = '[484848]',
+	["Backwoods Country Streets"] = '[4A000D]',
+	["Wizard's Hill"] = '[4A000D]',
+	["Whateley Farm"] = '[4A000D]',
+	["Gardners' Place"] = '[075584]',
+	["Another Time"] = '[484848]',
+	["Lost Carcosa"] = '[484848]',
+    ["Neil's Curiosity Shop"] = '[CA0533]',
+	["The Hall School"] = '[CA0533]',
+	["Artists' Colony"] = '[CA0533]',
+	["7th House on the left"] = '[014FAD]',
+	["Congregational Hospital"] = '[014FAD]',
+	["Central Hill Streets"] = '[014FAD]',
+	["South Shore Streets"] = '[CA0533]',
+	["The Causeway"] = '[FFFFFF]',
+	["Harborside Streets"] = '[FAB511]',
+	["St. Erasmus's Home"] = '[014FAD]',
+    ["607 Water St"] = '[FAB511]',
+	["The Rope and Anchor"] = '[FAB511]',
+	["North Point Lighthouse"] = '[FAB511]',
+	["Wireless Station"] = '[FFFFFF]',
+	["Strange High House in The Mist"] = '[FFFFFF]',
+	["The Underworld"] = '[484848]',
+	["Unknown Kadath"] = '[484848]',
+	["Arkham Horror Core Board"] = '[FFFFFF]',
+	["default"] = '[FFFFFF]'
+}
+
+--used to return the location color for the XML
+local locations_ColorXML = {
+	["Ye Olde Magick Shoppe"] = 'DA1918',
+	["Woods"] = 'DA1918',
+	["Historical Society"] = '8B5A13',
+	["South Church"] = '8B5A13',
+	["Ma's Boarding House"] = '8B5A13',
+	["Southside Streets"] = '8B5A13',
+	["Uptown Streets"] = 'DA1918',
+	["St. Mary's Hospital"] = 'DA1918',
+	["Administration"] = 'B78817',
+	["Library"] = 'B78817',
+    ["Silver Twilight Lodge"] = '0A8187',
+	["The Witch House"] = '0A8187',
+	["French Hill Streets"] = '0A8187',
+	["Science Building"] = 'B78817',
+	["Miskatonic University Streets"] = 'B78817',
+	["River Docks"] = '3B6C22',
+	["The Unnamable"] = '3B6C22',
+	["General Store"] = '724F88',
+	["Black Cave"] = '724F88',
+	["Graveyard"] = '724F88',
+	["Rivertown Streets"] = '724F88',
+    ["Merchant District Streets"] = '3B6C22',
+	["Unvisited Isle"] = '3B6C22',
+	["Curiositie Shoppe"] = 'A94216',
+	["Easttown Streets"] = '684B32',
+	["Police Station"] = '684B32',
+	["Velma's Diner"] = '684B32',
+	["Hibb's Roadhouse"] = '684B32',
+	["Downtown Streets"] = 'D2D2D2',
+	["Northside Streets"] = 'A94216',
+	["Newspaper"] = 'A94216',
+    ["Train Station"] = 'A94216',
+	["Bank of Arkham"] = 'D2D2D2',
+	["Arkham Asylum"] = 'D2D2D2',
+	["Independence Square"] = 'D2D2D2',
+	["Another Dimention"] = '484848',
+	["Abyss"] = '484848',
+	["City of the Great Race"] = '484848',
+	["Yuggoth"] = '484848',
+	["Great Hall of Celeano"] = '484848',
+	["The Dreamlands"] = '484848',
+    ["Plateau of Leng"] = '484848',
+	["R'lyeh"] = '484848',
+	["Falcon Point"] = '07A407',
+	["Innsmouth Shore Streets"] = '07A407',
+	["Marsh Refinery"] = '434BFD',
+	["Gilman House Hotel"] = '434BFD',
+	["First National Grocery"] = '434BFD',
+	["Factory District Streets"] = '434BFD',
+	["Church Green Streets"] = 'FFD980',
+	["Joe Sargent's Bus Service"] = '484848',
+    ["Y'ha-Nthlei"] = '07A407',
+	["Devil Reef"] = '07A407',
+	["Esoteric Order of Dagon"] = 'FFD980',
+	["Sawbone Alley"] = 'FFD980',
+	["Innsmouth Jail"] = 'FFD980',
+	["Darke's Carnival"] = '127A02',
+	["Bishop's Brook Bridge"] = '127A02',
+	["Dunwich Village"] = '127A02',
+	["Harney Jones' Shack"] = '075584',
+	["Cold Spring Glen"] = '4A000D',
+    ["Village Commons Streets"] = '127A02',
+	["Devil's Hopyard"] = '075584',
+	["Blasted Heath Streets"] = '075584',
+	["Sentinel Hill"] = '484848',
+	["Backwoods Country Streets"] = '4A000D',
+	["Wizard's Hill"] = '4A000D',
+	["Whateley Farm"] = '4A000D',
+	["Gardners' Place"] = '075584',
+	["Another Time"] = '484848',
+	["Lost Carcosa"] = '484848',
+    ["Neil's Curiosity Shop"] = 'CA0533',
+	["The Hall School"] = 'CA0533',
+	["Artists' Colony"] = 'CA0533',
+	["7th House on the left"] = '014FAD',
+	["Congregational Hospital"] = '014FAD',
+	["Central Hill Streets"] = '014FAD',
+	["South Shore Streets"] = 'CA0533',
+	["The Causeway"] = 'FFFFFF',
+	["Harborside Streets"] = 'FAB511',
+	["St. Erasmus's Home"] = '014FAD',
+    ["607 Water St"] = 'FAB511',
+	["The Rope and Anchor"] = 'FAB511',
+	["North Point Lighthouse"] = 'FAB511',
+	["Wireless Station"] = 'FFFFFF',
+	["Strange High House in The Mist"] = 'FFFFFF',
+	["The Underworld"] = '484848',
+	["Unknown Kadath"] = '484848',
+	["Arkham Horror Core Board"] = 'FFFFFF',
+	["default"] = 'FFFFFF'
+}
+--used to return the location color
+local Arkham_Locations = {
+	["Ye Olde Magick Shoppe"] = '[DA1918]',
+	["Woods"] = '[DA1918]',
+	["Historical Society"] = '[8B5A13]',
+	["South Church"] = '[8B5A13]',
+	["Ma's Boarding House"] = '[8B5A13]',
+	["Southside Streets"] = '[8B5A13]',
+	["Uptown Streets"] = '[DA1918]',
+	["St. Mary's Hospital"] = '[DA1918]',
+	["Administration"] = '[B78817]',
+	["Library"] = '[B78817]',
+    ["Silver Twilight Lodge"] = '[0A8187]',
+	["The Witch House"] = '[0A8187]',
+	["French Hill Streets"] = '[0A8187]',
+	["Science Building"] = '[B78817]',
+	["Miskatonic University Streets"] = '[B78817]',
+	["River Docks"] = '[3B6C22]',
+	["The Unnamable"] = '[3B6C22]',
+	["General Store"] = '[724F88]',
+	["Black Cave"] = '[724F88]',
+	["Graveyard"] = '[724F88]',
+	["Rivertown Streets"] = '[724F88]',
+    ["Merchant District Streets"] = '[3B6C22]',
+	["Unvisited Isle"] = '[3B6C22]',
+	["Curiositie Shoppe"] = '[A94216]',
+	["Easttown Streets"] = '[684B32]',
+	["Police Station"] = '[684B32]',
+	["Velma's Diner"] = '[684B32]',
+	["Hibb's Roadhouse"] = '[684B32]',
+	["Downtown Streets"] = '[D2D2D2]',
+	["Northside Streets"] = '[A94216]',
+	["Newspaper"] = '[A94216]',
+    ["Train Station"] = '[A94216]',
+	["Bank of Arkham"] = '[D2D2D2]',
+	["Arkham Asylum"] = '[D2D2D2]',
+	["Independence Square"] = '[D2D2D2]'
+}
+
+local Other_World_Locations = {
+	["Another Dimention"] = '[DA1918]O [0060FF]O [FFD980]O [00F857]O',
+	["Abyss"] = '[DA1918]O [0060FF]O',
+	["City of the Great Race"] = '[00F857]O [FFD980]O',
+	["Yuggoth"] = '[0060FF]O [FFD980]O',
+	["Great Hall of Celeano"] = ' [0060FF]O [00F857]O',
+	["The Dreamlands"] = '[DA1918]O [0060FF]O [FFD980]O [00F857]O',
+    ["Plateau of Leng"] = '[DA1918]O [00F857]O',
+	["R'lyeh"] = '[DA1918]O [FFD980]O',
+    ["Another Time"] = '[DA1918]O [00F857]O',
+	["Lost Carcosa"] = '[0060FF]O [FFD980]O',
+    ["The Underworld"] = '[0060FF]O [00F857]O',
+	["Unknown Kadath"] = '[DA1918]O [FFD980]O'
+}
+
+local Other_World_LocationsXML = {
+	["Another Dimention"] = '<textcolor color="#DA1918">O</textcolor> <textcolor color="#0060FF">O</textcolor> <textcolor color="#FFD980">O</textcolor> <textcolor color="#00F857">O</textcolor>',
+	["Abyss"] = '<textcolor color="#DA1918">O</textcolor> <textcolor color="#0060FF">O</textcolor>',
+	["City of the Great Race"] = '<textcolor color="#00F857">O</textcolor> <textcolor color="#FFD980">O</textcolor>',
+	["Yuggoth"] = '<textcolor color="#0060FF">O</textcolor> <textcolor color="#FFD980">O</textcolor>',
+	["Great Hall of Celeano"] = ' <textcolor color="#0060FF">O</textcolor> <textcolor color="#00F857">O</textcolor>',
+	["The Dreamlands"] = '<textcolor color="#DA1918">O</textcolor> <textcolor color="#0060FF">O</textcolor> <textcolor color="#FFD980">O</textcolor> <textcolor color="#00F857">O</textcolor>',
+    ["Plateau of Leng"] = '<textcolor color="#DA1918">O</textcolor> <textcolor color="#00F857">O</textcolor>',
+	["R'lyeh"] = '<textcolor color="#DA1918">O</textcolor> <textcolor color="#FFD980">O</textcolor>',
+    ["Another Time"] = '<textcolor color="#DA1918">O</textcolor> <textcolor color="#00F857">O</textcolor>',
+	["Lost Carcosa"] = '<textcolor color="#0060FF">O</textcolor> <textcolor color="#FFD980">O</textcolor>',
+    ["The Underworld"] = '<textcolor color="#0060FF">O</textcolor> <textcolor color="#00F857">O</textcolor>',
+	["Unknown Kadath"] = '<textcolor color="#DA1918">O</textcolor> <textcolor color="#FFD980">O</textcolor>'
+}
+
+
+local Innsmouth_Locations = {
+	["Falcon Point"] = '[07A407]',
+	["Innsmouth Shore Streets"] = '[07A407]',
+	["Marsh Refinery"] = '[434BFD]',
+	["Gilman House Hotel"] = '[434BFD]',
+	["First National Grocery"] = '[434BFD]',
+	["Factory District Streets"] = '[434BFD]',
+	["Church Green Streets"] = '[FFD980]',
+	["Joe Sargent's Bus Service"] = '[484848]',
+    ["Y'ha-Nthlei"] = '[07A407]',
+	["Devil Reef"] = '[07A407]',
+	["Esoteric Order of Dagon"] = '[FFD980]',
+	["Sawbone Alley"] = '[FFD980]',
+	["Innsmouth Jail"] = '[FFD980]'
+}
+
+local Dunwich_Locations = {
+	["Darke's Carnival"] = '[127A02]',
+	["Bishop's Brook Bridge"] = '[127A02]',
+	["Dunwich Village"] = '[127A02]',
+	["Harney Jones' Shack"] = '[075584]',
+	["Cold Spring Glen"] = '[4A000D]',
+    ["Village Commons Streets"] = '[127A02]',
+	["Devil's Hopyard"] = '[075584]',
+	["Blasted Heath Streets"] = '[075584]',
+	["Sentinel Hill"] = '[484848]',
+	["Backwoods Country Streets"] = '[4A000D]',
+	["Wizard's Hill"] = '[4A000D]',
+	["Whateley Farm"] = '[4A000D]',
+	["Gardners' Place"] = '[075584]'
+}
+
+local Kingsport_Locations = {
+    ["Neil's Curiosity Shop"] = '[CA0533]',
+	["The Hall School"] = '[CA0533]',
+	["Artists' Colony"] = '[CA0533]',
+	["7th House on the left"] = '[014FAD]',
+	["Congregational Hospital"] = '[014FAD]',
+	["Central Hill Streets"] = '[014FAD]',
+	["South Shore Streets"] = '[CA0533]',
+	["The Causeway"] = '[FFFFFF]',
+	["Harborside Streets"] = '[FAB511]',
+	["St. Erasmus's Home"] = '[014FAD]',
+    ["607 Water St"] = '[FAB511]',
+	["The Rope and Anchor"] = '[FAB511]',
+	["North Point Lighthouse"] = '[FAB511]',
+	["Wireless Station"] = '[FFFFFF]',
+	["Strange High House in The Mist"] = '[FFFFFF]'
+}
+
+--used to return the location color
+local Arkham_Locations_Positions = {
+	["Ye Olde Magick Shoppe"] = {22.00, 0.89, -12.86},
+	["Woods"] = {22.10, 0.89, -7.88},
+	["Historical Society"] = {22.10, 0.89, -3.33},
+	["South Church"] = {21.68, 0.90, 1.18},
+	["Ma's Boarding House"] = {16.83, 0.94, 2.69},
+	["Southside Streets"] = {17.07, 0.94, -2.79},
+	["Uptown Streets"] = {17.05, 0.94, -8.14},
+	["St. Mary's Hospital"] = {17.77, 0.93, -15.69},
+	["Administration"] = {13.13, 0.97, -13.48},
+	["Library"] = {11.49, 0.98, -9.85},
+    ["Silver Twilight Lodge"] = {12.57, 0.98, -0.89},
+	["The Witch House"] = {10.16, 1.00, 2.67},
+	["French Hill Streets"] = {8.99, 1.01, -3.25},
+	["Science Building"] = {8.78, 1.01, -15.66},
+	["Miskatonic University Streets"] = {8.35, 1.01, -8.99},
+	["River Docks"] = {4.13, 1.05, -15.68},
+	["The Unnamable"] = {5.13, 1.04, -11.77},
+	["General Store"] = {5.44, 1.04, -1.84},
+	["Black Cave"] = {5.08, 1.04, 2.66},
+	["Graveyard"] = {1.69, 1.07, 2.58},
+	["Rivertown Streets"] = {1.56, 1.07, -3.47},
+    ["Merchant District Streets"] = {1.64, 1.07, -9.07},
+	["Unvisited Isle"] = {0.24, 1.08, -15.69},
+	["Curiositie Shoppe"] = {-4.29, 1.12, -15.67},
+	["Easttown Streets"] = {-1.85, 3.90, -2.95},
+	["Police Station"] = {-2.72, 1.11, 2.00},
+	["Velma's Diner"] = {-7.27, 1.15, 2.63},
+	["Hibb's Roadhouse"] = {-7.19, 1.15, -1.35},
+	["Downtown Streets"] = {-6.02, 3.90, -5.61},
+	["Northside Streets"] = {-5.92, 1.14, -11.01},
+	["Newspaper"] = {-5.92, 1.14, -11.01},
+    ["Train Station"] = {-5.92, 1.14, -11.01},
+	["Bank of Arkham"] = {-5.92, 1.14, -11.01},
+	["Arkham Asylum"] = {-10.75, 1.18, -5.34},
+	["Independence Square"] = {-11.53, 1.19, -1.47}
+}
+
+--used to return the location color
+local Arkham_Neighborhoods = {
+	["Ye Olde Magick Shoppe"] = "Uptown Streets",
+	["Woods"] = "Uptown Streets",
+	["Historical Society"] = "Southside Streets",
+	["South Church"] = "Southside Streets",
+	["Ma's Boarding House"] = "Southside Streets",
+	["Southside Streets"] = "Southside Streets",
+	["Uptown Streets"] = "Uptown Streets",
+	["St. Mary's Hospital"] = "Uptown Streets",
+	["Administration"] = "Miskatonic University Streets",
+	["Library"] = "Miskatonic University Streets",
+    ["Silver Twilight Lodge"] = "French Hill Streets",
+	["The Witch House"] = "French Hill Streets",
+	["French Hill Streets"] = "French Hill Streets",
+	["Science Building"] = "Miskatonic University Streets",
+	["Miskatonic University Streets"] = "Miskatonic University Streets",
+	["River Docks"] = "Merchant District Streets",
+	["The Unnamable"] = "Merchant District Streets",
+	["General Store"] = "Rivertown Streets",
+	["Black Cave"] = "Rivertown Streets",
+	["Graveyard"] = "Rivertown Streets",
+	["Rivertown Streets"] = "Rivertown Streets",
+    ["Merchant District Streets"] = "Merchant District Streets",
+	["Unvisited Isle"] = "Merchant District Streets",
+	["Curiositie Shoppe"] = "Northside Streets",
+	["Easttown Streets"] = "Easttown Streets",
+	["Police Station"] = "Easttown Streets",
+	["Velma's Diner"] = "Easttown Streets",
+	["Hibb's Roadhouse"] = "Easttown Streets",
+	["Downtown Streets"] = "Downtown Streets",
+	["Northside Streets"] = "Northside Streets",
+	["Newspaper"] = "Northside Streets",
+    ["Train Station"] = "Northside Streets",
+	["Bank of Arkham"] = "Downtown Streets",
+	["Arkham Asylum"] = "Downtown Streets",
+	["Independence Square"] = "Downtown Streets"
+}
+
+--[[ --used to return the location Encounter type
+local locations_Encounter = {
+	["Ye Olde Magick Shoppe"] = "Uptown Streets",
+	["Woods"] = "Uptown Streets",
+	["Historical Society"] = "Southside Streets",
+	["South Church"] = "Southside Streets",
+	["Ma's Boarding House"] = "Southside Streets",
+	["Southside Streets"] = "None",
+	["Uptown Streets"] = "None",
+	["St. Mary's Hospital"] = "Uptown Streets",
+	["Administration"] = "Miskatonic University Streets",
+	["Library"] = "Miskatonic University Streets",
+    ["Silver Twilight Lodge"] = "French Hill Streets",
+	["The Witch House"] = "French Hill Streets",
+	["French Hill Streets"] = "None",
+	["Science Building"] = "Miskatonic University Streets",
+	["Miskatonic University Streets"] = "None",
+	["River Docks"] = "Merchant District Streets",
+	["The Unnamable"] = "Merchant District Streets",
+	["General Store"] = "Rivertown Streets",
+	["Black Cave"] = "Rivertown Streets",
+	["Graveyard"] = "Rivertown Streets",
+	["Rivertown Streets"] = "None",
+    ["Merchant District Streets"] = "None",
+	["Unvisited Isle"] = "Merchant District Streets",
+	["Curiositie Shoppe"] = "Northside Streets",
+	["Easttown Streets"] = "None",
+	["Police Station"] = "Easttown Streets",
+	["Velma's Diner"] = "Easttown Streets",
+	["Hibb's Roadhouse"] = "Easttown Streets",
+	["Downtown Streets"] = "None",
+	["Northside Streets"] = "None",
+	["Newspaper"] = "Northside Streets",
+    ["Train Station"] = "Northside Streets",
+	["Bank of Arkham"] = "Downtown Streets",
+	["Arkham Asylum"] = "Downtown Streets",
+	["Independence Square"] = "Downtown Streets",
+	["Another Dimention"] = "None",
+	["Abyss"] = "None",
+	["City of the Great Race"] = "None",
+	["Yuggoth"] = "None",
+	["Great Hall of Celeano"] = "None",
+	["The Dreamlands"] = "None",
+    ["Plateau of Leng"] = "None",
+	["R'lyeh"] = "None",
+	["Falcon Point"] = "Innsmouth Shore Streets",
+	["Innsmouth Shore Streets"] = "None",
+	["Marsh Refinery"] = "Factory District Streets",
+	["Gilman House Hotel"] = "Factory District Streets",
+	["First National Grocery"] = "Factory District Streets",
+	["Factory District Streets"] = "None",
+	["Church Green Streets"] = "None",
+	["Joe Sargent's Bus Service"] = "None",
+    ["Y'ha-Nthlei"] = "Innsmouth Shore Streets",
+	["Devil Reef"] = "Innsmouth Shore Streets",
+	["Esoteric Order of Dagon"] = "Church Green Streets",
+	["Sawbone Alley"] = "Church Green Streets",
+	["Innsmouth Jail"] = "Church Green Streets",
+	["Darke's Carnival"] = "Village Commons Streets",
+	["Bishop's Brook Bridge"] = "Village Commons Streets",
+	["Dunwich Village"] = "Village Commons Streets",
+	["Harney Jones' Shack"] = "Blasted Heath Streets",
+	["Cold Spring Glen"] = "Backwoods Country Streets",
+    ["Village Commons Streets"] = "None",
+	["Devil's Hopyard"] = "Blasted Heath Streets",
+	["Blasted Heath Streets"] = "None",
+	["Sentinel Hill"] = "None",
+	["Backwoods Country Streets"] = "None",
+	["Wizard's Hill"] = "Backwoods Country Streets",
+	["Whateley Farm"] = "Backwoods Country Streets",
+	["Gardners' Place"] = "Blasted Heath Streets",
+	["Another Time"] = "None",
+	["Lost Carcosa"] = "None",
+    ["Neil's Curiosity Shop"] = "South Shore Streets",
+	["The Hall School"] = "South Shore Streets",
+	["Artists' Colony"] = "South Shore Streets",
+	["7th House on the left"] = "Central Hill Streets",
+	["Congregational Hospital"] = "Central Hill Streets",
+	["Central Hill Streets"] = "None",
+	["South Shore Streets"] = "None",
+	["The Causeway"] = "Kingsport Head Streets",
+	["Harborside Streets"] = "None",
+	["St. Erasmus's Home"] = "Central Hill Streets",
+    ["607 Water St"] = "Harborside Streets",
+	["The Rope and Anchor"] = "Harborside Streets",
+	["North Point Lighthouse"] = "Harborside Streets",
+	["Wireless Station"] = "Kingsport Head Streets",
+	["Strange High House in The Mist"] = "Kingsport Head Streets",
+	["The Underworld"] = "None",
+	["Unknown Kadath"] = "None",
+	["Arkham Horror Core Board"] = "Kingsport Head Streets",
+	["default"] = "None"
+}
+
+--used to return the location Encounter type
+local OW_locations_Encounter = {
+    ["Another Dimention"] = {'Red', 'Blue', 'Yellow', 'Green'},
+	["Abyss"] = {'Red', 'Blue'},
+	["City of the Great Race"] = {'Green', 'Yellow'},
+	["Yuggoth"] = {'Blue', 'Yellow'},
+	["Great Hall of Celeano"] = {'Blue', 'Green'},
+	["The Dreamlands"] = {'Red', 'Blue', 'Yellow', 'Green'},
+    ["Plateau of Leng"] = {'Red', 'Green'},
+	["R'lyeh"] = {'Red', 'Yellow'},
+    ["Another Time"] = {'Red', 'Green'},
+	["Lost Carcosa"] = {'Blue', 'Yellow'},
+    ["The Underworld"] = {'Blue', 'Green'},
+	["Unknown Kadath"] = {'Red', 'Yellow'},
+	["default"] = "None"
+} --]]
+
+-- Scripting zones - Used to count # monsters in Arkham
+local Arkham_Scripting_Zones = {'15cbb3', '282bef', '4abaa8', '08e727',
+                              '530923', '64c832', 'cfdf67', '2cb42f',
+                              '2e89d5', '9af418', '46c132', '98b894',
+                              '9bb07f', 'bafc99', '6165e2', '995dd3',
+                              '90dfea', '75df91', '6f7fd8', 'dfbd5a',
+                              '5f02d6', '776e39', 'ad4f9d', 'ae8009',
+                              '5fbc32', '7a5923', '23fe18',
+                              '4b9b7d', 'c7bb37', 'bef8bb', 'db38b7',
+                              'c8adf2', '2761b1', 'edff3f', 'b1c9e9',
+                              --Sky
+                              '694ca9'
+}
+
+function getSwitchLocations()
+    return switch_locations
+end
+
+function getLocationsColor(location)
+    return locations_Color[location]
+end
+
+function getLocationsColorXML(location)
+    return locations_ColorXML[location]
+end
+
+-- As redundant as it may seem, locating by location, it returns the place the
+-- investigator is in.
+-- Uses: Other world, you can get deck colors.
+function isInvestigatorInOtherWorld(location)
+    if Other_World_Locations[location] ~= nil then
+        return true
+    end
+    return false
+end
+
+function getInvestigatorBoard(location)
+    if Arkham_Locations[location] ~= nil then
+        return "Arkham"
+    end
+    if Innsmouth_Locations[location] ~= nil then
+        return "Innsmouth"
+    end
+    if Dunwich_Locations[location] ~= nil then
+        return "Dunwich"
+    end
+    if Kingsport_Locations[location] ~= nil then
+        return "Kingsport"
+    end
+    return ''
+end
+
+function getLocationPositionBoard(location)
+    if Arkham_Locations_Positions[location] ~= nil then
+        return Arkham_Locations_Positions[location]
+    end
+    return ''
+end
+
+function getLocationNeighborhoods(location)
+    if Arkham_Neighborhoods[location] ~= nil then
+        return Arkham_Neighborhoods[location]
+    end
+    return ''
+end
+
+--[[ function getLocationEncounter(location)
+    if locations_Encounter[location] ~= nil then
+        return locations_Encounter[location]
+    end
+    return ''
+end
+
+function getOWLocationEncounter(location)
+    if OW_locations_Encounter[location] ~= nil then
+        return OW_locations_Encounter[location]
+    end
+    return ''
+end
+
+function getOtherWorldColor(location)
+    if Other_World_Locations[location] ~= nil then
+        return Other_World_Locations[location]
+    end
+	return ''
+end --]]
+
+--Returns other world's color XML Format
+function getOtherWorldColorXML(location)
+    if Other_World_LocationsXML[location] ~= nil then
+        return Other_World_LocationsXML[location]
+    end
+	return ''
+end
+
+function getInnsmouthSolo()
+	return InnsmouthSolo
+end
+
+function getKingsportSolo()
+	return KingsportSolo
+end
+
+function getDunwichSolo()
+	return DunwichSolo
+end
+
+function getKingsportDunwich()
+	return KingsportDunwich
+end
+
+function getInnsmouthKingsport()
+	return InnsmouthKingsport
+end
+
+function getInnsmouthDunwich()
+	return InnsmouthDunwich
+end
+
+function getAllThreeBoards()
+	return AllThreeBoards
+end
+
+function getArkhamScriptingZones()
+    return Arkham_Scripting_Zones
+end
+
+function getOutskirtsScriptingZoneId()
+    return OutskirtsScriptingZoneId
+end
+
+-------------------------------- Setters ------------------------------------
+function setInnsmouthSolo(toSet)
+    InnsmouthSolo = toSet[1]
+    onSave()
+end
+
+function setKingsportSolo(toSet)
+    KingsportSolo = toSet[1]
+    onSave()
+end
+
+function setDunwichSolo(toSet)
+    DunwichSolo = toSet[1]
+    onSave()
+end
+
+function setKingsportDunwich(toSet)
+    KingsportDunwich = toSet[1]
+    onSave()
+end
+
+function setInnsmouthKingsport(toSet)
+    InnsmouthKingsport = toSet[1]
+    onSave()
+end
+
+function setInnsmouthDunwich(toSet)
+    InnsmouthDunwich = toSet[1]
+    onSave()
+end
+
+function setAllThreeBoards(toSet)
+    AllThreeBoards = toSet[1]
+    onSave()
+end

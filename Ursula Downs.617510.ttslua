@@ -1,0 +1,6 @@
+maxStamina = 5
+maxSanity = 5
+local MarkerGUID = 'ea5289'
+local speedArray = {'2','3','4','5'}
+
+require("Investigator_Sheet")

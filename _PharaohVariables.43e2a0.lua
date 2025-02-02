@@ -1,0 +1,416 @@
+local Pharaoh_Bag_id = '84d18a'
+local Pharaoh_Northside_deck_id = '7af3e5'
+local Pharaoh_Downtown_deck_id = 'f8635e'
+local Pharaoh_Easttown_deck_id = 'eb7fce'
+local Pharaoh_Merchant_deck_id = '8c9854'
+local Pharaoh_Rivertown_deck_id = 'caa049'
+local Pharaoh_Miskatonic_deck_id = '033b9a'
+local Pharaoh_French_deck_id = '1db507'
+local Pharaoh_Uptown_deck_id = 'd73fcd'
+local Pharaoh_Southside_deck_id = '4e2a0c'
+--Pharaoh has no common items... all his items are unique :P
+-- local Pharaoh_Common_deck_id = '380a69'
+-- local Pharaoh_Unique_deck_id = 'b0377d'
+local Pharaoh_Spells_deck_id = '9562c9'
+--local Pharaoh_Skills_deck_id = '0b35ef'
+--local Pharaoh_Skills_deck_id = '6aab62'
+local Pharaoh_Skills_deck_id = '7016f7'
+local Pharaoh_Allies_deck_id = 'a2cd83'
+
+local Pharaoh_Mythos_deck_id = '9f58ae'
+local Pharaoh_Gate_deck_id = 'ec838c'
+
+-- Dark Pharaoh Specific Items
+local Pharaoh_Benefits_Deck_id = '74dd23'
+local Pharaoh_Detriments_Deck_id = 'd4f02d'
+local Pharaoh_Exhibit_Item_Deck_id = '710afe'
+local Pharaoh_Exhibit_Encounter_Deck_Id = '68b43a'
+local Pharaoh_Patrol_Marker_Id = '661cf2'
+local Pharaoh_Ancient_Whispers_Token_Id = '4de011'
+
+local Pharaoh_Scripting_Zone = 'fac27b'
+
+-- Which of these are decks
+PharaohDecks={'74dd23','d4f02d', '710afe','68b43a'}
+-- PharaohDecks={'7af3e5','f8635e','eb7fce', '8c9854','caa049','033b9a','1db507',
+--               'd73fcd',
+--        '4e2a0c','9562c9','6aab62','a2cd83','74dd23','d4f02d',
+--        '710afe','68b43a'}
+
+       -- x, y, z for each die.
+       -- y is the height over the table and setting it to
+       -- a number higher than zero will make it fall down
+       -- to the board
+local PharaohPositions = {
+  [Pharaoh_Bag_id] = {-92.5, 1.5, -30.12},
+  [Pharaoh_Mythos_deck_id] = {-92.5, 1.5, -23.55},
+  [Pharaoh_Gate_deck_id] = {-92.5, 1.5, -21.14},
+  [Pharaoh_Northside_deck_id] = {-92.5, 1.5, -18.98},
+  [Pharaoh_Downtown_deck_id] = {-92.5, 1.5, -16.57},
+  [Pharaoh_Easttown_deck_id] = {-92.5, 1.5, -14.25},
+  [Pharaoh_Merchant_deck_id] = {-92.5, 1.5, -11.85},
+  [Pharaoh_Rivertown_deck_id] = {-92.5, 1.5, -9.32},
+  [Pharaoh_Miskatonic_deck_id] = {-92.5, 1.5, -6.91},
+  [Pharaoh_French_deck_id] = {-92.5, 1.5, -4.34},
+  [Pharaoh_Uptown_deck_id] = {-92.5, 1.5, -1.87},
+  [Pharaoh_Southside_deck_id] = {-92.5, 1.5, 0.61},
+  [Pharaoh_Skills_deck_id] = {-92.5, 1.5, 2.99},
+  [Pharaoh_Allies_deck_id] = {-92.5, 1.5, 6.08},
+  [Pharaoh_Spells_deck_id] = {-92.5, 1.5, 12.39},
+  [Pharaoh_Benefits_Deck_id] = {-92.5, 1.5, 16.62},
+  [Pharaoh_Detriments_Deck_id] = {-92.5, 1.5, 19.92},
+  [Pharaoh_Exhibit_Item_Deck_id] = {-92.5, 1.5, 22.62},
+  [Pharaoh_Exhibit_Encounter_Deck_Id] = {-92.5, 1.5, 25.62},
+  [Pharaoh_Patrol_Marker_Id] = {-92.5, 1.5, 28.62},
+  [Pharaoh_Ancient_Whispers_Token_Id] = {-92.5, 1.5,31.62}
+
+-- -- No allies
+}
+
+function onload()
+
+end
+
+------------Generating getters and setters for all the junk
+
+---------------------------------- BAG ----------------------------------------
+
+--returns the bag id to whoever calls it
+function getPharaohBagId()
+    return Pharaoh_Bag_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohBagId(id)
+    Pharaoh_Bag_id = id.getGUID()
+end
+
+---------------------------------- BAG ----------------------------------------
+-------------------------------Northside --------------------------------------
+
+--returns the id to whoever calls it
+function getPharaohNorthsideDeckId()
+    return Pharaoh_Northside_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohNorthsideDeckId(id)
+    Pharaoh_Northside_deck_id = id.getGUID()
+end
+
+-------------------------------Northside --------------------------------------
+------------------------------- Downtown --------------------------------------
+
+--returns the id to whoever calls it
+function getPharaohDowntownDeckId()
+    return Pharaoh_Downtown_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohDowntownDeckId(id)
+    Pharaoh_Downtown_deck_id = id.getGUID()
+end
+
+------------------------------- Downtown --------------------------------------
+------------------------------- Easttown --------------------------------------
+
+--returns the id to whoever calls it
+function getPharaohEasttownDeckId()
+    return Pharaoh_Easttown_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohEasttownDeckId(id)
+    Pharaoh_Easttown_deck_id = id.getGUID()
+end
+
+------------------------------- Easttown --------------------------------------
+------------------------------- Merchant --------------------------------------
+
+--returns the id to whoever calls it
+function getPharaohMerchantDeckId()
+    return Pharaoh_Merchant_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohMerchantDeckId(id)
+    Pharaoh_Merchant_deck_id = id.getGUID()
+end
+
+------------------------------- Merchant --------------------------------------
+------------------------------- Rivertown --------------------------------------
+
+--returns the id to whoever calls it
+function getPharaohRivertownDeckId()
+    return Pharaoh_Rivertown_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohRivertownDeckId(id)
+    Pharaoh_Rivertown_deck_id = id.getGUID()
+end
+
+------------------------------- Rivertown --------------------------------------
+------------------------------- Miskatonic --------------------------------------
+
+--returns the id to whoever calls it
+function getPharaohMiskatonicDeckId()
+    return Pharaoh_Miskatonic_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohMiskatonicDeckId(id)
+    Pharaoh_Miskatonic_deck_id = id.getGUID()
+end
+
+------------------------------- Miskatonic -------------------------------------
+------------------------------- French Hill ------------------------------------
+
+--returns the id to whoever calls it
+function getPharaohFrenchDeckId()
+    return Pharaoh_French_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohFrenchDeckId(id)
+    Pharaoh_French_deck_id = id.getGUID()
+end
+
+------------------------------- French Hill ------------------------------------
+--------------------------------- Uptown --------------------------------------
+
+--returns the id to whoever calls it
+function getPharaohUptownDeckId()
+    return Pharaoh_Uptown_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohUptownDeckId(id)
+    Pharaoh_Uptown_deck_id = id.getGUID()
+end
+
+--------------------------------- Uptown --------------------------------------
+-------------------------------- Southside -------------------------------------
+--returns the id to whoever calls it
+function getPharaohSouthsideDeckId()
+    return Pharaoh_Southside_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohSouthsideDeckId(id)
+    Pharaoh_Southside_deck_id = id.getGUID()
+end
+
+-------------------------------- Southside -------------------------------------
+--------------------------------- Common --------------------------------------
+
+--returns the id to whoever calls it
+function getPharaohCommonDeckId()
+    return Pharaoh_Common_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohCommonDeckId(id)
+    Pharaoh_Common_deck_id = id.getGUID()
+end
+
+--------------------------------- Common --------------------------------------
+--------------------------------- Unique --------------------------------------
+
+--returns the id to whoever calls it
+function getPharaohUniqueDeckId()
+    return Pharaoh_Unique_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohUniqueDeckId(id)
+    Pharaoh_Unique_deck_id = id.getGUID()
+end
+
+--------------------------------- Unique --------------------------------------
+--------------------------------- Spells --------------------------------------
+
+
+--returns the id to whoever calls it
+function getPharaohSpellsDeckId()
+    return Pharaoh_Spells_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohSpellsDeckId(id)
+    Pharaoh_Spells_deck_id = id.getGUID()
+end
+
+--------------------------------- Spells --------------------------------------
+--------------------------------- Skills --------------------------------------
+
+--returns the id to whoever calls it
+function getPharaohSkillsDeckId()
+    return Pharaoh_Skills_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohSkillsDeckId(id)
+    Pharaoh_Skills_deck_id = id.getGUID()
+end
+
+--------------------------------- Skills --------------------------------------
+--------------------------------- Allies --------------------------------------
+--returns the id to whoever calls it
+function getPharaohAlliesDeckId()
+    return Pharaoh_Allies_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohAlliesDeckId(id)
+    Pharaoh_Allies_deck_id = id.getGUID()
+end
+--------------------------------- Allies --------------------------------------
+--------------------------------- Mythos --------------------------------------
+
+--returns the id to whoever calls it
+function getPharaohMythosDeckId()
+    return Pharaoh_Mythos_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohMythosDeckId(id)
+    Pharaoh_Mythos_deck_id = id.getGUID()
+end
+--------------------------------- Mythos --------------------------------------
+---------------------------------- Gate ---------------------------------------
+
+--returns the id to whoever calls it
+function getPharaohGateDeckId()
+    return Pharaoh_Gate_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohGateDeckId(id)
+    Pharaoh_Gate_deck_id = id.getGUID()
+end
+
+---------------------------------- Gate ---------------------------------------
+
+--Expansion-specific
+
+------------------------------- Benefits -------------------------------------
+
+--returns the id to whoever calls it
+function getPharaohBenefitsDeckId()
+    return Pharaoh_Benefits_Deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohBenefitsDeckId(id)
+    Pharaoh_Benefits_Deck_id = id.getGUID()
+end
+------------------------------- Benefits -------------------------------------
+------------------------------- Detriments -----------------------------------
+
+--returns the id to whoever calls it
+function getPharaohDetrimentsDeckId()
+    return Pharaoh_Detriments_Deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohDetrimentsDeckId(id)
+    Pharaoh_Detriments_Deck_id = id.getGUID()
+end
+------------------------------- Detriments -----------------------------------
+-------------------------- Exhibit Items Deck --------------------------------
+
+--returns the id to whoever calls it
+function getPharaohExhibitItemDeckId()
+    return Pharaoh_Exhibit_Item_Deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohExhibitItemDeckId(id)
+    Pharaoh_Exhibit_Item_Deck_id = id.getGUID()
+end
+-------------------------- Exhibit Items Deck  --------------------------------
+------------------------- Exhibit Encounter Deck -------------------------------
+
+--returns the id to whoever calls it
+function getPharaohExhibitEncounterDeckId()
+    return Pharaoh_Exhibit_Encounter_Deck_Id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohExhibitEncounterDeckId(id)
+    Pharaoh_Exhibit_Encounter_Deck_Id = id.getGUID()
+end
+------------------------- Exhibit Encounter Deck  -------------------------------
+------------------------------ Patrol Marker -----------------------------------
+
+--returns the id to whoever calls it
+function getPharaohPatrolMarkerId()
+    return Pharaoh_Patrol_Marker_Id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohPatrolMarkerId(id)
+    Pharaoh_Patrol_Marker_Id = id.getGUID()
+end
+------------------------------ Patrol Marker -----------------------------------
+------------------------- Ancient Whispers Token ------------------------------
+
+--returns the id to whoever calls it
+function getPharaohAncientWhispersTokenId()
+    return Pharaoh_Ancient_Whispers_Token_Id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohAncientWhispersTokenId(id)
+    Pharaoh_Ancient_Whispers_Token_Id = id.getGUID()
+end
+------------------------- Ancient Whispers Token ------------------------------
+-------------------------- Pharaoh Scripting Zone -------------------------------
+
+--returns the id to whoever calls it
+function getPharaohScriptingZone()
+    return Pharaoh_Scripting_Zone
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setPharaohScriptingZone(id)
+    Pharaoh_Scripting_Zone = id.getGUID()
+end
+-------------------------- Pharaoh Scripting Zone -------------------------------
+
+
+
+--Returns a vector with the placing positions for the object id given
+function getPharaohPositionById(id)
+    return PharaohPositions[id[1]]
+end
+
+--Returns a vector with the placing positions for the object id given
+function getPharaohDecks()
+    return PharaohDecks
+end

@@ -1,0 +1,366 @@
+local Lurker_Bag_id = 'fca9fb'
+-- local Lurker_Northside_deck_id = '427b63'
+local Lurker_Northside_deck_id = '5fe176'
+-- local Lurker_Downtown_deck_id = '8c4b9b'
+local Lurker_Downtown_deck_id = '1a4cd7'
+-- local Lurker_Easttown_deck_id = 'd1b225'
+local Lurker_Easttown_deck_id = '15de20'
+-- local Lurker_Merchant_deck_id = 'dc5586'
+local Lurker_Merchant_deck_id = '73a9a4'
+-- local Lurker_Rivertown_deck_id = '54cab1'
+local Lurker_Rivertown_deck_id = '8e00b7'
+-- local Lurker_Miskatonic_deck_id = 'edfc30'
+local Lurker_Miskatonic_deck_id = 'e23ddd'
+-- local Lurker_French_deck_id = '0a5b7a'
+local Lurker_French_deck_id = 'f17da0'
+-- local Lurker_Uptown_deck_id = 'bc07c9'
+local Lurker_Uptown_deck_id = '451a6e'
+-- local Lurker_Southside_deck_id = 'd653d1'
+local Lurker_Southside_deck_id = 'c2e701'
+-- local Lurker_Common_deck_id = '380a69'
+local Lurker_Common_deck_id = '190cfa'
+-- local Lurker_Unique_deck_id = 'b0377d'
+local Lurker_Unique_deck_id = '8abc16'
+-- local Lurker_Spells_deck_id = '87b8b3'
+local Lurker_Spells_deck_id = '04d73f'
+-- local Lurker_Skills_deck_id = '34b2e9'
+local Lurker_Skills_deck_id = '52f083'
+--Lurker has no allies... :( No one likes Lurker
+-- local Lurker_Mythos_deck_id = 'e165f4'
+local Lurker_Mythos_deck_id = '39f9bc'
+-- local Lurker_Gate_deck_id = '2b56e1'
+local Lurker_Gate_deck_id = 'd37471'
+local Lurker_Gate_Marker_Bag_id = '2f95d4'
+local Lurker_Dunw_Gate_Marker_Bag_id = '4887dc'
+local Lurker_King_Gate_Marker_Bag_id = 'a6e2f0'
+local Lurker_Scripting_Zone = '20a413'
+
+-- Which of these are decks
+LurkerDecks={}
+-- -- Which of these are decks
+-- LurkerDecks={'5fe176','1a4cd7','15de20', '73a9a4','8e00b7','e23ddd','f17da0','451a6e',
+--        'c2e701','190cfa','8abc16','04d73f','39f9bc','d37471','52f083'}
+
+local LurkerPositions = {
+  -- x, y, z for each die.
+  -- y is the height over the table and setting it to
+  -- a number higher than zero will make it fall down
+  -- to the board
+  [Lurker_Bag_id] = {-97.28, 1.5, -32.95},
+  [Lurker_Mythos_deck_id] = {-98.46, 1.5, -23.55},
+  [Lurker_Gate_deck_id] = {-98.46, 1.5, -21.14},
+  [Lurker_Northside_deck_id] = {-98.46, 1.5, -18.98},
+  [Lurker_Downtown_deck_id] = {-98.46, 1.5, -16.57},
+  [Lurker_Easttown_deck_id] = {-98.46, 1.5, -14.25},
+  [Lurker_Merchant_deck_id] = {-98.46, 1.5, -11.85},
+  [Lurker_Rivertown_deck_id] = {-98.46, 1.5, -9.32},
+  [Lurker_Miskatonic_deck_id] = {-98.46, 1.5, -6.91},
+  [Lurker_French_deck_id] = {-98.46, 1.5, -4.34},
+  [Lurker_Uptown_deck_id] = {-98.46, 1.5, -1.87},
+  [Lurker_Southside_deck_id] = {-98.46, 1.5, 0.61},
+  [Lurker_Skills_deck_id] = {-98.46, 1.5, 2.99},
+  [Lurker_Common_deck_id] = {-98.46, 1.5, 7.8},
+  [Lurker_Unique_deck_id] = {-98.46, 1.5, 10.21},
+  [Lurker_Spells_deck_id] = {-98.46, 1.5, 12.39},
+  [Lurker_Gate_Marker_Bag_id] = {-98.46, 1.5, 15.62},
+  [Lurker_Dunw_Gate_Marker_Bag_id] = {-98.46, 1.5, 17.92},
+  [Lurker_King_Gate_Marker_Bag_id] = {-98.46, 1.5, 20.62}
+-- -- No allies
+}
+
+function onload()
+
+end
+
+------------Generating getters and setters for all the junk
+
+---------------------------------- BAG ----------------------------------------
+
+--returns the bag id to whoever calls it
+function getLurkerBagId()
+    return Lurker_Bag_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerBagId(id)
+    Lurker_Bag_id = id.getGUID()
+end
+
+---------------------------------- BAG ----------------------------------------
+-------------------------------Northside --------------------------------------
+
+--returns the id to whoever calls it
+function getLurkerNorthsideDeckId()
+    return Lurker_Northside_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerNorthsideDeckId(id)
+    Lurker_Northside_deck_id = id.getGUID()
+end
+
+-------------------------------Northside --------------------------------------
+------------------------------- Downtown --------------------------------------
+
+--returns the id to whoever calls it
+function getLurkerDowntownDeckId()
+    return Lurker_Downtown_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerDowntownDeckId(id)
+    Lurker_Downtown_deck_id = id.getGUID()
+end
+
+------------------------------- Downtown --------------------------------------
+------------------------------- Easttown --------------------------------------
+
+--returns the id to whoever calls it
+function getLurkerEasttownDeckId()
+    return Lurker_Easttown_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerEasttownDeckId(id)
+    Lurker_Easttown_deck_id = id.getGUID()
+end
+
+------------------------------- Easttown --------------------------------------
+------------------------------- Merchant --------------------------------------
+
+--returns the id to whoever calls it
+function getLurkerMerchantDeckId()
+    return Lurker_Merchant_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerMerchantDeckId(id)
+    Lurker_Merchant_deck_id = id.getGUID()
+end
+
+------------------------------- Merchant --------------------------------------
+------------------------------- Rivertown --------------------------------------
+
+--returns the id to whoever calls it
+function getLurkerRivertownDeckId()
+    return Lurker_Rivertown_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerRivertownDeckId(id)
+    Lurker_Rivertown_deck_id = id.getGUID()
+end
+
+------------------------------- Rivertown --------------------------------------
+------------------------------- Miskatonic --------------------------------------
+
+--returns the id to whoever calls it
+function getLurkerMiskatonicDeckId()
+    return Lurker_Miskatonic_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerMiskatonicDeckId(id)
+    Lurker_Miskatonic_deck_id = id.getGUID()
+end
+
+------------------------------- Miskatonic -------------------------------------
+------------------------------- French Hill ------------------------------------
+
+--returns the id to whoever calls it
+function getLurkerFrenchDeckId()
+    return Lurker_French_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerFrenchDeckId(id)
+    Lurker_French_deck_id = id.getGUID()
+end
+
+------------------------------- French Hill ------------------------------------
+--------------------------------- Uptown --------------------------------------
+
+--returns the id to whoever calls it
+function getLurkerUptownDeckId()
+    return Lurker_Uptown_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerUptownDeckId(id)
+    Lurker_Uptown_deck_id = id.getGUID()
+end
+
+--------------------------------- Uptown --------------------------------------
+-------------------------------- Southside -------------------------------------
+--returns the id to whoever calls it
+function getLurkerSouthsideDeckId()
+    return Lurker_Southside_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerSouthsideDeckId(id)
+    Lurker_Southside_deck_id = id.getGUID()
+end
+
+-------------------------------- Southside -------------------------------------
+--------------------------------- Common --------------------------------------
+
+--returns the id to whoever calls it
+function getLurkerCommonDeckId()
+    return Lurker_Common_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerCommonDeckId(id)
+    Lurker_Common_deck_id = id.getGUID()
+end
+
+--------------------------------- Common --------------------------------------
+--------------------------------- Unique --------------------------------------
+
+--returns the id to whoever calls it
+function getLurkerUniqueDeckId()
+    return Lurker_Unique_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerUniqueDeckId(id)
+    Lurker_Unique_deck_id = id.getGUID()
+end
+
+--------------------------------- Unique --------------------------------------
+--------------------------------- Spells --------------------------------------
+
+
+--returns the id to whoever calls it
+function getLurkerSpellsDeckId()
+    return Lurker_Spells_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerSpellsDeckId(id)
+    Lurker_Spells_deck_id = id.getGUID()
+end
+
+--------------------------------- Spells --------------------------------------
+--------------------------------- Skills --------------------------------------
+
+--returns the id to whoever calls it
+function getLurkerSkillsDeckId()
+    return Lurker_Skills_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerSkillsDeckId(id)
+    Lurker_Skills_deck_id = id.getGUID()
+end
+
+--------------------------------- Skills --------------------------------------
+--------------------------------- Allies --------------------------------------
+
+--------------------------------- Allies --------------------------------------
+--------------------------------- Mythos --------------------------------------
+
+--returns the id to whoever calls it
+function getLurkerMythosDeckId()
+    return Lurker_Mythos_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerMythosDeckId(id)
+    Lurker_Mythos_deck_id = id.getGUID()
+end
+--------------------------------- Mythos --------------------------------------
+---------------------------------- Gate ---------------------------------------
+
+--returns the id to whoever calls it
+function getLurkerGateDeckId()
+    return Lurker_Gate_deck_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerGateDeckId(id)
+    Lurker_Gate_deck_id = id.getGUID()
+end
+
+---------------------------------- Gate ---------------------------------------
+------------------------------- GateMarker -------------------------------------
+
+--returns the id to whoever calls it
+function getLurkerGateMarkerBagId()
+    return Lurker_Gate_Marker_Bag_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerGateMarkerBagId(id)
+    Lurker_Gate_Marker_Bag_id = id.getGUID()
+end
+------------------------------- GateMarker -------------------------------------
+--------------------------- Dunwich GateMarker ---------------------------------
+
+--returns the id to whoever calls it
+function getLurkerDunwGateMarkerBagId()
+    return Lurker_Dunw_Gate_Marker_Bag_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerDunwGateMarkerBagId(id)
+    Lurker_Dunw_Gate_Marker_Bag_id = id.getGUID()
+end
+--------------------------- Dunwich GateMarker ---------------------------------
+-------------------------- Kingsport GateMarker --------------------------------
+
+--returns the id to whoever calls it
+function getLurkerKingGateMarkerBagId()
+    return Lurker_King_Gate_Marker_Bag_id
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerKingGateMarkerBagId(id)
+    Lurker_King_Gate_Marker_Bag_id = id.getGUID()
+end
+-------------------------- Kingsport GateMarker --------------------------------
+-------------------------- Lurker Scripting Zone -------------------------------
+
+--returns the id to whoever calls it
+function getLurkerScriptingZone()
+    return Lurker_Scripting_Zone
+end
+
+--Probably not used, but just in case
+--sets the id as given object
+function setLurkerScriptingZone(id)
+    Lurker_Scripting_Zone = id.getGUID()
+end
+-------------------------- Lurker Scripting Zone -------------------------------
+
+
+
+--Returns a vector with the placing positions for the object id given
+function getLurkerPositionById(id)
+    return LurkerPositions[id[1]]
+end
+
+--Returns a vector with the placing positions for the object id given
+function getLurkerDecks()
+    return LurkerDecks
+end
