@@ -1,0 +1,683 @@
+<Defaults>
+  <Panel class="Window" height="512" width="415" rectAlignment="LowerRight"
+    returnToOriginalPositionWhenReleased="false" allowDragging="true" color="#69696940"
+    outline="#404040" />
+  <Panel class="TopBar" height="30" width="415" rectAlignment="UpperCenter" color="Black"
+    outline="#00008B" />
+  <Button class="topButtons" height="20" width="20" rectAlignment="UpperRight" color="#eeeeee" />
+  <Text class="WindowTitle" text="Arkham Status" fontSize="18" height="20" fontStyle="Bold"
+    rectAlignment="UpperCenter" color="#FFFFFF" />
+  <Text class="WindowText" text="Perform Setup to Refresh" fontSize="16" fontStyle="Bold"
+    rectAlignment="UpperLeft" color="#FFFFFF" resizeTextForBestFit="true" />
+  <Text class="OtherWorld" text="O" active="true" fontSize="14" fontStyle="Normal"
+    alignment="MiddleRight" color="#69696940" />
+  <Text class="Place" text="None" active="true" fontSize="14" alignment="MiddleLeft"
+    color="#69696940" />
+  <Text class="Mythos" text="Mythos" active="true" fontSize="14" alignment="MiddleCenter"
+    color="Black" />
+  <Text class="Investigator" text="None" active="true" fontSize="14" alignment="MiddleCenter"
+    color="Black" />
+  <Text class="Counter" text="0" active="true" fontSize="14" fontStyle="Bold"
+    alignment="MiddleCenter" color="#346520" />
+  <Text class="AWPlace" text="None" active="true" fontSize="14" fontStyle="Bold" alignment="Center"
+    color="#69696940" />
+  <Text class="InnsCurrStat" text="Normal" active="true" fontSize="14" fontStyle="Bold"
+    alignment="Center" color="#346520" />
+  <Button class="global" color="rgba(255, 255, 255, 0.95)" textColor="rgba(0, 0, 0, 0.95)"
+    fontSize="16" />
+
+</Defaults>
+
+<HorizontalLayout height="40" width="300" rectAlignment="UpperRight" offsetXY="-180 0"
+  padding="5 3 5 5" spacing="5" color="clear">
+  <Cell>
+    <Button id="ArkhamStatusShow" class="global" onClick="maximize" text="Arkham Status &#x25BC;"
+      active="false">
+    </Button>
+  </Cell>
+  <Cell>
+
+    <Button id="SetupShow"
+      class="global"
+      onClick="Setup"
+      text="Setup &#x25BC;" active="true"
+    >
+    </Button>
+  </Cell>
+</HorizontalLayout>
+
+<Panel class="Window" id="Window" active="false">
+  <Panel class="TopBar" id="TopBar" />
+  <Text id="WindowTitle" class="WindowTitle" />
+  <Button id="minimizeButton" class="topButtons" textColor="#000000" text="_" offsetXY="0 -5"
+    onClick="minimize" />
+
+  <TableLayout width="415" height="482" rectAlignment="LowerLeft"
+    cellBackgroundImage="Sprites/Outline_Sharp" cellBackgroundColor="rgba(69, 69, 69, 0.4)">
+    <Row width="415" height="482">
+      <Cell>
+        <VerticalScrollView class="scrollView" color="rgba(69,69,69,0.40)" width="415" height="502"
+          verticalScrollbarWidth="12"><!-- Inside the Scroll -->
+
+          
+          <TableLayout cellPadding="2" padding="2" cellSpacing="2"
+            cellBackgroundImage="Sprites/Outline_Sharp" cellBackgroundColor="rgba(69, 69, 69, 0.4)"
+            autoCalculateHeight="1">
+
+            <!-- Phase -->
+            <Row preferredHeight="38" rectAlignment="MiddleCenter">
+              <Cell rectAlignment="MiddleCenter">
+                <TableLayout cellSpacing="1" cellBackgroundImage="Sprites/Outline_Sharp"
+                  cellBackgroundColor="rgba(69, 69, 69, 0.4)">
+                  <Row preferredHeight="32">
+                    <Cell rectAlignment="MiddleCenter">
+                      <Text>
+                        <b>Current Phase</b>
+                      </Text>
+                    </Cell>
+                    <Cell rectAlignment="MiddleCenter">
+                      <Text class="Mythos" id="CurrentPhaseText">
+                        Mythos
+                      </Text>
+                    </Cell>
+                  </Row>
+                </TableLayout>
+              </Cell>
+            </Row>
+
+            <!-- # Active investigators -->
+            <Row preferredHeight="38" rectAlignment="MiddleCenter">
+              <Cell rectAlignment="MiddleCenter">
+                <TableLayout cellSpacing="1" cellBackgroundImage="Sprites/Outline_Sharp"
+                  cellBackgroundColor="rgba(69, 69, 69, 0.4)">
+                  <Row preferredHeight="32">
+                    <Cell rectAlignment="MiddleCenter">
+                      <Text>
+                        <b># Active Investigators</b>
+                      </Text>
+                    </Cell>
+                    <Cell rectAlignment="MiddleCenter">
+                      <Text alignment="MiddleCenter" id="NrActiveInvestigators">
+                        0
+                      </Text>
+                    </Cell>
+                  </Row>
+                </TableLayout>
+              </Cell>
+            </Row>
+
+            <!-- Investigators -->
+            <Row preferredHeight="20">
+              <Cell dontUseTableCellBackground="1">
+                <Text alignment="MiddleCenter">
+                  <b>Investigators</b>
+                </Text>
+              </Cell>
+            </Row>
+            <Row preferredHeight="140">
+              <Cell dontUseTableCellBackground="1">
+                <VerticalScrollView id="PlayerTable" color="#69696940" width="450"
+                  verticalScrollbarWidth="10">
+                  <TableLayout cellSpacing="1" cellBackgroundImage="Sprites/Outline_Sharp"
+                    cellBackgroundColor="rgba(69, 69, 69, 0.4)" columnWidths="auto auto"
+                    autoCalculateHeight="true">
+                    <Row preferredHeight="20" id="AddInvestigator1" visibility="Black">
+                      <Cell>
+                        <Text class="Investigator" id="Investigator1" />
+                      </Cell>
+                      <Cell>
+                        <Text class="Place" id="Investigator1Place" />
+                        <Text class="Otherworld" id="OWColor1Inv1" />
+                        <Text class="Otherworld" id="OWColor2Inv1" />
+                        <Text class="Otherworld" id="OWColor3Inv1" />
+                        <Text class="Otherworld" id="OWColor4Inv1" />
+                      </Cell>
+                    </Row>
+                    <Row preferredHeight="20" id="AddInvestigator2" visibility="Black">
+                      <Cell>
+                        <Text class="Investigator" id="Investigator2" />
+                      </Cell>
+                      <Cell>
+                        <Text class="Place" id="Investigator2Place" />
+                        <Text class="Otherworld" id="OWColor1Inv2" />
+                        <Text class="Otherworld" id="OWColor2Inv2" />
+                        <Text class="Otherworld" id="OWColor3Inv2" />
+                        <Text class="Otherworld" id="OWColor4Inv2" />
+                      </Cell>
+                    </Row>
+                    <Row preferredHeight="20" id="AddInvestigator3" visibility="Black">
+                      <Cell>
+                        <Text class="Investigator" id="Investigator3" />
+                      </Cell>
+                      <Cell>
+                        <Text class="Place" id="Investigator3Place" />
+                        <Text class="Otherworld" id="OWColor1Inv3" />
+                        <Text class="Otherworld" id="OWColor2Inv3" />
+                        <Text class="Otherworld" id="OWColor3Inv3" />
+                        <Text class="Otherworld" id="OWColor4Inv3" />
+                      </Cell>
+                    </Row>
+                    <Row preferredHeight="20" id="AddInvestigator4" visibility="Black">
+                      <Cell>
+                        <Text class="Investigator" id="Investigator4" />
+                      </Cell>
+                      <Cell>
+                        <Text class="Place" id="Investigator4Place" />
+                        <Text class="Otherworld" id="OWColor1Inv4" />
+                        <Text class="Otherworld" id="OWColor2Inv4" />
+                        <Text class="Otherworld" id="OWColor3Inv4" />
+                        <Text class="Otherworld" id="OWColor4Inv4" />
+                      </Cell>
+                    </Row>
+                    <Row preferredHeight="20" id="AddInvestigator5" visibility="Black">
+                      <Cell>
+                        <Text class="Investigator" id="Investigator5" />
+                      </Cell>
+                      <Cell>
+                        <Text class="Place" id="Investigator5Place" />
+                        <Text class="Otherworld" id="OWColor1Inv5" />
+                        <Text class="Otherworld" id="OWColor2Inv5" />
+                        <Text class="Otherworld" id="OWColor3Inv5" />
+                        <Text class="Otherworld" id="OWColor4Inv5" />
+                      </Cell>
+                    </Row>
+                    <Row preferredHeight="20" id="AddInvestigator6" visibility="Black">
+                      <Cell>
+                        <Text class="Investigator" id="Investigator6" />
+                      </Cell>
+                      <Cell>
+                        <Text class="Place" id="Investigator6Place" />
+                        <Text class="Otherworld" id="OWColor1Inv6" />
+                        <Text class="Otherworld" id="OWColor2Inv6" />
+                        <Text class="Otherworld" id="OWColor3Inv6" />
+                        <Text class="Otherworld" id="OWColor4Inv6" />
+                      </Cell>
+                    </Row>
+                    <Row preferredHeight="20" id="AddInvestigator7" visibility="Black">
+                      <Cell>
+                        <Text class="Investigator" id="Investigator7" />
+                      </Cell>
+                      <Cell>
+                        <Text class="Place" id="Investigator7Place" />
+                        <Text class="Otherworld" id="OWColor1Inv7" />
+                        <Text class="Otherworld" id="OWColor2Inv7" />
+                        <Text class="Otherworld" id="OWColor3Inv7" />
+                        <Text class="Otherworld" id="OWColor4Inv7" />
+                      </Cell>
+                    </Row>
+                    <Row preferredHeight="20" id="AddInvestigator8" visibility="Black">
+                      <Cell>
+                        <Text class="Investigator" id="Investigator8" />
+                      </Cell>
+                      <Cell>
+                        <Text class="Place" id="Investigator8Place" />
+                        <Text class="Otherworld" id="OWColor1Inv8" />
+                        <Text class="Otherworld" id="OWColor2Inv8" />
+                        <Text class="Otherworld" id="OWColor3Inv8" />
+                        <Text class="Otherworld" id="OWColor4Inv8" />
+                      </Cell>
+                    </Row>
+                  </TableLayout>
+                </VerticalScrollView>
+              </Cell>
+            </Row>
+
+            <!-- Doom Tokens -->
+            <Row preferredHeight="38" rectAlignment="MiddleCenter">
+              <Cell rectAlignment="MiddleCenter">
+                <TableLayout cellSpacing="1" cellBackgroundImage="Sprites/Outline_Sharp"
+                  cellBackgroundColor="rgba(69, 69, 69, 0.4)">
+                  <Row preferredHeight="32">
+                    <Cell rectAlignment="MiddleCenter">
+                      <Text id="DoomTokensCounter">
+                        <b># Doom Tokens</b>
+                      </Text>
+                    </Cell>
+                    <Cell rectAlignment="MiddleCenter">
+                      <Text class="Counter" id="DoomTokens">
+                        0
+                      </Text>
+                    </Cell>
+                  </Row>
+                </TableLayout>
+              </Cell>
+            </Row>
+            <!-- Monsters in Arkham -->
+            <Row preferredHeight="38" rectAlignment="MiddleCenter">
+              <Cell rectAlignment="MiddleCenter">
+                <TableLayout cellSpacing="1" cellBackgroundImage="Sprites/Outline_Sharp"
+                  cellBackgroundColor="rgba(69, 69, 69, 0.4)">
+                  <Row preferredHeight="32">
+                    <Cell rectAlignment="MiddleCenter">
+                      <Text id="MonsterTokensCounter">
+                        <b># Monsters in Arkham</b>
+                      </Text>
+                    </Cell>
+                    <Cell rectAlignment="MiddleCenter">
+                      <Text class="Counter" id="MonstersinArkham">
+                        0
+                      </Text>
+                    </Cell>
+                  </Row>
+                </TableLayout>
+              </Cell>
+            </Row>
+            <!-- Monsters in Outskirts -->
+            <Row preferredHeight="38" rectAlignment="MiddleCenter">
+              <Cell rectAlignment="MiddleCenter">
+                <TableLayout cellSpacing="1" cellBackgroundImage="Sprites/Outline_Sharp"
+                  cellBackgroundColor="rgba(69, 69, 69, 0.4)">
+                  <Row preferredHeight="32">
+                    <Cell rectAlignment="MiddleCenter">
+                      <Text id="MonstersOutskirtsCounter">
+                        <b># Monsters in Outskirts</b>
+                      </Text>
+                    </Cell>
+                    <Cell rectAlignment="MiddleCenter">
+                      <Text class="Counter" id="MonstersinOutskirts">
+                        0
+                      </Text>
+                    </Cell>
+                  </Row>
+                </TableLayout>
+              </Cell>
+            </Row>
+            <!-- Gates In Arkham -->
+            <Row preferredHeight="38" rectAlignment="MiddleCenter">
+              <Cell rectAlignment="MiddleCenter">
+                <TableLayout cellSpacing="1" cellBackgroundImage="Sprites/Outline_Sharp"
+                  cellBackgroundColor="rgba(69, 69, 69, 0.4)">
+                  <Row preferredHeight="32">
+                    <Cell rectAlignment="MiddleCenter">
+                      <Text id="GatesCounter">
+                        <b># Gates in Arkham</b>
+                      </Text>
+                    </Cell>
+                    <Cell rectAlignment="MiddleCenter">
+                      <Text class="Counter" id="GatesInArkham">
+                        0
+                      </Text>
+                    </Cell>
+                  </Row>
+                </TableLayout>
+              </Cell>
+            </Row>
+            <!-- Terror Level -->
+            <Row preferredHeight="38" rectAlignment="MiddleCenter">
+              <Cell rectAlignment="MiddleCenter">
+                <TableLayout cellSpacing="1" cellBackgroundImage="Sprites/Outline_Sharp"
+                  cellBackgroundColor="rgba(69, 69, 69, 0.4)">
+                  <Row preferredHeight="32">
+                    <Cell rectAlignment="MiddleCenter">
+                      <Text id="TerrorCounter">
+                        <b># Terror Level</b>
+                      </Text>
+                    </Cell>
+                    <Cell rectAlignment="MiddleCenter">
+                      <Text class="Counter" id="TerrorLevel">
+                        0
+                      </Text>
+                    </Cell>
+                  </Row>
+                </TableLayout>
+              </Cell>
+            </Row>
+            <!-- Ancient Whispers -->
+            <Row preferredHeight="20" id="AncientWhispers" visibility="Black">
+              <Cell>
+                <TableLayout cellSpacing="1" cellBackgroundImage="Sprites/Outline_Sharp"
+                  cellBackgroundColor="rgba(69, 69, 69, 0.4)" columnWidths="auto auto"
+                  autoCalculateHeight="true">
+                  <Row preferredHeight="20">
+                    <Cell>
+                      <Text id="AncientWhispers1" color="#BD7711">
+                        <b>Ancient Whispers</b> is in</Text>
+                    </Cell>
+                    <Cell>
+                      <Text class="AWPlace" id="AncientWhispers1Place">
+                        0
+                      </Text>
+                    </Cell>
+                  </Row>
+                </TableLayout>
+              </Cell>
+            </Row>
+            <!-- Innsmouth Martial Law -->
+            <Row preferredHeight="20" id="InnsmouthMartialLaw" visibility="Black">
+              <Cell>
+                <TableLayout cellSpacing="1" cellBackgroundImage="Sprites/Outline_Sharp"
+                  cellBackgroundColor="rgba(69, 69, 69, 0.4)" columnWidths="auto auto"
+                  autoCalculateHeight="true">
+                  <Row preferredHeight="20">
+                    <Cell>
+                      <Text id="InnsCurrent">
+                        <b>Innsmouth Status</b>
+                      </Text>
+                    </Cell>
+                    <Cell>
+                      <Text class="InnsCurrStat" id="InnsmouthCurrentStatus">
+                        Normal
+                      </Text>
+                    </Cell>
+                  </Row>
+                </TableLayout>
+              </Cell>
+            </Row>
+            <!-- Feds Raid Innsmouth Clues -->
+            <Row preferredHeight="20" id="FedsRaidInnsmouthClues" visibility="Black">
+              <Cell>
+                <TableLayout cellSpacing="1" cellBackgroundImage="Sprites/Outline_Sharp"
+                  cellBackgroundColor="rgba(69, 69, 69, 0.4)" columnWidths="auto auto"
+                  autoCalculateHeight="true">
+                  <Row preferredHeight="20">
+                    <Cell>
+                      <Text id="FedsRaidInnsmouthClues1">
+                        <b>Feds Raid Innsmouth Clues</b>
+                      </Text>
+                    </Cell>
+                    <Cell>
+                      <Text class="Counter" id="FedsRaidInnsmouthCluesNr">
+                        0
+                      </Text>
+                    </Cell>
+                  </Row>
+                </TableLayout>
+              </Cell>
+            </Row>
+            <!-- Deep Ones Rising Track -->
+            <Row preferredHeight="20" id="DeepOnesRisingTrack" visibility="Black">
+              <Cell>
+                <TableLayout cellSpacing="1" cellBackgroundImage="Sprites/Outline_Sharp"
+                  cellBackgroundColor="rgba(69, 69, 69, 0.4)" columnWidths="auto auto"
+                  autoCalculateHeight="true">
+                  <Row preferredHeight="20">
+                    <Cell>
+                      <Text id="DeepOnesRisingTrack1">
+                        <b>Deep Ones Rising Track</b>
+                      </Text>
+                    </Cell>
+                    <Cell>
+                      <Text class="Counter" id="DeepOnesRisingTrackNr">
+                        0
+                      </Text>
+                    </Cell>
+                  </Row>
+                </TableLayout>
+              </Cell>
+            </Row>
+            <!-- Dunwich Horror Tokens -->
+            <Row preferredHeight="20" id="DunwichHorrorTokens" visibility="Black">
+              <Cell>
+                <TableLayout cellSpacing="1" cellBackgroundImage="Sprites/Outline_Sharp"
+                  cellBackgroundColor="rgba(69, 69, 69, 0.4)" columnWidths="auto auto"
+                  autoCalculateHeight="true">
+                  <Row preferredHeight="20">
+                    <Cell>
+                      <Text id="DunwichHorrorTokens1">
+                        <b>Dunwich Horror Tokens</b>
+                      </Text>
+                    </Cell>
+                    <Cell>
+                      <Text class="Counter" id="DunwichHorrorTokensNr">
+                        0
+                      </Text>
+                    </Cell>
+                  </Row>
+                </TableLayout>
+              </Cell>
+            </Row>
+            <!-- Kingsport Rifts -->
+            <Row preferredHeight="20" id="KingsportRifts" visibility="Black">
+              <Cell dontUseTableCellBackground="1">
+                <Text alignment="MiddleCenter">
+                  <b>Rifts</b>
+                </Text>
+              </Cell>
+            </Row>
+            <Row preferredHeight="70" id="KingsportRiftStatus" visibility="Black">
+              <Cell>
+                <TableLayout cellSpacing="1" cellBackgroundImage="Sprites/Outline_Sharp"
+                  cellBackgroundColor="rgba(69, 69, 69, 0.4)" columnWidths="auto auto">
+                  <Row preferredHeight="20">
+                    <Cell>
+                      <Text id="Rift1">
+                        <b>Rift 1</b>
+                      </Text>
+                    </Cell>
+                    <Cell>
+                      <Text class="Counter" id="RiftNr1">
+                        0
+                      </Text>
+                    </Cell>
+                  </Row>
+                  <Row preferredHeight="20">
+                    <Cell>
+                      <Text id="Rift2">
+                        <b>Rift 2</b>
+                      </Text>
+                    </Cell>
+                    <Cell>
+                      <Text class="Counter" id="RiftNr2">
+                        0
+                      </Text>
+                    </Cell>
+                  </Row>
+                  <Row preferredHeight="20">
+                    <Cell>
+                      <Text id="Rift3">
+                        <b>Rift 3</b>
+                      </Text>
+                    </Cell>
+                    <Cell>
+                      <Text class="Counter" id="RiftNr3">
+                        0
+                      </Text>
+                    </Cell>
+                  </Row>
+                </TableLayout>
+              </Cell>
+            </Row>
+          </TableLayout>
+        </VerticalScrollView>
+      </Cell>
+    </Row>
+  </TableLayout>
+</Panel>
+
+
+<Defaults>
+  <Panel class="SetupWindow" height="896" width="1020" rectAlignment="Center"
+    returnToOriginalPositionWhenReleased="false" color="#69696940" outline="#404040" />
+  <Panel class="TopBarSetup" height="30" width="1020" rectAlignment="UpperCenter" color="Black"
+    outline="#00008B" />
+  <Text class="SetupTitle" text="Setup" fontSize="18" height="20" fontStyle="Bold"
+    rectAlignment="UpperCenter" color="#FFFFFF" />
+  <Button class="topButtonsSetup" height="20" width="20" rectAlignment="UpperRight" color="#eeeeee" />
+  <Row class="textRow" preferredHeight="30" rectAlignment="Center"
+    cellBackgroundColor="rgba(0, 0, 0, 0)" />
+  <Text class="SetupMessage" text="Click on the images to setup those Expansions" fontSize="18"
+    height="20" fontStyle="Bold"
+    rectAlignment="UpperCenter" color="#FFFFFF" alignment="Center" />
+  <TableLayout class="TableLayoutOptions" cellSpacing="1" offsetXY="0 -15"
+    cellBackgroundImage="Sprites/Outline_Sharp" cellBackgroundColor="rgba(69, 69, 69, 0.62)"
+    height="866" />
+  <TableLayout class="TableLayoutExpansion" cellSpacing="1"
+    cellBackgroundColor="rgba(69, 69, 69, 1)" columnWidths="340" autoCalculateHeight="false"
+    rectAlignment="UpperCenter" />
+  <Row class="ImageRow" preferredHeight="100" rectAlignment="MiddleCenter"
+    cellBackgroundColor="rgba(0, 0, 0, 0)" />
+  <Panel class="SetupPanel"/>
+  <ToggleButton class="iconButton" textAlignment="MiddleLeft" textColor="#000000" isOn="false"
+    selectedBackgroundColor="rgba(255, 255, 255, 1)"
+    deselectedBackgroundColor="rgba(255, 255, 255, 0.5)" />
+  <Row class="ButtonRow" preferredHeight="36" rectAlignment="Center"
+    cellBackgroundColor="rgba(0, 0, 0, 0)" />
+  <Button class="SetupButton" textColor="rgba(0, 0, 0, 1)" rectAlignment="MiddleCenter" padding="2 2 2 2" width="160" height="32" onClick="19615d/setupButtonClicked"/>
+</Defaults>
+
+<Panel class="SetupWindow" id="SetupWindow" active="false">
+  <Panel class="TopBarSetup" id="TopBarSetupWindow">
+    <Text id="SetupTitle" class="SetupTitle" text="Setup" />
+    <Button id="minimizeSetupButton" class="topButtonsSetup" textColor="#000000" text="_"
+      offsetXY="0 -5" onClick="minimizeSetup" />
+  </Panel>
+  <Panel class="SetupPanel" id="SetupPanel">
+    <TableLayout class="TableLayoutOptions" id="TableLayout1">
+    <Row class="textRow">
+        <Cell>
+           <text class="SetupMessage"></text>
+        </Cell>
+    </Row>
+      <Row>
+        <Cell>
+          <TableLayout class="TableLayoutExpansion" id="TableLayout1">
+            <Row class="ImageRow">
+              <Cell id="LurkerImageCell">
+                <ToggleButton id="LurkerImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870518316184/480D9D2A581C402991ACA46E0D6F5D4C7929768E/"
+                  onValueChanged="19615d/LurkerToggleClicked"
+                  tooltip="Adds/Removes The Lurker at the Threshold Expansion (OVERRIDES Lurker Small Cards!)"></ToggleButton>
+              </Cell>
+              <Cell id="LurkerSmallCardsImageCell">
+                <ToggleButton id="LurkerSmallCardsImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870518316439/3422CB03E0881310F0ED90B1BBDCB0A8C517F831/"
+                  onValueChanged="19615d/LurkerToggleSmallCardsClicked"
+                  tooltip="Adds/Removes The Lurker at the Threshold Small Cards only."></ToggleButton>
+              </Cell>
+              <Cell id="LurkerGatesImageCell">
+                <ToggleButton id="LurkerGatesImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870518316329/F336A5A284AD313AAAD953B749FB2FE641B078CA/"
+                  onValueChanged="19615d/LurkerToggleVariantClicked"
+                  tooltip="Adds/Removes The Lurker at the Threshold Gates Variant (Does NOT add Expansion)."></ToggleButton>
+              </Cell>
+            </Row>
+            <Row class="ImageRow">
+              <Cell id="PharaohImageCell">
+                <ToggleButton id="PharaohImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516586920/7D64016893B90C4899D88AFEE512813C08A37E7F/"
+                  onValueChanged="19615d/PharaohToggleClicked"
+                  tooltip="Adds/Removes The Curse of the Dark Pharaoh Revised Expansion (OVERRIDES Pharaoh Small Cards!)"></ToggleButton>
+              </Cell>
+              <Cell id="PharaohSmallCardsImageCell">
+                <ToggleButton id="PharaohSmallCardsImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516587050/418C15D48D87539725F3DAF52315B9731F5103CD/"
+                  onValueChanged="19615d/PharaohToggleSmallCardsClicked"
+                  tooltip="Adds/Removes The Curse of the Dark Pharaoh Revised Small Cards only."></ToggleButton>
+              </Cell>
+            </Row>
+            <Row class="ImageRow">
+              <Cell id="GoatImageCell">
+                <ToggleButton id="GoatImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516585673/E6C9A753F65E3175D5D31D43256358307C5011D1/"
+                  onValueChanged="19615d/GoatToggleClicked"
+                  tooltip="Adds/Removes The Black Goat of the Woods Expansion (OVERRIDES Black Goat Small Cards!)"></ToggleButton>
+              </Cell>
+              <Cell id="GoatSmallCardsImageCell">
+                <ToggleButton id="GoatSmallCardsImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516585831/D28E57BFE7E3D06ECFB6C8D7FEDEFA5AEE0EC8CF/"
+                  onValueChanged="19615d/GoatToggleSmallCardsClicked"
+                  tooltip="Adds/Removes The Black Goat of the Woods Small Cards only."></ToggleButton>
+              </Cell>
+                            <Cell id="GoatMonstersImageCell">
+                <ToggleButton id="GoatMonsterImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870521441590/1D112944A085013854A6EB10B04C0D52234A4A25/"
+                  onValueChanged="19615d/GoatToggleMonsterClicked"
+                  tooltip="Adds/Removes The Black Goat of the Woods Monsters only."></ToggleButton>
+              </Cell>
+            </Row>
+            <Row class="ImageRow">
+              <Cell id="KiYImageCell">
+                <ToggleButton id="KiYImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516587259/D152438F74EDFAC9B9C6F2D1C3B9176BA52FA07D/"
+                  onValueChanged="19615d/YellowToggleClicked"
+                  tooltip="Adds/Removes The King in Yellow Expansion (OVERRIDES The King in Yellow Small Cards option!)"></ToggleButton>
+              </Cell>
+              <Cell id="KiYOriginalActsImageCell">
+                <ToggleButton id="KiYOriginalActsImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516587345/C5215FCD18E200C0AA7F24782A6ABA1F8CFBA2B1/"
+                  onValueChanged="19615d/YellowActstoggleClicked"
+                  tooltip="Adds/Removes The King in Yellow Expansion (OVERRIDES The King in Yellow Small Cards option and Miskatonic Acts!)"></ToggleButton>
+              </Cell>
+              <Cell id="KiYSmallCardsImageCell">
+                <ToggleButton id="KiYSmallCardsImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516587561/EAD8AF719805FB2714CB67FEF37417245910F532/"
+                  onValueChanged="19615d/YellowButtonAddSmallCardsClicked"
+                  tooltip="Adds/Removes The King in Yellow Small Cards only."></ToggleButton>
+              </Cell>
+            </Row>
+            <Row class="ImageRow">
+              <Cell id="InnsmouthImageCell">
+                <ToggleButton id="InnsmouthImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870518545440/C69F43870DFFEE59C85E791EB95F74B818A5A954/"
+                  onValueChanged="19615d/InnsmouthToggleClicked"
+                  tooltip="Adds/Removes Innsmouth Horror Expansion (OVERRIDES Innsmouth Horror Small Cards option!)"></ToggleButton>
+              </Cell>
+              <Cell id="InnsmouthSmallCardsImageCell">
+                <ToggleButton id="InnsmouthSmallCardsImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870518545533/53B3ECCFDB1B86917CC9ADA50574F8EB47F3F13D/"
+                  onValueChanged="19615d/InnsmouthToggleSmallCardsClicked"
+                  tooltip="Adds/Removes Innsmouth Horror Small Cards only."></ToggleButton>
+              </Cell>
+                            <Cell id="InnsmouthMonstersImageCell">
+                <ToggleButton id="InnsmouthMonsterImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870521441689/D3C58C6647B08CDB26BDED1131B5FCD19A983779/"
+                  onValueChanged="19615d/InnsmouthToggleMonsterClicked"
+                  tooltip="Adds/Removes Innsmouth Horror Monsters only."></ToggleButton>
+              </Cell>
+            </Row>
+            <Row class="ImageRow">
+              <Cell id="KingsportImageCell">
+                <ToggleButton id="KingsportImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870518562009/D3948C65054E27DBCDE25B617D4597FA79D1A248/"
+                  onValueChanged="19615d/KingsportToggleClicked"
+                  tooltip="Adds/Removes Kingsport Horror Expansion (OVERRIDES Kingsport Horror Small Cards option!)"></ToggleButton>
+              </Cell>
+              <Cell id="KingsportSmallCardsImageCell">
+                <ToggleButton id="KingsportSmallCardsImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870518561153/8FAAB8EC3CC4596D50D94DB0BABF8D3010BE56CA/"
+                  onValueChanged="19615d/KingsportToggleSmallCardsClicked"
+                  tooltip="Adds/Removes Kingsport Horror Small Cards only."></ToggleButton>
+              </Cell>
+                <Cell id="KingsportMonstersImageCell">
+                <ToggleButton id="KingsportMonsterImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870521441774/48C92B0BDEBEAA6DE29AB6F1DBBD2D30C0E6D882/"
+                  onValueChanged="19615d/KingsportToggleMonsterClicked"
+                  tooltip="Adds/Removes Kingsport Horror Monsters only."></ToggleButton>
+              </Cell>
+            </Row>
+            <Row class="ImageRow">
+              <Cell id="DunwichImageCell">
+                <ToggleButton id="DunwichImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516585325/6E3C1AFCBC7DCEEC5166C5C2A723BEB217D00E06/"
+                  onValueChanged="19615d/DunwichToggleClicked"
+                  tooltip="Adds/Removes Dunwich Horror Expansion (OVERRIDES Dunwich Horror Small Cards option!)"></ToggleButton>
+              </Cell>
+              <Cell id="DunwichSmallCardsImageCell">
+                <ToggleButton id="DunwichSmallCardsImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516585458/0DF7214094F6D2364AD40D7DE36E9FC2646F3A6F/"
+                  onValueChanged="19615d/DunwichToggleSmallCardsClicked"
+                  tooltip="Adds/Removes Dunwich Horror Small Cards only."></ToggleButton>
+              </Cell>
+                <Cell id="DunwichMonstersImageCell">
+                <ToggleButton id="DunwichMonsterImageToggle" class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870521441497/48C4B9518DBBD1543BB34831E1DDCB466E6EDAD3/"
+                  onValueChanged="19615d/DunwichToggleMonsterClicked"
+                  tooltip="Adds/Removes Dunwich Horror Monsters only."></ToggleButton>
+              </Cell>
+            </Row>
+            <Row class="ImageRow">
+              <Cell id="MiskatonicImageCell">
+                <ToggleButton class="iconButton"
+                  image="https://steamusercontent-a.akamaihd.net/ugc/43444870516586744/451856466147D381DEAF36278E645C4E13B942AA/"
+                  onValueChanged="19615d/MiskatonicToggleClicked"
+                  tooltip="Adds/Removes Miskatonic Horror Double expansion Locations, Mythos and Gate cards."></ToggleButton>
+              </Cell>
+            </Row>
+          </TableLayout>
+        </Cell>
+      </Row>
+      <Row class="ButtonRow"><Cell><Button class="SetupButton">Setup</Button></Cell></Row>
+    </TableLayout>
+  </Panel>
+  
+</Panel>
