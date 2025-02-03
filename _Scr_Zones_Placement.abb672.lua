@@ -74,8 +74,8 @@ function PlaceInnsmouthScrZones()
     ScrZoneExpansions.call('setInnsmouthScrZoneDeepRisingid', Object_Spawned_GUID)
     
     pos = ScrZoneExpansions.call('getBoardPositionsScrZonesInnsmouthSolo',{'Innsmouth_ScrZone_Sawbone_Alley'})
-    ExpansionScriptingZoneScale = ScrZoneExpansions.call('getInnsmouthScrZoneSawboneAlleyScale')
-    Rotation = ScrZoneExpansions.call('getInnsmouthScrZoneSawboneAlleyRotation')
+    ExpansionScriptingZoneScale = ScrZoneExpansions.call('getInnsmouthScrZoneDeepRisingSca')
+    Rotation = ScrZoneExpansions.call('getInnsmouthScrZoneDeepRisingRot')
     
     local zone = spawnObject({
         type              = 'ScriptingTrigger', -- ScriptingTrigger is a scripting zone

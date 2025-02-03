@@ -398,6 +398,7 @@ function PerformExhibitItemsDiscard(obj)
         local Pharaoh_Exhibit_Item_Deck_id = GlobalVariables.call("getPharaohExhibitItemDeckid")
         local Pharaoh_Exhibit_Item_Deck = getObjectFromGUID(Pharaoh_Exhibit_Item_Deck_id)
         Pharaoh_Exhibit_Item_Deck.putObject(obj)
+        obj.randomize()
         return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
     end
     startLuaCoroutine(self, "ExhibitItemsDiscardcoinside") --must use this way to make coroutine in order to wait frames  
@@ -408,12 +409,19 @@ function PerformExhibitEncounterDiscard(obj)
     local ExhibitEncounterDiscardPosition = GlobalVariables.call('getPharaohExhibitEncounterDeckPos')
     local ExhibitEncounterDiscardRotation = GlobalVariables.call('getPharaohExhibitEncounterDeckRot')
     obj.setPosition({ExhibitEncounterDiscardPosition[1], ExhibitEncounterDiscardPosition[2] + 0.1, ExhibitEncounterDiscardPosition[3]})
-    obj.setRotation({ExhibitEncounterDiscardRotation[1], ExhibitEncounterDiscardRotation[2] + 1, ExhibitEncounterDiscardRotation[3]})
-
-    obj.setRotation({0,90,180})
-    local Pharaoh_Exhibit_Encounter_Deck_id = GlobalVariables.call("getPharaohExhibitEncounterDeckId")
-    local Pharaoh_Exhibit_Encounter_Deck = getObjectFromGUID(Pharaoh_Exhibit_Encounter_Deck_id)
-    Pharaoh_Exhibit_Encounter_Deck.randomize()
+    obj.setRotation({ExhibitEncounterDiscardRotation[1], ExhibitEncounterDiscardRotation[2] + 0.1, ExhibitEncounterDiscardRotation[3]})
+    
+    function ExhibitEncounterDiscardcoinside()
+        yieldWhileObjectsAreMoving({obj})
+        local Pharaoh_Exhibit_Encounter_Deck_id = GlobalVariables.call("getPharaohExhibitEncounterDeckId")
+        local Pharaoh_Exhibit_Encounter_Deck = getObjectFromGUID(Pharaoh_Exhibit_Encounter_Deck_id)
+        Pharaoh_Exhibit_Encounter_Deck.putObject(obj)
+        
+        Pharaoh_Exhibit_Encounter_Deck.randomize()
+        return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+    end
+    startLuaCoroutine(self, "ExhibitEncounterDiscardcoinside") --must use this way to make coroutine in order to wait frames  
+    
 end
 
 function PerformCommonItemsDiscard(obj)

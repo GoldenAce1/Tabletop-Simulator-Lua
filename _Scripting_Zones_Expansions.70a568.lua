@@ -12,6 +12,8 @@ local Innsmouth_ScrZone_Innsmouth_Shore_id = ''
 local Innsmouth_ScrZone_Joe_Sargents_id = ''
 local Innsmouth_ScrZone_Falcon_Point_id = ''
 local Innsmouth_ScrZone_Yha_Nthlei_id = ''
+local Innsmouth_Scrzone_Deep_Rising_sca = {3.48, 2.24, 4.84}
+local Innsmouth_Scrzone_Deep_Rising_Rot = {0.00, 270.10, 0.00}
 
 local Kingsport_ScrZone_Hall_School_id = ''
 local Kingsport_ScrZone_607_Water_Street_id = ''
@@ -206,7 +208,7 @@ end
  -- to the board
  ["Innsmouth_ScrZone_Devil_Reef"] = {-27.97, 1.97, 1.73},
  ["Innsmouth_ScrZone_Jail"] = {-27.53, 1.97, -22.29},
- ["Innsmouth_ScrZone_Deep_Rising"] = {-22.26, 1.91, 7.92},
+ ["Innsmouth_ScrZone_Deep_Rising"] = {-22.21, 1.03, 7.49},
  ["Innsmouth_ScrZone_Sawbone_Alley"] = {-29.09, 1.97, -16.02},
  ["Innsmouth_ScrZone_Esoteric_Dagon"] = {-28.52, 1.97, -10.89},
  ["Innsmouth_ScrZone_Church_Green"] = {-23.54, 1.97, -13.73},
@@ -263,7 +265,7 @@ end
  -- to the board
  ["Innsmouth_ScrZone_Devil_Reef"] = {-27.97, 1.97, 1.73},
  ["Innsmouth_ScrZone_Jail"] = {-27.53, 1.97, -22.29},
- ["Innsmouth_ScrZone_Deep_Rising"] = {-22.27, 1.97, 7.89},
+ ["Innsmouth_ScrZone_Deep_Rising"] = {-22.21, 1.03, 7.49},
  ["Innsmouth_ScrZone_Sawbone_Alley"] = {-29.26, 2.09, -15.95},
  ["Innsmouth_ScrZone_Esoteric_Dagon"] = {-28.52, 1.97, -10.89},
  ["Innsmouth_ScrZone_Church_Green"] = {-23.54, 1.97, -13.73},
@@ -377,7 +379,7 @@ end
  -- to the board
  ["Innsmouth_ScrZone_Devil_Reef"] = {-27.97, 1.97, 1.73},
  ["Innsmouth_ScrZone_Jail"] = {-27.53, 1.97, -22.29},
- ["Innsmouth_ScrZone_Deep_Rising"] = {-22.27, 1.97, 7.89},
+ ["Innsmouth_ScrZone_Deep_Rising"] = {-22.21, 1.03, 7.49},
  ["Innsmouth_ScrZone_Sawbone_Alley"] = {-29.26, 2.09, -15.95},
  ["Innsmouth_ScrZone_Esoteric_Dagon"] = {-28.52, 1.97, -10.89},
  ["Innsmouth_ScrZone_Church_Green"] = {-23.54, 1.97, -13.73},
@@ -418,7 +420,7 @@ end
  -- to the board
  ["Innsmouth_ScrZone_Devil_Reef"] = {-27.97, 1.97, 1.73},
  ["Innsmouth_ScrZone_Jail"] = {-27.53, 1.97, -22.29},
- ["Innsmouth_ScrZone_Deep_Rising"] = {-22.27, 1.97, 7.89},
+ ["Innsmouth_ScrZone_Deep_Rising"] = {-22.21, 1.03, 7.49},
  ["Innsmouth_ScrZone_Sawbone_Alley"] = {-29.26, 2.09, -15.95},
  ["Innsmouth_ScrZone_Esoteric_Dagon"] = {-28.52, 1.97, -10.89},
  ["Innsmouth_ScrZone_Church_Green"] = {-23.54, 1.97, -13.73},
@@ -456,6 +458,14 @@ end
 
 function getInnsmouthScrZoneDeepRisingid()
     return Innsmouth_ScrZone_Deep_Rising_id
+end
+
+function getInnsmouthScrZoneDeepRisingRot()
+     return Innsmouth_Scrzone_Deep_Rising_Rot
+end
+
+function getInnsmouthScrZoneDeepRisingSca()
+     return Innsmouth_Scrzone_Deep_Rising_sca
 end
 
 function getInnsmouthScrZoneJailid()
