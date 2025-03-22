@@ -1,8 +1,8 @@
 <Defaults>
-  <Panel class="Window" height="512" width="415" rectAlignment="LowerRight"
+  <Panel class="Window" height="512" width="425" rectAlignment="LowerRight"
     returnToOriginalPositionWhenReleased="false" allowDragging="true" color="#69696940"
     outline="#404040" />
-  <Panel class="TopBar" height="30" width="415" rectAlignment="UpperCenter" color="Black"
+  <Panel class="TopBar" height="30" width="425" rectAlignment="UpperCenter" color="Black"
     outline="#00008B" />
   <Button class="topButtons" height="20" width="20" rectAlignment="UpperRight" color="#eeeeee" />
   <Text class="WindowTitle" text="Arkham Status" fontSize="18" height="20" fontStyle="Bold"
@@ -52,11 +52,11 @@
   <Button id="minimizeButton" class="topButtons" textColor="#000000" text="_" offsetXY="0 -5"
     onClick="minimize" />
 
-  <TableLayout width="415" height="482" rectAlignment="LowerLeft"
+  <TableLayout width="425" height="482" rectAlignment="LowerLeft"
     cellBackgroundImage="Sprites/Outline_Sharp" cellBackgroundColor="rgba(69, 69, 69, 0.4)">
-    <Row width="415" height="482">
+    <Row width="425" height="482">
       <Cell>
-        <VerticalScrollView class="scrollView" color="rgba(69,69,69,0.40)" width="415" height="502"
+        <VerticalScrollView class="scrollView" color="rgba(69,69,69,0.40)" width="425" height="502"
           verticalScrollbarWidth="12"><!-- Inside the Scroll -->
 
           
@@ -235,6 +235,26 @@
                     </Cell>
                     <Cell rectAlignment="MiddleCenter">
                       <Text class="Counter" id="DoomTokens">
+                        0
+                      </Text>
+                    </Cell>
+                  </Row>
+                </TableLayout>
+              </Cell>
+            </Row>
+            <!-- Elder Signs -->
+            <Row preferredHeight="38" rectAlignment="MiddleCenter">
+              <Cell rectAlignment="MiddleCenter">
+                <TableLayout cellSpacing="1" cellBackgroundImage="Sprites/Outline_Sharp"
+                  cellBackgroundColor="rgba(69, 69, 69, 0.4)">
+                  <Row preferredHeight="32">
+                    <Cell rectAlignment="MiddleCenter">
+                      <Text id="ElderSignCounter">
+                        <b># Elder Signs</b>
+                      </Text>
+                    </Cell>
+                    <Cell rectAlignment="MiddleCenter">
+                      <Text class="Counter" id="ElderSigns">
                         0
                       </Text>
                     </Cell>

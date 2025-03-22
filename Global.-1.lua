@@ -12,6 +12,7 @@ local CurrentMonstersInArkham = 0
 local CurrentMonstersInOutskirts = 0
 local CurrentTerror = 0
 local CurrentDoom = 0
+local CurrentElderSign = 0
 local CurrentGates = 0
 local CurrentDunwichTokens = 0
 local CurrentKingsportRift1 = 0
@@ -24,6 +25,7 @@ local minimized = false
 numberFrames = 0
 NumberFramesMythosCount = 0
 local onLoadGetMythos = false
+local onLoadVerifySetup = false
 local playerLocations = {}
 
 function onSave()
@@ -62,49 +64,10 @@ function onLoad(saveState)
         end
         
         if nrPlayers == nil then
-            nrPlayers = 0
+            nrPlayers = 0 
         end
         onLoadGetMythos = true
-        
-        local GlobalVariablesId = '7fc89f'
-        local GlobalVariables = getObjectFromGUID(GlobalVariablesId) 
-        local isSetupPerformed = GlobalVariables.call('getisSetupPerformed')
-        
-        if isSetupPerformed == true then
-            
-            Global.UI.hide("SetupWindow") 
-            Global.UI.setAttribute("SetupWindow", "active", false)
-            Global.UI.setAttribute("SetupShow", "active", false)
-            maximize()
-            
-            InnsmouthSet = GlobalVariables.call('isInnsmouthSet')
-            KingsportSet = GlobalVariables.call('isKingsportSet')
-            DunwichSet = GlobalVariables.call('isDunwichSet')
-            PharaohSet = GlobalVariables.call('isPharaohSet')    
-            
-            if PharaohSet then
-                UI.setAttribute("AncientWhispers","visibility", VisibleToAll)        
-            end
-            
-            if InnsmouthSet then
-                UI.setAttribute("InnsmouthMartialLaw","visibility", VisibleToAll)
-                UI.setAttribute("FedsRaidInnsmouthClues","visibility", VisibleToAll)
-                UI.setAttribute("DeepOnesRisingTrack","visibility", VisibleToAll)        
-            end
-            
-            if DunwichSet then
-                UI.setAttribute("DunwichHorrorTokens","visibility", VisibleToAll)        
-            end 
-            
-            if KingsportSet then
-                UI.setAttribute("KingsportRifts","visibility", VisibleToAll)        
-                UI.setAttribute("KingsportRiftStatus","visibility", VisibleToAll)
-            end
-        else
-            minimize()
-            UI.setAttribute("ArkhamStatusShow", "active", false)
-        end
-        
+        onLoadVerifySetup = true
     else    
         players = {}
         nrPlayers = 0
@@ -130,6 +93,10 @@ function onUpdate ()
             if getisSetupPerformed == true then
                 numberFrames = numberFrames + 1
                 if  numberFrames > 60 then
+                    
+                    if onLoadVerifySetup == true then
+                        onLoadVerifySetupPerformed()
+                    end
                     
                     local SetNotesXML = getObjectFromGUID(NewSetXMLId)
                     
@@ -203,6 +170,26 @@ function onUpdate ()
                         end
                         CurrentDoom = CurrentDoomTokens                    
                     end
+
+                    -- # Elder Sign
+                    local ElderSign = SetNotesXML.call('GetElderSign')
+                    if ElderSign ~= CurrentElderSign then
+                        UI.setAttribute("ElderSigns","Text", ElderSign) 
+                        if ElderSign <= 2 then
+                            UI.setAttribute("ElderSigns","color", "#CA2C0C")
+                        else
+                            if ElderSign > 2 and ElderSign <= 4 then
+                                UI.setAttribute("ElderSigns","color", "#CAC00C")
+                            else
+                                if ElderSign == 5 then
+                                     UI.setAttribute("ElderSigns","color", "#346520")
+                                else 
+                                    UI.setAttribute("ElderSigns","color", "#1E87FF")
+                                end
+                            end
+                        end
+                        CurrentElderSign  = ElderSign                  
+                    end                    
                     
                     -- # Monsters in Arkham
                     local MonstersInArkhamTokens = SetNotesXML.call('GetNumberMonstersInArkham')
@@ -473,4 +460,47 @@ end
 
 function minimizeSetup(player, value, id)
     UI.hide("SetupWindow") 
+end
+
+function onLoadVerifySetupPerformed()
+    local GlobalVariablesId = '7fc89f'
+    local GlobalVariables = getObjectFromGUID(GlobalVariablesId)
+    local isSetupPerformed = GlobalVariables.call('getisSetupPerformed')
+    
+    if isSetupPerformed == true then
+        
+        Global.UI.hide("SetupWindow") 
+        Global.UI.setAttribute("SetupWindow", "active", false)
+        Global.UI.setAttribute("SetupShow", "active", false)
+        maximize()
+        
+        InnsmouthSet = GlobalVariables.call('isInnsmouthSet')
+        KingsportSet = GlobalVariables.call('isKingsportSet')
+        DunwichSet = GlobalVariables.call('isDunwichSet')
+        PharaohSet = GlobalVariables.call('isPharaohSet')  
+        
+        if PharaohSet then
+            UI.setAttribute("AncientWhispers","visibility", VisibleToAll)        
+        end
+        
+        if InnsmouthSet then
+            UI.setAttribute("InnsmouthMartialLaw","visibility", VisibleToAll)
+            UI.setAttribute("FedsRaidInnsmouthClues","visibility", VisibleToAll)
+            UI.setAttribute("DeepOnesRisingTrack","visibility", VisibleToAll)        
+        end
+        
+        if DunwichSet then
+            UI.setAttribute("DunwichHorrorTokens","visibility", VisibleToAll)        
+        end 
+        
+        if KingsportSet then
+            UI.setAttribute("KingsportRifts","visibility", VisibleToAll)        
+            UI.setAttribute("KingsportRiftStatus","visibility", VisibleToAll)
+        end
+    else
+        minimize()
+        UI.setAttribute("ArkhamStatusShow", "active", false)
+    end
+    
+    onLoadVerifySetup = false
 end

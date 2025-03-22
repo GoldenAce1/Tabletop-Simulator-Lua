@@ -1,6 +1,3 @@
---local GlobalVariablesId = '7fc89f'
---local ControlPanelVariablesId = 'bf1ea5'
-
 local GlobalVariablesId = '7fc89f'
 GlobalVariables = getObjectFromGUID(GlobalVariablesId)
 local PhaseControllerId = '5db38d'
@@ -9,16 +6,11 @@ local GreatOOScriptingZoneId = '9af796'
 local GlobalVariables = getObjectFromGUID(GlobalVariablesId)
 
 NumberFramesMythosCount = 0
-local onLoadGetMythos = false
 
-MonstersInArkhamText = ''
-GatesInArkhamText = ''
-FedsRaidText = ''
-DeepOnesRisingText = ''
-DHorrorText = ''
-KHorrorText = ''
-DoomTokensText = ''
-oldNotes = ''
+ElderSign=0
+MonstersInArkham=0
+GatesInArkham=0
+
 
 -- Used as a switch to check if the figurine is in a location
 local switch_locations = {
@@ -113,6 +105,24 @@ local switch_locations = {
     ["Arkham Horror Core Board"] = function (x)  end,
     ["default"] = function (x)  end
 }
+
+function onUpdate ()
+    
+    local GlobalVariablesId = '7fc89f'
+    local GlobalVariables = getObjectFromGUID(GlobalVariablesId) 
+    
+    local getisSetupPerformed = GlobalVariables.call('getisSetupPerformed')
+    
+    if getisSetupPerformed == true then
+        NumberFramesMythosCount = NumberFramesMythosCount + 1
+        if  NumberFramesMythosCount > 60 then        
+            GetAllStuffInScritpingZones()
+            NumberFramesMythosCount = 0
+        end
+    end
+end
+
+
 
 function getCurrentPhase()
     --Current Phase
@@ -210,7 +220,7 @@ function GetAncientWhipers()
     -- Stupid onUpdate does not get variables declared outside....
     local GlobalVariablesId = '7fc89f'
     GlobalVariables = getObjectFromGUID(GlobalVariablesId)
-
+    
     AncientWhispersArray ={}
     
     local PharaohAncientWhispersId = GlobalVariables.call('getPharaohAncientWhispersTokenId')
@@ -275,7 +285,7 @@ function GetNumberInnsmouthHorror()
         InnsmouthNumbers[1] = 0
         InnsmouthNumbers[2] = 0
     end    
-        
+    
     return InnsmouthNumbers
 end
 
@@ -325,7 +335,7 @@ end
 
 
 function GetNumberMonstersInArkham()
-    GlobalVariables = getObjectFromGUID(GlobalVariablesId)
+    --[[     GlobalVariables = getObjectFromGUID(GlobalVariablesId)
     
     local ScriptingZonesTable =  GlobalVariables.call('getArkhamScriptingZones')
     
@@ -346,7 +356,7 @@ function GetNumberMonstersInArkham()
                 MonstersInArkham = MonstersInArkham + 1
             end
         end
-    end
+    end --]]
     
     return MonstersInArkham
 end
@@ -383,187 +393,13 @@ function GetTerrorLevel()
     
 end
 
-function GetNumberGates()
-    
-    GlobalVariables = getObjectFromGUID(GlobalVariablesId)
-    local ScriptingZonesTable =  GlobalVariables.call('getArkhamScriptingZones')
-    
-    local GatesInArkham = 0
-    
-    -- A total of 35 Zones + Sky
-    for _, zoneId in pairs(ScriptingZonesTable) do
-        
-        local zone = getObjectFromGUID(zoneId)
-        --Get All objects from the selected Scripting Zone
-        local objectsInZone = zone.getObjects()
-        
-        -- There aren't that many Objects in each zone, so, this is not too heavy
-        -- I hope......
-        for _, obj in pairs(objectsInZone) do
-            if obj.getDescription() == 'Gate Marker' then
-                GatesInArkham = GatesInArkham + 1
-            end
-        end
-    end
-    
-    local GlobalVariables = getObjectFromGUID(GlobalVariablesId)
-    local InnsmouthSet = GlobalVariables.call('isInnsmouthSet')
-    local DunwichSet = GlobalVariables.call('isDunwichSet')
-    
-    local ScriptingZonesExpansions = getObjectFromGUID('70a568')
-    
-    if InnsmouthSet == true then
-        
-        local InnsmouthScrZoneMarshRefineryId = ScriptingZonesExpansions.call('getInnsmouthScrZoneMarshRefineryid')
-        local InnsmouthScrZoneMarshRefinery = getObjectFromGUID(InnsmouthScrZoneMarshRefineryId)
-        local InnsmouthScrZoneMarshRefineryObj = ''
-        if InnsmouthScrZoneMarshRefinery ~= nil then
-            InnsmouthScrZoneMarshRefineryObj = InnsmouthScrZoneMarshRefinery.getObjects()
-        end
-        
-        if InnsmouthScrZoneMarshRefineryObj ~= nil then
-            for _, obj in pairs(InnsmouthScrZoneMarshRefineryObj) do
-                if obj.getDescription() == 'Gate Marker' then
-                    GatesInArkham = GatesInArkham + 1
-                end
-            end
-        end
-        
-        local InnsmouthScrZoneEsotericDagonId = ScriptingZonesExpansions.call('getInnsmouthScrZoneEsotericDagonid')
-        local InnsmouthScrZoneEsotericDagon = getObjectFromGUID(InnsmouthScrZoneEsotericDagonId)
-        local InnsmouthScrZoneEsotericDagonObj = ''
-        
-        if InnsmouthScrZoneEsotericDagon ~= nil then
-            InnsmouthScrZoneEsotericDagonObj = InnsmouthScrZoneEsotericDagon.getObjects()
-        end
-        
-        if InnsmouthScrZoneEsotericDagonObj ~= nil then
-            for _, obj in pairs(InnsmouthScrZoneEsotericDagonObj) do
-                if obj.getDescription() == 'Gate Marker' then
-                    GatesInArkham = GatesInArkham + 1
-                end
-            end
-        end
-        
-        local InnsmouthScrZoneDevilReefId = ScriptingZonesExpansions.call('getInnsmouthScrZoneDevilReefid')
-        local InnsmouthScrZoneDevilReef = getObjectFromGUID(InnsmouthScrZoneDevilReefId)
-        local InnsmouthScrZoneDevilReefObj = ''
-
-
-        if InnsmouthScrZoneDevilReef ~= nil then
-            InnsmouthScrZoneDevilReefObj = InnsmouthScrZoneDevilReef.getObjects()
-        end
-        
-        if InnsmouthScrZoneDevilReefObj ~= nil then
-            for _, obj in pairs(InnsmouthScrZoneDevilReefObj) do
-                if obj.getDescription() == 'Gate Marker' then
-                    GatesInArkham = GatesInArkham + 1
-                end
-            end
-        end
-        
-        local InnsmouthScrZoneYhaNthleiId = ScriptingZonesExpansions.call('getInnsmouthScrZoneYhaNthleiid')
-        local InnsmouthScrZoneYhaNthlei = getObjectFromGUID(InnsmouthScrZoneYhaNthleiId)
-        local InnsmouthScrZoneYhaNthleiObj = ''
-        
-        if InnsmouthScrZoneYhaNthlei ~= nil then
-            InnsmouthScrZoneYhaNthleiObj = InnsmouthScrZoneYhaNthlei.getObjects()
-        end
-        
-        if InnsmouthScrZoneYhaNthleiObj ~= nil then
-            for _, obj in pairs(InnsmouthScrZoneYhaNthleiObj) do
-                if obj.getDescription() == 'Gate Marker' then
-                    GatesInArkham = GatesInArkham + 1
-                end
-            end
-        end
-    end
-    
-    if DunwichSet == true then
-        
-        local DunwichScrZoneWhateleyFarmId = ScriptingZonesExpansions.call('getDunwichScrZoneWhateleyFarmid')
-        local DunwichScrZoneWhateleyFarm = getObjectFromGUID(DunwichScrZoneWhateleyFarmId)
-        local DunwichScrZoneWhateleyFarmObj = ''
-
-        if DunwichScrZoneWhateleyFarm ~= nil then
-            DunwichScrZoneWhateleyFarmObj = DunwichScrZoneWhateleyFarm.getObjects()
-        end
-        
-        if DunwichScrZoneWhateleyFarmObj ~= nil then
-            for _, obj in pairs(DunwichScrZoneWhateleyFarmObj) do
-                if obj.getDescription() == 'Gate Marker' then
-                    GatesInArkham = GatesInArkham + 1
-                end
-            end
-        end
-        
-        local DunwichScrZoneWizardsHillId = ScriptingZonesExpansions.call('getDunwichScrZoneWizardsHillid')
-        local DunwichScrZoneWizardsHill = getObjectFromGUID(DunwichScrZoneWizardsHillId)
-        local DunwichScrZoneWizardsHillObj = ''
-        
-        if DunwichScrZoneWizardsHill ~= nil then
-            DunwichScrZoneWizardsHillObj = DunwichScrZoneWizardsHill.getObjects()
-        end
-        
-        if DunwichScrZoneWizardsHillObj ~= nil then
-            for _, obj in pairs(DunwichScrZoneWizardsHillObj) do
-                if obj.getDescription() == 'Gate Marker' then
-                    GatesInArkham = GatesInArkham + 1
-                end
-            end
-        end
-        
-        local DunwichScrZoneColdSpringId = ScriptingZonesExpansions.call('getDunwichScrZoneColdSpringid')
-        local DunwichScrZoneColdSpring = getObjectFromGUID(DunwichScrZoneColdSpringId)
-        local DunwichScrZoneColdSpringObj = ''
-        
-        if DunwichScrZoneColdSpring ~= nil then
-            DunwichScrZoneColdSpringObj = DunwichScrZoneColdSpring.getObjects()
-        end
-        
-        if DunwichScrZoneColdSpringObj ~= nil then
-            for _, obj in pairs(DunwichScrZoneColdSpringObj) do
-                if obj.getDescription() == 'Gate Marker' then
-                    GatesInArkham = GatesInArkham + 1
-                end
-            end
-        end
-        
-        local DunwichScrZoneGardnersPlaceId = ScriptingZonesExpansions.call('getDunwichScrZoneGardnersPlaceid')
-        local DunwichScrZoneGardnersPlace = getObjectFromGUID(DunwichScrZoneGardnersPlaceId)
-        local DunwichScrZoneGardnersPlaceObj = ''
-        
-        if DunwichScrZoneGardnersPlace ~= nil then
-            DunwichScrZoneGardnersPlaceObj = DunwichScrZoneGardnersPlace.getObjects()
-        end
-        
-        if DunwichScrZoneGardnersPlaceObj ~= nil then
-            for _, obj in pairs(DunwichScrZoneGardnersPlaceObj) do
-                if obj.getDescription() == 'Gate Marker' then
-                    GatesInArkham = GatesInArkham + 1
-                end
-            end
-        end
-        
-        local DunwichScrZoneDevilsHopyardId = ScriptingZonesExpansions.call('getDunwichScrZoneDevilsHopyardid')
-        local DunwichScrZoneDevilsHopyard = getObjectFromGUID(DunwichScrZoneDevilsHopyardId)
-        local DunwichScrZoneDevilsHopyardObj = ''
-        
-        if DunwichScrZoneDevilsHopyard ~= nil then
-            DunwichScrZoneDevilsHopyardObj = DunwichScrZoneDevilsHopyard.getObjects()
-        end
-        
-        if DunwichScrZoneDevilsHopyardObj ~= nil then
-            for _, obj in pairs(DunwichScrZoneDevilsHopyardObj) do
-                if obj.getDescription() == 'Gate Marker' then
-                    GatesInArkham = GatesInArkham + 1
-                end
-            end
-        end
-    end
-    
+function GetNumberGates() 
     return GatesInArkham
     
+end
+
+function GetElderSign()
+    return ElderSign
 end
 
 function GetNumberKingsportHorror()
@@ -625,8 +461,226 @@ function GetNumberKingsportHorror()
     KingsportArray[1] = RiftProgressTokens1
     KingsportArray[2] = RiftProgressTokens2
     KingsportArray[3] = RiftProgressTokens3
-
+    
     return KingsportArray
+    
+end
+
+function GetAllStuffInScritpingZones()
+    
+    local ScriptingZonesTable =  GlobalVariables.call('getArkhamScriptingZones')
+    
+    MonstersInArkham = 0
+    GatesInArkham = 0
+    ElderSign = 0
+    
+    -- A total of 35 Zones + Sky
+    for _, zoneId in pairs(ScriptingZonesTable) do
+        
+        local zone = getObjectFromGUID(zoneId)
+        
+        --Get All objects from the selected Scripting Zone
+        local objectsInZone = zone.getObjects()
+        
+        -- There aren't that many Objects in each zone, so, this is not too heavy
+        -- I hope......
+        for _, obj in pairs(objectsInZone) do
+            if obj.getDescription() == 'Monster' then
+                MonstersInArkham = MonstersInArkham + 1
+            end
+            
+            if obj.getDescription() == 'Gate Marker' then
+                GatesInArkham = GatesInArkham + 1
+            end
+            
+            if obj.getName() == 'Doom Token' then
+                ElderSign = ElderSign + 1
+            end
+        end
+    end
+    
+    local GlobalVariables = getObjectFromGUID(GlobalVariablesId)
+    local InnsmouthSet = GlobalVariables.call('isInnsmouthSet')
+    local DunwichSet = GlobalVariables.call('isDunwichSet')
+    
+    local ScriptingZonesExpansions = getObjectFromGUID('70a568')
+    
+    if InnsmouthSet == true then
+        
+        local InnsmouthScrZoneMarshRefineryId = ScriptingZonesExpansions.call('getInnsmouthScrZoneMarshRefineryid')
+        local InnsmouthScrZoneMarshRefinery = getObjectFromGUID(InnsmouthScrZoneMarshRefineryId)
+        local InnsmouthScrZoneMarshRefineryObj = ''
+        if InnsmouthScrZoneMarshRefinery ~= nil then
+            InnsmouthScrZoneMarshRefineryObj = InnsmouthScrZoneMarshRefinery.getObjects()
+        end
+        
+        if InnsmouthScrZoneMarshRefineryObj ~= nil then
+            for _, obj in pairs(InnsmouthScrZoneMarshRefineryObj) do
+                if obj.getDescription() == 'Gate Marker' then
+                    GatesInArkham = GatesInArkham + 1
+                end
+                if obj.getName() == 'Doom Token' then
+                    ElderSign = ElderSign + 1
+                end                
+            end
+        end
+        
+        local InnsmouthScrZoneEsotericDagonId = ScriptingZonesExpansions.call('getInnsmouthScrZoneEsotericDagonid')
+        local InnsmouthScrZoneEsotericDagon = getObjectFromGUID(InnsmouthScrZoneEsotericDagonId)
+        local InnsmouthScrZoneEsotericDagonObj = ''
+        
+        if InnsmouthScrZoneEsotericDagon ~= nil then
+            InnsmouthScrZoneEsotericDagonObj = InnsmouthScrZoneEsotericDagon.getObjects()
+        end
+        
+        if InnsmouthScrZoneEsotericDagonObj ~= nil then
+            for _, obj in pairs(InnsmouthScrZoneEsotericDagonObj) do
+                if obj.getDescription() == 'Gate Marker' then
+                    GatesInArkham = GatesInArkham + 1
+                end
+                if obj.getName() == 'Doom Token' then
+                    ElderSign = ElderSign + 1
+                end
+            end
+        end
+        
+        local InnsmouthScrZoneDevilReefId = ScriptingZonesExpansions.call('getInnsmouthScrZoneDevilReefid')
+        local InnsmouthScrZoneDevilReef = getObjectFromGUID(InnsmouthScrZoneDevilReefId)
+        local InnsmouthScrZoneDevilReefObj = ''
+        
+        
+        if InnsmouthScrZoneDevilReef ~= nil then
+            InnsmouthScrZoneDevilReefObj = InnsmouthScrZoneDevilReef.getObjects()
+        end
+        
+        if InnsmouthScrZoneDevilReefObj ~= nil then
+            for _, obj in pairs(InnsmouthScrZoneDevilReefObj) do
+                if obj.getDescription() == 'Gate Marker' then
+                    GatesInArkham = GatesInArkham + 1
+                end
+                if obj.getName() == 'Doom Token' then
+                    ElderSign = ElderSign + 1
+                end
+            end
+        end
+        
+        local InnsmouthScrZoneYhaNthleiId = ScriptingZonesExpansions.call('getInnsmouthScrZoneYhaNthleiid')
+        local InnsmouthScrZoneYhaNthlei = getObjectFromGUID(InnsmouthScrZoneYhaNthleiId)
+        local InnsmouthScrZoneYhaNthleiObj = ''
+        
+        if InnsmouthScrZoneYhaNthlei ~= nil then
+            InnsmouthScrZoneYhaNthleiObj = InnsmouthScrZoneYhaNthlei.getObjects()
+        end
+        
+        if InnsmouthScrZoneYhaNthleiObj ~= nil then
+            for _, obj in pairs(InnsmouthScrZoneYhaNthleiObj) do
+                if obj.getDescription() == 'Gate Marker' then
+                    GatesInArkham = GatesInArkham + 1
+                end
+                if obj.getName() == 'Doom Token' then
+                    ElderSign = ElderSign + 1
+                end
+            end
+        end
+    end
+    
+    if DunwichSet == true then
+        
+        local DunwichScrZoneWhateleyFarmId = ScriptingZonesExpansions.call('getDunwichScrZoneWhateleyFarmid')
+        local DunwichScrZoneWhateleyFarm = getObjectFromGUID(DunwichScrZoneWhateleyFarmId)
+        local DunwichScrZoneWhateleyFarmObj = ''
+        
+        if DunwichScrZoneWhateleyFarm ~= nil then
+            DunwichScrZoneWhateleyFarmObj = DunwichScrZoneWhateleyFarm.getObjects()
+        end
+        
+        if DunwichScrZoneWhateleyFarmObj ~= nil then
+            for _, obj in pairs(DunwichScrZoneWhateleyFarmObj) do
+                if obj.getDescription() == 'Gate Marker' then
+                    GatesInArkham = GatesInArkham + 1
+                end
+                if obj.getName() == 'Doom Token' then
+                    ElderSign = ElderSign + 1
+                end
+            end
+        end
+        
+        local DunwichScrZoneWizardsHillId = ScriptingZonesExpansions.call('getDunwichScrZoneWizardsHillid')
+        local DunwichScrZoneWizardsHill = getObjectFromGUID(DunwichScrZoneWizardsHillId)
+        local DunwichScrZoneWizardsHillObj = ''
+        
+        if DunwichScrZoneWizardsHill ~= nil then
+            DunwichScrZoneWizardsHillObj = DunwichScrZoneWizardsHill.getObjects()
+        end
+        
+        if DunwichScrZoneWizardsHillObj ~= nil then
+            for _, obj in pairs(DunwichScrZoneWizardsHillObj) do
+                if obj.getDescription() == 'Gate Marker' then
+                    GatesInArkham = GatesInArkham + 1
+                end
+                if obj.getName() == 'Doom Token' then
+                    ElderSign = ElderSign + 1
+                end
+            end
+        end
+        
+        local DunwichScrZoneColdSpringId = ScriptingZonesExpansions.call('getDunwichScrZoneColdSpringid')
+        local DunwichScrZoneColdSpring = getObjectFromGUID(DunwichScrZoneColdSpringId)
+        local DunwichScrZoneColdSpringObj = ''
+        
+        if DunwichScrZoneColdSpring ~= nil then
+            DunwichScrZoneColdSpringObj = DunwichScrZoneColdSpring.getObjects()
+        end
+        
+        if DunwichScrZoneColdSpringObj ~= nil then
+            for _, obj in pairs(DunwichScrZoneColdSpringObj) do
+                if obj.getDescription() == 'Gate Marker' then
+                    GatesInArkham = GatesInArkham + 1
+                end
+                if obj.getName() == 'Doom Token' then
+                    ElderSign = ElderSign + 1
+                end
+            end
+        end
+        
+        local DunwichScrZoneGardnersPlaceId = ScriptingZonesExpansions.call('getDunwichScrZoneGardnersPlaceid')
+        local DunwichScrZoneGardnersPlace = getObjectFromGUID(DunwichScrZoneGardnersPlaceId)
+        local DunwichScrZoneGardnersPlaceObj = ''
+        
+        if DunwichScrZoneGardnersPlace ~= nil then
+            DunwichScrZoneGardnersPlaceObj = DunwichScrZoneGardnersPlace.getObjects()
+        end
+        
+        if DunwichScrZoneGardnersPlaceObj ~= nil then
+            for _, obj in pairs(DunwichScrZoneGardnersPlaceObj) do
+                if obj.getDescription() == 'Gate Marker' then
+                    GatesInArkham = GatesInArkham + 1
+                end
+                if obj.getName() == 'Doom Token' then
+                    ElderSign = ElderSign + 1
+                end
+            end
+        end
+        
+        local DunwichScrZoneDevilsHopyardId = ScriptingZonesExpansions.call('getDunwichScrZoneDevilsHopyardid')
+        local DunwichScrZoneDevilsHopyard = getObjectFromGUID(DunwichScrZoneDevilsHopyardId)
+        local DunwichScrZoneDevilsHopyardObj = ''
+        
+        if DunwichScrZoneDevilsHopyard ~= nil then
+            DunwichScrZoneDevilsHopyardObj = DunwichScrZoneDevilsHopyard.getObjects()
+        end
+        
+        if DunwichScrZoneDevilsHopyardObj ~= nil then
+            for _, obj in pairs(DunwichScrZoneDevilsHopyardObj) do
+                if obj.getDescription() == 'Gate Marker' then
+                    GatesInArkham = GatesInArkham + 1
+                end
+                if obj.getName() == 'Doom Token' then
+                    ElderSign = ElderSign + 1
+                end
+            end
+        end
+    end
     
 end
 

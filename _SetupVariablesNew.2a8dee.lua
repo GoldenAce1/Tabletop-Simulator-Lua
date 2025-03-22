@@ -374,14 +374,14 @@ local Dunwich_Unstable_Solo = {
 }
 
 local Player_Starting_Position = {
-    ['Ma\'s Boarding House'] = {22.12, 0.73, 0.46},
+    ['Ma\'s Boarding House'] = {22.12, 0.74, 0.46},
     ['Arkham Asylum'] = {-10.23, 0.78, -9.80},
     ['South Church'] = {27.78, 0.73, -1.49},
     ['Administration'] = {17.73, 0.73, -20.19},
-    ['River Docks'] = {4.13, 1.05, -15.68},
+    ['River Docks'] = {7.20, 0.75, -23.02},
     ['Ye Olde Magick Shoppe'] = {28.11, 0.72, -19.44},
-    ['Curiositie Shoppe'] = {28.11, 0.72, -19.44},
-    ['Train Station'] = {-11.18, 0.77, -19.92},
+    ['Curiositie Shoppe'] = {-2.71, 0.76, -22.99},
+    ['Train Station'] = {-11.18, 0.78, -19.92},
     ['St. Mary\'s Hospital'] = {23.14, 0.73, -23.02},
     ['Police Station'] = {-0.87, 0.77, -0.44},
     ['Bank of Arkham'] = {-10.46, 0.78, -14.89},
