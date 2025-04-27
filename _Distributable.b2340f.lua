@@ -521,7 +521,7 @@ function PerformMadnessDiscard(obj)
     local GlobalVariables = getObjectFromGUID(GlobalVariablesId)
     local MadnessDiscardPosition = GlobalVariables.call('getBoardMadnessDiscard')
     obj.setPosition({MadnessDiscardPosition[1], MadnessDiscardPosition[2] + 3, MadnessDiscardPosition[3]})
-    obj.setRotation({0,0,0})
+    obj.setRotation({0,90,0})
 end
 
 function PerformMonsterDiscard(obj)
@@ -838,10 +838,11 @@ function DistributeStuffInTrash(obj)
                     guid = card.guid,
                     smooth = false
                 })
-                DiscardableByDescription(item)
+                return DiscardableByDescription(item)
             end                    
         end
     else
+        return 
         DiscardableByDescription(obj)
     end
 end 
@@ -853,144 +854,21 @@ function DiscardableByDescription(obj)
     
     local discardable = getDiscardableByDescription(switch_Discardable, description)
     
-    
     if discardable == false then
         
-        if description == "Special" then
-            PerformSpecialDiscard(obj)
-        end
-        if description == "Condition" then
-            PerformConditionDiscard(obj)
-        end
-        if objname == "Dunwich Horror" then
-            PerformDunwichHorrorCardDiscard(obj)
-        end        
-        if description == "Cult Encounter" then
-            PerformCultEncounterDiscard(obj)
-        end
-        if description == "Relationship" then
-            PerformRelationshipDiscard(obj)
-        end
-        if description == "Magical Effect" then
-            PerformMagicalEffectDiscard(obj)
-        end
-        
-        if description == "Detriments" then
-            PerformDetrimentsDiscard(obj)
-        end
-        if description == "Benefits" then
-            PerformBenefitsDiscard(obj)
-        end
-        if description == "Corruption" then
-            PerformCorruptionDiscard(obj)
-        end
-        if description == "Exhibit Items" then
-            PerformExhibitItemsDiscard(obj)
-        end
-        if description == "Exhibit Encounter" then
-            PerformExhibitEncounterDiscard(obj)
-        end
-        if description == "Common Item" then
-            PerformCommonItemsDiscard(obj)
-        end
-        if description == "Unique Item" then
-            PerformUniqueItemsDiscard(obj)
-        end
-        if description == "Spell" then
-            PerformSpellDiscard(obj)
-        end
-        if description == "Skill" then
-            PerformSkillDiscard(obj)
-        end
-        if description == "Ally" then
-            PerformAllyDiscard(obj)
-        end
-        if description == "Injury" then
-            PerformInjuryDiscard(obj)
-        end
-        if description == "Madness" then
-            PerformMadnessDiscard(obj)
-        end
-        if description == "Gate Marker" then
-            PerformGateDiscard(obj)
-        end
-        if description == "Monster" then
-            PerformMonsterDiscard(obj)
-        end
-        if description == "Green"  or
-        description == "Blue"  or
-        description == "Yellow"  or
-        description == "Red"  or
-        description == "RedGreen"  or
-        description == "RedYellow"  or
-        description == "BlueYellow"
-        then
-            PerformGateDeckDiscard(obj)
-        end
-        
-        if description == "Southside" or objname == "Southside" then
-            PerformSouthsideDeckDiscard(obj)
-        end
-        if description == "Uptown" or objname == "Uptown" then
-            PerformUptownDeckDiscard(obj)
-        end
-        if description == "French Hill" or objname == "French Hill" then
-            PerformFrenchHillDeckDiscard(obj)
-        end
-        if description == "Miskatonic University" or objname == "Miskatonic University" then
-            PerformMiskatonicUniversityDeckDiscard(obj)
-        end
-        if description == "Rivertown" or objname == "Rivertown" then
-            PerformRivertownDeckDiscard(obj)
-        end
-        if description == "Merchant District" or objname == "Merchant District" then
-            PerformMerchantDistrictDeckDiscard(obj)
-        end
-        if description == "Easttown" or objname == "Easttown" then
-            PerformEasttownDeckDiscard(obj)
-        end
-        if description == "Downtown" or objname == "Downtown" then
-            PerformDowntownDeckDiscard(obj)
-        end
-        if description == "Northside" or objname == "Northside" then
-            PerformNorthsideDeckDiscard(obj)
-        end
-        if description == "Factory District" or objname == "Factory District" then
-            PerformFactoryDistrictDeckDiscard(obj)
-        end
-        if description == "Church Green" or objname == "Church Green" then
-            PerformChurchGreenDeckDiscard(obj)
-        end
-        if description == "Innsmouth Shore" or objname == "Innsmouth Shore" then
-            PerformInnsmouthShoreDeckDiscard(obj)
-        end
-        if description == "Village Commons" or objname == "Village Commons" then
-            PerformVillageCommonsDeckDiscard(obj)
-        end
-        if description == "Blasted Heath" or objname == "Blasted Heath" then
-            PerformBlastedHeathDeckDiscard(obj)
-        end
-        if description == "Backwoods Country" or objname == "Backwoods Country" then
-            PerformBackwoodsCountryDeckDiscard(obj)
-        end
-        if description == "Central Hill" or objname == "Central Hill" then
-            PerformCentralHillDeckDiscard(obj)
-        end
-        if description == "South Shore" or objname == "South Shore" then
-            PerformSouthShoreDeckDiscard(obj)
-        end
-        if description == "Harborside" or objname == "Harborside" then
-            PerformHarborsideDeckDiscard(obj)
-        end
-        if description == "Kingsport Head" or objname == "Kingsport Head" then
-            PerformKingsportHeadDeckDiscard(obj)
-        end
+        DistributableByDescription(obj)
         
         return false
     else
-        -- We don't want our beautiful table in the trash, hence sending all
-        -- Other non-locked objects to Oblivion
-        -- Same applies to the wonderful Player Mats!
+        
+        local discardable = getDiscardableByDescription(switch_Discardable, objname)
+        
+        if discardable == false then       
+            DistributableByDescription(obj)
+            
+            return false
+        end
+        
         if obj.getGUID() ~= '4ee1f2'
         and obj.getName() ~= 'Player Mat'
         and obj.type ~= 'Figurine'
@@ -998,10 +876,151 @@ function DiscardableByDescription(obj)
         and obj.type ~= 'Generic'  then
             return true
         else
+            -- We don't want our beautiful table in the trash, hence sending all
+            -- Other non-locked objects to Oblivion
+            -- Same applies to the wonderful Player Mats!            
             return false
         end
     end
 end
+
+function DistributableByDescription(obj)
+    
+    local description = obj.getDescription()
+    local objname = obj.getName()
+    
+    if description == "Special" then
+        PerformSpecialDiscard(obj)
+    end
+    if description == "Condition" then
+        PerformConditionDiscard(obj)
+    end
+    if objname == "Dunwich Horror" then
+        PerformDunwichHorrorCardDiscard(obj)
+    end        
+    if description == "Cult Encounter" then
+        PerformCultEncounterDiscard(obj)
+    end
+    if description == "Relationship" then
+        PerformRelationshipDiscard(obj)
+    end
+    if description == "Magical Effect" then
+        PerformMagicalEffectDiscard(obj)
+    end
+    
+    if description == "Detriments" then
+        PerformDetrimentsDiscard(obj)
+    end
+    if description == "Benefits" then
+        PerformBenefitsDiscard(obj)
+    end
+    if description == "Corruption" then
+        PerformCorruptionDiscard(obj)
+    end
+    if description == "Exhibit Items" then
+        PerformExhibitItemsDiscard(obj)
+    end
+    if description == "Exhibit Encounter" then
+        PerformExhibitEncounterDiscard(obj)
+    end
+    if description == "Common Item" then
+        PerformCommonItemsDiscard(obj)
+    end
+    if description == "Unique Item" then
+        PerformUniqueItemsDiscard(obj)
+    end
+    if description == "Spell" then
+        PerformSpellDiscard(obj)
+    end
+    if description == "Skill" then
+        PerformSkillDiscard(obj)
+    end
+    if description == "Ally" then
+        PerformAllyDiscard(obj)
+    end
+    if description == "Injury" then
+        PerformInjuryDiscard(obj)
+    end
+    if description == "Madness" then
+        PerformMadnessDiscard(obj)
+    end
+    if description == "Gate Marker" then
+        PerformGateDiscard(obj)
+    end
+    if description == "Monster" then
+        PerformMonsterDiscard(obj)
+    end
+    
+    if description == "Green"  or
+    description == "Blue"  or
+    description == "Yellow"  or
+    description == "Red"  or
+    description == "RedGreen"  or
+    description == "RedYellow"  or
+    description == "BlueYellow"
+    then
+        PerformGateDeckDiscard(obj)
+    end
+    
+    if description == "Southside" or objname == "Southside" then
+        PerformSouthsideDeckDiscard(obj)
+    end
+    if description == "Uptown" or objname == "Uptown" then
+        PerformUptownDeckDiscard(obj)
+    end
+    if description == "French Hill" or objname == "French Hill" then
+        PerformFrenchHillDeckDiscard(obj)
+    end
+    if description == "Miskatonic University" or objname == "Miskatonic University" then
+        PerformMiskatonicUniversityDeckDiscard(obj)
+    end
+    if description == "Rivertown" or objname == "Rivertown" then
+        PerformRivertownDeckDiscard(obj)
+    end
+    if description == "Merchant District" or objname == "Merchant District" then
+        PerformMerchantDistrictDeckDiscard(obj)
+    end
+    if description == "Easttown" or objname == "Easttown" then
+        PerformEasttownDeckDiscard(obj)
+    end
+    if description == "Downtown" or objname == "Downtown" then
+        PerformDowntownDeckDiscard(obj)
+    end
+    if description == "Northside" or objname == "Northside" then
+        PerformNorthsideDeckDiscard(obj)
+    end
+    if description == "Factory District" or objname == "Factory District" then
+        PerformFactoryDistrictDeckDiscard(obj)
+    end
+    if description == "Church Green" or objname == "Church Green" then
+        PerformChurchGreenDeckDiscard(obj)
+    end
+    if description == "Innsmouth Shore" or objname == "Innsmouth Shore" then
+        PerformInnsmouthShoreDeckDiscard(obj)
+    end
+    if description == "Village Commons" or objname == "Village Commons" then
+        PerformVillageCommonsDeckDiscard(obj)
+    end
+    if description == "Blasted Heath" or objname == "Blasted Heath" then
+        PerformBlastedHeathDeckDiscard(obj)
+    end
+    if description == "Backwoods Country" or objname == "Backwoods Country" then
+        PerformBackwoodsCountryDeckDiscard(obj)
+    end
+    if description == "Central Hill" or objname == "Central Hill" then
+        PerformCentralHillDeckDiscard(obj)
+    end
+    if description == "South Shore" or objname == "South Shore" then
+        PerformSouthShoreDeckDiscard(obj)
+    end
+    if description == "Harborside" or objname == "Harborside" then
+        PerformHarborsideDeckDiscard(obj)
+    end
+    if description == "Kingsport Head" or objname == "Kingsport Head" then
+        PerformKingsportHeadDeckDiscard(obj)
+    end
+end
+
 
 -- For Coroutines, waits X frames
 function waitFrames(frames)

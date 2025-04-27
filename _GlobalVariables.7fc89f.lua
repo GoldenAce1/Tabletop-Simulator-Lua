@@ -61,8 +61,8 @@ local Board_Unique_Item_Discard = {32.18, 0.68, -6.85}
 local Board_Spell_Discard = {32.18, 0.68, -1.02}
 local Board_Skill_Discard = {32.18, 0.69, 5.00}
 local Board_Ally_Discard = {32.18, 0.69, 10.64}
-local Board_Injury_Discard = {32.18, 0.69, 16.32}
-local Board_Madness_Discard = {32.18, 0.69, 22.10}
+local Board_Injury_Discard = {40.12, 0.58, 13.28}
+local Board_Madness_Discard = {45.44, 0.57, 13.17}
 
 local Board_Bless_Curse_Discard = {20.36, 1.01, 15.50}
 local Board_Deputy_Discard = {20.44, 1.01, 18.29}
