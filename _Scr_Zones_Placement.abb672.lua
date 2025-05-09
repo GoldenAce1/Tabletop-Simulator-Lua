@@ -1131,15 +1131,6 @@ function PlaceDunwichScrZones()
 
     local DunwichScrzoneSheldonzone_GUID = SpawnScriptingZone(DunwichScrzoneSheldonpos, DunwichScrzoneSheldonScale,DunwichScrzoneSheldonRotation, false, false )    
     
---[[     local DunwichScrzoneSheldonzone = spawnObject({
-        type              = 'ScriptingTrigger', -- ScriptingTrigger is a scripting zone
-        position          = DunwichScrzoneSheldonpos,
-        scale             = {DunwichScrzoneSheldonScale[1],DunwichScrzoneSheldonScale[2],DunwichScrzoneSheldonScale[3]}, -- or whatever you want
-        rotation          = {DunwichScrzoneSheldonRotation[1],DunwichScrzoneSheldonRotation[2],DunwichScrzoneSheldonRotation[3]},
-        sound             = false,
-        snap_to_grid      = false
-    })
-    local DunwichScrzoneSheldonzone_GUID = DunwichScrzoneSheldonzone.getGUID() --]]
     ScrZoneExpansions.call('setDunwichScrzoneSheldonid', DunwichScrzoneSheldonzone_GUID)
     
     local DunwichScrzoneConditionpos = ScrZoneExpansions.call('getDunwichScrzoneConditionpos')
@@ -1148,15 +1139,6 @@ function PlaceDunwichScrZones()
 
     local DunwichScrzoneCondition_GUID = SpawnScriptingZone(DunwichScrzoneConditionpos, DunwichScrzoneConditionScale,DunwichScrzoneConditionRotation, false, false )
 
---[[     local DunwichScrzoneConditionzone = spawnObject({
-        type              = 'ScriptingTrigger', -- ScriptingTrigger is a scripting zone
-        position          = DunwichScrzoneConditionpos,
-        scale             = {DunwichScrzoneConditionScale[1],DunwichScrzoneConditionScale[2],DunwichScrzoneConditionScale[3]}, -- or whatever you want
-        rotation          = {DunwichScrzoneConditionRotation[1],DunwichScrzoneConditionRotation[2],DunwichScrzoneConditionRotation[3]},
-        sound             = false,
-        snap_to_grid      = false
-    })
-    local DunwichScrzoneCondition_GUID = DunwichScrzoneConditionzone.getGUID() --]]
     ScrZoneExpansions.call('setDunwichScrzoneConditionid', DunwichScrzoneCondition_GUID)
     
     local DunwichScrzoneRailpos = ScrZoneExpansions.call('getDunwichScrzoneRailpos')
@@ -1165,18 +1147,31 @@ function PlaceDunwichScrZones()
     
     local DunwichScrzoneRail_GUID = SpawnScriptingZone(DunwichScrzoneRailpos, DunwichScrzoneRailScale,DunwichScrzoneRailRotation, false, false )
 
---[[     local DunwichScrzoneRailzone = spawnObject({
-        type              = 'ScriptingTrigger', -- ScriptingTrigger is a scripting zone
-        position          = DunwichScrzoneRailpos,
-        scale             = {DunwichScrzoneRailScale[1],DunwichScrzoneRailScale[2],DunwichScrzoneRailScale[3]}, -- or whatever you want
-        rotation          = {DunwichScrzoneRailRotation[1],DunwichScrzoneRailRotation[2],DunwichScrzoneRailRotation[3]},
-        sound             = false,
-        snap_to_grid      = false
-    })
-    local DunwichScrzoneRail_GUID = DunwichScrzoneRailzone.getGUID() --]]
     ScrZoneExpansions.call('setDunwichScrzoneRailid', DunwichScrzoneRail_GUID)
     
 end
 
+function PlacePharaohScrZones() 
+    
+    ScrZoneExpansions = getObjectFromGUID('70a568')
+
+    local PharaohScrzoneBenefitspos = ScrZoneExpansions.call('getPharaohScrzoneBenefitsPos')
+    local PharaohScrzoneBenefitsScale = ScrZoneExpansions.call('getPharaohScrzoneBenefitsSca')
+    local PharaohScrzoneBenefitsRotation = ScrZoneExpansions.call('getSpecialRotation')
+
+    local PharaohScrzoneBenefits_GUID = SpawnScriptingZone(PharaohScrzoneBenefitspos, PharaohScrzoneBenefitsScale, PharaohScrzoneBenefitsRotation, false, false )
+
+    ScrZoneExpansions.call('setPharaohScrzoneBenefitsid', PharaohScrzoneBenefits_GUID)
+
+    ScrZoneExpansions = getObjectFromGUID('70a568')
+
+    local PharaohScrzoneDetrimentspos = ScrZoneExpansions.call('getPharaohScrzoneDetrimentsPos')
+    local PharaohScrzoneDetrimentScale = ScrZoneExpansions.call('getPharaohScrzoneDetrimentsSca')
+    local PharaohScrzoneDetrimentRotation = ScrZoneExpansions.call('getSpecialRotation')
+
+    local PharaohScrzoneBenefits_GUID = SpawnScriptingZone(PharaohScrzoneDetrimentspos, PharaohScrzoneDetrimentScale, PharaohScrzoneDetrimentRotation, false, false )
+
+    ScrZoneExpansions.call('setPharaohScrzoneDetrimentsid', PharaohScrzoneBenefits_GUID)
+end
 
 require("SpawnItems")

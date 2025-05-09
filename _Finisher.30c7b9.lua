@@ -356,6 +356,10 @@ end
 
 function UnstableLocations()
 
+    local InnsmouthSet = GlobalVariables.call('isInnsmouthSet')
+    local KingsportSet = GlobalVariables.call('isKingsportSet')
+    local DunwichSet = GlobalVariables.call('isDunwichSet')
+
     --Placing Arkham unstable Locations
     local SetupVariablesNew = getObjectFromGUID('2a8dee')
 
@@ -543,6 +547,10 @@ function CreateScriptZonesExpansions()
 
     if InnsmouthSet == true then
         ScrZoneExpansionsPlacement.call('PlaceInnsmouthScrZones')
+    end
+
+    if PharaohSet == true then
+        ScrZoneExpansionsPlacement.call('PlacePharaohScrZones')
     end
 
 end

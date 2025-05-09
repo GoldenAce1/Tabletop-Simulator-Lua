@@ -3,7 +3,7 @@ function SpawnDunwichLabels()
     -- Backwoods Country
 
     local text = spawnObject({
-        position = {7.45, 0.67, -36.24},
+        position = {7.45, 0.48, -36.24},
         rotation = {90.00, 270.27, 0.00},
         type = '3DText'
     })
@@ -14,7 +14,7 @@ function SpawnDunwichLabels()
     -- Village Commons 
 
     local text = spawnObject({
-        position = {7.44, 0.67, -32.37},
+        position = {7.44, 0.48, -32.37},
         rotation = {90.00, 270.27, 0.00},
         type = '3DText'
     })
@@ -25,7 +25,7 @@ function SpawnDunwichLabels()
     -- Blasted Heath
 
     local text = spawnObject({
-        position = {7.53, 0.67, -28.27},
+        position = {7.53, 0.48, -28.27},
         rotation = {90.00, 270.27, 0.00},
         type = '3DText'
     })
@@ -36,7 +36,7 @@ function SpawnDunwichLabels()
     -- Dunwich Horror Deck
 
     local text = spawnObject({
-        position = {47.42, 0.67, 16.87},
+        position = {47.42, 0.48, 16.87},
         rotation = {90.00, 269.91, 0.00},
         type = '3DText'
     })
@@ -58,7 +58,7 @@ function SpawnDunwichLabels()
     -- Sheldon Gang
 
     local text = spawnObject({
-        position = {26.93, 0.67, 20.18},
+        position = {26.93, 0.48, 20.18},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -69,7 +69,7 @@ function SpawnDunwichLabels()
     -- Rail Pass
 
     local text = spawnObject({
-        position = {26.98, 0.67, 28.46},
+        position = {26.98, 0.48, 28.46},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -80,7 +80,7 @@ function SpawnDunwichLabels()
     -- Condition
 
     local text = spawnObject({
-        position = {27.14, 0.67, 24.54},
+        position = {27.14, 0.48, 24.54},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -95,7 +95,7 @@ function SpawnKingsportLabels()
     -- Central Hill
 
     local text = spawnObject({
-        position = {0.06, 0.67, -40.18},
+        position = {0.06, 0.48, -40.18},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -106,7 +106,7 @@ function SpawnKingsportLabels()
     -- South Shore
 
     local text = spawnObject({
-        position = {0.12, 0.67, -36.09},
+        position = {0.12, 0.48, -36.09},
         rotation = {90.00, 270.27, 0.00},
         type = '3DText'
     })
@@ -117,7 +117,7 @@ function SpawnKingsportLabels()
     -- Harborside
 
     local text = spawnObject({
-        position = {0.18, 0.67, -31.99},
+        position = {0.18, 0.48, -31.99},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -128,7 +128,7 @@ function SpawnKingsportLabels()
     -- Kingsport Head
 
     local text = spawnObject({
-        position = {0.24, 0.67, -28.15},
+        position = {0.24, 0.48, -28.15},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -139,7 +139,7 @@ function SpawnKingsportLabels()
     -- Changed
 
     local text = spawnObject({
-        position = {26.92, 0.67, 16.52},
+        position = {26.92, 0.48, 16.52},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -150,7 +150,7 @@ function SpawnKingsportLabels()
     -- Changed
 
     local text = spawnObject({
-        position = {26.91, 0.67, 12.68},
+        position = {26.91, 0.48, 12.68},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -165,7 +165,7 @@ function SpawnInnsmouthLabels()
     -- Factory District
 
     local text = spawnObject({
-        position = {14.38, 0.67, -36.38},
+        position = {14.38, 0.48, -36.38},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -176,7 +176,7 @@ function SpawnInnsmouthLabels()
     -- Church Green
 
     local text = spawnObject({
-        position = {14.40, 0.67, -32.34},
+        position = {14.40, 0.48, -32.34},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -187,7 +187,7 @@ function SpawnInnsmouthLabels()
     -- Innsmouth Shore
 
     local text = spawnObject({
-        position = {14.45, 0.67, -28.23},
+        position = {14.45, 0.48, -28.23},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -198,7 +198,7 @@ function SpawnInnsmouthLabels()
     -- Innsmouth Look {49.86, 0.54, -23.12}
 
     local text = spawnObject({
-        position = {41.49, 0.67, 16.95},
+        position = {41.49, 0.48, 16.95},
         rotation = {90.00, 270.00, 0.00},
         type = '3DText'
     })
@@ -209,7 +209,7 @@ function SpawnInnsmouthLabels()
     -- Innsmouth Look Discard
 
     local text = spawnObject({
-        position = {41.51, 0.67, 19.94},
+        position = {41.51, 0.48, 19.94},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -224,7 +224,7 @@ function SpawnGoatLabels()
     -- Corruption
 
     local text = spawnObject({
-        position = {31.75, 0.67, 20.59},
+        position = {31.75, 0.48, 20.59},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -235,7 +235,7 @@ function SpawnGoatLabels()
     -- Discard
 
     local text = spawnObject({
-        position = {31.73, 0.72, 24.24},
+        position = {31.73, 0.48, 24.24},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -247,7 +247,7 @@ function SpawnGoatLabels()
     --  Cult Membership
 
     local text = spawnObject({
-        position = {36.76, 0.67, 25.11},
+        position = {36.76, 0.48, 25.11},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -258,7 +258,7 @@ function SpawnGoatLabels()
     -- Cult Encounters
 
     local text = spawnObject({
-        position = {36.75, 0.67, 21.26},
+        position = {36.75, 0.48, 21.26},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -272,7 +272,7 @@ function SpawnPharaohLabels()
     -- Patrol
 
     local text = spawnObject({
-        position = {31.70, 0.67, 27.89},
+        position = {31.70, 0.48, 27.89},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -283,7 +283,7 @@ function SpawnPharaohLabels()
     -- Exhibit Encounter
 
     local text = spawnObject({
-        position = {36.75, 0.67, 17.10},
+        position = {36.75, 0.48, 17.10},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -294,7 +294,7 @@ function SpawnPharaohLabels()
     -- Exhibit Item 
 
     local text = spawnObject({
-        position = {36.72, 0.67, 13.10},
+        position = {36.72, 0.48, 13.10},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -305,7 +305,7 @@ function SpawnPharaohLabels()
     -- Benefits
 
     local text = spawnObject({
-        position = {31.76, 0.67, 13.28},
+        position = {31.76, 0.48, 13.28},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -316,7 +316,7 @@ function SpawnPharaohLabels()
     -- Detriments
 
     local text = spawnObject({
-        position = {31.72, 0.67, 17.17},
+        position = {31.72, 0.48, 17.17},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })
@@ -330,7 +330,7 @@ function SpawnYellowLabels()
     -- Magical Effect
 
     local text = spawnObject({
-        position = {36.76, 0.67, 28.93},
+        position = {36.76, 0.48, 28.93},
         rotation = {90.00, 270.10, 0.00},
         type = '3DText'
     })

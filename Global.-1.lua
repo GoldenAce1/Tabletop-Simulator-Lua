@@ -147,6 +147,16 @@ function onUpdate ()
                                             UI.setAttribute("OWColor"..colorIdent .."Inv"..InvestigatorNumber,"fontStyle", "Bold") 
                                         end
                                     end
+                                else
+                                    -- reset all O colors, 'cause Investigator might've returned
+                                    UI.setAttribute("OWColor1Inv"..InvestigatorNumber,"color", "#69696940")
+                                    UI.setAttribute("OWColor1Inv"..InvestigatorNumber,"fontStyle", "Normal")
+                                    UI.setAttribute("OWColor2Inv"..InvestigatorNumber,"color", "#69696940")
+                                    UI.setAttribute("OWColor2Inv"..InvestigatorNumber,"fontStyle", "Normal")
+                                    UI.setAttribute("OWColor3Inv"..InvestigatorNumber,"color", "#69696940")
+                                    UI.setAttribute("OWColor3Inv"..InvestigatorNumber,"fontStyle", "Normal")
+                                    UI.setAttribute("OWColor4Inv"..InvestigatorNumber,"color", "#69696940")
+                                    UI.setAttribute("OWColor4Inv"..InvestigatorNumber,"fontStyle", "Normal")
                                 end
                                 playerLocations[InvestigatorNumber] = CurrentLocationVariables[1]
                             end

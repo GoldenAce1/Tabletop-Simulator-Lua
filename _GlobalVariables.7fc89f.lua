@@ -56,13 +56,13 @@ local Board_Gate_Bag_Position = {10.29, 0.45, 21.15}
 
 local Board_Monster_Bag_Position = {8.30, 1.02, 12.48}
 
-local Board_Common_Item_Discard = {32.23, 0.68, -12.95}
-local Board_Unique_Item_Discard = {32.18, 0.68, -6.85}
-local Board_Spell_Discard = {32.18, 0.68, -1.02}
-local Board_Skill_Discard = {32.18, 0.69, 5.00}
-local Board_Ally_Discard = {32.18, 0.69, 10.64}
-local Board_Injury_Discard = {40.12, 0.58, 13.28}
-local Board_Madness_Discard = {45.44, 0.57, 13.17}
+local Board_Common_Item_Discard = {39.99, 0.44, -20.04}
+local Board_Unique_Item_Discard = {39.99, 0.44, -13.73}
+local Board_Spell_Discard = {40.10, 0.44, -7.47}
+local Board_Skill_Discard = {40.10, 0.44, -0.85}
+local Board_Ally_Discard = {40.10, 0.44, 5.75}
+local Board_Injury_Discard = {40.25, 0.44, 13.17}
+local Board_Madness_Discard = {45.33, 0.44, 13.17}
 
 local Board_Bless_Curse_Discard = {20.36, 1.01, 15.50}
 local Board_Deputy_Discard = {20.44, 1.01, 18.29}

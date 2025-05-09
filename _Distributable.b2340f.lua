@@ -279,6 +279,63 @@ function PerformSpecialDiscard(obj)
         obj.setPosition({DunwichHorrorDiscardPosition[1], DunwichHorrorDiscardPosition[2] + 3, DunwichHorrorDiscardPosition[3]})
         obj.setRotation({0,270,0})
     end
+
+    if ObjName == "Visions" or ObjName == "Private Investigator" or ObjName == "Anointed" or ObjName == "Psychic" then
+        local BenefitsPosition = GlobalVariables.call('getBoardBenefitsDiscard')
+        obj.setPosition({BenefitsPosition[1], BenefitsPosition[2] + 3, BenefitsPosition[3]})
+        obj.setRotation({0,90,0})
+        
+        ScrZoneExpansions = getObjectFromGUID('70a568')
+        local BoardBenefitsScriptingZoneId = ScrZoneExpansions.call('getPharaohScrzoneBenefitsid')
+        local BoardBenefitsScriptingZone = getObjectFromGUID(BoardBenefitsScriptingZoneId)
+        
+        function BenefitsDiscardcoinside()
+            waitFrames(30)
+            local scriptingZoneObjects = BoardBenefitsScriptingZone.getObjects()
+            
+            log(scriptingZoneObjects)
+            if scriptingZoneObjects ~= nil then
+                
+                for _, obj in ipairs(scriptingZoneObjects) do
+                    if obj.type == "Deck" then
+                        obj.setName("Benefits")
+                        obj.setDescription("The Curse of the Dark Pharaoh Revised")
+                        GlobalVariables.call('setPharaohBenefitsDeckid', obj.guid)
+                    end
+                end
+            end
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        startLuaCoroutine(self, "BenefitsDiscardcoinside") --must use this way to make coroutine in order to wait frames         
+    end
+
+    if ObjName == "Local Guide" or ObjName == "Wanted" or ObjName == "Harried" or ObjName == "Tainted" then
+        local DetrimentsPosition = GlobalVariables.call('getBoardDetrimentsDiscard')
+        obj.setPosition({DetrimentsPosition[1], DetrimentsPosition[2] + 3, DetrimentsPosition[3]})
+        obj.setRotation({0,90,0})
+        
+        ScrZoneExpansions = getObjectFromGUID('70a568')
+        local BoardDetrimentsScriptingZoneId = ScrZoneExpansions.call('getPharaohScrzoneDetrimentsid')
+        local BoardDetrimentsScriptingZone = getObjectFromGUID(BoardDetrimentsScriptingZoneId)
+        
+        function DetrimentsDiscardcoinside()
+            waitFrames(30)
+            local scriptingZoneObjects = BoardDetrimentsScriptingZone.getObjects()
+            
+            if scriptingZoneObjects ~= nil then
+                
+                for _, obj in ipairs(scriptingZoneObjects) do
+                    if obj.type == "Deck" then
+                        obj.setName("Detriments")
+                        obj.setDescription("The Curse of the Dark Pharaoh Revised")
+                        GlobalVariables.call('setPharaohDetrimentsDeckid', obj.guid)
+                    end
+                end
+            end
+            return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+        end
+        startLuaCoroutine(self, "DetrimentsDiscardcoinside") --must use this way to make coroutine in order to wait frames         
+    end
     
 end
 
@@ -339,14 +396,17 @@ function PerformCultEncounterDiscard(obj)
     
     local GlobalVariables = getObjectFromGUID(GlobalVariablesId)
     
-    local ObjName = obj.getName()
-    local ObjDescription = obj.getDescription()
-    
-    local CultEncounterPosition = GlobalVariables.call('getGoatEncountersDeckpos')
-    local CultEncounterRotation = GlobalVariables.call('getGoatEncountersDeckrot')
-    
-    obj.setPosition({CultEncounterPosition[1], CultEncounterPosition[2] + 3, CultEncounterPosition[3]})
-    obj.setRotation({CultEncounterRotation[1], CultEncounterRotation[2], CultEncounterRotation[3]})
+    function CultEncounterDiscardcoinside()
+        yieldWhileObjectsAreMoving({obj})
+        local Goat_Encounter_Deck_id = GlobalVariables.call("getGoatEncountersDeckid")
+        local Goat_Encounter_Deck = getObjectFromGUID(Goat_Encounter_Deck_id)
+        Goat_Encounter_Deck.putObject(obj)
+
+        Goat_Encounter_Deck.randomize()
+        return 1 --must return 1 at the end because that is how startLuaCoroutine() works, it is in the api. Without, it will error
+    end
+    startLuaCoroutine(self, "CultEncounterDiscardcoinside") --must use this way to make coroutine in order to wait frames
+
 end
 
 
@@ -842,8 +902,7 @@ function DistributeStuffInTrash(obj)
             end                    
         end
     else
-        return 
-        DiscardableByDescription(obj)
+        return DiscardableByDescription(obj)
     end
 end 
 
@@ -888,8 +947,8 @@ function DistributableByDescription(obj)
     
     local description = obj.getDescription()
     local objname = obj.getName()
-    
-    if description == "Special" then
+
+    if description == "Special" or description == "Benefits" or description == "Detriments" then
         PerformSpecialDiscard(obj)
     end
     if description == "Condition" then
